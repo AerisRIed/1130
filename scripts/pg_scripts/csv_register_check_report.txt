@@ -1,0 +1,1216 @@
+CSV 寄存器检查详细报告
+================================================================================
+
+CSV 文件数量: 22
+总寄存器数: 128
+找到的寄存器: 88
+未找到的寄存器: 40
+覆盖率: 68.75%
+
+
+CSV 文件列表:
+--------------------------------------------------------------------------------
+  - Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+  - Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv
+  - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+  - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+  - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv
+  - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+  - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+  - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+  - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+  - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+  - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+  - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv
+  - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+  - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+  - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+  - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+  - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+  - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+  - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+  - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+  - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+  - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+
+
+XML 文件列表:
+--------------------------------------------------------------------------------
+  - sd3101_t4gp_phy_pcs_cmn_registers.xml
+  - sd3101_t4gp_phy_pcs_lane_registers.xml
+  - sd3101_t4gp_phy_pma_cmn_registers.xml
+  - sd3101_t4gp_phy_pma_lane_registers.xml
+  - sd3101_t4gp_pma_cmn_registers.xml
+  - sd3101_t4gp_pma_rx_lane_registers.xml
+  - sd3101_t4gp_pma_tx_lane_registers.xml
+
+
+================================================================================
+未找到的寄存器名字汇总
+================================================================================
+
+以下寄存器在 XML 文件中未找到：
+
+  1. cmn reserved (PMA_REG)
+  2. cmn_pll0_ss_ctrl1_m0 (PMA_REG)
+  3. cmn_pll0_ss_ctrl2_m0 (PMA_REG)
+  4. cmn_pll0_ss_ctrl3_m0 (PMA_REG)
+  5. cmn_pll0_ss_ctrl4 (PMA_REG)
+  6. cmn_pll0_ss_ctrl4_m0 (PMA_REG)
+  7. cmn_pll1_post_div_m0 (PMA_REG)
+  8. cmn_pll1_ss_ctrl1_m0 (PMA_REG)
+  9. cmn_pll1_ss_ctrl2_m0 (PMA_REG)
+ 10. cmn_pll1_ss_ctrl3_m0 (PMA_REG)
+ 11. cmn_pll1_ss_ctrl4 (PMA_REG)
+ 12. cmn_pll1_ss_ctrl4_m0 (PMA_REG)
+ 13. drv_diag_tx_drv (PMA_REG)
+ 14. phy_pipe_usb3_gen2_post_cfg (PHY_REG)
+ 15. phy_pipe_usb3_gen2_pre_cfg (PHY_REG)
+ 16. rx_cdrlf_cnfg3 (PMA_REG)
+ 17. rx_diag_acya (PMA_REG)
+ 18. rx_diag_dfe_amp_tune (PMA_REG)
+ 19. rx_diag_dfe_amp_tune_2 (PMA_REG)
+ 20. rx_diag_dfe_amp_tune_3 (PMA_REG)
+ 21. rx_diag_dfe_amp_tune_4 (PMA_REG)
+ 22. rx_diag_dfe_ctrl (PMA_REG)
+ 23. rx_diag_lfeq_tune (PMA_REG)
+ 24. rx_diag_nqst_ctrl (PMA_REG)
+ 25. rx_diag_pi_cap (PMA_REG)
+ 26. rx_diag_pi_rate (PMA_REG)
+ 27. rx_diag_sigdet_tune (PMA_REG)
+ 28. rx_ree_atten_thr (PMA_REG)
+ 29. rx_ree_gcsm1_ctrl (PMA_REG)
+ 30. rx_ree_gcsm2_ctrl (PMA_REG)
+ 31. rx_ree_peak_lthr (PMA_REG)
+ 32. rx_ree_peak_uthr (PMA_REG)
+ 33. rx_ree_pergcsm_ctrl (PMA_REG)
+ 34. rx_ree_smgm_ctrl1 (PMA_REG)
+ 35. rx_ree_smgm_ctrl2 (PMA_REG)
+ 36. rx_ree_tap1_clip (PMA_REG)
+ 37. rx_ree_tap2ton_clip (PMA_REG)
+ 38. rx_ree_u3gcsm_eqenm_ph1 (PMA_REG)
+ 39. rx_ree_u3gcsm_eqenm_ph2 (PMA_REG)
+ 40. rx_sigdet_hl_filt_tmr (PMA_REG)
+
+
+找到的寄存器详情:
+--------------------------------------------------------------------------------
+
+cmn_bgcal_init_tmr:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 22 个)
+  找到于 XML: sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_bgcal_iter_tmr:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 22 个)
+  找到于 XML: sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_cdiag_xcvrc_pwri_ovrd:
+  来源 CSV: Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv ... (共 20 个)
+  找到于 XML: sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_diag_gpana_1:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 22 个)
+  找到于 XML: sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_ibcal_init_tmr:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 22 个)
+  找到于 XML: sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_ibcal_iter_tmr:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 22 个)
+  找到于 XML: sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pdiag_pll0_prog0_clk_ctrl_m0:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 22 个)
+  找到于 XML: sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pdiag_pll0_prog1_clk_ctrl_m0:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 22 个)
+  找到于 XML: sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pdiag_pll1_post_div_m0:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+  找到于 XML: sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pdiag_pll1_prog0_clk_ctrl_m0:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 22 个)
+  找到于 XML: sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pdiag_pll1_prog1_clk_ctrl_m0:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 22 个)
+  找到于 XML: sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pll0_dsm_diag:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 22 个)
+  找到于 XML: sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pll0_dsm_fbh_ovrd:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 22 个)
+  找到于 XML: sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pll0_dsm_fbl_ovrd:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 22 个)
+  找到于 XML: sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pll0_fracdivh:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 22 个)
+  找到于 XML: sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pll0_fracdivl:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 22 个)
+  找到于 XML: sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pll0_high_thr:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 22 个)
+  找到于 XML: sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pll0_intdiv:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 22 个)
+  找到于 XML: sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pll0_lock_pllcnt_start:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 22 个)
+  找到于 XML: sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pll0_lock_pllcnt_thr:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 22 个)
+  找到于 XML: sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pll0_ss_ctrl1:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+  找到于 XML: sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pll0_ss_ctrl2:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+  找到于 XML: sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pll0_ss_ctrl3:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+  找到于 XML: sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pll0_vcocal_init_tmr:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 22 个)
+  找到于 XML: sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pll0_vcocal_iter_tmr:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 22 个)
+  找到于 XML: sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pll0_vcocal_pllcnt_start:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 22 个)
+  找到于 XML: sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pll0_vcocal_reftim_start:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 22 个)
+  找到于 XML: sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pll0_vcocal_tctrl:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 22 个)
+  找到于 XML: sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pll1_dsm_diag:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 22 个)
+  找到于 XML: sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pll1_dsm_fbh_ovrd:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 22 个)
+  找到于 XML: sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pll1_dsm_fbl_ovrd:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 22 个)
+  找到于 XML: sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pll1_fracdivh:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 22 个)
+  找到于 XML: sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pll1_fracdivl:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 22 个)
+  找到于 XML: sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pll1_high_thr:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 22 个)
+  找到于 XML: sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pll1_intdiv:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 22 个)
+  找到于 XML: sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pll1_ss_ctrl1:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+  找到于 XML: sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pll1_ss_ctrl2:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+  找到于 XML: sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pll1_ss_ctrl3:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+  找到于 XML: sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pllsm0_tmr_1:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 22 个)
+  找到于 XML: sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pllsm0_tmr_2:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 22 个)
+  找到于 XML: sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pllsm0_tmr_3:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 22 个)
+  找到于 XML: sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pllsm0_tmr_4:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 22 个)
+  找到于 XML: sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pllsm1_tmr_1:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 22 个)
+  找到于 XML: sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pllsm1_tmr_2:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 22 个)
+  找到于 XML: sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pllsm1_tmr_3:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 22 个)
+  找到于 XML: sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pllsm1_tmr_4:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 22 个)
+  找到于 XML: sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_rxcal_init_tmr:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 22 个)
+  找到于 XML: sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_rxcal_iter_tmr:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 22 个)
+  找到于 XML: sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_sd_cal_init_tmr:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 22 个)
+  找到于 XML: sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_sd_cal_iter_tmr:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 22 个)
+  找到于 XML: sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_sd_cal_pllcnt_start:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 22 个)
+  找到于 XML: sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_sd_cal_reftim_start:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 22 个)
+  找到于 XML: sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_ssm_tmr_1:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 22 个)
+  找到于 XML: sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_ssm_tmr_2:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 22 个)
+  找到于 XML: sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_txpdcal_init_tmr:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 22 个)
+  找到于 XML: sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_txpdcal_iter_tmr:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 22 个)
+  找到于 XML: sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_txpucal_init_tmr:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 22 个)
+  找到于 XML: sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_txpucal_iter_tmr:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 22 个)
+  找到于 XML: sd3101_t4gp_pma_cmn_registers.xml
+
+phy_lane_off_ctl:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 22 个)
+  找到于 XML: sd3101_t4gp_phy_pcs_cmn_registers.xml
+
+phy_pma_cmn_ctrl_sts:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 16 个)
+  找到于 XML: sd3101_t4gp_phy_pma_cmn_registers.xml
+
+phy_pma_cmn_ctrl_sts_clr:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv
+  找到于 XML: sd3101_t4gp_phy_pma_cmn_registers.xml
+
+phy_pma_lane_map:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 16 个)
+  找到于 XML: sd3101_t4gp_phy_pcs_cmn_registers.xml
+
+rx_cdrlf_cnfg:
+  来源 CSV: Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv ... (共 20 个)
+  找到于 XML: sd3101_t4gp_pma_rx_lane_registers.xml
+
+rx_diag_xcvr_rate_sel:
+  来源 CSV: Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv ... (共 20 个)
+  找到于 XML: sd3101_t4gp_pma_rx_lane_registers.xml
+
+rx_psc_a0:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 22 个)
+  找到于 XML: sd3101_t4gp_pma_rx_lane_registers.xml
+
+rx_psc_a1:
+  来源 CSV: Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv ... (共 20 个)
+  找到于 XML: sd3101_t4gp_pma_rx_lane_registers.xml
+
+rx_psc_a2:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 22 个)
+  找到于 XML: sd3101_t4gp_pma_rx_lane_registers.xml
+
+rx_psc_a3:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 22 个)
+  找到于 XML: sd3101_t4gp_pma_rx_lane_registers.xml
+
+rx_psc_cal:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv
+  找到于 XML: sd3101_t4gp_pma_rx_lane_registers.xml
+
+rx_sdcal0_init_tmr:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv ... (共 21 个)
+  找到于 XML: sd3101_t4gp_pma_rx_lane_registers.xml
+
+rx_sdcal0_iter_tmr:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv ... (共 21 个)
+  找到于 XML: sd3101_t4gp_pma_rx_lane_registers.xml
+
+rx_sdcal1_init_tmr:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv ... (共 21 个)
+  找到于 XML: sd3101_t4gp_pma_rx_lane_registers.xml
+
+rx_sdcal1_iter_tmr:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv ... (共 21 个)
+  找到于 XML: sd3101_t4gp_pma_rx_lane_registers.xml
+
+tx_psc_a0:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 22 个)
+  找到于 XML: sd3101_t4gp_pma_tx_lane_registers.xml
+
+tx_psc_a1:
+  来源 CSV: Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv ... (共 20 个)
+  找到于 XML: sd3101_t4gp_pma_tx_lane_registers.xml
+
+tx_psc_a2:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 22 个)
+  找到于 XML: sd3101_t4gp_pma_tx_lane_registers.xml
+
+tx_psc_a3:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 22 个)
+  找到于 XML: sd3101_t4gp_pma_tx_lane_registers.xml
+
+tx_rcvdet_st_tmr:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 22 个)
+  找到于 XML: sd3101_t4gp_pma_tx_lane_registers.xml
+
+tx_txcc_cpost_mult_00:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv
+  找到于 XML: sd3101_t4gp_pma_tx_lane_registers.xml
+
+tx_txcc_cpost_mult_01:
+  来源 CSV: Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv ... (共 20 个)
+  找到于 XML: sd3101_t4gp_pma_tx_lane_registers.xml
+
+tx_txcc_ctrl:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 22 个)
+  找到于 XML: sd3101_t4gp_pma_tx_lane_registers.xml
+
+tx_txcc_mgnfs_mult_000:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 22 个)
+  找到于 XML: sd3101_t4gp_pma_tx_lane_registers.xml
+
+tx_txcc_mgnhs_mult_000:
+  来源 CSV: Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv ... (共 20 个)
+  找到于 XML: sd3101_t4gp_pma_tx_lane_registers.xml
+
+xcvr_diag_bidi_ctrl:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 22 个)
+  找到于 XML: sd3101_t4gp_pma_tx_lane_registers.xml
+
+xcvr_diag_hsclk_div:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 22 个)
+  找到于 XML: sd3101_t4gp_pma_tx_lane_registers.xml
+
+xcvr_diag_hsclk_sel:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 22 个)
+  找到于 XML: sd3101_t4gp_pma_tx_lane_registers.xml
+
+xcvr_diag_plldrc_ctrl:
+  来源 CSV: Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv ... (共 22 个)
+  找到于 XML: sd3101_t4gp_pma_tx_lane_registers.xml
+
+xcvr_diag_psc_ovrd:
+  来源 CSV: Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv, Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv ... (共 20 个)
+  找到于 XML: sd3101_t4gp_pma_tx_lane_registers.xml
+
+
+未找到的寄存器详情:
+================================================================================
+
+cmn reserved (PMA_REG):
+  来源 CSV 文件:
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+
+cmn_pll0_ss_ctrl1_m0 (PMA_REG):
+  来源 CSV 文件:
+    - Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+
+cmn_pll0_ss_ctrl2_m0 (PMA_REG):
+  来源 CSV 文件:
+    - Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+
+cmn_pll0_ss_ctrl3_m0 (PMA_REG):
+  来源 CSV 文件:
+    - Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+
+cmn_pll0_ss_ctrl4 (PMA_REG):
+  来源 CSV 文件:
+    - Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+
+cmn_pll0_ss_ctrl4_m0 (PMA_REG):
+  来源 CSV 文件:
+    - Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+
+cmn_pll1_post_div_m0 (PMA_REG):
+  来源 CSV 文件:
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+
+cmn_pll1_ss_ctrl1_m0 (PMA_REG):
+  来源 CSV 文件:
+    - Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+
+cmn_pll1_ss_ctrl2_m0 (PMA_REG):
+  来源 CSV 文件:
+    - Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+
+cmn_pll1_ss_ctrl3_m0 (PMA_REG):
+  来源 CSV 文件:
+    - Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+
+cmn_pll1_ss_ctrl4 (PMA_REG):
+  来源 CSV 文件:
+    - Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+
+cmn_pll1_ss_ctrl4_m0 (PMA_REG):
+  来源 CSV 文件:
+    - Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+
+drv_diag_tx_drv (PMA_REG):
+  来源 CSV 文件:
+    - Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv
+
+phy_pipe_usb3_gen2_post_cfg (PHY_REG):
+  来源 CSV 文件:
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+
+phy_pipe_usb3_gen2_pre_cfg (PHY_REG):
+  来源 CSV 文件:
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+
+rx_cdrlf_cnfg3 (PMA_REG):
+  来源 CSV 文件:
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+
+rx_diag_acya (PMA_REG):
+  来源 CSV 文件:
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+
+rx_diag_dfe_amp_tune (PMA_REG):
+  来源 CSV 文件:
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+
+rx_diag_dfe_amp_tune_2 (PMA_REG):
+  来源 CSV 文件:
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+
+rx_diag_dfe_amp_tune_3 (PMA_REG):
+  来源 CSV 文件:
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+
+rx_diag_dfe_amp_tune_4 (PMA_REG):
+  来源 CSV 文件:
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+
+rx_diag_dfe_ctrl (PMA_REG):
+  来源 CSV 文件:
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+
+rx_diag_lfeq_tune (PMA_REG):
+  来源 CSV 文件:
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+
+rx_diag_nqst_ctrl (PMA_REG):
+  来源 CSV 文件:
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+
+rx_diag_pi_cap (PMA_REG):
+  来源 CSV 文件:
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+
+rx_diag_pi_rate (PMA_REG):
+  来源 CSV 文件:
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+
+rx_diag_sigdet_tune (PMA_REG):
+  来源 CSV 文件:
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+
+rx_ree_atten_thr (PMA_REG):
+  来源 CSV 文件:
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+
+rx_ree_gcsm1_ctrl (PMA_REG):
+  来源 CSV 文件:
+    - Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+
+rx_ree_gcsm2_ctrl (PMA_REG):
+  来源 CSV 文件:
+    - Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv
+
+rx_ree_peak_lthr (PMA_REG):
+  来源 CSV 文件:
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+
+rx_ree_peak_uthr (PMA_REG):
+  来源 CSV 文件:
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+
+rx_ree_pergcsm_ctrl (PMA_REG):
+  来源 CSV 文件:
+    - Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_DP_1p62_None_Int_100p0_drc_i_p0rc_i_p1rc_i_ss_r0rc_i.csv
+
+rx_ree_smgm_ctrl1 (PMA_REG):
+  来源 CSV 文件:
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+
+rx_ree_smgm_ctrl2 (PMA_REG):
+  来源 CSV 文件:
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+
+rx_ree_tap1_clip (PMA_REG):
+  来源 CSV 文件:
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+
+rx_ree_tap2ton_clip (PMA_REG):
+  来源 CSV 文件:
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+
+rx_ree_u3gcsm_eqenm_ph1 (PMA_REG):
+  来源 CSV 文件:
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+
+rx_ree_u3gcsm_eqenm_ph2 (PMA_REG):
+  来源 CSV 文件:
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+
+rx_sigdet_hl_filt_tmr (PMA_REG):
+  来源 CSV 文件:
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN1_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_ss_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB_TCAM_GEN2_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_100p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_19p2_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_p1rc_i_r0rc_i.csv
+    - Gen_Regs_TSMC_4_R100_USB4_TCAM_None_Int_24p0_drc_i_p0rc_i_ss_p1rc_i_r0rc_i.csv

@@ -1,0 +1,49 @@
+//parameter POLLING_TRANSMIT_TS1_NUM_MIN = 1024;
+parameter POLLING_TRANSMIT_TS1_NUM_MIN = 102; // TODO tmp for accelarate
+parameter POLLING_RECEIVE_TS1_NUM_MIN = 8;
+parameter POLLING_TRANSMIT_TS2_NUM_MIN = 16;
+parameter POLLING_RECEIVE_TS2_NUM_MIN = 8;
+parameter CONFIGURATION_TRANSMIT_TS1_NUM_MIN = 16;
+parameter CONFIGURATION_RECEIVE_TS1_NUM_MIN = 2;
+parameter CONFIGURATION_TRANSMIT_TS2_NUM_MIN = 16;
+parameter CONFIGURATION_RECEIVE_TS2_NUM_MIN = 8;
+parameter CONFIGURATION_TRANSMIT_IDL_NUM_MIN = 8;
+parameter CONFIGURATION_RECEIVE_IDL_NUM_MIN = 8;
+parameter RECOVERY_LOCK_RECEIVE_TS1_NUM_MIN = 8;
+parameter RECOVERY_CFG_GEN1_2_TRANSMIT_TS2_NUM_MIN = 32;
+parameter RECOVERY_CFG_GEN3_4_TRANSMIT_TS2_NUM_MIN = 128;
+parameter RECOVERY_CFG_TRANSMIT_TS2_NUM_MIN = 16;
+parameter RECOVERY_CFG_RECEIVE_TS2_NUM_MIN = 8;
+parameter RECOVERY_EQ_TRANSMIT_TS1_NUM_MIN = 32;
+parameter RECOVERY_EQ_RECEIVE_TS1_NUM_MIN = 32;
+parameter RECOVERY_IDLE_TRANSMIT_IDL_NUM_MIN = 16;
+parameter RECOVERY_IDLE_RECEIVE_IDL_NUM_MIN = 8;
+// gen1/gen2 K symbol
+parameter COM_K = 8'hBC;
+parameter IDL_K = 8'h7C;
+parameter FTS_K = 8'h3C;
+parameter SKP_K = 8'h1C;
+parameter EIE_K = 8'hFC;
+parameter PAD_K = 8'hF7;
+parameter STP_K = 8'hFB;
+parameter SDP_K = 8'h5C;
+parameter END_K = 8'hFD;
+parameter EDB_K = 8'hFE;
+parameter K28_4 = 8'h9C;  // reserved
+parameter K28_6 = 8'hDC;  // reserved
+// TS identifier
+parameter TS1_ID = 8'h4A; // for all gen1/2/3/4
+parameter TS2_ID = 8'h45; // for all gen1/2/3/4
+// gen3/gen4 os id 
+parameter EIOS_START  = 8'h66;
+parameter EIEOS_START = 8'h00;
+parameter FTS_START = 8'h55;
+parameter SDS_START = 8'hE1;
+parameter TS1_START = 8'h1E;
+parameter TS2_START = 8'h2D;
+parameter SKP_START = 8'hAA;
+parameter STD_SKP_END = 8'hE1;
+parameter CTL_SKP_END = 8'h78;
+
+parameter TS_SYMBOL_NUM = 16;
+parameter BLOCK_SYMBOL_NUM = 16;

@@ -1,0 +1,12 @@
+aliases:
+  usb4_regression: '  -t usb4_base_testlist  '
+  # USB4_GEN3X1_REGRESSION: ' -t usb4_base_testlist -comp_opts "+define+1_LANE +define+GEN3 "'
+  # USB4_GEN3X2_REGRESSION: ' -t usb4_base_testlist -comp_opts "+define+2_LANE +define+GEN3 "'
+  # USB4_GEN2X1_REGRESSION: ' -t usb4_base_testlist -comp_opts "+define+1_LANE +define+GEN2 "'
+  # USB4_GEN2X2_REGRESSION: ' -t usb4_base_testlist -comp_opts "+define+2_LANE +define+GEN2 "'
+
+  USB4_define_0_REGRESSION: ' -t usb4_base_testlist -comp_opts "+define+user_define_0 "   -tag  "!random_comp"'
+  USB4_define_1_REGRESSION: ' -t usb4_base_testlist -comp_opts "+define+user_define_1 "   -tag  "!random_comp"'
+  USB4_define_2_REGRESSION: ' -t usb4_base_testlist -comp_opts "+define+user_define_2 "   -tag  "!random_comp"'
+
+  USB4_random_REGRESSION:   ' -t usb4_base_testlist  -tag  "random_comp" '

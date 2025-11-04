@@ -1,0 +1,267 @@
+Note: IMPORTANT!!!   Some rows are more than one row of charaters tall.,,,
+"Note: When reading in a CSV file to Excel, the full row height may not show all the text for a given row.",,,
+ ,,,
+Note: File name of programmers guide spreadsheet used:,Timberwolf_prg_gd_v_0.10_Preliminary.xlsm,,
+ ,,,
+Note: Selected configuration information,,,
+ ,,,
+Note: Selected technology:,TSMC_4,,
+Note: Selected revision:,R100,,
+ ,,,
+Note: Selected digital clock source:,INT_REF_CLK_0,,
+Note: Selected PLL 0 clock source:,INT_REF_CLK_0,,
+Note: Selected PLL 1 clock source:,INT_REF_CLK_0,,
+Note: Selected reference clock receiver 0 clock source:,INT_REF_CLK_0,,
+Note: PLL 0 spread spectrum generation enabled:,FALSE,,
+Note: PLL 1 spread spectrum generation enabled:,FALSE,,
+Note: External reference clock enabled:,FALSE,,
+Note: External reference clock spread spectrum present:,FALSE,,
+Note: External reference clock frequency (MHz):,N/A,,
+Note: Internal reference clock enabled:,TRUE,,
+Note: Internal reference clock spread spectrum present:,FALSE,,
+Note: Internal reference clock frequency (MHz):,24,,
+Note: Selected standard 0 name:,USB 3.2 gen2 Type C Alt Mode,,
+Note: Selected standard 0 mnemonic:,USB_TCAM_GEN2,,
+Note: Selected standard 1 name:,None,,
+Note: Selected standard 1 mnemonic:,None,,
+ ,,,
+ ,,,
+Register mnemonics,Boolean,PHY / Common / Lane,Field Value
+ ,,,
+ ,,,
+Note: Reference clock rate related registers.,,,
+Note: Top level pins,,,
+PHY_PIN: pma_cmn_refclk_dig_sel,TRUE,ALL LANES,1'b0
+PHY_PIN: pma_cmn_refclk_dig_div,TRUE,ALL LANES,2'b00
+PHY_PIN: pma_cmn_pll0_refclk_sel,TRUE,ALL LANES,2'b00
+PHY_PIN: pma_cmn_pll1_refclk_sel,TRUE,ALL LANES,2'b00
+Note: startup state machine registers,,,
+PMA_REG: CMN_SSM_TMR_1,TRUE,CMN,0x00010018
+PMA_REG: CMN_SSM_TMR_2,TRUE,CMN,RST VAL
+Note: PLL 0 control state machine registers,,,
+PMA_REG: CMN_PLLSM0_TMR_1,TRUE,CMN,0x00180001
+PMA_REG: CMN_PLLSM0_TMR_2,TRUE,CMN,0x0001003C
+PMA_REG: CMN_PLLSM0_TMR_3,TRUE,CMN,0x000100F0
+PMA_REG: CMN_PLLSM0_TMR_4,TRUE,CMN,RST VAL
+Note: PLL 1 control state machine registers,,,
+PMA_REG: CMN_PLLSM1_TMR_1,TRUE,CMN,0x00180001
+PMA_REG: CMN_PLLSM1_TMR_2,TRUE,CMN,0x0001003C
+PMA_REG: CMN_PLLSM1_TMR_3,TRUE,CMN,0x000100F0
+PMA_REG: CMN_PLLSM1_TMR_4,TRUE,CMN,RST VAL
+Note: Bandgap calibration registers,,,
+PMA_REG: CMN_BGCAL_INIT_TMR,TRUE,CMN,0x00000078
+PMA_REG: CMN_BGCAL_ITER_TMR,TRUE,CMN,0x00000082
+Note: External bias current calibration registers,,,
+PMA_REG: CMN_IBCAL_INIT_TMR,TRUE,CMN,0x0000001A
+PMA_REG: CMN_IBCAL_ITER_TMR,TRUE,CMN,RST VAL
+Note: Resitor calibration registers,,,
+PMA_REG: CMN_TXPUCAL_INIT_TMR,TRUE,CMN,0x0000001F
+PMA_REG: CMN_TXPUCAL_ITER_TMR,TRUE,CMN,RST VAL
+PMA_REG: CMN_TXPDCAL_INIT_TMR,TRUE,CMN,0x0000001F
+PMA_REG: CMN_TXPDCAL_ITER_TMR,TRUE,CMN,RST VAL
+PMA_REG: CMN_RXCAL_INIT_TMR,TRUE,CMN,0x000002D2
+PMA_REG: CMN_RXCAL_ITER_TMR,TRUE,CMN,RST VAL
+Note: Signal detect clock calibration registers,,,
+PMA_REG: CMN_SD_CAL_INIT_TMR,TRUE,CMN,RST VAL
+PMA_REG: CMN_SD_CAL_ITER_TMR,TRUE,CMN,RST VAL
+PMA_REG: CMN_SD_CAL_REFTIM_START,TRUE,CMN,RST VAL
+PMA_REG: CMN_SD_CAL_PLLCNT_START,TRUE,CMN,0x00000137
+Note: Receiver detect calibration registers,,,
+PMA_REG: TX_RCVDET_ST_TMR,TRUE,ALL LANES,0x00000960
+ ,,,
+ ,,,
+Note: Link configuration related pins.,,,
+"Note: There is no phy_link_cfg_ln0_mode pin.  By default, lane 0 is always a master.",,,
+"Note: Therefore, for single lane implementations, there is no need to drive this pin.",,,
+Note: Link configuration related registers.,,,
+PMA_REG: XCVR_DIAG_HSCLK_SEL,TRUE,USB_TCAM_GEN2 LANES,RST VAL
+PMA_REG: XCVR_DIAG_HSCLK_DIV,TRUE,USB_TCAM_GEN2 LANES,0x0106
+PMA_REG: XCVR_DIAG_PLLDRC_CTRL,TRUE,USB_TCAM_GEN2 LANES,0x0051
+ ,,,
+ ,,,
+Note: PLL related registers.,,,
+Note: General PLL settings for all rates,,,
+PMA_REG: CMN_PLL0_DSM_DIAG,TRUE,CMN,0x0004
+PMA_REG: CMN_PLL1_DSM_DIAG,TRUE,CMN,0x0004
+Note: Analog PLL settings,,,
+PMA_REG: CMN_DIAG_GPANA_1,TRUE,CMN,RST VAL
+Note: Integer mode feedback divider settings.,,,
+PMA_REG: CMN_PLL0_DSM_FBH_OVRD,TRUE,CMN,RST VAL
+PMA_REG: CMN_PLL1_DSM_FBH_OVRD,TRUE,CMN,RST VAL
+PMA_REG: CMN_PLL0_DSM_FBL_OVRD,TRUE,CMN,RST VAL
+PMA_REG: CMN_PLL1_DSM_FBL_OVRD,TRUE,CMN,RST VAL
+Note: Fractional mode feedback divider settings.,,,
+PMA_REG: CMN_PLL0_INTDIV,TRUE,CMN,0x01A0
+PMA_REG: CMN_PLL1_INTDIV,TRUE,CMN,0x014D
+PMA_REG: CMN_PLL0_FRACDIVL,TRUE,CMN,0xAAAB
+PMA_REG: CMN_PLL1_FRACDIVL,TRUE,CMN,0x5555
+PMA_REG: CMN_PLL0_FRACDIVH,TRUE,CMN,0x0002
+PMA_REG: CMN_PLL1_FRACDIVH,TRUE,CMN,0x0002
+PMA_REG: CMN_PLL0_HIGH_THR,TRUE,CMN,0x0116
+PMA_REG: CMN_PLL1_HIGH_THR,TRUE,CMN,0x00E0
+Note: PLL control register settings.,,,
+Note: Spread spectrum settings.,,,
+Note: When enabled this is approximately 5000 PPM between 30 KHz and 33 KHz,,,
+PMA_REG: CMN_PLL0_SS_CTRL1,TRUE,CMN,RST VAL
+PMA_REG: CMN_PLL1_SS_CTRL1,TRUE,CMN,RST VAL
+PMA_REG: CMN_PLL0_SS_CTRL2,TRUE,CMN,RST VAL
+PMA_REG: CMN_PLL1_SS_CTRL2,TRUE,CMN,RST VAL
+Note: VCO calibration settings.,,,
+PMA_REG: CMN_PLL0_VCOCAL_INIT_TMR,TRUE,CMN,0x00F0
+PMA_REG: CMN_PLL0_VCOCAL_ITER_TMR,TRUE,CMN,0x0004
+PMA_REG: CMN_PLL0_VCOCAL_REFTIM_START,TRUE,CMN,0x02F8
+PMA_REG: CMN_PLL0_VCOCAL_PLLCNT_START,TRUE,CMN,0x02F8
+PMA_REG: CMN_PLL0_VCOCAL_TCTRL,TRUE,CMN,RST VAL
+Note: PLL lock detect settings,,,
+PMA_REG: CMN_PLL0_LOCK_PLLCNT_START,TRUE,CMN,RST VAL
+PMA_REG: CMN_PLL0_LOCK_PLLCNT_THR,TRUE,CMN,RST VAL
+Note: PLL programmable clock registers,,,
+PMA_REG: CMN_PDIAG_PLL0_PROG0_CLK_CTRL_M0,TRUE,CMN,0x6060001
+PMA_REG: CMN_PDIAG_PLL1_PROG0_CLK_CTRL_M0,TRUE,CMN,RST VAL
+PMA_REG: CMN_PDIAG_PLL0_PROG1_CLK_CTRL_M0,TRUE,CMN,0x4040001
+PMA_REG: CMN_PDIAG_PLL1_PROG1_CLK_CTRL_M0,TRUE,CMN,RST VAL
+Note: PLL0 VCO post divide registers,,,
+PMA_REG: CMN_PDIAG_PLL1_POST_DIV_M0,TRUE,CMN,RST VAL
+ ,,,
+ ,,,
+Note: Registers and pins specific to USB 3.2 gen2 Type C Alt Mode lanes,,,
+Note: USB lane transceiver pin and register settings,,,
+"Note: Power states used: A0, A1, A2, A3",,,
+Note: The transceiver controller and CDB power islands must remain switched on in all power states in order for LFPS functions to operate.,,,
+Note: Variable definitions.,,,
+Note: RATE_USB_TCAM = G1: Lane configured for USB3 Gen 1 rate.,,,
+Note: RATE_USB_TCAM = G2: Lane configured for USB3 Gen 2 rate.,,,
+Var: RATE_USB_TCAM,G1; G2,,
+Note: RATE_DP_TCAM = UHBR: Lane configured for UHBR rate.,,,
+Note: RATE_DP_TCAM = RHBR: Lane configured for RBR/HBR rate.,,,
+Var: RATE_DP_TCAM,,,
+"Note: DE_USB_TCAM = G2_3: 2.2 dB pre-shoot, 0 dB deemphasis",,,
+"Note: DE_USB_TCAM = G2_2: 2.2 dB pre-shoot, -3.1 dB deemphasis",,,
+"Note: DE_USB_TCAM = G2_1: 0 dB pre-shoot, -3.1 dB deemphasis",,,
+"Note: DE_USB_TCAM = G2_0:0 dB pre-shoot, 0 dB deemphasis",,,
+Note: DE_USB_TCAM = G1_2: -6 db deemphasis,,,
+Note: DE_USB_TCAM = G1_1: -3.5 db deemphasis,,,
+Note: DE_USB_TCAM = G1_0: 0 db deemphasis,,,
+Var: DE_USB_TCAM,G1_0; G1_1; G1_2; G2_0; G2_1; G2_2; G2_3,,
+Note: IO_USB_TCAM = 11V: I/O supply less than 1.1 V,,,
+Note: IO_USB_TCAM = 12V: I/O supply greater than 1.2 V,,,
+Var: IO_USB_TCAM,11V; 12V,,
+Note: LANE_USB_TCAM = RX: RX lane,,,
+Note: LANE_USB_TCAM = TX: TX lane,,,
+Var: LANE_USB_TCAM,TX; RX,,
+Note: LANE_CFG_USB_TCAM = DP4: 4 DP lanes,,,
+Note: LANE_CFG_USB_TCAM = DP2: 2 DP lanes,,,
+Note: LANE_CFG_USB_TCAM = DP1: 1 DP lanes,,,
+Note: LANE_CFG_USB_TCAM = USB2: 2 USB3/4 lanes,,,
+Note: LANE_CFG_USB_TCAM = USB1: 1 USB3/4 lane,,,
+Note: LANE_CFG_USB_TCAM = USB1DP1: 1 USB3/4  lane + 1 DP Lane,,,
+Note: LANE_CFG_USB_TCAM = USB1DP2: 1 USB3/4 lane + 2 DP Lane,,,
+Var: LANE_CFG_USB_TCAM,USB1; USB2; DP1; DP2,,
+Note: CON_FLIPPED_USB_TCAM = true: Type C connector flipped (not normal orientation),,,
+Note: CON_FLIPPED_USB_TCAM = false: Type C connector not flipped (normal orientation),,,
+Var: CON_FLIPPED_USB_TCAM,TRUE; FALSE,,
+Note: Top level pins,,,
+PHY_PIN: typec_conn_dir,! CON_FLIPPED_USB_TCAM,PHY,1'b0
+PHY_PIN: typec_conn_dir,CON_FLIPPED_USB_TCAM,PHY,1'b1
+PHY_PIN: pipe4_rate,RATE_USB_TCAM == G1,PHY,1'b0
+PHY_PIN: pipe4_rate,RATE_USB_TCAM == G2,PHY,1'b1
+PMA_PIN: xcvr_data_width,RATE_USB_TCAM == G1,USB_TCAM_GEN2 LANES,3'b101
+PMA_PIN: xcvr_data_width,RATE_USB_TCAM == G2,USB_TCAM_GEN2 LANES,3'b010
+PHY_PIN:phy_mode,(LANE_CFG_USB_TCAM == USB2) || (LANE_CFG_USB_TCAM == USB1),PHY,4'b0001
+PHY_PIN:phy_mode,(LANE_CFG_USB_TCAM == USB1DP1) || (LANE_CFG_USB_TCAM == USB1DP2),PHY,4'b0101
+PHY_PIN: pipe4_tx_deemph,(LANE_USB_TCAM == TX) && (RATE_USB_TCAM == G1) && (DE_USB_TCAM == G1_2),PHY,18'd0
+PHY_PIN: pipe4_tx_deemph,(LANE_USB_TCAM == TX) && (RATE_USB_TCAM == G1)  && (DE_USB_TCAM == G1_1),PHY,18'd1
+PHY_PIN: pipe4_tx_deemph,(LANE_USB_TCAM == TX) && (RATE_USB_TCAM == G1) && (DE_USB_TCAM == G1_0),PHY,18'd2
+PHY_PIN: pipe4_tx_deemph,(LANE_USB_TCAM == TX) && (RATE_USB_TCAM == G2) && (DE_USB_TCAM == G2_3),PHY,18'd0
+PHY_PIN: pipe4_tx_deemph,(LANE_USB_TCAM == TX) && (RATE_USB_TCAM == G2) && (DE_USB_TCAM == G2_2),PHY,18'd1
+PHY_PIN: pipe4_tx_deemph,(LANE_USB_TCAM == TX) && (RATE_USB_TCAM == G2) && (DE_USB_TCAM == G2_1),PHY,18'd2
+PHY_PIN: pipe4_tx_deemph,(LANE_USB_TCAM == TX) && (RATE_USB_TCAM == G2) && (DE_USB_TCAM == G2_0),PHY,18'd3
+Note: PHY USB type C alt mode configuration registers,,,
+Note: USB_1_LANE = One lane of USB implemented,,,
+Note: USB_2_LANE = Two lanes of USB implemented,,,
+Note: DP_1_LANE = One lane of Display port implemented,,,
+Note: DP_2_LANE = Two lanes of Display port implemented,,,
+Note: DP_4_LANE = Four lanes of Display port implemented,,,
+PHY_REG: PHY_PMA_LANE_MAP, (LANE_CFG_USB_TCAM == USB1DP1) || (LANE_CFG_USB_TCAM == USB1DP2),PHY,0x5100
+PHY_REG: PHY_LANE_OFF_CTL,(LANE_CFG_USB_TCAM == USB1) || (LANE_CFG_USB_TCAM == USB1DP2),PHY,0x0100
+PHY_REG: PHY_LANE_OFF_CTL,(LANE_CFG_USB_TCAM == USB1DP1),PHY,0x0102
+PHY_REG: PHY_PMA_CMN_CTRL_STS, (LANE_CFG_USB_TCAM == USB1DP1) || (LANE_CFG_USB_TCAM == USB1DP2),PHY,0x8000
+Note: PHY deemphasis multiplier registers,,,
+"Note: For USB gen 1 rates driver controller calculated mode is used, and for Gen 2 rates, the PHY reads the FS/LF values and calculates the 18 bit emphasis value and drive it back into the PMA.",,,
+PHY_REG: PHY_PIPE_USB3_GEN2_PRE_CFG,TRUE,PHY,RST VAL
+PHY_REG: PHY_PIPE_USB3_GEN2_POST_CFG,TRUE,PHY,RST VAL
+Note: Power island override registers,,,
+PMA_REG: CMN_CDIAG_XCVRC_PWRI_OVRD,TRUE,CMN,RST VAL
+Note: Power state controller registers,,,
+"Note: Gen 2 rates require TX pre-emphasis to be enabled, but Gen 1 rates do not.  The values specified below for implementations where only Gen 1 rates are used reflect pre-emphasis being disabled to reduce power.",,,
+"Note: Related to this, see the write of the PMA_REG: RX_DIAG_ACYA later.  Since the RX functions are not enabled, the signal detect clock needs to be forced on in TX only mode.",,,
+PMA_REG: TX_PSC_A0,LANE_USB_TCAM == TX,USB_TCAM_GEN2 LANES,0x03FF
+PMA_REG: TX_PSC_A1,LANE_USB_TCAM == TX,USB_TCAM_GEN2 LANES,RST VAL
+PMA_REG: TX_PSC_A2,LANE_USB_TCAM == TX,USB_TCAM_GEN2 LANES,RST VAL
+PMA_REG: TX_PSC_A3,LANE_USB_TCAM == TX,USB_TCAM_GEN2 LANES,RST VAL
+PMA_REG: RX_PSC_A0,LANE_USB_TCAM == RX,USB_TCAM_GEN2 LANES,0x0E1F
+PMA_REG: RX_PSC_A1,LANE_USB_TCAM == RX,USB_TCAM_GEN2 LANES,RST VAL
+PMA_REG: RX_PSC_A2,LANE_USB_TCAM == RX,USB_TCAM_GEN2 LANES,RST VAL
+PMA_REG: RX_PSC_A3,LANE_USB_TCAM == RX,USB_TCAM_GEN2 LANES,RST VAL
+Note: Transceiver control and diagnostic registers,,,
+PMA_REG: XCVR_DIAG_BIDI_CTRL,LANE_USB_TCAM == TX,USB_TCAM_GEN2 LANES,0x0001
+PMA_REG: XCVR_DIAG_BIDI_CTRL,LANE_USB_TCAM == RX,USB_TCAM_GEN2 LANES,RST VAL
+Note: TX coefficient calcultor registers,,,
+"Note: Gen 2 rates require TX pre-emphasis to be enabled, but Gen 1 rates do not.  The values specified below for implementations where only Gen 1 rates are used reflect pre-emphasis being disabled to reduce power.",,,
+PMA_REG: TX_TXCC_CTRL,LANE_USB_TCAM == TX,USB_TCAM_GEN2 LANES,RST VAL
+PMA_REG: TX_TXCC_CPOST_MULT_01,LANE_USB_TCAM == TX,USB_TCAM_GEN2 LANES,RST VAL
+PMA_REG: TX_TXCC_MGNHS_MULT_000,LANE_USB_TCAM == TX,USB_TCAM_GEN2 LANES,RST VAL
+Note: The following register writes are for when the I/O supply is less than 1.1 V vs greater than 1.2 V.,,,
+PMA_REG: TX_TXCC_MGNFS_MULT_000,(LANE_USB_TCAM == TX) && (IO_USB_TCAM == 11V),USB_TCAM_GEN2 LANES,RST VAL
+PMA_REG: TX_TXCC_MGNFS_MULT_000,(LANE_USB_TCAM == TX) && (IO_USB_TCAM == 12V),USB_TCAM_GEN2 LANES,RST VAL
+Note: Receiver signal detect filter control registers,,,
+PMA_REG: RX_SIGDET_HL_FILT_TMR,LANE_USB_TCAM == RX,USB_TCAM_GEN2 LANES,RST VAL
+Note: Receiver equalization engine registers,,,
+PMA_REG: RX_REE_GCSM1_CTRL,LANE_USB_TCAM == RX,USB_TCAM_GEN2 LANES,RST VAL
+PMA_REG: RX_REE_ATTEN_THR,LANE_USB_TCAM == RX,USB_TCAM_GEN2 LANES,RST VAL
+PMA_REG: RX_REE_U3GCSM_EQENM_PH1,LANE_USB_TCAM == RX,USB_TCAM_GEN2 LANES,RST VAL
+PMA_REG: RX_REE_U3GCSM_EQENM_PH2,LANE_USB_TCAM == RX,USB_TCAM_GEN2 LANES,RST VAL
+PMA_REG: RX_REE_SMGM_CTRL1,LANE_USB_TCAM == RX,USB_TCAM_GEN2 LANES,RST VAL
+PMA_REG: RX_REE_SMGM_CTRL2,LANE_USB_TCAM == RX,USB_TCAM_GEN2 LANES,RST VAL
+PMA_REG: XCVR_DIAG_PSC_OVRD,LANE_USB_TCAM == RX,USB_TCAM_GEN2 LANES,RST VAL
+PMA_REG: RX_DIAG_DFE_CTRL,LANE_USB_TCAM == RX,USB_TCAM_GEN2 LANES,RST VAL
+PMA_REG: RX_REE_PEAK_LTHR,LANE_USB_TCAM == RX,USB_TCAM_GEN2 LANES,RST VAL
+PMA_REG: RX_REE_TAP1_CLIP,LANE_USB_TCAM == RX,USB_TCAM_GEN2 LANES,RST VAL
+Note: Receiver control and diagnostic registers,,,
+PMA_REG:RX_DIAG_SIGDET_TUNE,LANE_USB_TCAM == RX,USB_TCAM_GEN2 LANES,RST VAL
+PMA_REG:RX_DIAG_NQST_CTRL,LANE_USB_TCAM == RX,USB_TCAM_GEN2 LANES,RST VAL
+PMA_REG:RX_DIAG_DFE_AMP_TUNE,LANE_USB_TCAM == RX,USB_TCAM_GEN2 LANES,RST VAL
+PMA_REG: RX_DIAG_DFE_AMP_TUNE_2,LANE_USB_TCAM == RX,USB_TCAM_GEN2 LANES,RST VAL
+PMA_REG: RX_DIAG_DFE_AMP_TUNE_3,LANE_USB_TCAM == RX,USB_TCAM_GEN2 LANES,RST VAL
+PMA_REG: RX_DIAG_DFE_AMP_TUNE_3,LANE_USB_TCAM == RX,USB_TCAM_GEN2 LANES,RST VAL
+PMA_REG: RX_DIAG_DFE_AMP_TUNE_4,LANE_USB_TCAM == RX,USB_TCAM_GEN2 LANES,RST VAL
+PMA_REG: RX_DIAG_PI_RATE,LANE_USB_TCAM == RX,USB_TCAM_GEN2 LANES,RST VAL
+PMA_REG: RX_DIAG_LFEQ_TUNE,LANE_USB_TCAM == RX,USB_TCAM_GEN2 LANES,RST VAL
+PMA_REG: RX_DIAG_XCVR_RATE_SEL,LANE_USB_TCAM == RX,USB_TCAM_GEN2 LANES,0x0400
+PMA_REG:RX_DIAG_ACYA,LANE_USB_TCAM == RX,USB_TCAM_GEN2 LANES,RST VAL
+PMA_REG:RX_DIAG_ACYA,LANE_USB_TCAM == RX,USB_TCAM_GEN2 LANES,RST VAL
+PMA_REG:RX_DIAG_ACYA,LANE_USB_TCAM == RX,USB_TCAM_GEN2 LANES,RST VAL
+PMA_REG:RX_DIAG_ACYA,LANE_USB_TCAM == RX,USB_TCAM_GEN2 LANES,RST VAL
+"Note: The following writes are required for the TX lane to force the signal detect clock on, since the RX power state controller functions are non-existant and the signal detect clock will be off by default.",,,
+PMA_REG:RX_DIAG_ACYA,LANE_USB_TCAM == TX,USB_TCAM_GEN2 LANES,RST VAL
+PMA_REG:RX_DIAG_ACYA,LANE_USB_TCAM == TX,USB_TCAM_GEN2 LANES,RST VAL
+PMA_REG:RX_DIAG_ACYA,LANE_USB_TCAM == TX,USB_TCAM_GEN2 LANES,RST VAL
+PMA_REG:RX_DIAG_ACYA,LANE_USB_TCAM == TX,USB_TCAM_GEN2 LANES,RST VAL
+PMA_REG:RX_DIAG_ACYA,LANE_USB_TCAM == TX,USB_TCAM_GEN2 LANES,RST VAL
+PMA_REG:RX_DIAG_ACYA,LANE_USB_TCAM == TX,USB_TCAM_GEN2 LANES,RST VAL
+PMA_REG:RX_DIAG_ACYA,LANE_USB_TCAM == TX,USB_TCAM_GEN2 LANES,RST VAL
+Note: Signal detect calibration registers,,,
+PMA_REG: RX_SDCAL0_INIT_TMR,LANE_USB_TCAM == RX,USB_TCAM_GEN2 LANES,RST VAL
+PMA_REG: RX_SDCAL0_ITER_TMR,LANE_USB_TCAM == RX,USB_TCAM_GEN2 LANES,RST VAL
+PMA_REG: RX_SDCAL1_INIT_TMR,LANE_USB_TCAM == RX,USB_TCAM_GEN2 LANES,RST VAL
+PMA_REG: RX_SDCAL1_ITER_TMR,LANE_USB_TCAM == RX,USB_TCAM_GEN2 LANES,RST VAL
+Note: CDRLF configuration registers,,,
+PMA_REG: RX_CDRLF_CNFG,LANE_USB_TCAM == RX,USB_TCAM_GEN2 LANES,RST VAL
+PMA_REG: RX_CDRLF_CNFG3,LANE_USB_TCAM == RX,USB_TCAM_GEN2 LANES,RST VAL
+ ,,,
+ ,,,
+Note: Unique analog tuning related registers.,,,
+Note: Bandgap / bias,,,
+"Note: These register settings are associated with the common module.  Therefore, if a given implementation combines SGMII and QSGMII with any other standard that are enabled at the same time, Cadence should be consulted to evaluate the possibility for more appropriate settings.  (SER-15003)",,,
+ ,,,
+ ,,,

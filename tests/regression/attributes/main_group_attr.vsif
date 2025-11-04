@@ -1,0 +1,28 @@
+//----------------------------------------------------------------------------
+// Contains main group attributes
+//----------------------------------------------------------------------------
+
+//timeout         : 5184000;   // 48 *3 hours
+timeout         : 0;   // Disable timeout feature
+sve_name        : $ENV(PHY_VERIF_AREA)/vm/xcelium_setup.sve;
+
+// -----------------------------------------------
+// Pre-group Script  - creates a snapshot
+// -----------------------------------------------
+pre_group_script: make -k -f $PHY_SCRIPTS_DIR/Makefile create_snapshot SNAPSHOT_DIR=$DIR(group) PHY_MODE=$ATTR(phy_mode) B2B_MODE=$ATTR(b2b_mode) MLM=$ATTR(mlm_enable) WREAL=$ATTR(wreal_enable) TECH=$ATTR(tech) CHANNEL=$ATTR(channel) SIM_SPEEDUP=$ATTR(sim_speedup) XPROP=$ATTR(xprop) SPEEDUP_CAL=$ATTR(speedup_cal) LOW_POWER_MODE=$ATTR(lps) CODE_COV=$ATTR(rtl_cov) FUNC_COV=$ATTR(func_cov) SVACOMP=$ATTR(svacomp) GATE_SIM=$ATTR(gate_sim) SDF_CORN=$ATTR(delay) TESTCHIP=$ATTR(testchip) UVM_VERBOSITY=UVM_NONE DEFINES_STRING=$ATTR(defines_string);
+
+
+
+// -----------------------------------------------
+// Simulation script
+// -----------------------------------------------
+run_script: make -k -f $PHY_SCRIPTS_DIR/Makefile $ATTR(run_mode) SNAPSHOT_DIR=$DIR(group) PHY_MODE=$ATTR(phy_mode) B2B_MODE=$ATTR(b2b_mode) MLM=$ATTR(mlm_enable) WREAL=$ATTR(wreal_enable) TECH=$ATTR(tech) CHANNEL=$ATTR(channel) SIM_SPEEDUP=$ATTR(sim_speedup) XPROP=$ATTR(xprop) SPEEDUP_CAL=$ATTR(speedup_cal) LOW_POWER_MODE=$ATTR(lps) CODE_COV=$ATTR(rtl_cov) FUNC_COV=$ATTR(func_cov) SVACOMP=$ATTR(svacomp) GATE_SIM=$ATTR(gate_sim) SDF_CORN=$ATTR(delay) TESTCHIP=$ATTR(testchip) TEST=$ATTR(test_name) WAVES=NO UVM_VERBOSITY=UVM_NONE DEFINES_STRING=$ATTR(defines_string);
+
+
+// -----------------------------------------------
+// Scan script to scan logs for simulations errors
+// -----------------------------------------------
+//scan_script: "vm_scan.pl ius.flt shell.flt specman.flt uvm.flt jg.flt denali.flt ";
+scan_script: "vm_scan.pl uvm.flt";
+
+post_run_script : "$ENV(PHY_VERIF_AREA)/vm/post_run.sh";

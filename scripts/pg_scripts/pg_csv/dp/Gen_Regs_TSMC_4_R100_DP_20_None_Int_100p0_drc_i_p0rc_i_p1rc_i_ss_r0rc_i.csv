@@ -1,0 +1,222 @@
+Note: IMPORTANT!!!   Some rows are more than one row of charaters tall.,,,
+"Note: When reading in a CSV file to Excel, the full row height may not show all the text for a given row.",,,
+ ,,,
+Note: File name of programmers guide spreadsheet used:,Timberwolf_prg_gd_v_0.10_Preliminary.xlsm,,
+ ,,,
+Note: Selected configuration information,,,
+ ,,,
+Note: Selected technology:,TSMC_4,,
+Note: Selected revision:,R100,,
+ ,,,
+Note: Selected digital clock source:,INT_REF_CLK_0,,
+Note: Selected PLL 0 clock source:,INT_REF_CLK_0,,
+Note: Selected PLL 1 clock source:,INT_REF_CLK_0,,
+Note: Selected reference clock receiver 0 clock source:,INT_REF_CLK_0,,
+Note: PLL 0 spread spectrum generation enabled:,FALSE,,
+Note: PLL 1 spread spectrum generation enabled:,TRUE,,
+Note: External reference clock enabled:,FALSE,,
+Note: External reference clock spread spectrum present:,FALSE,,
+Note: External reference clock frequency (MHz):,N/A,,
+Note: Internal reference clock enabled:,TRUE,,
+Note: Internal reference clock spread spectrum present:,FALSE,,
+Note: Internal reference clock frequency (MHz):,100,,
+Note: Selected standard 0 name:,Display Port / eDP,,
+Note: Selected standard 0 mnemonic:,DP,,
+Note: Selected standard 0 data rate:,20 Gbps,,
+Note: Selected standard 1 name:,None,,
+Note: Selected standard 1 mnemonic:,None,,
+ ,,,
+ ,,,
+Register mnemonics,Boolean,PHY / Common / Lane,Field Value
+ ,,,
+ ,,,
+Note: Reference clock rate related registers.,,,
+Note: Top level pins,,,
+PHY_PIN: pma_cmn_refclk_dig_sel,TRUE,ALL LANES,1'b0
+PHY_PIN: pma_cmn_refclk_dig_div,TRUE,ALL LANES,2'b10
+PHY_PIN: pma_cmn_pll0_refclk_sel,TRUE,ALL LANES,2'b00
+PHY_PIN: pma_cmn_pll1_refclk_sel,TRUE,ALL LANES,2'b00
+Note: startup state machine registers,,,
+PMA_REG: CMN_SSM_TMR_1,TRUE,CMN,RST VAL
+PMA_REG: CMN_SSM_TMR_2,TRUE,CMN,RST VAL
+Note: PLL 0 control state machine registers,,,
+PMA_REG: CMN_PLLSM0_TMR_1,TRUE,CMN,RST VAL
+PMA_REG: CMN_PLLSM0_TMR_2,TRUE,CMN,RST VAL
+PMA_REG: CMN_PLLSM0_TMR_3,TRUE,CMN,RST VAL
+PMA_REG: CMN_PLLSM0_TMR_4,TRUE,CMN,RST VAL
+Note: PLL 1 control state machine registers,,,
+PMA_REG: CMN_PLLSM1_TMR_1,TRUE,CMN,RST VAL
+PMA_REG: CMN_PLLSM1_TMR_2,TRUE,CMN,RST VAL
+PMA_REG: CMN_PLLSM1_TMR_3,TRUE,CMN,RST VAL
+PMA_REG: CMN_PLLSM1_TMR_4,TRUE,CMN,RST VAL
+Note: Bandgap calibration registers,,,
+PMA_REG: CMN_BGCAL_INIT_TMR,TRUE,CMN,RST VAL
+PMA_REG: CMN_BGCAL_ITER_TMR,TRUE,CMN,RST VAL
+Note: External bias current calibration registers,,,
+PMA_REG: CMN_IBCAL_INIT_TMR,TRUE,CMN,RST VAL
+PMA_REG: CMN_IBCAL_ITER_TMR,TRUE,CMN,RST VAL
+Note: Resitor calibration registers,,,
+PMA_REG: CMN_TXPUCAL_INIT_TMR,TRUE,CMN,RST VAL
+PMA_REG: CMN_TXPUCAL_ITER_TMR,TRUE,CMN,RST VAL
+PMA_REG: CMN_TXPDCAL_INIT_TMR,TRUE,CMN,RST VAL
+PMA_REG: CMN_TXPDCAL_ITER_TMR,TRUE,CMN,RST VAL
+PMA_REG: CMN_RXCAL_INIT_TMR,TRUE,CMN,RST VAL
+PMA_REG: CMN_RXCAL_ITER_TMR,TRUE,CMN,RST VAL
+Note: Signal detect clock calibration registers,,,
+PMA_REG: CMN_SD_CAL_INIT_TMR,TRUE,CMN,RST VAL
+PMA_REG: CMN_SD_CAL_ITER_TMR,TRUE,CMN,RST VAL
+PMA_REG: CMN_SD_CAL_REFTIM_START,TRUE,CMN,RST VAL
+PMA_REG: CMN_SD_CAL_PLLCNT_START,TRUE,CMN,RST VAL
+Note: Receiver detect calibration registers,,,
+PMA_REG: TX_RCVDET_ST_TMR,TRUE,ALL LANES,RST VAL
+ ,,,
+ ,,,
+Note: Link configuration related pins.,,,
+Note:N/A,TRUE,DP LANES,2'b11
+"Note: There is no phy_link_cfg_ln0_mode pin.  By default, lane 0 is always a master.",,,
+"Note: Therefore, for single lane implementations, there is no need to drive this pin.",,,
+Note:N/A,MST_LANE,DP LANES,1'b1
+Note:N/A,SLV_LANE,DP LANES,1'b0
+Note: Link configuration related registers.,,,
+Note:N/A,TRUE,PHY,0x0000
+PMA_REG: XCVR_DIAG_HSCLK_SEL,TRUE,DP LANES,0x0001
+PMA_REG: XCVR_DIAG_HSCLK_DIV,TRUE,DP LANES,0x0100
+PMA_REG: XCVR_DIAG_PLLDRC_CTRL,TRUE,DP LANES,0x0008
+PMA_REG: XCVR_DIAG_HSCLK_DIV,TRUE,None LANES,0x0100
+ ,,,
+ ,,,
+Note: PLL related registers.,,,
+Note: General PLL settings for all rates,,,
+PMA_REG: CMN_PLL0_DSM_DIAG,TRUE,CMN,RST VAL
+PMA_REG: CMN_PLL1_DSM_DIAG,TRUE,CMN,0x0004
+Note: Analog PLL settings,,,
+PMA_REG: CMN_DIAG_GPANA_1,TRUE,CMN,RST VAL
+Note: Integer mode feedback divider settings.,,,
+PMA_REG: CMN_PLL0_DSM_FBH_OVRD,TRUE,CMN,RST VAL
+PMA_REG: CMN_PLL1_DSM_FBH_OVRD,TRUE,CMN,RST VAL
+PMA_REG: CMN_PLL0_DSM_FBL_OVRD,TRUE,CMN,RST VAL
+PMA_REG: CMN_PLL1_DSM_FBL_OVRD,TRUE,CMN,RST VAL
+Note: Fractional mode feedback divider settings.,,,
+PMA_REG: CMN_PLL0_INTDIV,TRUE,CMN,RST VAL
+PMA_REG: CMN_PLL1_INTDIV,TRUE,CMN,0x0064
+PMA_REG: CMN_PLL0_FRACDIVL,TRUE,CMN,RST VAL
+PMA_REG: CMN_PLL1_FRACDIVL,TRUE,CMN,RST VAL
+PMA_REG: CMN_PLL0_FRACDIVH,TRUE,CMN,RST VAL
+PMA_REG: CMN_PLL1_FRACDIVH,TRUE,CMN,0x0002
+PMA_REG: CMN_PLL0_HIGH_THR,TRUE,CMN,RST VAL
+PMA_REG: CMN_PLL1_HIGH_THR,TRUE,CMN,0x0044
+Note: PLL control register settings.,,,
+Note: Spread spectrum settings.,,,
+Note: When enabled this is approximately 5000 PPM between 30 KHz and 33 KHz,,,
+PMA_REG: CMN_PLL0_SS_CTRL1,TRUE,CMN,RST VAL
+PMA_REG: CMN_PLL1_SS_CTRL1,TRUE,CMN,0x011B0E01
+PMA_REG: CMN_PLL0_SS_CTRL2,TRUE,CMN,RST VAL
+PMA_REG: CMN_PLL1_SS_CTRL2,TRUE,CMN,0x0000006E
+Note: VCO calibration settings.,,,
+PMA_REG: CMN_PLL0_VCOCAL_INIT_TMR,TRUE,CMN,RST VAL
+PMA_REG: CMN_PLL0_VCOCAL_ITER_TMR,TRUE,CMN,RST VAL
+PMA_REG: CMN_PLL0_VCOCAL_REFTIM_START,TRUE,CMN,RST VAL
+PMA_REG: CMN_PLL0_VCOCAL_PLLCNT_START,TRUE,CMN,RST VAL
+PMA_REG: CMN_PLL0_VCOCAL_TCTRL,TRUE,CMN,RST VAL
+Note: PLL lock detect settings,,,
+PMA_REG: CMN_PLL0_LOCK_PLLCNT_START,TRUE,CMN,RST VAL
+PMA_REG: CMN_PLL0_LOCK_PLLCNT_THR,TRUE,CMN,RST VAL
+Note: PLL programmable clock registers,,,
+PMA_REG: CMN_PDIAG_PLL0_PROG0_CLK_CTRL_M0,TRUE,CMN,0x0000
+PMA_REG: CMN_PDIAG_PLL1_PROG0_CLK_CTRL_M0,TRUE,CMN,0x4040001
+PMA_REG: CMN_PDIAG_PLL0_PROG1_CLK_CTRL_M0,TRUE,CMN,RST VAL
+PMA_REG: CMN_PDIAG_PLL1_PROG1_CLK_CTRL_M0,TRUE,CMN,0x4040001
+Note: PLL0 VCO post divide registers,,,
+PMA_REG: CMN_PDIAG_PLL1_POST_DIV_M0,TRUE,CMN,RST VAL
+ ,,,
+ ,,,
+Note: Registers and pins specific to Display Port / eDP lanes,,,
+Note: Display port lane pin and register settings,,,
+Note: Power states used: A0 (A2 and A3 for rate changes),,,
+Note: Variable definitions.,,,
+Var: TYPE_C_ALT_MODE_DP,TRUE; FALSE,,
+Note: RATE_DP_TCAM = UHBR: Lane configured for UHBR rate.,,,
+Note: RATE_DP_TCAM = RHBR: Lane configured for RBR/HBR rate.,,,
+Var: RATE_DP_TCAM,,,
+Note: SL_DP = Swing level (per standard),,,
+Var: SL_DP,0; 1; 2; 3,,
+Note: DE_DP = De-emphasis (per standard),,,
+Var: DE_DP,0; 1; 2; 3,,
+Note: VDIFF_DP = LOW: Low Vdiff training table,,,
+Note: VDIFF_DP = LOW: High Vdiff training table,,,
+Var: VDIFF_DP,LOW; HIGH,,
+Note: LANE_CFG_USB_TCAM = DP4: 4 DP lanes,,,
+Note: LANE_CFG_USB_TCAM = DP2: 2 DP lanes,,,
+Note: LANE_CFG_USB_TCAM = DP1: 1 DP lanes,,,
+Note: LANE_CFG_USB_TCAM = USB2: 2 USB3/4 lanes,,,
+Note: LANE_CFG_USB_TCAM = USB1: 1 USB3/4 lane,,,
+Note: LANE_CFG_USB_TCAM = USB1DP1: 1 USB3/4  lane + 1 DP Lane,,,
+Note: LANE_CFG_USB_TCAM = USB1DP2: 1 USB3/4 lane + 2 DP Lane,,,
+Var: LANE_CFG_USB_TCAM,,,
+Note: Top level pins,,,
+PHY_PIN: phy_mode,(LANE_CFG_USB_TCAM == DP1) || (LANE_CFG_USB_TCAM ==  DP2) || (LANE_CFG_USB_TCAM ==  DP4),PHY,4'b0110
+PHY_PIN: phy_mode,(LANE_CFG_USB_TCAM == USB1DP1) || (LANE_CFG_USB_TCAM == USB1DP2),PHY,4'b0101
+PHY_PIN: pma_xcvr_data_width,RATE_DP_TCAM == UHBR,PHY,3'b010
+PHY_PIN: pma_xcvr_data_width,RATE_DP_TCAM == RHBR,PHY,3'b101
+PHY_REG: PHY_PMA_LANE_MAP, (LANE_CFG_USB_TCAM == USB1DP1) || (LANE_CFG_USB_TCAM == USB1DP2),PHY,0x5100
+PHY_REG: PHY_PMA_LANE_MAP, (LANE_CFG_USB_TCAM == DP1) || (LANE_CFG_USB_TCAM == DP2) || (LANE_CFG_USB_TCAM == DP4),PHY,0x51D9
+PHY_REG: PHY_LANE_OFF_CTL, (LANE_CFG_USB_TCAM == DP1),PHY,0x000E
+PHY_REG: PHY_LANE_OFF_CTL, (LANE_CFG_USB_TCAM == DP2),PHY,0x000C
+PHY_REG: PHY_PMA_CMN_CTRL_STS, (LANE_CFG_USB_TCAM == USB1DP1) || (LANE_CFG_USB_TCAM == USB1DP2) || (LANE_CFG_USB_TCAM == DP1) || (LANE_CFG_USB_TCAM ==  DP2) || (LANE_CFG_USB_TCAM ==  DP4) ,PHY,0x8000
+PHY_REG: PHY_PMA_CMN_CTRL_STS_CLR,(LANE_CFG_USB_TCAM == DP1) || (LANE_CFG_USB_TCAM ==  DP2) || (LANE_CFG_USB_TCAM ==  DP4),PHY,0x0081
+Note: Power state controller registers,,,
+PMA_REG: TX_PSC_A0,TRUE,DP LANES,RST VAL
+PMA_REG: TX_PSC_A2,TRUE,DP LANES,RST VAL
+PMA_REG: TX_PSC_A3 ,TRUE,DP LANES,RST VAL
+PMA_REG: RX_PSC_A0,TRUE,DP LANES,RST VAL
+PMA_REG: RX_PSC_A2,TRUE,DP LANES,RST VAL
+PMA_REG: RX_PSC_A3,TRUE,DP LANES,RST VAL
+PMA_REG: RX_PSC_CAL,TRUE,DP LANES,RST VAL
+Note: Transceiver control and diagnostic registers,,,
+PMA_REG: XCVR_DIAG_BIDI_CTRL,TRUE,DP LANES,0x0001
+Note: Receiver equalizer engine registers,,,
+PMA_REG: RX_REE_GCSM1_CTRL,TRUE,DP LANES,RST VAL
+PMA_REG: RX_REE_GCSM2_CTRL,TRUE,DP LANES,RST VAL
+PMA_REG: RX_REE_PERGCSM_CTRL,TRUE,DP LANES,RST VAL
+Note: Special Display port swing level and emphasis level change instructions.,,,
+Note: Display port swing level and emphasis level control is unique compared to other standards supported by this macro.  ,,,
+Note: The following instructions must be followed precisely when changing swing level and / or emphasis level.,,,
+Note: This sequence results in the minimal time in which the driver output will be in an undetermined state relative to swing and de-emphais.,,,
+Note: Write register bit TX_DIAG_ACYA[0] to 1'b1 to freeze the current state of the analog TX driver.,,,
+Note: Writer the registers as specified in the settings provided here for the required swing and de-emphasis levels.,,,
+Note: Write register bit TX_DIAG_ACYA[0] to 1'b0 to allow the state of the analog TX driver to reflect the new programmed values.,,,
+PMA_REG: TX_TXCC_CTRL, DE_DP == 0,DP LANES,RST VAL
+PMA_REG: TX_TXCC_CTRL, DE_DP == 1,DP LANES,RST VAL
+PMA_REG: TX_TXCC_CTRL, DE_DP == 2,DP LANES,RST VAL
+PMA_REG: TX_TXCC_CTRL, DE_DP == 3,DP LANES,RST VAL
+PMA_REG: DRV_DIAG_TX_DRV, DE_DP == 0,DP LANES,RST VAL
+PMA_REG: DRV_DIAG_TX_DRV, DE_DP == 1,DP LANES,RST VAL
+PMA_REG: DRV_DIAG_TX_DRV, DE_DP == 2,DP LANES,RST VAL
+PMA_REG: DRV_DIAG_TX_DRV, DE_DP == 3,DP LANES,RST VAL
+PMA_REG: TX_TXCC_MGNFS_MULT_000, (SL_DP == 0) && (DE_DP == 0),DP LANES,RST VAL
+PMA_REG: TX_TXCC_MGNFS_MULT_000, (SL_DP == 0) && (DE_DP == 1),DP LANES,RST VAL
+PMA_REG: TX_TXCC_MGNFS_MULT_000, (SL_DP == 0) && (DE_DP == 2),DP LANES,RST VAL
+PMA_REG: TX_TXCC_MGNFS_MULT_000, (SL_DP == 0) && (DE_DP == 3),DP LANES,RST VAL
+PMA_REG: TX_TXCC_MGNFS_MULT_000, (SL_DP == 1) && (DE_DP == 0),DP LANES,RST VAL
+PMA_REG: TX_TXCC_MGNFS_MULT_000, (SL_DP == 1) && (DE_DP == 1),DP LANES,RST VAL
+PMA_REG: TX_TXCC_MGNFS_MULT_000, (SL_DP == 1) && (DE_DP == 2),DP LANES,RST VAL
+PMA_REG: TX_TXCC_MGNFS_MULT_000, (SL_DP == 2) && (DE_DP == 0),DP LANES,RST VAL
+PMA_REG: TX_TXCC_MGNFS_MULT_000, (SL_DP == 2) && (DE_DP == 1),DP LANES,RST VAL
+PMA_REG: TX_TXCC_MGNFS_MULT_000, (SL_DP == 3) && (DE_DP == 0),DP LANES,RST VAL
+PMA_REG: TX_TXCC_CPOST_MULT_00, (SL_DP == 0) && (DE_DP == 0),DP LANES,RST VAL
+PMA_REG: TX_TXCC_CPOST_MULT_00, (SL_DP == 0) && (DE_DP == 1),DP LANES,RST VAL
+PMA_REG: TX_TXCC_CPOST_MULT_00, (SL_DP == 0) && (DE_DP == 2),DP LANES,RST VAL
+PMA_REG: TX_TXCC_CPOST_MULT_00, (SL_DP == 0) && (DE_DP == 3),DP LANES,RST VAL
+PMA_REG: TX_TXCC_CPOST_MULT_00, (SL_DP == 1) && (DE_DP == 0),DP LANES,RST VAL
+PMA_REG: TX_TXCC_CPOST_MULT_00, (SL_DP == 1) && (DE_DP == 1),DP LANES,RST VAL
+PMA_REG: TX_TXCC_CPOST_MULT_00, (SL_DP == 1) && (DE_DP == 2),DP LANES,RST VAL
+PMA_REG: TX_TXCC_CPOST_MULT_00, (SL_DP == 2) && (DE_DP == 0),DP LANES,RST VAL
+PMA_REG: TX_TXCC_CPOST_MULT_00, (SL_DP == 2) && (DE_DP == 1),DP LANES,RST VAL
+PMA_REG: TX_TXCC_CPOST_MULT_00, (SL_DP == 3) && (DE_DP == 0),DP LANES,RST VAL
+ ,,,
+ ,,,
+Note: Unique analog tuning related registers.,,,
+Note: Bandgap / bias,,,
+"Note: These register settings are associated with the common module.  Therefore, if a given implementation combines SGMII and QSGMII with any other standard that are enabled at the same time, Cadence should be consulted to evaluate the possibility for more appropriate settings.  (SER-15003)",,,
+ ,,,
+ ,,,

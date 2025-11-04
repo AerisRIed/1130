@@ -1,0 +1,48 @@
+#!/bin/tcsh -f
+
+echo "--------------------------------------------------------------------------------------"
+echo "Running sd1601_crt_reg"
+echo "--------------------------------------------------------------------------------------"
+
+#foreach l ( 4 2 1 0 )
+#foreach r ( 4 2 1 0 )
+#foreach l ( 8 4 2 1 0)
+#foreach r ( 8 4 2 1 0)
+
+
+#foreach p ( 'b' '@' )  #PIPE Interface registers
+#foreach z ( 'b' '&' )  #RAW  SerDes Interface Registers
+#foreach e ( 'b' '%' )  #ETHERNET 10G-KR registers
+#foreach m ( 'b' '#' )  #Lane uC registers '#'
+#foreach t ( 'b' )      #TX Only   '!'
+#foreach ba ( 0 )
+
+#           (Balanced PMA    OR               0/X or X/0)            AND (PIPE OR ETHERNET)
+#if ( ((($r == $l) && ($r != 0)) || (($r == 0 || $l == 0) && ($r != $l)) || ($r == 1 && $l == 8)) && (  $p == '@' && ("$e" != '%') || $z == '&') ) then
+#if ( !($r == 0 && $l == 0) ) then
+
+#echo "--------------------------------------------------------------------------------------"
+#echo "- sd2101_${l}${r}_${p}_${z}_${e}_${m}_${t}_${ba}"
+#echo "--------------------------------------------------------------------------------------"
+
+#Make all of the BFR P1 Options
+#setenv LLANE ${l}
+#setenv RLANE ${r}
+
+
+echo python -B ${PHY_VERIF_AREA}/scripts/reg_model_gen_u4/py_files/cdb_gen_ipxact_eusb.py -l 1 -r 1 -s 3101_t4 -v 2 -g 0 -f 0 
+python -B ${PHY_VERIF_AREA}/scripts/reg_model_gen_u4/py_files/cdb_gen_ipxact_eusb.py -l 1 -r 1 -s 3101_t4 -v 2 -g 0 -f 0 
+
+
+#endif # if 0 0
+#end #ba
+#end #t
+#end #m
+#end #e
+#end #z
+#end #p
+#end #r
+#end #l
+
+
+exit

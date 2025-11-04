@@ -1,0 +1,321 @@
+ ** -- Register/Field configuration -- **
+
+
+r phy_cfgphy1 1
+phy_dp_iso_tx_ctrl1_31_0 32 0 RW 0 0 1 1 1
+
+r phy_cfgphy2 3
+phy_dp_iso_tx_ctrl2_14_0 15 0 RO 0 0 1 1 1
+phy_dp_iso_tx_ctrl2_15 1 15 RW 0 1 1 1 1
+phy_dp_iso_tx_ctrl2_31_16 16 16 RO 0 0 1 1 1
+
+r phy_cfgphy3 1
+phy_ln_uc_pcs_en_int_sts1_31_0 32 0 RO 0 0 1 1 1
+
+r phy_cfgphy4 1
+phy_ln_uc_pcs_en_int_sts2_31_0 32 0 RO 0 0 1 1 1
+
+r phy_cfgphy5 1
+phy_ln_uc_pcs_int_sts1_en_31_0 32 0 RW 0 0 1 1 1
+
+r phy_cfgphy6 1
+phy_ln_uc_pcs_int_sts2_en_31_0 32 0 RW 0 0 1 1 1
+
+r phy_cfgphy7 10
+phy_pipe_inputs_2_0 3 0 RO 0 2 1 1 1
+phy_pipe_inputs_3 1 3 RO 0 0 1 1 1
+phy_pipe_inputs_5_4 2 4 RO 0 0 1 1 1
+phy_pipe_inputs_7_6 2 6 RO 0 0 1 1 1
+phy_pipe_inputs_8 1 8 RO 0 1 1 1 1
+phy_pipe_inputs_9 1 9 RO 0 0 1 1 1
+phy_pipe_inputs_10 1 10 RO 0 0 1 1 1
+phy_pipe_inputs_29_11 19 11 RO 0 0 1 1 1
+phy_pipe_inputs_30 1 30 RO 0 0 1 1 1
+phy_pipe_inputs_31 1 31 RO 0 0 1 1 1
+
+r phy_cfgphy8 14
+phy_pipe_iso_cfg_ctrl_1_0 2 0 RW 0 0 1 1 1
+phy_pipe_iso_cfg_ctrl_3_2 2 2 RO 0 0 1 1 1
+phy_pipe_iso_cfg_ctrl_6_4 3 4 RW 0 2 1 1 1
+phy_pipe_iso_cfg_ctrl_7 1 7 RO 0 0 1 1 1
+phy_pipe_iso_cfg_ctrl_8 1 8 RW 0 1 1 1 1
+phy_pipe_iso_cfg_ctrl_9 1 9 RW 0 0 1 1 1
+phy_pipe_iso_cfg_ctrl_13_10 4 10 RO 0 0 1 1 1
+phy_pipe_iso_cfg_ctrl_14 1 14 RW 0 0 1 1 1
+phy_pipe_iso_cfg_ctrl_15 1 15 RW 0 0 1 1 1
+phy_pipe_iso_cfg_ctrl_16 1 16 RW 0 0 1 1 1
+phy_pipe_iso_cfg_ctrl_17 1 17 RO 0 0 1 1 1
+phy_pipe_iso_cfg_ctrl_18 1 18 RO 0 1 1 1 1
+phy_pipe_iso_cfg_ctrl_19 1 19 RW 0 0 1 1 1
+phy_pipe_iso_cfg_ctrl_31_20 12 20 RO 0 0 1 1 1
+
+r phy_cfgphy9 5
+phy_pipe_iso_mb_mac2phy_7_0 8 0 RW 0 0 1 1 1
+phy_pipe_iso_mb_mac2phy_15_8 8 8 RW 0 0 1 1 1
+phy_pipe_iso_mb_mac2phy_23_16 8 16 RW 0 0 1 1 1
+phy_pipe_iso_mb_mac2phy_24 1 24 WO 0 0 1 1 1
+phy_pipe_iso_mb_mac2phy_31_25 7 25 RO 0 0 1 1 1
+
+r phy_cfgphy10 4
+phy_pipe_iso_mb_phy2mac0_7_0 8 0 RO 0 0 1 1 1
+phy_pipe_iso_mb_phy2mac0_15_8 8 8 RO 0 0 1 1 1
+phy_pipe_iso_mb_phy2mac0_23_16 8 16 RO 0 0 1 1 1
+phy_pipe_iso_mb_phy2mac0_31_24 8 24 RO 0 0 1 1 1
+
+r phy_cfgphy11 4
+phy_pipe_iso_mb_phy2mac1_7_0 8 0 RO 0 0 1 1 1
+phy_pipe_iso_mb_phy2mac1_15_8 8 8 RO 0 0 1 1 1
+phy_pipe_iso_mb_phy2mac1_23_16 8 16 RO 0 0 1 1 1
+phy_pipe_iso_mb_phy2mac1_31_24 8 24 RO 0 0 1 1 1
+
+r phy_cfgphy12 4
+phy_pipe_iso_mb_phy2mac2_7_0 8 0 RO 0 0 1 1 1
+phy_pipe_iso_mb_phy2mac2_15_8 8 8 RO 0 0 1 1 1
+phy_pipe_iso_mb_phy2mac2_23_16 8 16 RO 0 0 1 1 1
+phy_pipe_iso_mb_phy2mac2_31_24 8 24 RO 0 0 1 1 1
+
+r phy_cfgphy13 7
+phy_pipe_iso_rx_eq_eval_5_0 6 0 RO 0 0 1 1 1
+phy_pipe_iso_rx_eq_eval_6 1 6 RO 0 0 1 1 1
+phy_pipe_iso_rx_eq_eval_7 1 7 RO 0 0 1 1 1
+phy_pipe_iso_rx_eq_eval_8 1 8 RW 0 0 1 1 1
+phy_pipe_iso_rx_eq_eval_15_9 7 9 RO 0 0 1 1 1
+phy_pipe_iso_rx_eq_eval_23_16 8 16 RO 0 0 1 1 1
+phy_pipe_iso_rx_eq_eval_31_24 8 24 RO 0 0 1 1 1
+
+r phy_cfgphy14 5
+phy_pipe_iso_tx_lpc_17_0 18 0 RO 0 0 1 1 1
+phy_pipe_iso_tx_lpc_23_18 6 18 RO 0 0 1 1 1
+phy_pipe_iso_tx_lpc_29_24 6 24 RW 0 0 1 1 1
+phy_pipe_iso_tx_lpc_30 1 30 RW 0 0 1 1 1
+phy_pipe_iso_tx_lpc_31 1 31 RO 0 0 1 1 1
+
+r phy_cfgphy15 25
+phy_pipe_ln_ctrl_sts_0 1 0 RO 0 0 1 1 1
+phy_pipe_ln_ctrl_sts_2_1 2 1 RO 0 0 1 1 1
+phy_pipe_ln_ctrl_sts_3 1 3 W1S 0 0 1 1 1
+phy_pipe_ln_ctrl_sts_4 1 4 RO 0 0 1 1 1
+phy_pipe_ln_ctrl_sts_5 1 5 RO 0 0 1 1 1
+phy_pipe_ln_ctrl_sts_6 1 6 W1S 0 1 1 1 1
+phy_pipe_ln_ctrl_sts_7 1 7 RO 0 0 1 1 1
+phy_pipe_ln_ctrl_sts_8 1 8 RO 0 1 1 1 1
+phy_pipe_ln_ctrl_sts_9 1 9 RO 0 0 1 1 1
+phy_pipe_ln_ctrl_sts_10 1 10 RO 0 0 1 1 1
+phy_pipe_ln_ctrl_sts_11 1 11 RO 0 0 1 1 1
+phy_pipe_ln_ctrl_sts_12 1 12 RO 0 0 1 1 1
+phy_pipe_ln_ctrl_sts_13 1 13 W1S 0 0 1 1 1
+phy_pipe_ln_ctrl_sts_15_14 2 14 RO 0 0 1 1 1
+phy_pipe_ln_ctrl_sts_16 1 16 W1S 0 0 1 1 1
+phy_pipe_ln_ctrl_sts_17 1 17 W1S 0 0 1 1 1
+phy_pipe_ln_ctrl_sts_18 1 18 W1S 0 0 1 1 1
+phy_pipe_ln_ctrl_sts_19 1 19 W1S 0 0 1 1 1
+phy_pipe_ln_ctrl_sts_20 1 20 RO 0 0 1 1 1
+phy_pipe_ln_ctrl_sts_23_21 3 21 RO 0 0 1 1 1
+phy_pipe_ln_ctrl_sts_24 1 24 W1S 0 0 1 1 1
+phy_pipe_ln_ctrl_sts_25 1 25 W1S 0 1 1 1 1
+phy_pipe_ln_ctrl_sts_27_26 2 26 RO 0 0 1 1 1
+phy_pipe_ln_ctrl_sts_30_28 3 28 RO 0 0 1 1 1
+phy_pipe_ln_ctrl_sts_31 1 31 RO 0 0 1 1 1
+
+r phy_cfgphy16 1
+phy_pipe_ln_ctrl_sts_clr_31_0 32 0 W1C 1 140 1 1 1
+
+r phy_cfgphy17 17
+phy_pipe_mb_ctrl_sts_0 1 0 RW 0 0 1 1 1
+phy_pipe_mb_ctrl_sts_1 1 1 RW 0 0 1 1 1
+phy_pipe_mb_ctrl_sts_2 1 2 RW 0 0 1 1 1
+phy_pipe_mb_ctrl_sts_3 1 3 RW 0 0 1 1 1
+phy_pipe_mb_ctrl_sts_4 1 4 RW 0 0 1 1 1
+phy_pipe_mb_ctrl_sts_7_5 3 5 RO 0 0 1 1 1
+phy_pipe_mb_ctrl_sts_8 1 8 W1C 1 0 1 1 1
+phy_pipe_mb_ctrl_sts_9 1 9 W1C 1 0 1 1 1
+phy_pipe_mb_ctrl_sts_10 1 10 RO 0 0 1 1 1
+phy_pipe_mb_ctrl_sts_11 1 11 RO 0 0 1 1 1
+phy_pipe_mb_ctrl_sts_15_12 4 12 RO 0 0 1 1 1
+phy_pipe_mb_ctrl_sts_16 1 16 RO 0 0 1 1 1
+phy_pipe_mb_ctrl_sts_17 1 17 RO 0 0 1 1 1
+phy_pipe_mb_ctrl_sts_18 1 18 RO 0 0 1 1 1
+phy_pipe_mb_ctrl_sts_19 1 19 RO 0 0 1 1 1
+phy_pipe_mb_ctrl_sts_20 1 20 RO 0 0 1 1 1
+phy_pipe_mb_ctrl_sts_31_21 11 21 RO 0 0 1 1 1
+
+r phy_cfgphy18 4
+phy_pipe_tx_dmph_17_0 18 0 RO 0 1 1 1 1
+phy_pipe_tx_dmph_23_18 6 18 RO 0 0 1 1 1
+phy_pipe_tx_dmph_29_24 6 24 RO 0 0 1 1 1
+phy_pipe_tx_dmph_31_30 2 30 RO 0 0 1 1 1
+
+r phy_cfgphy19 1
+phy_top_uc_ln_en_int_sts1_31_0 32 0 RO 0 0 1 1 1
+
+r phy_cfgphy20 1
+phy_top_uc_ln_en_int_sts2_31_0 32 0 RO 0 0 1 1 1
+
+r phy_cfgphy21 1
+phy_top_uc_pcs_int_sts1_en_31_0 32 0 RW 0 0 1 1 1
+
+r phy_cfgphy22 1
+phy_top_uc_pcs_int_sts2_en_31_0 32 0 RW 0 0 1 1 1
+
+r phy_cfgphy23 28
+phy_uc_pcs_int_sts1_0 1 0 W1C 1 0 1 1 1
+phy_uc_pcs_int_sts1_1 1 1 W1C 1 0 1 1 1
+phy_uc_pcs_int_sts1_2 1 2 W1C 1 0 1 1 1
+phy_uc_pcs_int_sts1_3 1 3 W1C 1 0 1 1 1
+phy_uc_pcs_int_sts1_4 1 4 W1C 1 0 1 1 1
+phy_uc_pcs_int_sts1_5 1 5 W1C 1 0 1 1 1
+phy_uc_pcs_int_sts1_6 1 6 W1C 1 0 1 1 1
+phy_uc_pcs_int_sts1_7 1 7 W1C 1 0 1 1 1
+phy_uc_pcs_int_sts1_8 1 8 W1C 1 0 1 1 1
+phy_uc_pcs_int_sts1_9 1 9 W1C 1 0 1 1 1
+phy_uc_pcs_int_sts1_10 1 10 W1C 1 0 1 1 1
+phy_uc_pcs_int_sts1_11 1 11 W1C 1 0 1 1 1
+phy_uc_pcs_int_sts1_12 1 12 W1C 1 0 1 1 1
+phy_uc_pcs_int_sts1_13 1 13 W1C 1 0 1 1 1
+phy_uc_pcs_int_sts1_14 1 14 W1C 1 0 1 1 1
+phy_uc_pcs_int_sts1_15 1 15 W1C 1 0 1 1 1
+phy_uc_pcs_int_sts1_16 1 16 W1C 1 0 1 1 1
+phy_uc_pcs_int_sts1_17 1 17 W1C 1 0 1 1 1
+phy_uc_pcs_int_sts1_18 1 18 W1C 1 0 1 1 1
+phy_uc_pcs_int_sts1_19 1 19 W1C 1 0 1 1 1
+phy_uc_pcs_int_sts1_21_20 2 20 RO 0 0 1 1 1
+phy_uc_pcs_int_sts1_22 1 22 W1C 1 0 1 1 1
+phy_uc_pcs_int_sts1_23 1 23 W1C 1 0 1 1 1
+phy_uc_pcs_int_sts1_25_24 2 24 RO 0 0 1 1 1
+phy_uc_pcs_int_sts1_26 1 26 W1C 1 0 1 1 1
+phy_uc_pcs_int_sts1_27 1 27 W1C 1 0 1 1 1
+phy_uc_pcs_int_sts1_30_28 3 28 RO 0 0 1 1 1
+phy_uc_pcs_int_sts1_31 1 31 RO 0 0 1 1 1
+
+r phy_cfgphy24 6
+phy_uc_pcs_int_sts1_set_19_0 20 0 W1S 0 0 1 1 1
+phy_uc_pcs_int_sts1_set_21_20 2 20 RO 0 0 1 1 1
+phy_uc_pcs_int_sts1_set_23_22 2 22 W1S 0 0 1 1 1
+phy_uc_pcs_int_sts1_set_25_24 2 24 RO 0 0 1 1 1
+phy_uc_pcs_int_sts1_set_27_26 2 26 W1S 0 0 1 1 1
+phy_uc_pcs_int_sts1_set_31_28 4 28 RO 0 0 1 1 1
+
+r phy_cfgphy25 3
+phy_uc_pcs_int_sts2_0 1 0 W1C 1 0 1 1 1
+phy_uc_pcs_int_sts2_1 1 1 W1C 1 0 1 1 1
+phy_uc_pcs_int_sts2_31_2 30 2 RO 0 0 1 1 1
+
+r phy_cfgphy26 2
+phy_uc_pcs_int_sts2_set_1_0 2 0 W1S 0 0 1 1 1
+phy_uc_pcs_int_sts2_set_31_2 30 2 RO 0 0 1 1 1
+
+r phy_cfgphy27 11
+phy_usb3_iso_rx_ctrl_2_0 3 0 RO 0 0 1 1 1
+phy_usb3_iso_rx_ctrl_3 1 3 RO 0 0 1 1 1
+phy_usb3_iso_rx_ctrl_4 1 4 RO 0 1 1 1 1
+phy_usb3_iso_rx_ctrl_5 1 5 RO 0 0 1 1 1
+phy_usb3_iso_rx_ctrl_6 1 6 RO 0 0 1 1 1
+phy_usb3_iso_rx_ctrl_7 1 7 RW 0 0 1 1 1
+phy_usb3_iso_rx_ctrl_8 1 8 RW 0 0 1 1 1
+phy_usb3_iso_rx_ctrl_9 1 9 RW 0 0 1 1 1
+phy_usb3_iso_rx_ctrl_11_10 2 10 RO 0 0 1 1 1
+phy_usb3_iso_rx_ctrl_15_12 4 12 RO 0 0 1 1 1
+phy_usb3_iso_rx_ctrl_31_16 16 16 RO 0 0 1 1 1
+
+r phy_cfgphy28 1
+phy_usb3_iso_tx_data_31_0 32 0 RW 0 0 1 1 1
+
+r phy_cfgphy29 2
+phy_usb3_iso_usb_ber_cnt_7_0 8 0 RO 0 0 1 1 1
+phy_usb3_iso_usb_ber_cnt_31_8 24 8 RO 0 0 1 1 1
+
+r uc__cfguc_30 14
+uc_ln_ctrl_0 1 0 RW 0 1 1 1 1
+uc_ln_ctrl_1 1 1 RW 0 1 1 1 1
+uc_ln_ctrl_2 1 2 WO 0 0 1 1 1
+uc_ln_ctrl_3 1 3 RO 0 0 1 1 1
+uc_ln_ctrl_4 1 4 RW 0 0 1 1 1
+uc_ln_ctrl_5 1 5 RW 0 0 1 1 1
+uc_ln_ctrl_6 1 6 RW 0 0 1 1 1
+uc_ln_ctrl_7 1 7 RO 0 0 1 1 1
+uc_ln_ctrl_8 1 8 RW 0 0 1 1 1
+uc_ln_ctrl_9 1 9 RO 0 0 1 1 1
+uc_ln_ctrl_10 1 10 RO 0 0 1 1 1
+uc_ln_ctrl_11 1 11 RW 0 0 1 1 1
+uc_ln_ctrl_14_12 3 12 RW 0 4 1 1 1
+uc_ln_ctrl_31_15 17 15 RO 0 0 1 1 1
+
+r uc__cfguc_31 1
+uc_ln_scrpad0_31_0 32 0 RW 0 0 1 1 1
+
+r uc__cfguc_32 1
+uc_ln_scrpad1_31_0 32 0 RW 0 0 1 1 1
+
+r uc__cfguc_33 1
+uc_ln_scrpad2_31_0 32 0 RW 0 0 1 1 1
+
+r uc__cfguc_34 1
+uc_ln_scrpad3_31_0 32 0 RW 0 0 1 1 1
+
+r uc__cfguc_35 1
+uc_ln_scrpad4_31_0 32 0 RW 0 0 1 1 1
+
+r uc__cfguc_36 1
+uc_ln_scrpad5_31_0 32 0 RW 0 0 1 1 1
+
+r uc__cfguc_37 1
+uc_ln_scrpad6_31_0 32 0 RW 0 0 1 1 1
+
+r uc__cfguc_38 1
+uc_ln_scrpad7_31_0 32 0 RW 0 0 1 1 1
+
+r uc__cfguc_39 1
+uc_ln_sram_access_31_0 32 0 RW 0 0 1 1 1
+
+r uc__cfguc_40 2
+uc_ln_sram_addr_15_0 16 0 RW 0 0 1 1 1
+uc_ln_sram_addr_31_16 16 16 RO 0 0 1 1 1
+
+
+ ** --  RegFiles configuration -- **
+
+
+ ** --  Blocks configuration -- **
+
+b phy_pcs_lane_registers.sd3101_t4_registers_sd3101_phy_registers 40 0 0 212992 1 1 1
+T_phy_dp_iso_tx_ctrl1_206 phy_cfgphy1 phy_dp_iso_tx_ctrl1 76 4 RW 0 1 8
+T_phy_dp_iso_tx_ctrl2_207 phy_cfgphy2 phy_dp_iso_tx_ctrl2 80 4 RW 0 1 8
+T_phy_ln_uc_pcs_en_int_sts1_213 phy_cfgphy3 phy_ln_uc_pcs_en_int_sts1 172 4 RW 0 1 8
+T_phy_ln_uc_pcs_en_int_sts2_229 phy_cfgphy4 phy_ln_uc_pcs_en_int_sts2 236 4 RW 0 1 8
+T_phy_ln_uc_pcs_int_sts1_en_211 phy_cfgphy5 phy_ln_uc_pcs_int_sts1_en 164 4 RW 0 1 8
+T_phy_ln_uc_pcs_int_sts2_en_227 phy_cfgphy6 phy_ln_uc_pcs_int_sts2_en 228 4 RW 0 1 8
+T_phy_pipe_inputs_192 phy_cfgphy7 phy_pipe_inputs 0 4 RW 0 1 8
+T_phy_pipe_iso_cfg_ctrl_200 phy_cfgphy8 phy_pipe_iso_cfg_ctrl 40 4 RW 0 1 8
+T_phy_pipe_iso_mb_mac2phy_202 phy_cfgphy9 phy_pipe_iso_mb_mac2phy 60 4 RW 0 1 8
+T_phy_pipe_iso_mb_phy2mac0_203 phy_cfgphy10 phy_pipe_iso_mb_phy2mac0 64 4 RW 0 1 8
+T_phy_pipe_iso_mb_phy2mac1_204 phy_cfgphy11 phy_pipe_iso_mb_phy2mac1 68 4 RW 0 1 8
+T_phy_pipe_iso_mb_phy2mac2_205 phy_cfgphy12 phy_pipe_iso_mb_phy2mac2 72 4 RW 0 1 8
+T_phy_pipe_iso_rx_eq_eval_198 phy_cfgphy13 phy_pipe_iso_rx_eq_eval 32 4 RW 0 1 8
+T_phy_pipe_iso_tx_lpc_195 phy_cfgphy14 phy_pipe_iso_tx_lpc 20 4 RW 0 1 8
+T_phy_pipe_ln_ctrl_sts_196 phy_cfgphy15 phy_pipe_ln_ctrl_sts 24 4 RW 0 1 8
+T_phy_pipe_ln_ctrl_sts_clr_197 phy_cfgphy16 phy_pipe_ln_ctrl_sts_clr 28 4 RW 0 1 8
+T_phy_pipe_mb_ctrl_sts_201 phy_cfgphy17 phy_pipe_mb_ctrl_sts 56 4 RW 0 1 8
+T_phy_pipe_tx_dmph_194 phy_cfgphy18 phy_pipe_tx_dmph 16 4 RW 0 1 8
+T_phy_top_uc_ln_en_int_sts1_214 phy_cfgphy19 phy_top_uc_ln_en_int_sts1 176 4 RW 0 1 8
+T_phy_top_uc_ln_en_int_sts2_230 phy_cfgphy20 phy_top_uc_ln_en_int_sts2 240 4 RW 0 1 8
+T_phy_top_uc_pcs_int_sts1_en_212 phy_cfgphy21 phy_top_uc_pcs_int_sts1_en 168 4 RW 0 1 8
+T_phy_top_uc_pcs_int_sts2_en_228 phy_cfgphy22 phy_top_uc_pcs_int_sts2_en 232 4 RW 0 1 8
+T_phy_uc_pcs_int_sts1_209 phy_cfgphy23 phy_uc_pcs_int_sts1 156 4 RW 0 1 8
+T_phy_uc_pcs_int_sts1_set_210 phy_cfgphy24 phy_uc_pcs_int_sts1_set 160 4 RW 0 1 8
+T_phy_uc_pcs_int_sts2_225 phy_cfgphy25 phy_uc_pcs_int_sts2 220 4 RW 0 1 8
+T_phy_uc_pcs_int_sts2_set_226 phy_cfgphy26 phy_uc_pcs_int_sts2_set 224 4 RW 0 1 8
+T_phy_usb3_iso_rx_ctrl_193 phy_cfgphy27 phy_usb3_iso_rx_ctrl 4 4 RW 0 1 8
+T_phy_usb3_iso_tx_data_199 phy_cfgphy28 phy_usb3_iso_tx_data 36 4 RW 0 1 8
+T_phy_usb3_iso_usb_ber_cnt_208 phy_cfgphy29 phy_usb3_iso_usb_ber_cnt 84 4 RW 0 1 8
+T_uc_ln_ctrl_215 uc__cfguc_30 uc_ln_ctrl 180 4 RW 0 1 8
+T_uc_ln_scrpad0_217 uc__cfguc_31 uc_ln_scrpad0 188 4 RW 0 1 8
+T_uc_ln_scrpad1_218 uc__cfguc_32 uc_ln_scrpad1 192 4 RW 0 1 8
+T_uc_ln_scrpad2_219 uc__cfguc_33 uc_ln_scrpad2 196 4 RW 0 1 8
+T_uc_ln_scrpad3_220 uc__cfguc_34 uc_ln_scrpad3 200 4 RW 0 1 8
+T_uc_ln_scrpad4_221 uc__cfguc_35 uc_ln_scrpad4 204 4 RW 0 1 8
+T_uc_ln_scrpad5_222 uc__cfguc_36 uc_ln_scrpad5 208 4 RW 0 1 8
+T_uc_ln_scrpad6_223 uc__cfguc_37 uc_ln_scrpad6 212 4 RW 0 1 8
+T_uc_ln_scrpad7_224 uc__cfguc_38 uc_ln_scrpad7 216 4 RW 0 1 8
+T_uc_ln_sram_access_231 uc__cfguc_39 uc_ln_sram_access 256 4 RW 0 1 8
+T_uc_ln_sram_addr_216 uc__cfguc_40 uc_ln_sram_addr 184 4 RW 0 1 8
+

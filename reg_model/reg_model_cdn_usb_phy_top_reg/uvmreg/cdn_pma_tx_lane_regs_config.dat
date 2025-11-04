@@ -1,0 +1,889 @@
+ ** -- Register/Field configuration -- **
+
+
+r tx__cfgtx_1 8
+tx_bist_ctrl_0 1 0 RW 0 0 1 1 1
+tx_bist_ctrl_1 1 1 WO 0 0 1 1 1
+tx_bist_ctrl_3_2 2 2 RO 0 0 1 1 1
+tx_bist_ctrl_4 1 4 RW 0 0 1 1 1
+tx_bist_ctrl_7_5 3 5 RO 0 0 1 1 1
+tx_bist_ctrl_11_8 4 8 RW 0 0 1 1 1
+tx_bist_ctrl_15_12 4 12 RO 0 0 1 1 1
+tx_bist_ctrl_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_2 3
+tx_bist_seed0_2_0 3 0 RW 0 1 1 1 1
+tx_bist_seed0_15_3 13 3 RW 0 0 1 1 1
+tx_bist_seed0_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_3 3
+tx_bist_seed1_14_0 15 0 RW 0 0 1 1 1
+tx_bist_seed1_15 1 15 RO 0 0 1 1 1
+tx_bist_seed1_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_4 3
+tx_bist_uddwr_9_0 10 0 WO 0 0 1 1 1
+tx_bist_uddwr_15_10 6 10 RO 0 0 1 1 1
+tx_bist_uddwr_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_5 7
+tx_duty_cycle_cal_ctrl_6_0 7 0 RO 0 0 1 1 1
+tx_duty_cycle_cal_ctrl_11_7 5 7 RO 0 0 1 1 1
+tx_duty_cycle_cal_ctrl_12 1 12 RO 0 0 1 1 1
+tx_duty_cycle_cal_ctrl_13 1 13 RO 0 0 1 1 1
+tx_duty_cycle_cal_ctrl_14 1 14 RO 0 0 1 1 1
+tx_duty_cycle_cal_ctrl_15 1 15 RW 0 0 1 1 1
+tx_duty_cycle_cal_ctrl_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_6 3
+tx_duty_cycle_cal_init_tmr_8_0 9 0 RW 0 125 1 1 1
+tx_duty_cycle_cal_init_tmr_15_9 7 9 RO 0 0 1 1 1
+tx_duty_cycle_cal_init_tmr_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_7 3
+tx_duty_cycle_cal_iter_tmr_8_0 9 0 RW 0 135 1 1 1
+tx_duty_cycle_cal_iter_tmr_11_9 3 9 RW 0 0 1 1 1
+tx_duty_cycle_cal_iter_tmr_31_12 20 12 RO 0 0 1 1 1
+
+r tx__cfgtx_8 5
+tx_duty_cycle_cal_ovrd_6_0 7 0 RW 0 0 1 1 1
+tx_duty_cycle_cal_ovrd_13_7 7 7 RO 0 0 1 1 1
+tx_duty_cycle_cal_ovrd_14 1 14 RW 0 0 1 1 1
+tx_duty_cycle_cal_ovrd_15 1 15 RW 0 0 1 1 1
+tx_duty_cycle_cal_ovrd_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_9 4
+tx_duty_cycle_cal_start_6_0 7 0 RW 0 64 1 1 1
+tx_duty_cycle_cal_start_14_7 8 7 RO 0 0 1 1 1
+tx_duty_cycle_cal_start_15 1 15 RW 0 0 1 1 1
+tx_duty_cycle_cal_start_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_10 3
+tx_duty_cycle_cal_tune_5_0 6 0 RW 0 0 1 1 1
+tx_duty_cycle_cal_tune_15_6 10 6 RO 0 0 1 1 1
+tx_duty_cycle_cal_tune_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_11 14
+tx_psc_a0_0 1 0 RW 0 1 1 1 1
+tx_psc_a0_1 1 1 RW 0 1 1 1 1
+tx_psc_a0_2 1 2 RW 0 1 1 1 1
+tx_psc_a0_3 1 3 RW 0 1 1 1 1
+tx_psc_a0_4 1 4 RW 0 1 1 1 1
+tx_psc_a0_5 1 5 RW 0 1 1 1 1
+tx_psc_a0_6 1 6 RW 0 1 1 1 1
+tx_psc_a0_7 1 7 RW 0 1 1 1 1
+tx_psc_a0_8 1 8 RW 0 1 1 1 1
+tx_psc_a0_9 1 9 RW 0 0 1 1 1
+tx_psc_a0_10 1 10 RW 0 0 1 1 1
+tx_psc_a0_11 1 11 RW 0 0 1 1 1
+tx_psc_a0_15_12 4 12 RO 0 0 1 1 1
+tx_psc_a0_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_12 14
+tx_psc_a1_0 1 0 RW 0 1 1 1 1
+tx_psc_a1_1 1 1 RW 0 1 1 1 1
+tx_psc_a1_2 1 2 RW 0 1 1 1 1
+tx_psc_a1_3 1 3 RW 0 1 1 1 1
+tx_psc_a1_4 1 4 RW 0 0 1 1 1
+tx_psc_a1_5 1 5 RW 0 1 1 1 1
+tx_psc_a1_6 1 6 RW 0 1 1 1 1
+tx_psc_a1_7 1 7 RW 0 1 1 1 1
+tx_psc_a1_8 1 8 RW 0 1 1 1 1
+tx_psc_a1_9 1 9 RW 0 0 1 1 1
+tx_psc_a1_10 1 10 RW 0 1 1 1 1
+tx_psc_a1_11 1 11 RW 0 0 1 1 1
+tx_psc_a1_15_12 4 12 RO 0 0 1 1 1
+tx_psc_a1_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_13 14
+tx_psc_a2_0 1 0 RW 0 0 1 1 1
+tx_psc_a2_1 1 1 RW 0 1 1 1 1
+tx_psc_a2_2 1 2 RW 0 1 1 1 1
+tx_psc_a2_3 1 3 RW 0 1 1 1 1
+tx_psc_a2_4 1 4 RW 0 0 1 1 1
+tx_psc_a2_5 1 5 RW 0 1 1 1 1
+tx_psc_a2_6 1 6 RW 0 1 1 1 1
+tx_psc_a2_7 1 7 RW 0 1 1 1 1
+tx_psc_a2_8 1 8 RW 0 0 1 1 1
+tx_psc_a2_9 1 9 RW 0 0 1 1 1
+tx_psc_a2_10 1 10 RW 0 1 1 1 1
+tx_psc_a2_11 1 11 RW 0 0 1 1 1
+tx_psc_a2_15_12 4 12 RO 0 0 1 1 1
+tx_psc_a2_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_14 14
+tx_psc_a3_0 1 0 RW 0 0 1 1 1
+tx_psc_a3_1 1 1 RW 0 1 1 1 1
+tx_psc_a3_2 1 2 RW 0 1 1 1 1
+tx_psc_a3_3 1 3 RW 0 1 1 1 1
+tx_psc_a3_4 1 4 RW 0 0 1 1 1
+tx_psc_a3_5 1 5 RW 0 1 1 1 1
+tx_psc_a3_6 1 6 RW 0 1 1 1 1
+tx_psc_a3_7 1 7 RW 0 1 1 1 1
+tx_psc_a3_8 1 8 RW 0 0 1 1 1
+tx_psc_a3_9 1 9 RW 0 0 1 1 1
+tx_psc_a3_10 1 10 RW 0 1 1 1 1
+tx_psc_a3_11 1 11 RW 0 0 1 1 1
+tx_psc_a3_15_12 4 12 RO 0 0 1 1 1
+tx_psc_a3_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_15 14
+tx_psc_a4_0 1 0 RW 0 0 1 1 1
+tx_psc_a4_1 1 1 RW 0 0 1 1 1
+tx_psc_a4_2 1 2 RW 0 0 1 1 1
+tx_psc_a4_3 1 3 RW 0 0 1 1 1
+tx_psc_a4_4 1 4 RW 0 0 1 1 1
+tx_psc_a4_5 1 5 RW 0 0 1 1 1
+tx_psc_a4_6 1 6 RW 0 0 1 1 1
+tx_psc_a4_7 1 7 RW 0 1 1 1 1
+tx_psc_a4_8 1 8 RW 0 0 1 1 1
+tx_psc_a4_9 1 9 RW 0 0 1 1 1
+tx_psc_a4_10 1 10 RW 0 0 1 1 1
+tx_psc_a4_11 1 11 RW 0 1 1 1 1
+tx_psc_a4_15_12 4 12 RO 0 0 1 1 1
+tx_psc_a4_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_16 14
+tx_psc_a5_0 1 0 RW 0 0 1 1 1
+tx_psc_a5_1 1 1 RW 0 0 1 1 1
+tx_psc_a5_2 1 2 RW 0 0 1 1 1
+tx_psc_a5_3 1 3 RW 0 0 1 1 1
+tx_psc_a5_4 1 4 RW 0 0 1 1 1
+tx_psc_a5_5 1 5 RW 0 0 1 1 1
+tx_psc_a5_6 1 6 RW 0 0 1 1 1
+tx_psc_a5_7 1 7 RW 0 0 1 1 1
+tx_psc_a5_8 1 8 RW 0 0 1 1 1
+tx_psc_a5_9 1 9 RW 0 0 1 1 1
+tx_psc_a5_10 1 10 RW 0 0 1 1 1
+tx_psc_a5_11 1 11 RW 0 0 1 1 1
+tx_psc_a5_15_12 4 12 RO 0 0 1 1 1
+tx_psc_a5_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_17 14
+tx_psc_cal_0 1 0 RW 0 1 1 1 1
+tx_psc_cal_1 1 1 RW 0 1 1 1 1
+tx_psc_cal_2 1 2 RW 0 0 1 1 1
+tx_psc_cal_3 1 3 RW 0 0 1 1 1
+tx_psc_cal_4 1 4 RW 0 0 1 1 1
+tx_psc_cal_5 1 5 RW 0 1 1 1 1
+tx_psc_cal_6 1 6 RW 0 0 1 1 1
+tx_psc_cal_7 1 7 RW 0 1 1 1 1
+tx_psc_cal_8 1 8 RW 0 1 1 1 1
+tx_psc_cal_9 1 9 RW 0 0 1 1 1
+tx_psc_cal_10 1 10 RW 0 0 1 1 1
+tx_psc_cal_11 1 11 RW 0 0 1 1 1
+tx_psc_cal_15_12 4 12 RO 0 0 1 1 1
+tx_psc_cal_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_18 14
+tx_psc_rdy_0 1 0 RW 0 0 1 1 1
+tx_psc_rdy_1 1 1 RW 0 0 1 1 1
+tx_psc_rdy_2 1 2 RW 0 0 1 1 1
+tx_psc_rdy_3 1 3 RW 0 0 1 1 1
+tx_psc_rdy_4 1 4 RW 0 0 1 1 1
+tx_psc_rdy_5 1 5 RW 0 1 1 1 1
+tx_psc_rdy_6 1 6 RW 0 0 1 1 1
+tx_psc_rdy_7 1 7 RW 0 1 1 1 1
+tx_psc_rdy_8 1 8 RW 0 0 1 1 1
+tx_psc_rdy_9 1 9 RW 0 0 1 1 1
+tx_psc_rdy_10 1 10 RW 0 0 1 1 1
+tx_psc_rdy_11 1 11 RW 0 0 1 1 1
+tx_psc_rdy_15_12 4 12 RO 0 0 1 1 1
+tx_psc_rdy_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_19 5
+tx_rcvdet_ctrl_12_0 13 0 RO 0 0 1 1 1
+tx_rcvdet_ctrl_13 1 13 RO 0 0 1 1 1
+tx_rcvdet_ctrl_14 1 14 RO 0 0 1 1 1
+tx_rcvdet_ctrl_15 1 15 RW 0 0 1 1 1
+tx_rcvdet_ctrl_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_20 2
+tx_rcvdet_en_tmr_15_0 16 0 RW 0 0 1 1 1
+tx_rcvdet_en_tmr_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_21 4
+tx_rcvdet_ovrd_13_0 14 0 RO 0 0 1 1 1
+tx_rcvdet_ovrd_14 1 14 RW 0 0 1 1 1
+tx_rcvdet_ovrd_15 1 15 RW 0 0 1 1 1
+tx_rcvdet_ovrd_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_22 2
+tx_rcvdet_st_tmr_15_0 16 0 RW 0 2500 1 1 1
+tx_rcvdet_st_tmr_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_23 3
+tx_txcc_cpost_mult_00_7_0 8 0 RW 0 32 1 1 1
+tx_txcc_cpost_mult_00_15_8 8 8 RO 0 0 1 1 1
+tx_txcc_cpost_mult_00_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_24 3
+tx_txcc_cpost_mult_01_7_0 8 0 RW 0 21 1 1 1
+tx_txcc_cpost_mult_01_15_8 8 8 RO 0 0 1 1 1
+tx_txcc_cpost_mult_01_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_25 3
+tx_txcc_cpost_mult_10_7_0 8 0 RW 0 0 1 1 1
+tx_txcc_cpost_mult_10_15_8 8 8 RO 0 0 1 1 1
+tx_txcc_cpost_mult_10_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_26 3
+tx_txcc_cpost_mult_11_7_0 8 0 RW 0 0 1 1 1
+tx_txcc_cpost_mult_11_15_8 8 8 RO 0 0 1 1 1
+tx_txcc_cpost_mult_11_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_27 3
+tx_txcc_cpre_mult_00_7_0 8 0 RW 0 0 1 1 1
+tx_txcc_cpre_mult_00_15_8 8 8 RO 0 0 1 1 1
+tx_txcc_cpre_mult_00_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_28 3
+tx_txcc_cpre_mult_01_7_0 8 0 RW 0 0 1 1 1
+tx_txcc_cpre_mult_01_15_8 8 8 RO 0 0 1 1 1
+tx_txcc_cpre_mult_01_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_29 3
+tx_txcc_cpre_mult_10_7_0 8 0 RW 0 0 1 1 1
+tx_txcc_cpre_mult_10_15_8 8 8 RO 0 0 1 1 1
+tx_txcc_cpre_mult_10_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_30 3
+tx_txcc_cpre_mult_11_7_0 8 0 RW 0 0 1 1 1
+tx_txcc_cpre_mult_11_15_8 8 8 RO 0 0 1 1 1
+tx_txcc_cpre_mult_11_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_31 11
+tx_txcc_ctrl_0 1 0 RW 0 0 1 1 1
+tx_txcc_ctrl_1 1 1 RW 0 0 1 1 1
+tx_txcc_ctrl_2 1 2 RW 0 1 1 1 1
+tx_txcc_ctrl_3 1 3 RW 0 0 1 1 1
+tx_txcc_ctrl_5_4 2 4 RW 0 0 1 1 1
+tx_txcc_ctrl_7_6 2 6 RW 0 2 1 1 1
+tx_txcc_ctrl_9_8 2 8 RW 0 2 1 1 1
+tx_txcc_ctrl_11_10 2 10 RW 0 2 1 1 1
+tx_txcc_ctrl_13_12 2 12 RW 0 2 1 1 1
+tx_txcc_ctrl_15_14 2 14 RO 0 0 1 1 1
+tx_txcc_ctrl_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_32 3
+tx_txcc_ipost_coef_value_5_0 6 0 RW 0 0 1 1 1
+tx_txcc_ipost_coef_value_15_6 10 6 RO 0 0 1 1 1
+tx_txcc_ipost_coef_value_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_33 5
+tx_txcc_ipre_coef_value_5_0 6 0 RW 0 0 1 1 1
+tx_txcc_ipre_coef_value_7_6 2 6 RO 0 0 1 1 1
+tx_txcc_ipre_coef_value_13_8 6 8 RW 0 0 1 1 1
+tx_txcc_ipre_coef_value_15_14 2 14 RO 0 0 1 1 1
+tx_txcc_ipre_coef_value_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_34 3
+tx_txcc_lf_mult_7_0 8 0 RW 0 42 1 1 1
+tx_txcc_lf_mult_15_8 8 8 RO 0 0 1 1 1
+tx_txcc_lf_mult_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_35 3
+tx_txcc_main_cval_5_0 6 0 RO 0 0 1 1 1
+tx_txcc_main_cval_15_6 10 6 RO 0 0 1 1 1
+tx_txcc_main_cval_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_36 5
+tx_txcc_main_ovrd_5_0 6 0 RW 0 0 1 1 1
+tx_txcc_main_ovrd_7_6 2 6 RO 0 0 1 1 1
+tx_txcc_main_ovrd_8 1 8 RW 0 0 1 1 1
+tx_txcc_main_ovrd_15_9 7 9 RO 0 0 1 1 1
+tx_txcc_main_ovrd_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_37 3
+tx_txcc_mgnfs_mult_000_7_0 8 0 RW 0 7 1 1 1
+tx_txcc_mgnfs_mult_000_15_8 8 8 RO 0 0 1 1 1
+tx_txcc_mgnfs_mult_000_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_38 3
+tx_txcc_mgnfs_mult_001_7_0 8 0 RW 0 7 1 1 1
+tx_txcc_mgnfs_mult_001_15_8 8 8 RO 0 0 1 1 1
+tx_txcc_mgnfs_mult_001_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_39 3
+tx_txcc_mgnfs_mult_010_7_0 8 0 RW 0 13 1 1 1
+tx_txcc_mgnfs_mult_010_15_8 8 8 RO 0 0 1 1 1
+tx_txcc_mgnfs_mult_010_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_40 3
+tx_txcc_mgnfs_mult_011_7_0 8 0 RW 0 18 1 1 1
+tx_txcc_mgnfs_mult_011_15_8 8 8 RO 0 0 1 1 1
+tx_txcc_mgnfs_mult_011_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_41 3
+tx_txcc_mgnfs_mult_100_7_0 8 0 RW 0 25 1 1 1
+tx_txcc_mgnfs_mult_100_15_8 8 8 RO 0 0 1 1 1
+tx_txcc_mgnfs_mult_100_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_42 3
+tx_txcc_mgnfs_mult_101_7_0 8 0 RW 0 32 1 1 1
+tx_txcc_mgnfs_mult_101_15_8 8 8 RO 0 0 1 1 1
+tx_txcc_mgnfs_mult_101_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_43 3
+tx_txcc_mgnfs_mult_110_7_0 8 0 RW 0 39 1 1 1
+tx_txcc_mgnfs_mult_110_15_8 8 8 RO 0 0 1 1 1
+tx_txcc_mgnfs_mult_110_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_44 3
+tx_txcc_mgnfs_mult_111_7_0 8 0 RW 0 45 1 1 1
+tx_txcc_mgnfs_mult_111_15_8 8 8 RO 0 0 1 1 1
+tx_txcc_mgnfs_mult_111_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_45 3
+tx_txcc_mgnhs_mult_000_7_0 8 0 RW 0 34 1 1 1
+tx_txcc_mgnhs_mult_000_15_8 8 8 RO 0 0 1 1 1
+tx_txcc_mgnhs_mult_000_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_46 3
+tx_txcc_mgnhs_mult_001_7_0 8 0 RW 0 34 1 1 1
+tx_txcc_mgnhs_mult_001_15_8 8 8 RO 0 0 1 1 1
+tx_txcc_mgnhs_mult_001_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_47 3
+tx_txcc_mgnhs_mult_010_7_0 8 0 RW 0 35 1 1 1
+tx_txcc_mgnhs_mult_010_15_8 8 8 RO 0 0 1 1 1
+tx_txcc_mgnhs_mult_010_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_48 3
+tx_txcc_mgnhs_mult_011_7_0 8 0 RW 0 39 1 1 1
+tx_txcc_mgnhs_mult_011_15_8 8 8 RO 0 0 1 1 1
+tx_txcc_mgnhs_mult_011_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_49 3
+tx_txcc_mgnhs_mult_100_7_0 8 0 RW 0 42 1 1 1
+tx_txcc_mgnhs_mult_100_15_8 8 8 RO 0 0 1 1 1
+tx_txcc_mgnhs_mult_100_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_50 3
+tx_txcc_mgnhs_mult_101_7_0 8 0 RW 0 46 1 1 1
+tx_txcc_mgnhs_mult_101_15_8 8 8 RO 0 0 1 1 1
+tx_txcc_mgnhs_mult_101_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_51 3
+tx_txcc_mgnhs_mult_110_7_0 8 0 RW 0 50 1 1 1
+tx_txcc_mgnhs_mult_110_15_8 8 8 RO 0 0 1 1 1
+tx_txcc_mgnhs_mult_110_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_52 3
+tx_txcc_mgnhs_mult_111_7_0 8 0 RW 0 54 1 1 1
+tx_txcc_mgnhs_mult_111_15_8 8 8 RO 0 0 1 1 1
+tx_txcc_mgnhs_mult_111_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_53 3
+tx_txcc_p0post_coef_mult_7_0 8 0 RW 0 34 1 1 1
+tx_txcc_p0post_coef_mult_15_8 8 8 RO 0 0 1 1 1
+tx_txcc_p0post_coef_mult_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_54 3
+tx_txcc_p0pre_coef_mult_7_0 8 0 RW 0 0 1 1 1
+tx_txcc_p0pre_coef_mult_15_8 8 8 RO 0 0 1 1 1
+tx_txcc_p0pre_coef_mult_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_55 3
+tx_txcc_p1post_coef_mult_7_0 8 0 RW 0 22 1 1 1
+tx_txcc_p1post_coef_mult_15_8 8 8 RO 0 0 1 1 1
+tx_txcc_p1post_coef_mult_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_56 3
+tx_txcc_p1pre_coef_mult_7_0 8 0 RW 0 0 1 1 1
+tx_txcc_p1pre_coef_mult_15_8 8 8 RO 0 0 1 1 1
+tx_txcc_p1pre_coef_mult_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_57 3
+tx_txcc_p2post_coef_mult_7_0 8 0 RW 0 25 1 1 1
+tx_txcc_p2post_coef_mult_15_8 8 8 RO 0 0 1 1 1
+tx_txcc_p2post_coef_mult_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_58 3
+tx_txcc_p2pre_coef_mult_7_0 8 0 RW 0 0 1 1 1
+tx_txcc_p2pre_coef_mult_15_8 8 8 RO 0 0 1 1 1
+tx_txcc_p2pre_coef_mult_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_59 3
+tx_txcc_p3post_coef_mult_7_0 8 0 RW 0 16 1 1 1
+tx_txcc_p3post_coef_mult_15_8 8 8 RO 0 0 1 1 1
+tx_txcc_p3post_coef_mult_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_60 3
+tx_txcc_p3pre_coef_mult_7_0 8 0 RW 0 0 1 1 1
+tx_txcc_p3pre_coef_mult_15_8 8 8 RO 0 0 1 1 1
+tx_txcc_p3pre_coef_mult_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_61 3
+tx_txcc_p4post_coef_mult_7_0 8 0 RW 0 0 1 1 1
+tx_txcc_p4post_coef_mult_15_8 8 8 RO 0 0 1 1 1
+tx_txcc_p4post_coef_mult_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_62 3
+tx_txcc_p4pre_coef_mult_7_0 8 0 RW 0 0 1 1 1
+tx_txcc_p4pre_coef_mult_15_8 8 8 RO 0 0 1 1 1
+tx_txcc_p4pre_coef_mult_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_63 3
+tx_txcc_p5post_coef_mult_7_0 8 0 RW 0 0 1 1 1
+tx_txcc_p5post_coef_mult_15_8 8 8 RO 0 0 1 1 1
+tx_txcc_p5post_coef_mult_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_64 3
+tx_txcc_p5pre_coef_mult_7_0 8 0 RW 0 13 1 1 1
+tx_txcc_p5pre_coef_mult_15_8 8 8 RO 0 0 1 1 1
+tx_txcc_p5pre_coef_mult_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_65 3
+tx_txcc_p6post_coef_mult_7_0 8 0 RW 0 0 1 1 1
+tx_txcc_p6post_coef_mult_15_8 8 8 RO 0 0 1 1 1
+tx_txcc_p6post_coef_mult_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_66 3
+tx_txcc_p6pre_coef_mult_7_0 8 0 RW 0 16 1 1 1
+tx_txcc_p6pre_coef_mult_15_8 8 8 RO 0 0 1 1 1
+tx_txcc_p6pre_coef_mult_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_67 3
+tx_txcc_p7post_coef_mult_7_0 8 0 RW 0 25 1 1 1
+tx_txcc_p7post_coef_mult_15_8 8 8 RO 0 0 1 1 1
+tx_txcc_p7post_coef_mult_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_68 3
+tx_txcc_p7pre_coef_mult_7_0 8 0 RW 0 13 1 1 1
+tx_txcc_p7pre_coef_mult_15_8 8 8 RO 0 0 1 1 1
+tx_txcc_p7pre_coef_mult_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_69 3
+tx_txcc_p8post_coef_mult_7_0 8 0 RW 0 16 1 1 1
+tx_txcc_p8post_coef_mult_15_8 8 8 RO 0 0 1 1 1
+tx_txcc_p8post_coef_mult_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_70 3
+tx_txcc_p8pre_coef_mult_7_0 8 0 RW 0 16 1 1 1
+tx_txcc_p8pre_coef_mult_15_8 8 8 RO 0 0 1 1 1
+tx_txcc_p8pre_coef_mult_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_71 3
+tx_txcc_p9post_coef_mult_7_0 8 0 RW 0 0 1 1 1
+tx_txcc_p9post_coef_mult_15_8 8 8 RO 0 0 1 1 1
+tx_txcc_p9post_coef_mult_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_72 3
+tx_txcc_p9pre_coef_mult_7_0 8 0 RW 0 22 1 1 1
+tx_txcc_p9pre_coef_mult_15_8 8 8 RO 0 0 1 1 1
+tx_txcc_p9pre_coef_mult_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_73 3
+tx_txcc_post_cval_5_0 6 0 RO 0 0 1 1 1
+tx_txcc_post_cval_15_6 10 6 RO 0 0 1 1 1
+tx_txcc_post_cval_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_74 5
+tx_txcc_post_ovrd_5_0 6 0 RW 0 0 1 1 1
+tx_txcc_post_ovrd_7_6 2 6 RO 0 0 1 1 1
+tx_txcc_post_ovrd_8 1 8 RW 0 0 1 1 1
+tx_txcc_post_ovrd_15_9 7 9 RO 0 0 1 1 1
+tx_txcc_post_ovrd_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_75 3
+tx_txcc_pre_cval_5_0 6 0 RO 0 0 1 1 1
+tx_txcc_pre_cval_15_6 10 6 RO 0 0 1 1 1
+tx_txcc_pre_cval_31_16 16 16 RO 0 0 1 1 1
+
+r tx__cfgtx_76 5
+tx_txcc_pre_ovrd_5_0 6 0 RW 0 0 1 1 1
+tx_txcc_pre_ovrd_7_6 2 6 RO 0 0 1 1 1
+tx_txcc_pre_ovrd_8 1 8 RW 0 0 1 1 1
+tx_txcc_pre_ovrd_15_9 7 9 RO 0 0 1 1 1
+tx_txcc_pre_ovrd_31_16 16 16 RO 0 0 1 1 1
+
+r xcv_cfgxcv77 4
+xcvr_diag_bidi_ctrl_0 1 0 RW 0 0 1 1 1
+xcvr_diag_bidi_ctrl_1 1 1 RW 0 0 1 1 1
+xcvr_diag_bidi_ctrl_15_2 14 2 RO 0 0 1 1 1
+xcvr_diag_bidi_ctrl_31_16 16 16 RO 0 0 1 1 1
+
+r xcv_cfgxcv78 6
+xcvr_diag_enb_ana_dcd_test_0 1 0 RO 0 0 1 1 1
+xcvr_diag_enb_ana_dcd_test_1 1 1 RW 0 0 1 1 1
+xcvr_diag_enb_ana_dcd_test_2 1 2 RW 0 0 1 1 1
+xcvr_diag_enb_ana_dcd_test_3 1 3 RW 0 0 1 1 1
+xcvr_diag_enb_ana_dcd_test_4 1 4 RW 0 0 1 1 1
+xcvr_diag_enb_ana_dcd_test_31_5 27 5 RW 0 0 1 1 1
+
+r xcv_cfgxcv79 8
+xcvr_diag_hsclk_div_1_0 2 0 RW 0 1 1 1 1
+xcvr_diag_hsclk_div_3_2 2 2 RW 0 0 1 1 1
+xcvr_diag_hsclk_div_5_4 2 4 RW 0 0 1 1 1
+xcvr_diag_hsclk_div_7_6 2 6 RW 0 0 1 1 1
+xcvr_diag_hsclk_div_8 1 8 RW 0 1 1 1 1
+xcvr_diag_hsclk_div_14_9 6 9 RO 0 0 1 1 1
+xcvr_diag_hsclk_div_15 1 15 RO 0 0 1 1 1
+xcvr_diag_hsclk_div_31_16 16 16 RO 0 0 1 1 1
+
+r xcv_cfgxcv80 9
+xcvr_diag_hsclk_sel_1_0 2 0 RW 0 0 1 1 1
+xcvr_diag_hsclk_sel_3_2 2 2 RO 0 0 1 1 1
+xcvr_diag_hsclk_sel_5_4 2 4 RW 0 0 1 1 1
+xcvr_diag_hsclk_sel_7_6 2 6 RO 0 0 1 1 1
+xcvr_diag_hsclk_sel_9_8 2 8 RW 0 0 1 1 1
+xcvr_diag_hsclk_sel_11_10 2 10 RO 0 0 1 1 1
+xcvr_diag_hsclk_sel_13_12 2 12 RW 0 0 1 1 1
+xcvr_diag_hsclk_sel_15_14 2 14 RO 0 0 1 1 1
+xcvr_diag_hsclk_sel_31_16 16 16 RO 0 0 1 1 1
+
+r xcv_cfgxcv81 9
+xcvr_diag_plldrc_ctrl_1_0 2 0 RW 0 2 1 1 1
+xcvr_diag_plldrc_ctrl_3_2 2 2 RW 0 1 1 1 1
+xcvr_diag_plldrc_ctrl_5_4 2 4 RW 0 1 1 1 1
+xcvr_diag_plldrc_ctrl_7_6 2 6 RW 0 1 1 1 1
+xcvr_diag_plldrc_ctrl_9_8 2 8 RW 0 0 1 1 1
+xcvr_diag_plldrc_ctrl_11_10 2 10 RW 0 0 1 1 1
+xcvr_diag_plldrc_ctrl_13_12 2 12 RW 0 0 1 1 1
+xcvr_diag_plldrc_ctrl_15_14 2 14 RW 0 0 1 1 1
+xcvr_diag_plldrc_ctrl_31_16 16 16 RO 0 0 1 1 1
+
+r xcv_cfgxcv82 7
+xcvr_diag_psc_ovrd_0 1 0 RW 0 0 1 1 1
+xcvr_diag_psc_ovrd_1 1 1 RW 0 1 1 1 1
+xcvr_diag_psc_ovrd_2 1 2 RW 0 1 1 1 1
+xcvr_diag_psc_ovrd_3 1 3 RW 0 0 1 1 1
+xcvr_diag_psc_ovrd_4 1 4 RW 0 0 1 1 1
+xcvr_diag_psc_ovrd_15_5 11 5 RO 0 0 1 1 1
+xcvr_diag_psc_ovrd_31_16 16 16 RO 0 0 1 1 1
+
+r xcv_cfgxcv83 5
+xcvr_diag_pwri_tmr_4_0 5 0 RW 0 5 1 1 1
+xcvr_diag_pwri_tmr_7_5 3 5 RO 0 0 1 1 1
+xcvr_diag_pwri_tmr_12_8 5 8 RW 0 5 1 1 1
+xcvr_diag_pwri_tmr_15_13 3 13 RO 0 0 1 1 1
+xcvr_diag_pwri_tmr_31_16 16 16 RO 0 0 1 1 1
+
+r xcv_cfgxcv84 5
+xcvr_diag_rst_diag_0 1 0 RO 0 0 1 1 1
+xcvr_diag_rst_diag_1 1 1 RO 0 0 1 1 1
+xcvr_diag_rst_diag_2 1 2 RO 0 0 1 1 1
+xcvr_diag_rst_diag_15_3 13 3 RO 0 0 1 1 1
+xcvr_diag_rst_diag_31_16 16 16 RO 0 0 1 1 1
+
+r xcv_cfgxcv85 3
+xcvr_diag_rxclk_ctrl_14_0 15 0 RO 0 0 1 1 1
+xcvr_diag_rxclk_ctrl_15 1 15 RW 0 0 1 1 1
+xcvr_diag_rxclk_ctrl_31_16 16 16 RO 0 0 1 1 1
+
+r xcv_cfgxcv86 3
+xcvr_diag_txclk_ctrl_14_0 15 0 RO 0 0 1 1 1
+xcvr_diag_txclk_ctrl_15 1 15 RW 0 0 1 1 1
+xcvr_diag_txclk_ctrl_31_16 16 16 RO 0 0 1 1 1
+
+r xcv_cfgxcv87 9
+xcvr_diag_xcal_pwri_ovrd_7_0 8 0 RW 0 36 1 1 1
+xcvr_diag_xcal_pwri_ovrd_8 1 8 RO 0 0 1 1 1
+xcvr_diag_xcal_pwri_ovrd_9 1 9 RW 0 0 1 1 1
+xcvr_diag_xcal_pwri_ovrd_10 1 10 RO 0 1 1 1 1
+xcvr_diag_xcal_pwri_ovrd_11 1 11 RW 0 0 1 1 1
+xcvr_diag_xcal_pwri_ovrd_13_12 2 12 RO 0 0 1 1 1
+xcvr_diag_xcal_pwri_ovrd_14 1 14 RW 0 0 1 1 1
+xcvr_diag_xcal_pwri_ovrd_15 1 15 RW 0 0 1 1 1
+xcvr_diag_xcal_pwri_ovrd_31_16 16 16 RO 0 0 1 1 1
+
+r xcv_cfgxcv88 3
+xcvr_diag_xcal_pwri_stat_7_0 8 0 RO 0 36 1 1 1
+xcvr_diag_xcal_pwri_stat_15_8 8 8 RO 0 0 1 1 1
+xcvr_diag_xcal_pwri_stat_31_16 16 16 RO 0 0 1 1 1
+
+r xcv_cfgxcv89 3
+xcvr_diag_xcvr_clk_ctrl_5_0 6 0 RW 0 0 1 1 1
+xcvr_diag_xcvr_clk_ctrl_15_6 10 6 RO 0 0 1 1 1
+xcvr_diag_xcvr_clk_ctrl_31_16 16 16 RO 0 0 1 1 1
+
+r xcv_cfgxcv90 9
+xcvr_diag_xdp_pwri_ovrd_7_0 8 0 RW 0 36 1 1 1
+xcvr_diag_xdp_pwri_ovrd_8 1 8 RO 0 0 1 1 1
+xcvr_diag_xdp_pwri_ovrd_9 1 9 RW 0 0 1 1 1
+xcvr_diag_xdp_pwri_ovrd_10 1 10 RO 0 1 1 1 1
+xcvr_diag_xdp_pwri_ovrd_11 1 11 RW 0 0 1 1 1
+xcvr_diag_xdp_pwri_ovrd_13_12 2 12 RO 0 0 1 1 1
+xcvr_diag_xdp_pwri_ovrd_14 1 14 RW 0 0 1 1 1
+xcvr_diag_xdp_pwri_ovrd_15 1 15 RW 0 0 1 1 1
+xcvr_diag_xdp_pwri_ovrd_31_16 16 16 RO 0 0 1 1 1
+
+r xcv_cfgxcv91 3
+xcvr_diag_xdp_pwri_stat_7_0 8 0 RO 0 36 1 1 1
+xcvr_diag_xdp_pwri_stat_15_8 8 8 RO 0 0 1 1 1
+xcvr_diag_xdp_pwri_stat_31_16 16 16 RO 0 0 1 1 1
+
+r xcv_cfgxcv92 3
+xcvr_psm_a0byp_tmr_5_0 6 0 RW 0 16 1 1 1
+xcvr_psm_a0byp_tmr_15_6 10 6 RO 0 0 1 1 1
+xcvr_psm_a0byp_tmr_31_16 16 16 RO 0 0 1 1 1
+
+r xcv_cfgxcv93 3
+xcvr_psm_a0in_tmr_9_0 10 0 RW 0 79 1 1 1
+xcvr_psm_a0in_tmr_15_10 6 10 RO 0 0 1 1 1
+xcvr_psm_a0in_tmr_31_16 16 16 RO 0 0 1 1 1
+
+r xcv_cfgxcv94 3
+xcvr_psm_a0out_tmr_5_0 6 0 RW 0 1 1 1 1
+xcvr_psm_a0out_tmr_15_6 10 6 RO 0 0 1 1 1
+xcvr_psm_a0out_tmr_31_16 16 16 RO 0 0 1 1 1
+
+r xcv_cfgxcv95 3
+xcvr_psm_a1in_tmr_5_0 6 0 RW 0 16 1 1 1
+xcvr_psm_a1in_tmr_15_6 10 6 RO 0 0 1 1 1
+xcvr_psm_a1in_tmr_31_16 16 16 RO 0 0 1 1 1
+
+r xcv_cfgxcv96 3
+xcvr_psm_a1out_tmr_5_0 6 0 RW 0 1 1 1 1
+xcvr_psm_a1out_tmr_15_6 10 6 RO 0 0 1 1 1
+xcvr_psm_a1out_tmr_31_16 16 16 RO 0 0 1 1 1
+
+r xcv_cfgxcv97 3
+xcvr_psm_a2in_tmr_7_0 8 0 RW 0 29 1 1 1
+xcvr_psm_a2in_tmr_15_8 8 8 RO 0 0 1 1 1
+xcvr_psm_a2in_tmr_31_16 16 16 RO 0 0 1 1 1
+
+r xcv_cfgxcv98 3
+xcvr_psm_a2out_tmr_5_0 6 0 RW 0 1 1 1 1
+xcvr_psm_a2out_tmr_15_6 10 6 RO 0 0 1 1 1
+xcvr_psm_a2out_tmr_31_16 16 16 RO 0 0 1 1 1
+
+r xcv_cfgxcv99 3
+xcvr_psm_a3in_tmr_5_0 6 0 RW 0 16 1 1 1
+xcvr_psm_a3in_tmr_15_6 10 6 RO 0 0 1 1 1
+xcvr_psm_a3in_tmr_31_16 16 16 RO 0 0 1 1 1
+
+r xcv_cfgxcv100 3
+xcvr_psm_a3out_tmr_5_0 6 0 RW 0 1 1 1 1
+xcvr_psm_a3out_tmr_15_6 10 6 RO 0 0 1 1 1
+xcvr_psm_a3out_tmr_31_16 16 16 RO 0 0 1 1 1
+
+r xcv_cfgxcv101 3
+xcvr_psm_a4in_tmr_5_0 6 0 RW 0 16 1 1 1
+xcvr_psm_a4in_tmr_15_6 10 6 RO 0 0 1 1 1
+xcvr_psm_a4in_tmr_31_16 16 16 RO 0 0 1 1 1
+
+r xcv_cfgxcv102 3
+xcvr_psm_a4out_tmr_5_0 6 0 RW 0 1 1 1 1
+xcvr_psm_a4out_tmr_15_6 10 6 RO 0 0 1 1 1
+xcvr_psm_a4out_tmr_31_16 16 16 RO 0 0 1 1 1
+
+r xcv_cfgxcv103 3
+xcvr_psm_a5in_tmr_5_0 6 0 RW 0 16 1 1 1
+xcvr_psm_a5in_tmr_15_6 10 6 RO 0 0 1 1 1
+xcvr_psm_a5in_tmr_31_16 16 16 RO 0 0 1 1 1
+
+r xcv_cfgxcv104 3
+xcvr_psm_a5out_tmr_5_0 6 0 RW 0 1 1 1 1
+xcvr_psm_a5out_tmr_15_6 10 6 RO 0 0 1 1 1
+xcvr_psm_a5out_tmr_31_16 16 16 RO 0 0 1 1 1
+
+r xcv_cfgxcv105 3
+xcvr_psm_calin_tmr_9_0 10 0 RW 0 79 1 1 1
+xcvr_psm_calin_tmr_15_10 6 10 RO 0 0 1 1 1
+xcvr_psm_calin_tmr_31_16 16 16 RO 0 0 1 1 1
+
+r xcv_cfgxcv106 3
+xcvr_psm_calout_tmr_5_0 6 0 RW 0 1 1 1 1
+xcvr_psm_calout_tmr_15_6 10 6 RO 0 0 1 1 1
+xcvr_psm_calout_tmr_31_16 16 16 RO 0 0 1 1 1
+
+r xcv_cfgxcv107 11
+xcvr_psm_ctrl_0 1 0 RW 0 1 1 1 1
+xcvr_psm_ctrl_7_1 7 1 RO 0 0 1 1 1
+xcvr_psm_ctrl_8 1 8 RO 0 0 1 1 1
+xcvr_psm_ctrl_9 1 9 RW 0 1 1 1 1
+xcvr_psm_ctrl_10 1 10 RW 0 0 1 1 1
+xcvr_psm_ctrl_11 1 11 RW 0 0 1 1 1
+xcvr_psm_ctrl_12 1 12 RW 0 0 1 1 1
+xcvr_psm_ctrl_13 1 13 RW 0 0 1 1 1
+xcvr_psm_ctrl_14 1 14 RW 0 0 1 1 1
+xcvr_psm_ctrl_15 1 15 RO 0 0 1 1 1
+xcvr_psm_ctrl_31_16 16 16 RO 0 0 1 1 1
+
+r xcv_cfgxcv108 17
+xcvr_psm_diag_0 1 0 RW 0 0 1 1 1
+xcvr_psm_diag_1 1 1 RW 0 0 1 1 1
+xcvr_psm_diag_2 1 2 RW 0 0 1 1 1
+xcvr_psm_diag_3 1 3 RW 0 0 1 1 1
+xcvr_psm_diag_4 1 4 RW 0 0 1 1 1
+xcvr_psm_diag_5 1 5 RW 0 0 1 1 1
+xcvr_psm_diag_6 1 6 RW 0 0 1 1 1
+xcvr_psm_diag_7 1 7 RO 0 0 1 1 1
+xcvr_psm_diag_8 1 8 RW 0 0 1 1 1
+xcvr_psm_diag_9 1 9 RW 0 0 1 1 1
+xcvr_psm_diag_10 1 10 RW 0 0 1 1 1
+xcvr_psm_diag_11 1 11 RW 0 0 1 1 1
+xcvr_psm_diag_12 1 12 RW 0 0 1 1 1
+xcvr_psm_diag_13 1 13 RW 0 0 1 1 1
+xcvr_psm_diag_14 1 14 RW 0 0 1 1 1
+xcvr_psm_diag_15 1 15 RO 0 0 1 1 1
+xcvr_psm_diag_31_16 16 16 RO 0 0 1 1 1
+
+r xcv_cfgxcv109 17
+xcvr_psm_rctrl_0 1 0 RW 0 0 1 1 1
+xcvr_psm_rctrl_1 1 1 RW 0 0 1 1 1
+xcvr_psm_rctrl_2 1 2 RW 0 1 1 1 1
+xcvr_psm_rctrl_3 1 3 RW 0 1 1 1 1
+xcvr_psm_rctrl_4 1 4 RW 0 1 1 1 1
+xcvr_psm_rctrl_5 1 5 RW 0 0 1 1 1
+xcvr_psm_rctrl_6 1 6 RW 0 0 1 1 1
+xcvr_psm_rctrl_7 1 7 RW 0 1 1 1 1
+xcvr_psm_rctrl_8 1 8 RW 0 0 1 1 1
+xcvr_psm_rctrl_9 1 9 RW 0 0 1 1 1
+xcvr_psm_rctrl_10 1 10 RW 0 1 1 1 1
+xcvr_psm_rctrl_11 1 11 RW 0 1 1 1 1
+xcvr_psm_rctrl_12 1 12 RW 0 1 1 1 1
+xcvr_psm_rctrl_13 1 13 RW 0 1 1 1 1
+xcvr_psm_rctrl_14 1 14 RW 0 0 1 1 1
+xcvr_psm_rctrl_15 1 15 RW 0 1 1 1 1
+xcvr_psm_rctrl_31_16 16 16 RO 0 0 1 1 1
+
+r xcv_cfgxcv110 3
+xcvr_psm_rdy_tmr_5_0 6 0 RW 0 16 1 1 1
+xcvr_psm_rdy_tmr_15_6 10 6 RO 0 0 1 1 1
+xcvr_psm_rdy_tmr_31_16 16 16 RO 0 0 1 1 1
+
+r xcv_cfgxcv111 2
+xcvr_psm_st_0_15_0 16 0 RO 0 0 1 1 1
+xcvr_psm_st_0_31_16 16 16 RO 0 0 1 1 1
+
+r xcv_cfgxcv112 3
+xcvr_psm_st_1_9_0 10 0 RO 0 0 1 1 1
+xcvr_psm_st_1_15_10 6 10 RO 0 0 1 1 1
+xcvr_psm_st_1_31_16 16 16 RO 0 0 1 1 1
+
+r xcv_cfgxcv113 10
+xcvr_psm_user_def_ctrl_0 1 0 RW 0 0 1 1 1
+xcvr_psm_user_def_ctrl_8_1 8 1 RW 0 0 1 1 1
+xcvr_psm_user_def_ctrl_9 1 9 RW 0 0 1 1 1
+xcvr_psm_user_def_ctrl_10 1 10 RW 0 0 1 1 1
+xcvr_psm_user_def_ctrl_11 1 11 RW 0 0 1 1 1
+xcvr_psm_user_def_ctrl_12 1 12 RW 0 0 1 1 1
+xcvr_psm_user_def_ctrl_13 1 13 RW 0 0 1 1 1
+xcvr_psm_user_def_ctrl_14 1 14 RW 0 0 1 1 1
+xcvr_psm_user_def_ctrl_15 1 15 RW 0 0 1 1 1
+xcvr_psm_user_def_ctrl_31_16 16 16 RW 0 0 1 1 1
+
+
+ ** --  RegFiles configuration -- **
+
+
+ ** --  Blocks configuration -- **
+
+b pma_tx_lane_registers.sd3101_t4_registers_sd3101_phy_registers 113 0 0 65536 1 1 1
+T_tx_bist_ctrl_644 tx__cfgtx_1 tx_bist_ctrl 896 4 RW 0 1 8
+T_tx_bist_seed0_646 tx__cfgtx_2 tx_bist_seed0 904 4 RW 0 1 8
+T_tx_bist_seed1_647 tx__cfgtx_3 tx_bist_seed1 908 4 RW 0 1 8
+T_tx_bist_uddwr_645 tx__cfgtx_4 tx_bist_uddwr 900 4 RW 0 1 8
+T_tx_duty_cycle_cal_ctrl_648 tx__cfgtx_5 tx_duty_cycle_cal_ctrl 1024 4 RW 0 1 8
+T_tx_duty_cycle_cal_init_tmr_652 tx__cfgtx_6 tx_duty_cycle_cal_init_tmr 1040 4 RW 0 1 8
+T_tx_duty_cycle_cal_iter_tmr_653 tx__cfgtx_7 tx_duty_cycle_cal_iter_tmr 1044 4 RW 0 1 8
+T_tx_duty_cycle_cal_ovrd_649 tx__cfgtx_8 tx_duty_cycle_cal_ovrd 1028 4 RW 0 1 8
+T_tx_duty_cycle_cal_start_650 tx__cfgtx_9 tx_duty_cycle_cal_start 1032 4 RW 0 1 8
+T_tx_duty_cycle_cal_tune_651 tx__cfgtx_10 tx_duty_cycle_cal_tune 1036 4 RW 0 1 8
+T_tx_psc_a0_632 tx__cfgtx_11 tx_psc_a0 640 4 RW 0 1 8
+T_tx_psc_a1_633 tx__cfgtx_12 tx_psc_a1 644 4 RW 0 1 8
+T_tx_psc_a2_634 tx__cfgtx_13 tx_psc_a2 648 4 RW 0 1 8
+T_tx_psc_a3_635 tx__cfgtx_14 tx_psc_a3 652 4 RW 0 1 8
+T_tx_psc_a4_636 tx__cfgtx_15 tx_psc_a4 656 4 RW 0 1 8
+T_tx_psc_a5_637 tx__cfgtx_16 tx_psc_a5 660 4 RW 0 1 8
+T_tx_psc_cal_638 tx__cfgtx_17 tx_psc_cal 664 4 RW 0 1 8
+T_tx_psc_rdy_639 tx__cfgtx_18 tx_psc_rdy 668 4 RW 0 1 8
+T_tx_rcvdet_ctrl_640 tx__cfgtx_19 tx_rcvdet_ctrl 768 4 RW 0 1 8
+T_tx_rcvdet_en_tmr_642 tx__cfgtx_20 tx_rcvdet_en_tmr 776 4 RW 0 1 8
+T_tx_rcvdet_ovrd_641 tx__cfgtx_21 tx_rcvdet_ovrd 772 4 RW 0 1 8
+T_tx_rcvdet_st_tmr_643 tx__cfgtx_22 tx_rcvdet_st_tmr 780 4 RW 0 1 8
+T_tx_txcc_cpost_mult_00_575 tx__cfgtx_23 tx_txcc_cpost_mult_00 176 4 RW 0 1 8
+T_tx_txcc_cpost_mult_01_576 tx__cfgtx_24 tx_txcc_cpost_mult_01 180 4 RW 0 1 8
+T_tx_txcc_cpost_mult_10_577 tx__cfgtx_25 tx_txcc_cpost_mult_10 184 4 RW 0 1 8
+T_tx_txcc_cpost_mult_11_578 tx__cfgtx_26 tx_txcc_cpost_mult_11 188 4 RW 0 1 8
+T_tx_txcc_cpre_mult_00_571 tx__cfgtx_27 tx_txcc_cpre_mult_00 160 4 RW 0 1 8
+T_tx_txcc_cpre_mult_01_572 tx__cfgtx_28 tx_txcc_cpre_mult_01 164 4 RW 0 1 8
+T_tx_txcc_cpre_mult_10_573 tx__cfgtx_29 tx_txcc_cpre_mult_10 168 4 RW 0 1 8
+T_tx_txcc_cpre_mult_11_574 tx__cfgtx_30 tx_txcc_cpre_mult_11 172 4 RW 0 1 8
+T_tx_txcc_ctrl_563 tx__cfgtx_31 tx_txcc_ctrl 128 4 RW 0 1 8
+T_tx_txcc_ipost_coef_value_616 tx__cfgtx_32 tx_txcc_ipost_coef_value 360 4 RW 0 1 8
+T_tx_txcc_ipre_coef_value_605 tx__cfgtx_33 tx_txcc_ipre_coef_value 296 4 RW 0 1 8
+T_tx_txcc_lf_mult_570 tx__cfgtx_34 tx_txcc_lf_mult 156 4 RW 0 1 8
+T_tx_txcc_main_cval_568 tx__cfgtx_35 tx_txcc_main_cval 148 4 RW 0 1 8
+T_tx_txcc_main_ovrd_565 tx__cfgtx_36 tx_txcc_main_ovrd 136 4 RW 0 1 8
+T_tx_txcc_mgnfs_mult_000_579 tx__cfgtx_37 tx_txcc_mgnfs_mult_000 192 4 RW 0 1 8
+T_tx_txcc_mgnfs_mult_001_580 tx__cfgtx_38 tx_txcc_mgnfs_mult_001 196 4 RW 0 1 8
+T_tx_txcc_mgnfs_mult_010_581 tx__cfgtx_39 tx_txcc_mgnfs_mult_010 200 4 RW 0 1 8
+T_tx_txcc_mgnfs_mult_011_582 tx__cfgtx_40 tx_txcc_mgnfs_mult_011 204 4 RW 0 1 8
+T_tx_txcc_mgnfs_mult_100_583 tx__cfgtx_41 tx_txcc_mgnfs_mult_100 208 4 RW 0 1 8
+T_tx_txcc_mgnfs_mult_101_584 tx__cfgtx_42 tx_txcc_mgnfs_mult_101 212 4 RW 0 1 8
+T_tx_txcc_mgnfs_mult_110_585 tx__cfgtx_43 tx_txcc_mgnfs_mult_110 216 4 RW 0 1 8
+T_tx_txcc_mgnfs_mult_111_586 tx__cfgtx_44 tx_txcc_mgnfs_mult_111 220 4 RW 0 1 8
+T_tx_txcc_mgnhs_mult_000_587 tx__cfgtx_45 tx_txcc_mgnhs_mult_000 224 4 RW 0 1 8
+T_tx_txcc_mgnhs_mult_001_588 tx__cfgtx_46 tx_txcc_mgnhs_mult_001 228 4 RW 0 1 8
+T_tx_txcc_mgnhs_mult_010_589 tx__cfgtx_47 tx_txcc_mgnhs_mult_010 232 4 RW 0 1 8
+T_tx_txcc_mgnhs_mult_011_590 tx__cfgtx_48 tx_txcc_mgnhs_mult_011 236 4 RW 0 1 8
+T_tx_txcc_mgnhs_mult_100_591 tx__cfgtx_49 tx_txcc_mgnhs_mult_100 240 4 RW 0 1 8
+T_tx_txcc_mgnhs_mult_101_592 tx__cfgtx_50 tx_txcc_mgnhs_mult_101 244 4 RW 0 1 8
+T_tx_txcc_mgnhs_mult_110_593 tx__cfgtx_51 tx_txcc_mgnhs_mult_110 248 4 RW 0 1 8
+T_tx_txcc_mgnhs_mult_111_594 tx__cfgtx_52 tx_txcc_mgnhs_mult_111 252 4 RW 0 1 8
+T_tx_txcc_p0post_coef_mult_606 tx__cfgtx_53 tx_txcc_p0post_coef_mult 320 4 RW 0 1 8
+T_tx_txcc_p0pre_coef_mult_595 tx__cfgtx_54 tx_txcc_p0pre_coef_mult 256 4 RW 0 1 8
+T_tx_txcc_p1post_coef_mult_607 tx__cfgtx_55 tx_txcc_p1post_coef_mult 324 4 RW 0 1 8
+T_tx_txcc_p1pre_coef_mult_596 tx__cfgtx_56 tx_txcc_p1pre_coef_mult 260 4 RW 0 1 8
+T_tx_txcc_p2post_coef_mult_608 tx__cfgtx_57 tx_txcc_p2post_coef_mult 328 4 RW 0 1 8
+T_tx_txcc_p2pre_coef_mult_597 tx__cfgtx_58 tx_txcc_p2pre_coef_mult 264 4 RW 0 1 8
+T_tx_txcc_p3post_coef_mult_609 tx__cfgtx_59 tx_txcc_p3post_coef_mult 332 4 RW 0 1 8
+T_tx_txcc_p3pre_coef_mult_598 tx__cfgtx_60 tx_txcc_p3pre_coef_mult 268 4 RW 0 1 8
+T_tx_txcc_p4post_coef_mult_610 tx__cfgtx_61 tx_txcc_p4post_coef_mult 336 4 RW 0 1 8
+T_tx_txcc_p4pre_coef_mult_599 tx__cfgtx_62 tx_txcc_p4pre_coef_mult 272 4 RW 0 1 8
+T_tx_txcc_p5post_coef_mult_611 tx__cfgtx_63 tx_txcc_p5post_coef_mult 340 4 RW 0 1 8
+T_tx_txcc_p5pre_coef_mult_600 tx__cfgtx_64 tx_txcc_p5pre_coef_mult 276 4 RW 0 1 8
+T_tx_txcc_p6post_coef_mult_612 tx__cfgtx_65 tx_txcc_p6post_coef_mult 344 4 RW 0 1 8
+T_tx_txcc_p6pre_coef_mult_601 tx__cfgtx_66 tx_txcc_p6pre_coef_mult 280 4 RW 0 1 8
+T_tx_txcc_p7post_coef_mult_613 tx__cfgtx_67 tx_txcc_p7post_coef_mult 348 4 RW 0 1 8
+T_tx_txcc_p7pre_coef_mult_602 tx__cfgtx_68 tx_txcc_p7pre_coef_mult 284 4 RW 0 1 8
+T_tx_txcc_p8post_coef_mult_614 tx__cfgtx_69 tx_txcc_p8post_coef_mult 352 4 RW 0 1 8
+T_tx_txcc_p8pre_coef_mult_603 tx__cfgtx_70 tx_txcc_p8pre_coef_mult 288 4 RW 0 1 8
+T_tx_txcc_p9post_coef_mult_615 tx__cfgtx_71 tx_txcc_p9post_coef_mult 356 4 RW 0 1 8
+T_tx_txcc_p9pre_coef_mult_604 tx__cfgtx_72 tx_txcc_p9pre_coef_mult 292 4 RW 0 1 8
+T_tx_txcc_post_cval_569 tx__cfgtx_73 tx_txcc_post_cval 152 4 RW 0 1 8
+T_tx_txcc_post_ovrd_566 tx__cfgtx_74 tx_txcc_post_ovrd 140 4 RW 0 1 8
+T_tx_txcc_pre_cval_567 tx__cfgtx_75 tx_txcc_pre_cval 144 4 RW 0 1 8
+T_tx_txcc_pre_ovrd_564 tx__cfgtx_76 tx_txcc_pre_ovrd 132 4 RW 0 1 8
+T_xcvr_diag_bidi_ctrl_627 xcv_cfgxcv77 xcvr_diag_bidi_ctrl 552 4 RW 0 1 8
+T_xcvr_diag_enb_ana_dcd_test_631 xcv_cfgxcv78 xcvr_diag_enb_ana_dcd_test 568 4 RW 0 1 8
+T_xcvr_diag_hsclk_div_624 xcv_cfgxcv79 xcvr_diag_hsclk_div 540 4 RW 0 1 8
+T_xcvr_diag_hsclk_sel_623 xcv_cfgxcv80 xcvr_diag_hsclk_sel 536 4 RW 0 1 8
+T_xcvr_diag_plldrc_ctrl_622 xcv_cfgxcv81 xcvr_diag_plldrc_ctrl 532 4 RW 0 1 8
+T_xcvr_diag_psc_ovrd_628 xcv_cfgxcv82 xcvr_diag_psc_ovrd 556 4 RW 0 1 8
+T_xcvr_diag_pwri_tmr_617 xcv_cfgxcv83 xcvr_diag_pwri_tmr 512 4 RW 0 1 8
+T_xcvr_diag_rst_diag_629 xcv_cfgxcv84 xcvr_diag_rst_diag 560 4 RW 0 1 8
+T_xcvr_diag_rxclk_ctrl_626 xcv_cfgxcv85 xcvr_diag_rxclk_ctrl 548 4 RW 0 1 8
+T_xcvr_diag_txclk_ctrl_625 xcv_cfgxcv86 xcvr_diag_txclk_ctrl 544 4 RW 0 1 8
+T_xcvr_diag_xcal_pwri_ovrd_618 xcv_cfgxcv87 xcvr_diag_xcal_pwri_ovrd 516 4 RW 0 1 8
+T_xcvr_diag_xcal_pwri_stat_619 xcv_cfgxcv88 xcvr_diag_xcal_pwri_stat 520 4 RW 0 1 8
+T_xcvr_diag_xcvr_clk_ctrl_630 xcv_cfgxcv89 xcvr_diag_xcvr_clk_ctrl 564 4 RW 0 1 8
+T_xcvr_diag_xdp_pwri_ovrd_620 xcv_cfgxcv90 xcvr_diag_xdp_pwri_ovrd 524 4 RW 0 1 8
+T_xcvr_diag_xdp_pwri_stat_621 xcv_cfgxcv91 xcvr_diag_xdp_pwri_stat 528 4 RW 0 1 8
+T_xcvr_psm_a0byp_tmr_545 xcv_cfgxcv92 xcvr_psm_a0byp_tmr 16 4 RW 0 1 8
+T_xcvr_psm_a0in_tmr_544 xcv_cfgxcv93 xcvr_psm_a0in_tmr 12 4 RW 0 1 8
+T_xcvr_psm_a0out_tmr_552 xcv_cfgxcv94 xcvr_psm_a0out_tmr 44 4 RW 0 1 8
+T_xcvr_psm_a1in_tmr_546 xcv_cfgxcv95 xcvr_psm_a1in_tmr 20 4 RW 0 1 8
+T_xcvr_psm_a1out_tmr_553 xcv_cfgxcv96 xcvr_psm_a1out_tmr 48 4 RW 0 1 8
+T_xcvr_psm_a2in_tmr_547 xcv_cfgxcv97 xcvr_psm_a2in_tmr 24 4 RW 0 1 8
+T_xcvr_psm_a2out_tmr_554 xcv_cfgxcv98 xcvr_psm_a2out_tmr 52 4 RW 0 1 8
+T_xcvr_psm_a3in_tmr_548 xcv_cfgxcv99 xcvr_psm_a3in_tmr 28 4 RW 0 1 8
+T_xcvr_psm_a3out_tmr_555 xcv_cfgxcv100 xcvr_psm_a3out_tmr 56 4 RW 0 1 8
+T_xcvr_psm_a4in_tmr_549 xcv_cfgxcv101 xcvr_psm_a4in_tmr 32 4 RW 0 1 8
+T_xcvr_psm_a4out_tmr_556 xcv_cfgxcv102 xcvr_psm_a4out_tmr 60 4 RW 0 1 8
+T_xcvr_psm_a5in_tmr_550 xcv_cfgxcv103 xcvr_psm_a5in_tmr 36 4 RW 0 1 8
+T_xcvr_psm_a5out_tmr_557 xcv_cfgxcv104 xcvr_psm_a5out_tmr 64 4 RW 0 1 8
+T_xcvr_psm_calin_tmr_543 xcv_cfgxcv105 xcvr_psm_calin_tmr 8 4 RW 0 1 8
+T_xcvr_psm_calout_tmr_551 xcv_cfgxcv106 xcvr_psm_calout_tmr 40 4 RW 0 1 8
+T_xcvr_psm_ctrl_541 xcv_cfgxcv107 xcvr_psm_ctrl 0 4 RW 0 1 8
+T_xcvr_psm_diag_559 xcv_cfgxcv108 xcvr_psm_diag 72 4 RW 0 1 8
+T_xcvr_psm_rctrl_542 xcv_cfgxcv109 xcvr_psm_rctrl 4 4 RW 0 1 8
+T_xcvr_psm_rdy_tmr_558 xcv_cfgxcv110 xcvr_psm_rdy_tmr 68 4 RW 0 1 8
+T_xcvr_psm_st_0_560 xcv_cfgxcv111 xcvr_psm_st_0 76 4 RW 0 1 8
+T_xcvr_psm_st_1_561 xcv_cfgxcv112 xcvr_psm_st_1 80 4 RW 0 1 8
+T_xcvr_psm_user_def_ctrl_562 xcv_cfgxcv113 xcvr_psm_user_def_ctrl 124 4 RW 0 1 8
+

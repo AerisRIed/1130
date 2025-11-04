@@ -1,0 +1,193 @@
+ ** -- Register/Field configuration -- **
+
+
+r dtb_cfgdtb1 6
+dtb_ctrl_5_0 6 0 RW 0 0 1 1 1
+dtb_ctrl_15_6 10 6 RO 0 0 1 1 1
+dtb_ctrl_19_16 4 16 RW 0 0 1 1 1
+dtb_ctrl_23_20 4 20 RW 0 0 1 1 1
+dtb_ctrl_24 1 24 RW 0 0 1 1 1
+dtb_ctrl_31_25 7 25 RO 0 0 1 1 1
+
+r dtb_cfgdtb2 1
+dtb_data_31_0 32 0 RO 0 345344 1 1 1
+
+r phy_cfgphy3 8
+phy_isolation_ctrl_15_0 16 0 RW 0 0 1 1 1
+phy_isolation_ctrl_16 1 16 RW 0 0 1 1 1
+phy_isolation_ctrl_17 1 17 RW 0 0 1 1 1
+phy_isolation_ctrl_18 1 18 RW 0 0 1 1 1
+phy_isolation_ctrl_19 1 19 RW 0 0 1 1 1
+phy_isolation_ctrl_20 1 20 RW 0 0 1 1 1
+phy_isolation_ctrl_21 1 21 RW 0 0 1 1 1
+phy_isolation_ctrl_31_22 10 22 RO 0 0 1 1 1
+
+r phy_cfgphy4 28
+phy_pma_cmn_ctrl_sts_0 1 0 W1S 0 1 1 1 1
+phy_pma_cmn_ctrl_sts_1 1 1 W1S 0 0 1 1 1
+phy_pma_cmn_ctrl_sts_2 1 2 RO 0 0 1 1 1
+phy_pma_cmn_ctrl_sts_3 1 3 RO 0 0 1 1 1
+phy_pma_cmn_ctrl_sts_4 1 4 W1S 0 0 1 1 1
+phy_pma_cmn_ctrl_sts_5 1 5 RO 0 0 1 1 1
+phy_pma_cmn_ctrl_sts_6 1 6 RO 0 1 1 1 1
+phy_pma_cmn_ctrl_sts_7 1 7 W1S 0 1 1 1 1
+phy_pma_cmn_ctrl_sts_8 1 8 W1S 0 1 1 1 1
+phy_pma_cmn_ctrl_sts_9 1 9 W1S 0 0 1 1 1
+phy_pma_cmn_ctrl_sts_10 1 10 RO 0 0 1 1 1
+phy_pma_cmn_ctrl_sts_11 1 11 RO 0 0 1 1 1
+phy_pma_cmn_ctrl_sts_12 1 12 W1S 0 0 1 1 1
+phy_pma_cmn_ctrl_sts_13 1 13 RO 0 0 1 1 1
+phy_pma_cmn_ctrl_sts_14 1 14 RO 0 1 1 1 1
+phy_pma_cmn_ctrl_sts_15 1 15 W1S 0 0 1 1 1
+phy_pma_cmn_ctrl_sts_16 1 16 RO 0 0 1 1 1
+phy_pma_cmn_ctrl_sts_17 1 17 W1S 0 0 1 1 1
+phy_pma_cmn_ctrl_sts_18 1 18 RO 0 0 1 1 1
+phy_pma_cmn_ctrl_sts_19 1 19 W1S 0 0 1 1 1
+phy_pma_cmn_ctrl_sts_20 1 20 RO 0 0 1 1 1
+phy_pma_cmn_ctrl_sts_21 1 21 RO 0 1 1 1 1
+phy_pma_cmn_ctrl_sts_23_22 2 22 RO 0 0 1 1 1
+phy_pma_cmn_ctrl_sts_24 1 24 W1S 0 0 1 1 1
+phy_pma_cmn_ctrl_sts_25 1 25 W1S 0 0 1 1 1
+phy_pma_cmn_ctrl_sts_27_26 2 26 RO 0 0 1 1 1
+phy_pma_cmn_ctrl_sts_28 1 28 W1S 0 1 1 1 1
+phy_pma_cmn_ctrl_sts_31_29 3 29 RO 0 0 1 1 1
+
+r phy_cfgphy5 1
+phy_pma_cmn_ctrl_sts_clr_31_0 32 0 W1C 1 270549441 1 1 1
+
+r phy_cfgphy6 8
+phy_pma_iso_cmn_ctrl_0 1 0 RW 0 0 1 1 1
+phy_pma_iso_cmn_ctrl_1 1 1 RW 0 1 1 1 1
+phy_pma_iso_cmn_ctrl_23_2 22 2 RO 0 0 1 1 1
+phy_pma_iso_cmn_ctrl_25_24 2 24 RW 0 0 1 1 1
+phy_pma_iso_cmn_ctrl_26 1 26 RW 0 0 1 1 1
+phy_pma_iso_cmn_ctrl_27 1 27 RO 0 0 1 1 1
+phy_pma_iso_cmn_ctrl_29_28 2 28 RW 0 0 1 1 1
+phy_pma_iso_cmn_ctrl_31_30 2 30 RW 0 0 1 1 1
+
+r phy_cfgphy7 5
+phy_soc_int_sts_0 1 0 W1C 1 0 1 1 1
+phy_soc_int_sts_1 1 1 W1C 1 0 1 1 1
+phy_soc_int_sts_2 1 2 W1C 1 0 1 1 1
+phy_soc_int_sts_3 1 3 W1C 1 0 1 1 1
+phy_soc_int_sts_31_4 28 4 RO 0 0 1 1 1
+
+r phy_cfgphy8 2
+phy_soc_int_sts_en_3_0 4 0 RW 0 0 1 1 1
+phy_soc_int_sts_en_31_4 28 4 RO 0 0 1 1 1
+
+r phy_cfgphy9 2
+phy_soc_int_sts_set_3_0 4 0 W1S 0 0 1 1 1
+phy_soc_int_sts_set_31_4 28 4 RO 0 0 1 1 1
+
+r phy_cfgphy10 2
+phy_top_uc_event_ctr_15_0 16 0 RO 0 0 1 1 1
+phy_top_uc_event_ctr_31_16 16 16 RO 0 0 1 1 1
+
+r phy_cfgphy11 2
+phy_top_uc_watchdog_23_0 24 0 RO 0 0 1 1 1
+phy_top_uc_watchdog_31_24 8 24 RO 0 0 1 1 1
+
+r phy_cfgphy12 3
+phy_top_uc_watchdog_cfg_23_0 24 0 RW 0 2500000 1 1 1
+phy_top_uc_watchdog_cfg_30_24 7 24 RO 0 0 1 1 1
+phy_top_uc_watchdog_cfg_31 1 31 RO 0 1 1 1 1
+
+r phy_cfgphy13 1
+phy_uc_cmn_en_int_sts_31_0 32 0 RO 0 0 1 1 1
+
+r phy_cfgphy14 29
+phy_uc_cmn_int_sts_0 1 0 W1C 1 0 1 1 1
+phy_uc_cmn_int_sts_1 1 1 W1C 1 0 1 1 1
+phy_uc_cmn_int_sts_3_2 2 2 W1C 1 0 1 1 1
+phy_uc_cmn_int_sts_4 1 4 W1C 1 0 1 1 1
+phy_uc_cmn_int_sts_5 1 5 W1C 1 0 1 1 1
+phy_uc_cmn_int_sts_6 1 6 W1C 1 0 1 1 1
+phy_uc_cmn_int_sts_7 1 7 W1C 1 0 1 1 1
+phy_uc_cmn_int_sts_8 1 8 W1C 1 0 1 1 1
+phy_uc_cmn_int_sts_9 1 9 W1C 1 0 1 1 1
+phy_uc_cmn_int_sts_10 1 10 W1C 1 0 1 1 1
+phy_uc_cmn_int_sts_11 1 11 W1C 1 0 1 1 1
+phy_uc_cmn_int_sts_12 1 12 W1C 1 0 1 1 1
+phy_uc_cmn_int_sts_13 1 13 W1C 1 0 1 1 1
+phy_uc_cmn_int_sts_14 1 14 W1C 1 0 1 1 1
+phy_uc_cmn_int_sts_15 1 15 W1C 1 0 1 1 1
+phy_uc_cmn_int_sts_16 1 16 W1C 1 0 1 1 1
+phy_uc_cmn_int_sts_17 1 17 W1C 1 0 1 1 1
+phy_uc_cmn_int_sts_19_18 2 18 W1C 1 0 1 1 1
+phy_uc_cmn_int_sts_20 1 20 W1C 1 0 1 1 1
+phy_uc_cmn_int_sts_21 1 21 W1C 1 0 1 1 1
+phy_uc_cmn_int_sts_22 1 22 W1C 1 0 1 1 1
+phy_uc_cmn_int_sts_23 1 23 W1C 1 0 1 1 1
+phy_uc_cmn_int_sts_25_24 2 24 W1C 1 0 1 1 1
+phy_uc_cmn_int_sts_26 1 26 W1C 1 0 1 1 1
+phy_uc_cmn_int_sts_27 1 27 W1C 1 0 1 1 1
+phy_uc_cmn_int_sts_28 1 28 W1C 1 0 1 1 1
+phy_uc_cmn_int_sts_29 1 29 W1C 1 0 1 1 1
+phy_uc_cmn_int_sts_30 1 30 W1C 1 0 1 1 1
+phy_uc_cmn_int_sts_31 1 31 RO 0 0 1 1 1
+
+r phy_cfgphy15 1
+phy_uc_cmn_int_sts_en_31_0 32 0 RW 0 0 1 1 1
+
+r phy_cfgphy16 2
+phy_uc_cmn_int_sts_set_30_0 31 0 W1S 0 0 1 1 1
+phy_uc_cmn_int_sts_set_31 1 31 RO 0 0 1 1 1
+
+r phy_cfgphy17 2
+phy_uc_ln_int_sts_15_0 16 0 RO 0 0 1 1 1
+phy_uc_ln_int_sts_31_16 16 16 RO 0 0 1 1 1
+
+r uc__cfguc_18 1
+uc_top_scrpad10_31_0 32 0 RW 0 0 1 1 1
+
+r uc__cfguc_19 1
+uc_top_scrpad11_31_0 32 0 RW 0 0 1 1 1
+
+r uc__cfguc_20 1
+uc_top_scrpad12_31_0 32 0 RW 0 0 1 1 1
+
+r uc__cfguc_21 1
+uc_top_scrpad13_31_0 32 0 RW 0 0 1 1 1
+
+r uc__cfguc_22 1
+uc_top_scrpad14_31_0 32 0 RW 0 0 1 1 1
+
+r uc__cfguc_23 1
+uc_top_scrpad8_31_0 32 0 RW 0 0 1 1 1
+
+r uc__cfguc_24 1
+uc_top_scrpad9_31_0 32 0 RW 0 0 1 1 1
+
+
+ ** --  RegFiles configuration -- **
+
+
+ ** --  Blocks configuration -- **
+
+b phy_pma_cmn_registers.sd3101_t4_registers_sd3101_phy_registers 24 0 0 229376 1 1 1
+T_dtb_ctrl_119 dtb_cfgdtb1 dtb_ctrl 48 4 RW 0 1 8
+T_dtb_data_120 dtb_cfgdtb2 dtb_data 52 4 RW 0 1 8
+T_phy_isolation_ctrl_121 phy_cfgphy3 phy_isolation_ctrl 60 4 RW 0 1 8
+T_phy_pma_cmn_ctrl_sts_112 phy_cfgphy4 phy_pma_cmn_ctrl_sts 8 4 RW 0 1 8
+T_phy_pma_cmn_ctrl_sts_clr_113 phy_cfgphy5 phy_pma_cmn_ctrl_sts_clr 12 4 RW 0 1 8
+T_phy_pma_iso_cmn_ctrl_118 phy_cfgphy6 phy_pma_iso_cmn_ctrl 32 4 RW 0 1 8
+T_phy_soc_int_sts_122 phy_cfgphy7 phy_soc_int_sts 64 4 RW 0 1 8
+T_phy_soc_int_sts_en_124 phy_cfgphy8 phy_soc_int_sts_en 72 4 RW 0 1 8
+T_phy_soc_int_sts_set_123 phy_cfgphy9 phy_soc_int_sts_set 68 4 RW 0 1 8
+T_phy_top_uc_event_ctr_130 phy_cfgphy10 phy_top_uc_event_ctr 100 4 RW 0 1 8
+T_phy_top_uc_watchdog_131 phy_cfgphy11 phy_top_uc_watchdog 104 4 RW 0 1 8
+T_phy_top_uc_watchdog_cfg_132 phy_cfgphy12 phy_top_uc_watchdog_cfg 108 4 RW 0 1 8
+T_phy_uc_cmn_en_int_sts_127 phy_cfgphy13 phy_uc_cmn_en_int_sts 88 4 RW 0 1 8
+T_phy_uc_cmn_int_sts_125 phy_cfgphy14 phy_uc_cmn_int_sts 80 4 RW 0 1 8
+T_phy_uc_cmn_int_sts_en_128 phy_cfgphy15 phy_uc_cmn_int_sts_en 92 4 RW 0 1 8
+T_phy_uc_cmn_int_sts_set_126 phy_cfgphy16 phy_uc_cmn_int_sts_set 84 4 RW 0 1 8
+T_phy_uc_ln_int_sts_129 phy_cfgphy17 phy_uc_ln_int_sts 96 4 RW 0 1 8
+T_uc_top_scrpad10_116 uc__cfguc_18 uc_top_scrpad10 24 4 RW 0 1 8
+T_uc_top_scrpad11_117 uc__cfguc_19 uc_top_scrpad11 28 4 RW 0 1 8
+T_uc_top_scrpad12_133 uc__cfguc_20 uc_top_scrpad12 112 4 RW 0 1 8
+T_uc_top_scrpad13_134 uc__cfguc_21 uc_top_scrpad13 116 4 RW 0 1 8
+T_uc_top_scrpad14_135 uc__cfguc_22 uc_top_scrpad14 120 4 RW 0 1 8
+T_uc_top_scrpad8_114 uc__cfguc_23 uc_top_scrpad8 16 4 RW 0 1 8
+T_uc_top_scrpad9_115 uc__cfguc_24 uc_top_scrpad9 20 4 RW 0 1 8
+

@@ -1,0 +1,5 @@
+`include"cdn_u4_usb32_test_base.sv"
+`include"cdn_u4_usb32_lowpower_base_test.sv"
+//`include"u32_u1_entry_exit_test"
+//`include"u32_u1_entry_exit_test"
+//`include"u32_u1_entry_exit_test"

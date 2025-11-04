@@ -1,0 +1,39 @@
+ ** -- Register/Field configuration -- **
+
+
+r cmn_cfgcmn1 1
+cmn_illegal_reg_31_0 32 0 RO 0 0 1 1 1
+
+r phy_cfgphy2 1
+phy_pcs_cmn_illegal_reg_31_0 32 0 RO 0 0 1 1 1
+
+r phy_cfgphy3 1
+phy_pcs_lane_illegal_reg_31_0 32 0 RO 0 0 1 1 1
+
+r phy_cfgphy4 1
+phy_pma_cmn_illegal_reg_31_0 32 0 RO 0 0 1 1 1
+
+r phy_cfgphy5 1
+phy_pma_lane_illegal_reg_31_0 32 0 RO 0 0 1 1 1
+
+r pma_cfgpma6 1
+pma_rx_illegal_reg_31_0 32 0 RO 0 0 1 1 1
+
+r pma_cfgpma7 1
+pma_tx_illegal_reg_31_0 32 0 RO 0 0 1 1 1
+
+
+ ** --  RegFiles configuration -- **
+
+
+ ** --  Blocks configuration -- **
+
+b illegal_registers.sd3101_t4_registers_sd3101_phy_registers 7 0 0 0 1 1 1
+T_cmn_illegal_reg_9 cmn_cfgcmn1 cmn_illegal_reg 65532 4 RW 0 1 8
+T_phy_pcs_cmn_illegal_reg_12 phy_cfgphy2 phy_pcs_cmn_illegal_reg 212988 4 RW 0 1 8
+T_phy_pcs_lane_illegal_reg_14 phy_cfgphy3 phy_pcs_lane_illegal_reg 229372 4 RW 0 1 8
+T_phy_pma_cmn_illegal_reg_13 phy_cfgphy4 phy_pma_cmn_illegal_reg 245756 4 RW 0 1 8
+T_phy_pma_lane_illegal_reg_15 phy_cfgphy5 phy_pma_lane_illegal_reg 262140 4 RW 0 1 8
+T_pma_rx_illegal_reg_11 pma_cfgpma6 pma_rx_illegal_reg 133116 4 RW 0 1 8
+T_pma_tx_illegal_reg_10 pma_cfgpma7 pma_tx_illegal_reg 67580 4 RW 0 1 8
+

@@ -1,0 +1,7 @@
+
+`include "cdn_phy_monitor_base.sv" 
+`include "cdn_phy_sequence_library.sv" 
+`include "cdn_phy_sequencer_base.sv" 
+`include "cdn_phy_transaction_base.sv" 
+`include "cdn_phy_driver_base.sv" 
+`include "cdn_phy_agent_base.sv" 

@@ -1,0 +1,1586 @@
+ ** -- Register/Field configuration -- **
+
+
+r cmn_cfgcmn1 7
+cmn_bgcal_ctrl_5_0 6 0 RO 0 0 1 1 1
+cmn_bgcal_ctrl_11_6 6 6 RO 0 0 1 1 1
+cmn_bgcal_ctrl_12 1 12 RO 0 0 1 1 1
+cmn_bgcal_ctrl_13 1 13 RO 0 0 1 1 1
+cmn_bgcal_ctrl_14 1 14 RO 0 0 1 1 1
+cmn_bgcal_ctrl_15 1 15 RW 0 0 1 1 1
+cmn_bgcal_ctrl_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn2 3
+cmn_bgcal_init_tmr_8_0 9 0 RW 0 125 1 1 1
+cmn_bgcal_init_tmr_15_9 7 9 RO 0 0 1 1 1
+cmn_bgcal_init_tmr_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn3 3
+cmn_bgcal_iter_tmr_8_0 9 0 RW 0 135 1 1 1
+cmn_bgcal_iter_tmr_15_9 7 9 RO 0 0 1 1 1
+cmn_bgcal_iter_tmr_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn4 5
+cmn_bgcal_ovrd_5_0 6 0 RW 0 0 1 1 1
+cmn_bgcal_ovrd_13_6 8 6 RO 0 0 1 1 1
+cmn_bgcal_ovrd_14 1 14 RW 0 0 1 1 1
+cmn_bgcal_ovrd_15 1 15 RW 0 0 1 1 1
+cmn_bgcal_ovrd_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn5 4
+cmn_bgcal_start_5_0 6 0 RW 0 0 1 1 1
+cmn_bgcal_start_14_6 9 6 RO 0 0 1 1 1
+cmn_bgcal_start_15 1 15 RW 0 0 1 1 1
+cmn_bgcal_start_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn6 3
+cmn_bgcal_tune_5_0 6 0 RW 0 0 1 1 1
+cmn_bgcal_tune_15_6 10 6 RO 0 0 1 1 1
+cmn_bgcal_tune_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn7 10
+cmn_cdiag_ccal_pwri_ovrd_7_0 8 0 RW 0 36 1 1 1
+cmn_cdiag_ccal_pwri_ovrd_8 1 8 RO 0 0 1 1 1
+cmn_cdiag_ccal_pwri_ovrd_9 1 9 RW 0 0 1 1 1
+cmn_cdiag_ccal_pwri_ovrd_10 1 10 RO 0 1 1 1 1
+cmn_cdiag_ccal_pwri_ovrd_11 1 11 RW 0 0 1 1 1
+cmn_cdiag_ccal_pwri_ovrd_13_12 2 12 RO 0 0 1 1 1
+cmn_cdiag_ccal_pwri_ovrd_14 1 14 RW 0 0 1 1 1
+cmn_cdiag_ccal_pwri_ovrd_15 1 15 RW 0 0 1 1 1
+cmn_cdiag_ccal_pwri_ovrd_23_16 8 16 RO 0 36 1 1 1
+cmn_cdiag_ccal_pwri_ovrd_31_24 8 24 RO 0 0 1 1 1
+
+r cmn_cfgcmn8 3
+cmn_cdiag_dcya_7_0 8 0 RW 0 0 1 1 1
+cmn_cdiag_dcya_15_8 8 8 RO 0 0 1 1 1
+cmn_cdiag_dcya_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn9 10
+cmn_cdiag_diag_pwri_ovrd_7_0 8 0 RW 0 36 1 1 1
+cmn_cdiag_diag_pwri_ovrd_8 1 8 RO 0 0 1 1 1
+cmn_cdiag_diag_pwri_ovrd_9 1 9 RW 0 0 1 1 1
+cmn_cdiag_diag_pwri_ovrd_10 1 10 RO 0 1 1 1 1
+cmn_cdiag_diag_pwri_ovrd_11 1 11 RW 0 0 1 1 1
+cmn_cdiag_diag_pwri_ovrd_13_12 2 12 RO 0 0 1 1 1
+cmn_cdiag_diag_pwri_ovrd_14 1 14 RW 0 0 1 1 1
+cmn_cdiag_diag_pwri_ovrd_15 1 15 RW 0 0 1 1 1
+cmn_cdiag_diag_pwri_ovrd_23_16 8 16 RO 0 164 1 1 1
+cmn_cdiag_diag_pwri_ovrd_31_24 8 24 RO 0 0 1 1 1
+
+r cmn_cfgcmn10 10
+cmn_cdiag_pllc_pwri_ovrd_7_0 8 0 RW 0 36 1 1 1
+cmn_cdiag_pllc_pwri_ovrd_8 1 8 RO 0 0 1 1 1
+cmn_cdiag_pllc_pwri_ovrd_9 1 9 RW 0 0 1 1 1
+cmn_cdiag_pllc_pwri_ovrd_10 1 10 RO 0 1 1 1 1
+cmn_cdiag_pllc_pwri_ovrd_11 1 11 RW 0 0 1 1 1
+cmn_cdiag_pllc_pwri_ovrd_13_12 2 12 RO 0 0 1 1 1
+cmn_cdiag_pllc_pwri_ovrd_14 1 14 RW 0 0 1 1 1
+cmn_cdiag_pllc_pwri_ovrd_15 1 15 RW 0 0 1 1 1
+cmn_cdiag_pllc_pwri_ovrd_23_16 8 16 RO 0 36 1 1 1
+cmn_cdiag_pllc_pwri_ovrd_31_24 8 24 RO 0 0 1 1 1
+
+r cmn_cfgcmn11 2
+cmn_cdiag_pllsm_calmc_cs_6_0 7 0 RO 0 0 1 1 1
+cmn_cdiag_pllsm_calmc_cs_31_7 25 7 RO 0 0 1 1 1
+
+r cmn_cfgcmn12 3
+cmn_cdiag_psmclk_ctrl_3_0 4 0 RW 0 5 1 1 1
+cmn_cdiag_psmclk_ctrl_15_4 12 4 RO 0 0 1 1 1
+cmn_cdiag_psmclk_ctrl_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn13 5
+cmn_cdiag_pwri_tmr_2_0 3 0 RW 0 1 1 1 1
+cmn_cdiag_pwri_tmr_7_3 5 3 RO 0 0 1 1 1
+cmn_cdiag_pwri_tmr_10_8 3 8 RW 0 1 1 1 1
+cmn_cdiag_pwri_tmr_15_11 5 11 RO 0 0 1 1 1
+cmn_cdiag_pwri_tmr_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn14 2
+cmn_cdiag_refclk_ctrl_0 1 0 RW 0 0 1 1 1
+cmn_cdiag_refclk_ctrl_31_1 31 1 RO 0 0 1 1 1
+
+r cmn_cfgcmn15 4
+cmn_cdiag_rst_diag_0 1 0 RO 0 0 1 1 1
+cmn_cdiag_rst_diag_1 1 1 RO 0 0 1 1 1
+cmn_cdiag_rst_diag_15_2 14 2 RO 0 0 1 1 1
+cmn_cdiag_rst_diag_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn16 4
+cmn_cdiag_sdosc_ctrl_0 1 0 RW 0 0 1 1 1
+cmn_cdiag_sdosc_ctrl_1 1 1 RW 0 0 1 1 1
+cmn_cdiag_sdosc_ctrl_15_2 14 2 RO 0 0 1 1 1
+cmn_cdiag_sdosc_ctrl_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn17 4
+cmn_cdiag_ssm_calmc_cs_3_0 4 0 RO 0 0 1 1 1
+cmn_cdiag_ssm_calmc_cs_15_4 12 4 RO 0 0 1 1 1
+cmn_cdiag_ssm_calmc_cs_28_16 13 16 RO 0 0 1 1 1
+cmn_cdiag_ssm_calmc_cs_31_29 3 29 RO 0 0 1 1 1
+
+r cmn_cfgcmn18 10
+cmn_cdiag_xcvrc_pwri_ovrd_7_0 8 0 RW 0 36 1 1 1
+cmn_cdiag_xcvrc_pwri_ovrd_8 1 8 RO 0 0 1 1 1
+cmn_cdiag_xcvrc_pwri_ovrd_9 1 9 RW 0 0 1 1 1
+cmn_cdiag_xcvrc_pwri_ovrd_10 1 10 RO 0 1 1 1 1
+cmn_cdiag_xcvrc_pwri_ovrd_11 1 11 RW 0 0 1 1 1
+cmn_cdiag_xcvrc_pwri_ovrd_13_12 2 12 RO 0 0 1 1 1
+cmn_cdiag_xcvrc_pwri_ovrd_14 1 14 RW 0 0 1 1 1
+cmn_cdiag_xcvrc_pwri_ovrd_15 1 15 RW 0 0 1 1 1
+cmn_cdiag_xcvrc_pwri_ovrd_23_16 8 16 RO 0 36 1 1 1
+cmn_cdiag_xcvrc_pwri_ovrd_31_24 8 24 RO 0 0 1 1 1
+
+r cmn_cfgcmn19 4
+cmn_cmsmt_clk_freq_msmt_ctrl_13_0 14 0 RO 0 0 1 1 1
+cmn_cmsmt_clk_freq_msmt_ctrl_14 1 14 RO 0 0 1 1 1
+cmn_cmsmt_clk_freq_msmt_ctrl_15 1 15 RW 0 0 1 1 1
+cmn_cmsmt_clk_freq_msmt_ctrl_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn20 2
+cmn_cmsmt_ref_clk_tmr_value_15_0 16 0 RW 0 0 1 1 1
+cmn_cmsmt_ref_clk_tmr_value_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn21 2
+cmn_cmsmt_test_clk_cnt_value_15_0 16 0 RO 0 0 1 1 1
+cmn_cmsmt_test_clk_cnt_value_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn22 3
+cmn_cmsmt_test_clk_sel_3_0 4 0 RW 0 0 1 1 1
+cmn_cmsmt_test_clk_sel_15_4 12 4 RO 0 0 1 1 1
+cmn_cmsmt_test_clk_sel_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn23 12
+cmn_diag_atb_adc_ctrl_7_0 8 0 RO 0 0 1 1 1
+cmn_diag_atb_adc_ctrl_12_8 5 8 RO 0 0 1 1 1
+cmn_diag_atb_adc_ctrl_13 1 13 RO 0 0 1 1 1
+cmn_diag_atb_adc_ctrl_14 1 14 RW 0 0 1 1 1
+cmn_diag_atb_adc_ctrl_15 1 15 RW 0 0 1 1 1
+cmn_diag_atb_adc_ctrl_19_16 4 16 RW 0 0 1 1 1
+cmn_diag_atb_adc_ctrl_24_20 5 20 RW 0 0 1 1 1
+cmn_diag_atb_adc_ctrl_26_25 2 25 RO 0 0 1 1 1
+cmn_diag_atb_adc_ctrl_27 1 27 RW 0 0 1 1 1
+cmn_diag_atb_adc_ctrl_28 1 28 RW 0 0 1 1 1
+cmn_diag_atb_adc_ctrl_29 1 29 RW 0 0 1 1 1
+cmn_diag_atb_adc_ctrl_31_30 2 30 RW 0 0 1 1 1
+
+r cmn_cfgcmn24 9
+cmn_diag_atb_ctrl_0 1 0 RW 0 0 1 1 1
+cmn_diag_atb_ctrl_1 1 1 RW 0 0 1 1 1
+cmn_diag_atb_ctrl_2 1 2 RW 0 0 1 1 1
+cmn_diag_atb_ctrl_3 1 3 RW 0 0 1 1 1
+cmn_diag_atb_ctrl_15_4 12 4 RO 0 0 1 1 1
+cmn_diag_atb_ctrl_21_16 6 16 RW 0 0 1 1 1
+cmn_diag_atb_ctrl_26_22 5 22 RW 0 0 1 1 1
+cmn_diag_atb_ctrl_28_27 2 27 RW 0 0 1 1 1
+cmn_diag_atb_ctrl_31_29 3 29 RO 0 0 1 1 1
+
+r cmn_cfgcmn25 6
+cmn_diag_bandgap_ovrd_1_0 2 0 RO 0 0 1 1 1
+cmn_diag_bandgap_ovrd_3_2 2 2 RW 0 1 1 1 1
+cmn_diag_bandgap_ovrd_7_4 4 4 RO 0 0 1 1 1
+cmn_diag_bandgap_ovrd_11_8 4 8 RO 0 0 1 1 1
+cmn_diag_bandgap_ovrd_15_12 4 12 RO 0 0 1 1 1
+cmn_diag_bandgap_ovrd_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn26 8
+cmn_diag_bias_adj_7_0 8 0 RO 0 0 1 1 1
+cmn_diag_bias_adj_10_8 3 8 RW 0 4 1 1 1
+cmn_diag_bias_adj_11 1 11 RO 0 0 1 1 1
+cmn_diag_bias_adj_13_12 2 12 RW 0 1 1 1 1
+cmn_diag_bias_adj_14 1 14 RW 0 0 1 1 1
+cmn_diag_bias_adj_15 1 15 RO 0 0 1 1 1
+cmn_diag_bias_adj_16 1 16 RW 0 0 1 1 1
+cmn_diag_bias_adj_31_17 15 17 RO 0 0 1 1 1
+
+r cmn_cfgcmn27 15
+cmn_diag_bias_ovrd_2_0 3 0 RW 0 4 1 1 1
+cmn_diag_bias_ovrd_3 1 3 RO 0 0 1 1 1
+cmn_diag_bias_ovrd_6_4 3 4 RW 0 3 1 1 1
+cmn_diag_bias_ovrd_7 1 7 RO 0 0 1 1 1
+cmn_diag_bias_ovrd_10_8 3 8 RW 0 4 1 1 1
+cmn_diag_bias_ovrd_11 1 11 RO 0 0 1 1 1
+cmn_diag_bias_ovrd_14_12 3 12 RW 0 4 1 1 1
+cmn_diag_bias_ovrd_15 1 15 RO 0 0 1 1 1
+cmn_diag_bias_ovrd_17_16 2 16 RO 0 0 1 1 1
+cmn_diag_bias_ovrd_19_18 2 18 RO 0 0 1 1 1
+cmn_diag_bias_ovrd_20 1 20 RW 0 0 1 1 1
+cmn_diag_bias_ovrd_21 1 21 RW 0 0 1 1 1
+cmn_diag_bias_ovrd_23_22 2 22 RO 0 0 1 1 1
+cmn_diag_bias_ovrd_27_24 4 24 RO 0 0 1 1 1
+cmn_diag_bias_ovrd_31_28 4 28 RO 0 0 1 1 1
+
+r cmn_cfgcmn28 16
+cmn_diag_cal_filt_ctrl_2_0 3 0 RW 0 3 1 1 1
+cmn_diag_cal_filt_ctrl_3 1 3 RO 0 0 1 1 1
+cmn_diag_cal_filt_ctrl_6_4 3 4 RW 0 3 1 1 1
+cmn_diag_cal_filt_ctrl_7 1 7 RO 0 0 1 1 1
+cmn_diag_cal_filt_ctrl_10_8 3 8 RW 0 3 1 1 1
+cmn_diag_cal_filt_ctrl_11 1 11 RO 0 0 1 1 1
+cmn_diag_cal_filt_ctrl_14_12 3 12 RW 0 3 1 1 1
+cmn_diag_cal_filt_ctrl_15 1 15 RO 0 0 1 1 1
+cmn_diag_cal_filt_ctrl_18_16 3 16 RW 0 3 1 1 1
+cmn_diag_cal_filt_ctrl_20_19 2 19 RO 0 0 1 1 1
+cmn_diag_cal_filt_ctrl_21 1 21 RW 0 0 1 1 1
+cmn_diag_cal_filt_ctrl_22 1 22 RW 0 0 1 1 1
+cmn_diag_cal_filt_ctrl_23 1 23 RW 0 0 1 1 1
+cmn_diag_cal_filt_ctrl_24 1 24 RW 0 0 1 1 1
+cmn_diag_cal_filt_ctrl_25 1 25 RW 0 0 1 1 1
+cmn_diag_cal_filt_ctrl_31_26 6 26 RO 0 0 1 1 1
+
+r cmn_cfgcmn29 2
+cmn_diag_cya_15_0 16 0 RW 0 0 1 1 1
+cmn_diag_cya_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn30 2
+cmn_diag_gpana_1_15_0 16 0 RW 0 0 1 1 1
+cmn_diag_gpana_1_31_16 16 16 RW 0 0 1 1 1
+
+r cmn_cfgcmn31 2
+cmn_diag_gpana_2_15_0 16 0 RW 0 0 1 1 1
+cmn_diag_gpana_2_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn32 2
+cmn_diag_gpana_st_15_0 16 0 RO 0 0 1 1 1
+cmn_diag_gpana_st_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn33 4
+cmn_diag_hsrrsm_ctrl_3_0 4 0 RW 0 1 1 1 1
+cmn_diag_hsrrsm_ctrl_7_4 4 4 RW 0 8 1 1 1
+cmn_diag_hsrrsm_ctrl_15_8 8 8 RO 0 0 1 1 1
+cmn_diag_hsrrsm_ctrl_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn34 11
+cmn_diag_mom_osc_ctrl_0 1 0 RW 0 0 1 1 1
+cmn_diag_mom_osc_ctrl_1 1 1 RW 0 0 1 1 1
+cmn_diag_mom_osc_ctrl_2 1 2 RW 0 0 1 1 1
+cmn_diag_mom_osc_ctrl_3 1 3 RW 0 0 1 1 1
+cmn_diag_mom_osc_ctrl_4 1 4 RW 0 0 1 1 1
+cmn_diag_mom_osc_ctrl_5 1 5 RW 0 0 1 1 1
+cmn_diag_mom_osc_ctrl_7_6 2 6 RO 0 0 1 1 1
+cmn_diag_mom_osc_ctrl_13_8 6 8 RW 0 0 1 1 1
+cmn_diag_mom_osc_ctrl_15_14 2 14 RO 0 0 1 1 1
+cmn_diag_mom_osc_ctrl_19_16 4 16 RW 0 0 1 1 1
+cmn_diag_mom_osc_ctrl_31_20 12 20 RO 0 0 1 1 1
+
+r cmn_cfgcmn35 5
+cmn_diag_pm_ctrl_15_0 16 0 RO 0 0 1 1 1
+cmn_diag_pm_ctrl_18_16 3 16 RW 0 0 1 1 1
+cmn_diag_pm_ctrl_19 1 19 RO 0 0 1 1 1
+cmn_diag_pm_ctrl_20 1 20 RW 0 0 1 1 1
+cmn_diag_pm_ctrl_31_21 11 21 RO 0 0 1 1 1
+
+r cmn_cfgcmn36 16
+cmn_diag_rst_diag_0 1 0 RO 0 0 1 1 1
+cmn_diag_rst_diag_1 1 1 RO 0 0 1 1 1
+cmn_diag_rst_diag_2 1 2 RO 0 0 1 1 1
+cmn_diag_rst_diag_3 1 3 RO 0 0 1 1 1
+cmn_diag_rst_diag_4 1 4 RO 0 0 1 1 1
+cmn_diag_rst_diag_5 1 5 RO 0 0 1 1 1
+cmn_diag_rst_diag_6 1 6 RO 0 0 1 1 1
+cmn_diag_rst_diag_7 1 7 RO 0 0 1 1 1
+cmn_diag_rst_diag_8 1 8 RO 0 0 1 1 1
+cmn_diag_rst_diag_9 1 9 RO 0 0 1 1 1
+cmn_diag_rst_diag_10 1 10 RO 0 0 1 1 1
+cmn_diag_rst_diag_11 1 11 RO 0 0 1 1 1
+cmn_diag_rst_diag_12 1 12 RO 0 0 1 1 1
+cmn_diag_rst_diag_13 1 13 RO 0 0 1 1 1
+cmn_diag_rst_diag_15_14 2 14 RO 0 0 1 1 1
+cmn_diag_rst_diag_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn37 7
+cmn_diag_sh_bg_res_4_0 5 0 RO 0 0 1 1 1
+cmn_diag_sh_bg_res_5 1 5 RO 0 0 1 1 1
+cmn_diag_sh_bg_res_15_6 10 6 RO 0 0 1 1 1
+cmn_diag_sh_bg_res_20_16 5 16 RO 0 0 1 1 1
+cmn_diag_sh_bg_res_23_21 3 21 RO 0 0 1 1 1
+cmn_diag_sh_bg_res_29_24 6 24 RO 0 0 1 1 1
+cmn_diag_sh_bg_res_31_30 2 30 RO 0 0 1 1 1
+
+r cmn_cfgcmn38 3
+cmn_diag_sh_sdclk_4_0 5 0 RO 0 0 1 1 1
+cmn_diag_sh_sdclk_15_5 11 5 RO 0 0 1 1 1
+cmn_diag_sh_sdclk_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn39 12
+cmn_diag_tmpsns_ana_ctrl_0 1 0 RW 0 0 1 1 1
+cmn_diag_tmpsns_ana_ctrl_1 1 1 RW 0 0 1 1 1
+cmn_diag_tmpsns_ana_ctrl_2 1 2 RW 0 0 1 1 1
+cmn_diag_tmpsns_ana_ctrl_3 1 3 RW 0 0 1 1 1
+cmn_diag_tmpsns_ana_ctrl_7_4 4 4 RW 0 0 1 1 1
+cmn_diag_tmpsns_ana_ctrl_11_8 4 8 RW 0 0 1 1 1
+cmn_diag_tmpsns_ana_ctrl_15_12 4 12 RW 0 3 1 1 1
+cmn_diag_tmpsns_ana_ctrl_20_16 5 16 RW 0 0 1 1 1
+cmn_diag_tmpsns_ana_ctrl_21 1 21 RW 0 0 1 1 1
+cmn_diag_tmpsns_ana_ctrl_23_22 2 22 RO 0 0 1 1 1
+cmn_diag_tmpsns_ana_ctrl_24 1 24 RO 0 0 1 1 1
+cmn_diag_tmpsns_ana_ctrl_31_25 7 25 RO 0 0 1 1 1
+
+r cmn_cfgcmn40 7
+cmn_diag_tmpsns_filt_ctrl_13_0 14 0 RW 0 4096 1 1 1
+cmn_diag_tmpsns_filt_ctrl_15_14 2 14 RO 0 0 1 1 1
+cmn_diag_tmpsns_filt_ctrl_20_16 5 16 RW 0 9 1 1 1
+cmn_diag_tmpsns_filt_ctrl_27_21 7 21 RO 0 0 1 1 1
+cmn_diag_tmpsns_filt_ctrl_29_28 2 28 RO 0 0 1 1 1
+cmn_diag_tmpsns_filt_ctrl_30 1 30 RO 0 0 1 1 1
+cmn_diag_tmpsns_filt_ctrl_31 1 31 RW 0 0 1 1 1
+
+r cmn_cfgcmn41 2
+cmn_diag_tmpsns_filt_out_15_0 16 0 RO 0 0 1 1 1
+cmn_diag_tmpsns_filt_out_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn42 7
+cmn_ibcal_ctrl_6_0 7 0 RO 0 0 1 1 1
+cmn_ibcal_ctrl_11_7 5 7 RO 0 0 1 1 1
+cmn_ibcal_ctrl_12 1 12 RO 0 0 1 1 1
+cmn_ibcal_ctrl_13 1 13 RO 0 0 1 1 1
+cmn_ibcal_ctrl_14 1 14 RO 0 0 1 1 1
+cmn_ibcal_ctrl_15 1 15 RW 0 0 1 1 1
+cmn_ibcal_ctrl_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn43 3
+cmn_ibcal_init_tmr_6_0 7 0 RW 0 27 1 1 1
+cmn_ibcal_init_tmr_15_7 9 7 RO 0 0 1 1 1
+cmn_ibcal_init_tmr_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn44 3
+cmn_ibcal_iter_tmr_6_0 7 0 RW 0 25 1 1 1
+cmn_ibcal_iter_tmr_15_7 9 7 RO 0 0 1 1 1
+cmn_ibcal_iter_tmr_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn45 5
+cmn_ibcal_ovrd_6_0 7 0 RW 0 0 1 1 1
+cmn_ibcal_ovrd_13_7 7 7 RO 0 0 1 1 1
+cmn_ibcal_ovrd_14 1 14 RW 0 0 1 1 1
+cmn_ibcal_ovrd_15 1 15 RW 0 0 1 1 1
+cmn_ibcal_ovrd_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn46 4
+cmn_ibcal_start_6_0 7 0 RW 0 31 1 1 1
+cmn_ibcal_start_14_7 8 7 RO 0 0 1 1 1
+cmn_ibcal_start_15 1 15 RW 0 0 1 1 1
+cmn_ibcal_start_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn47 3
+cmn_ibcal_tune_6_0 7 0 RW 0 0 1 1 1
+cmn_ibcal_tune_15_7 9 7 RO 0 0 1 1 1
+cmn_ibcal_tune_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn48 4
+cmn_pdiag_pll0_cp_iadj_m0_4_0 5 0 RW 0 20 1 1 1
+cmn_pdiag_pll0_cp_iadj_m0_7_5 3 5 RO 0 0 1 1 1
+cmn_pdiag_pll0_cp_iadj_m0_11_8 4 8 RW 0 12 1 1 1
+cmn_pdiag_pll0_cp_iadj_m0_31_12 20 12 RO 0 0 1 1 1
+
+r cmn_cfgcmn49 3
+cmn_pdiag_pll0_cp_iadj_m1_7_0 8 0 RW 0 16 1 1 1
+cmn_pdiag_pll0_cp_iadj_m1_15_8 8 8 RW 0 12 1 1 1
+cmn_pdiag_pll0_cp_iadj_m1_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn50 3
+cmn_pdiag_pll0_cp_padj_m0_7_0 8 0 RW 0 144 1 1 1
+cmn_pdiag_pll0_cp_padj_m0_12_8 5 8 RW 0 2 1 1 1
+cmn_pdiag_pll0_cp_padj_m0_31_13 19 13 RO 0 0 1 1 1
+
+r cmn_cfgcmn51 3
+cmn_pdiag_pll0_cp_padj_m1_7_0 8 0 RW 0 102 1 1 1
+cmn_pdiag_pll0_cp_padj_m1_15_8 8 8 RW 0 18 1 1 1
+cmn_pdiag_pll0_cp_padj_m1_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn52 14
+cmn_pdiag_pll0_ctrl_m0_1_0 2 0 RW 0 1 1 1 1
+cmn_pdiag_pll0_ctrl_m0_3_2 2 2 RO 0 0 1 1 1
+cmn_pdiag_pll0_ctrl_m0_4 1 4 RW 0 1 1 1 1
+cmn_pdiag_pll0_ctrl_m0_5 1 5 RW 0 1 1 1 1
+cmn_pdiag_pll0_ctrl_m0_6 1 6 RW 0 0 1 1 1
+cmn_pdiag_pll0_ctrl_m0_7 1 7 RO 0 0 1 1 1
+cmn_pdiag_pll0_ctrl_m0_8 1 8 RW 0 0 1 1 1
+cmn_pdiag_pll0_ctrl_m0_9 1 9 RW 0 0 1 1 1
+cmn_pdiag_pll0_ctrl_m0_11_10 2 10 RO 0 0 1 1 1
+cmn_pdiag_pll0_ctrl_m0_12 1 12 RW 0 0 1 1 1
+cmn_pdiag_pll0_ctrl_m0_13 1 13 RW 0 0 1 1 1
+cmn_pdiag_pll0_ctrl_m0_14 1 14 RW 0 1 1 1 1
+cmn_pdiag_pll0_ctrl_m0_15 1 15 RO 0 0 1 1 1
+cmn_pdiag_pll0_ctrl_m0_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn53 14
+cmn_pdiag_pll0_ctrl_m1_1_0 2 0 RW 0 1 1 1 1
+cmn_pdiag_pll0_ctrl_m1_3_2 2 2 RO 0 0 1 1 1
+cmn_pdiag_pll0_ctrl_m1_4 1 4 RW 0 1 1 1 1
+cmn_pdiag_pll0_ctrl_m1_5 1 5 RW 0 1 1 1 1
+cmn_pdiag_pll0_ctrl_m1_6 1 6 RW 0 0 1 1 1
+cmn_pdiag_pll0_ctrl_m1_7 1 7 RO 0 0 1 1 1
+cmn_pdiag_pll0_ctrl_m1_8 1 8 RW 0 0 1 1 1
+cmn_pdiag_pll0_ctrl_m1_9 1 9 RW 0 0 1 1 1
+cmn_pdiag_pll0_ctrl_m1_11_10 2 10 RO 0 0 1 1 1
+cmn_pdiag_pll0_ctrl_m1_12 1 12 RW 0 0 1 1 1
+cmn_pdiag_pll0_ctrl_m1_13 1 13 RW 0 0 1 1 1
+cmn_pdiag_pll0_ctrl_m1_14 1 14 RW 0 0 1 1 1
+cmn_pdiag_pll0_ctrl_m1_15 1 15 RO 0 0 1 1 1
+cmn_pdiag_pll0_ctrl_m1_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn54 6
+cmn_pdiag_pll0_filt_padj_m0_3_0 4 0 RW 0 0 1 1 1
+cmn_pdiag_pll0_filt_padj_m0_7_4 4 4 RO 0 0 1 1 1
+cmn_pdiag_pll0_filt_padj_m0_12_8 5 8 RW 0 0 1 1 1
+cmn_pdiag_pll0_filt_padj_m0_15_13 3 13 RO 0 0 1 1 1
+cmn_pdiag_pll0_filt_padj_m0_16 1 16 RW 0 0 1 1 1
+cmn_pdiag_pll0_filt_padj_m0_31_17 15 17 RO 0 0 1 1 1
+
+r cmn_cfgcmn55 6
+cmn_pdiag_pll0_filt_padj_m1_3_0 4 0 RW 0 2 1 1 1
+cmn_pdiag_pll0_filt_padj_m1_7_4 4 4 RO 0 0 1 1 1
+cmn_pdiag_pll0_filt_padj_m1_12_8 5 8 RW 0 15 1 1 1
+cmn_pdiag_pll0_filt_padj_m1_15_13 3 13 RO 0 0 1 1 1
+cmn_pdiag_pll0_filt_padj_m1_16 1 16 RW 0 0 1 1 1
+cmn_pdiag_pll0_filt_padj_m1_31_17 15 17 RO 0 0 1 1 1
+
+r cmn_cfgcmn56 5
+cmn_pdiag_pll0_pkvco_bw_ctrl_m0_1_0 2 0 RW 0 0 1 1 1
+cmn_pdiag_pll0_pkvco_bw_ctrl_m0_3_2 2 2 RO 0 0 1 1 1
+cmn_pdiag_pll0_pkvco_bw_ctrl_m0_4 1 4 RW 0 0 1 1 1
+cmn_pdiag_pll0_pkvco_bw_ctrl_m0_15_5 11 5 RO 0 0 1 1 1
+cmn_pdiag_pll0_pkvco_bw_ctrl_m0_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn57 5
+cmn_pdiag_pll0_pkvco_bw_ctrl_m1_1_0 2 0 RW 0 0 1 1 1
+cmn_pdiag_pll0_pkvco_bw_ctrl_m1_3_2 2 2 RO 0 0 1 1 1
+cmn_pdiag_pll0_pkvco_bw_ctrl_m1_4 1 4 RW 0 0 1 1 1
+cmn_pdiag_pll0_pkvco_bw_ctrl_m1_15_5 11 5 RO 0 0 1 1 1
+cmn_pdiag_pll0_pkvco_bw_ctrl_m1_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn58 2
+cmn_pdiag_pll0_post_div_m0_0 1 0 RW 0 0 1 1 1
+cmn_pdiag_pll0_post_div_m0_31_1 31 1 RO 0 0 1 1 1
+
+r cmn_cfgcmn59 2
+cmn_pdiag_pll0_post_div_m1_0 1 0 RW 0 0 1 1 1
+cmn_pdiag_pll0_post_div_m1_31_1 31 1 RO 0 0 1 1 1
+
+r cmn_cfgcmn60 9
+cmn_pdiag_pll0_prog0_clk_ctrl_m0_0 1 0 RW 0 1 1 1 1
+cmn_pdiag_pll0_prog0_clk_ctrl_m0_1 1 1 RW 0 0 1 1 1
+cmn_pdiag_pll0_prog0_clk_ctrl_m0_7_2 6 2 RO 0 0 1 1 1
+cmn_pdiag_pll0_prog0_clk_ctrl_m0_11_8 4 8 RW 0 0 1 1 1
+cmn_pdiag_pll0_prog0_clk_ctrl_m0_15_12 4 12 RO 0 0 1 1 1
+cmn_pdiag_pll0_prog0_clk_ctrl_m0_22_16 7 16 RW 0 4 1 1 1
+cmn_pdiag_pll0_prog0_clk_ctrl_m0_23 1 23 RO 0 0 1 1 1
+cmn_pdiag_pll0_prog0_clk_ctrl_m0_30_24 7 24 RW 0 4 1 1 1
+cmn_pdiag_pll0_prog0_clk_ctrl_m0_31 1 31 RO 0 0 1 1 1
+
+r cmn_cfgcmn61 9
+cmn_pdiag_pll0_prog0_clk_ctrl_m1_0 1 0 RW 0 1 1 1 1
+cmn_pdiag_pll0_prog0_clk_ctrl_m1_1 1 1 RW 0 0 1 1 1
+cmn_pdiag_pll0_prog0_clk_ctrl_m1_7_2 6 2 RO 0 0 1 1 1
+cmn_pdiag_pll0_prog0_clk_ctrl_m1_11_8 4 8 RW 0 0 1 1 1
+cmn_pdiag_pll0_prog0_clk_ctrl_m1_15_12 4 12 RO 0 0 1 1 1
+cmn_pdiag_pll0_prog0_clk_ctrl_m1_22_16 7 16 RW 0 4 1 1 1
+cmn_pdiag_pll0_prog0_clk_ctrl_m1_23 1 23 RO 0 0 1 1 1
+cmn_pdiag_pll0_prog0_clk_ctrl_m1_30_24 7 24 RW 0 4 1 1 1
+cmn_pdiag_pll0_prog0_clk_ctrl_m1_31 1 31 RO 0 0 1 1 1
+
+r cmn_cfgcmn62 9
+cmn_pdiag_pll0_prog1_clk_ctrl_m0_0 1 0 RW 0 0 1 1 1
+cmn_pdiag_pll0_prog1_clk_ctrl_m0_1 1 1 RW 0 0 1 1 1
+cmn_pdiag_pll0_prog1_clk_ctrl_m0_7_2 6 2 RO 0 0 1 1 1
+cmn_pdiag_pll0_prog1_clk_ctrl_m0_11_8 4 8 RW 0 0 1 1 1
+cmn_pdiag_pll0_prog1_clk_ctrl_m0_15_12 4 12 RO 0 0 1 1 1
+cmn_pdiag_pll0_prog1_clk_ctrl_m0_22_16 7 16 RW 0 0 1 1 1
+cmn_pdiag_pll0_prog1_clk_ctrl_m0_23 1 23 RO 0 0 1 1 1
+cmn_pdiag_pll0_prog1_clk_ctrl_m0_30_24 7 24 RW 0 0 1 1 1
+cmn_pdiag_pll0_prog1_clk_ctrl_m0_31 1 31 RO 0 0 1 1 1
+
+r cmn_cfgcmn63 9
+cmn_pdiag_pll0_prog1_clk_ctrl_m1_0 1 0 RW 0 0 1 1 1
+cmn_pdiag_pll0_prog1_clk_ctrl_m1_1 1 1 RW 0 0 1 1 1
+cmn_pdiag_pll0_prog1_clk_ctrl_m1_7_2 6 2 RO 0 0 1 1 1
+cmn_pdiag_pll0_prog1_clk_ctrl_m1_11_8 4 8 RW 0 0 1 1 1
+cmn_pdiag_pll0_prog1_clk_ctrl_m1_15_12 4 12 RO 0 0 1 1 1
+cmn_pdiag_pll0_prog1_clk_ctrl_m1_22_16 7 16 RW 0 0 1 1 1
+cmn_pdiag_pll0_prog1_clk_ctrl_m1_23 1 23 RO 0 0 1 1 1
+cmn_pdiag_pll0_prog1_clk_ctrl_m1_30_24 7 24 RW 0 0 1 1 1
+cmn_pdiag_pll0_prog1_clk_ctrl_m1_31 1 31 RO 0 0 1 1 1
+
+r cmn_cfgcmn64 14
+cmn_pdiag_pll0_tune_m0_7_0 8 0 RW 0 15 1 1 1
+cmn_pdiag_pll0_tune_m0_9_8 2 8 RW 0 2 1 1 1
+cmn_pdiag_pll0_tune_m0_11_10 2 10 RO 0 0 1 1 1
+cmn_pdiag_pll0_tune_m0_12 1 12 RW 0 0 1 1 1
+cmn_pdiag_pll0_tune_m0_13 1 13 RW 0 0 1 1 1
+cmn_pdiag_pll0_tune_m0_14 1 14 RO 0 0 1 1 1
+cmn_pdiag_pll0_tune_m0_15 1 15 RW 0 0 1 1 1
+cmn_pdiag_pll0_tune_m0_16 1 16 RW 0 0 1 1 1
+cmn_pdiag_pll0_tune_m0_17 1 17 RO 0 0 1 1 1
+cmn_pdiag_pll0_tune_m0_23_18 6 18 RO 0 0 1 1 1
+cmn_pdiag_pll0_tune_m0_26_24 3 24 RW 0 4 1 1 1
+cmn_pdiag_pll0_tune_m0_27 1 27 RO 0 0 1 1 1
+cmn_pdiag_pll0_tune_m0_29_28 2 28 RW 0 2 1 1 1
+cmn_pdiag_pll0_tune_m0_31_30 2 30 RO 0 0 1 1 1
+
+r cmn_cfgcmn65 14
+cmn_pdiag_pll0_tune_m1_7_0 8 0 RW 0 15 1 1 1
+cmn_pdiag_pll0_tune_m1_9_8 2 8 RW 0 2 1 1 1
+cmn_pdiag_pll0_tune_m1_11_10 2 10 RO 0 0 1 1 1
+cmn_pdiag_pll0_tune_m1_12 1 12 RW 0 0 1 1 1
+cmn_pdiag_pll0_tune_m1_13 1 13 RW 0 0 1 1 1
+cmn_pdiag_pll0_tune_m1_14 1 14 RO 0 0 1 1 1
+cmn_pdiag_pll0_tune_m1_15 1 15 RW 0 0 1 1 1
+cmn_pdiag_pll0_tune_m1_16 1 16 RW 0 0 1 1 1
+cmn_pdiag_pll0_tune_m1_17 1 17 RO 0 0 1 1 1
+cmn_pdiag_pll0_tune_m1_23_18 6 18 RO 0 0 1 1 1
+cmn_pdiag_pll0_tune_m1_26_24 3 24 RW 0 4 1 1 1
+cmn_pdiag_pll0_tune_m1_27 1 27 RO 0 0 1 1 1
+cmn_pdiag_pll0_tune_m1_29_28 2 28 RW 0 2 1 1 1
+cmn_pdiag_pll0_tune_m1_31_30 2 30 RO 0 0 1 1 1
+
+r cmn_cfgcmn66 6
+cmn_pdiag_pll1_cp_ctrl_m0_1_0 2 0 RW 0 0 1 1 1
+cmn_pdiag_pll1_cp_ctrl_m0_7_2 6 2 RW 0 0 1 1 1
+cmn_pdiag_pll1_cp_ctrl_m0_10_8 3 8 RW 0 0 1 1 1
+cmn_pdiag_pll1_cp_ctrl_m0_14_11 4 11 RW 0 0 1 1 1
+cmn_pdiag_pll1_cp_ctrl_m0_16_15 2 15 RW 0 0 1 1 1
+cmn_pdiag_pll1_cp_ctrl_m0_31_17 15 17 RO 0 0 1 1 1
+
+r cmn_cfgcmn67 6
+cmn_pdiag_pll1_cp_ctrl_m1_1_0 2 0 RW 0 0 1 1 1
+cmn_pdiag_pll1_cp_ctrl_m1_7_2 6 2 RW 0 0 1 1 1
+cmn_pdiag_pll1_cp_ctrl_m1_10_8 3 8 RW 0 0 1 1 1
+cmn_pdiag_pll1_cp_ctrl_m1_14_11 4 11 RW 0 0 1 1 1
+cmn_pdiag_pll1_cp_ctrl_m1_16_15 2 15 RW 0 0 1 1 1
+cmn_pdiag_pll1_cp_ctrl_m1_31_17 15 17 RO 0 0 1 1 1
+
+r cmn_cfgcmn68 2
+cmn_pdiag_pll1_lock_det_ctrl_m0_5_0 6 0 RW 0 0 1 1 1
+cmn_pdiag_pll1_lock_det_ctrl_m0_31_6 26 6 RO 0 0 1 1 1
+
+r cmn_cfgcmn69 2
+cmn_pdiag_pll1_lock_det_ctrl_m1_5_0 6 0 RW 0 0 1 1 1
+cmn_pdiag_pll1_lock_det_ctrl_m1_31_6 26 6 RO 0 0 1 1 1
+
+r cmn_cfgcmn70 4
+cmn_pdiag_pll1_lpf_ctrl_m0_4_0 5 0 RW 0 0 1 1 1
+cmn_pdiag_pll1_lpf_ctrl_m0_5 1 5 RW 0 0 1 1 1
+cmn_pdiag_pll1_lpf_ctrl_m0_10_6 5 6 RW 0 0 1 1 1
+cmn_pdiag_pll1_lpf_ctrl_m0_31_11 21 11 RO 0 0 1 1 1
+
+r cmn_cfgcmn71 4
+cmn_pdiag_pll1_lpf_ctrl_m1_4_0 5 0 RW 0 0 1 1 1
+cmn_pdiag_pll1_lpf_ctrl_m1_5 1 5 RW 0 0 1 1 1
+cmn_pdiag_pll1_lpf_ctrl_m1_10_6 5 6 RW 0 0 1 1 1
+cmn_pdiag_pll1_lpf_ctrl_m1_31_11 21 11 RO 0 0 1 1 1
+
+r cmn_cfgcmn72 6
+cmn_pdiag_pll1_pfd_ctrl_m0_2_0 3 0 RW 0 0 1 1 1
+cmn_pdiag_pll1_pfd_ctrl_m0_3 1 3 RW 0 0 1 1 1
+cmn_pdiag_pll1_pfd_ctrl_m0_4 1 4 RW 0 0 1 1 1
+cmn_pdiag_pll1_pfd_ctrl_m0_7_5 3 5 RW 0 0 1 1 1
+cmn_pdiag_pll1_pfd_ctrl_m0_8 1 8 RW 0 0 1 1 1
+cmn_pdiag_pll1_pfd_ctrl_m0_31_9 23 9 RO 0 0 1 1 1
+
+r cmn_cfgcmn73 6
+cmn_pdiag_pll1_pfd_ctrl_m1_2_0 3 0 RW 0 0 1 1 1
+cmn_pdiag_pll1_pfd_ctrl_m1_3 1 3 RW 0 0 1 1 1
+cmn_pdiag_pll1_pfd_ctrl_m1_4 1 4 RW 0 0 1 1 1
+cmn_pdiag_pll1_pfd_ctrl_m1_7_5 3 5 RW 0 0 1 1 1
+cmn_pdiag_pll1_pfd_ctrl_m1_8 1 8 RW 0 0 1 1 1
+cmn_pdiag_pll1_pfd_ctrl_m1_31_9 23 9 RO 0 0 1 1 1
+
+r cmn_cfgcmn74 2
+cmn_pdiag_pll1_post_div_m0_2_0 3 0 RW 0 0 1 1 1
+cmn_pdiag_pll1_post_div_m0_31_3 29 3 RO 0 0 1 1 1
+
+r cmn_cfgcmn75 2
+cmn_pdiag_pll1_post_div_m1_2_0 3 0 RW 0 0 1 1 1
+cmn_pdiag_pll1_post_div_m1_31_3 29 3 RO 0 0 1 1 1
+
+r cmn_cfgcmn76 10
+cmn_pdiag_pll1_prog0_clk_ctrl_m0_0 1 0 RW 0 0 1 1 1
+cmn_pdiag_pll1_prog0_clk_ctrl_m0_1 1 1 RW 0 0 1 1 1
+cmn_pdiag_pll1_prog0_clk_ctrl_m0_2 1 2 RW 0 0 1 1 1
+cmn_pdiag_pll1_prog0_clk_ctrl_m0_7_3 5 3 RO 0 0 1 1 1
+cmn_pdiag_pll1_prog0_clk_ctrl_m0_11_8 4 8 RW 0 0 1 1 1
+cmn_pdiag_pll1_prog0_clk_ctrl_m0_15_12 4 12 RO 0 0 1 1 1
+cmn_pdiag_pll1_prog0_clk_ctrl_m0_22_16 7 16 RW 0 0 1 1 1
+cmn_pdiag_pll1_prog0_clk_ctrl_m0_23 1 23 RO 0 0 1 1 1
+cmn_pdiag_pll1_prog0_clk_ctrl_m0_30_24 7 24 RW 0 0 1 1 1
+cmn_pdiag_pll1_prog0_clk_ctrl_m0_31 1 31 RO 0 0 1 1 1
+
+r cmn_cfgcmn77 10
+cmn_pdiag_pll1_prog0_clk_ctrl_m1_0 1 0 RW 0 0 1 1 1
+cmn_pdiag_pll1_prog0_clk_ctrl_m1_1 1 1 RW 0 0 1 1 1
+cmn_pdiag_pll1_prog0_clk_ctrl_m1_2 1 2 RW 0 0 1 1 1
+cmn_pdiag_pll1_prog0_clk_ctrl_m1_7_3 5 3 RO 0 0 1 1 1
+cmn_pdiag_pll1_prog0_clk_ctrl_m1_11_8 4 8 RW 0 0 1 1 1
+cmn_pdiag_pll1_prog0_clk_ctrl_m1_15_12 4 12 RO 0 0 1 1 1
+cmn_pdiag_pll1_prog0_clk_ctrl_m1_22_16 7 16 RW 0 0 1 1 1
+cmn_pdiag_pll1_prog0_clk_ctrl_m1_23 1 23 RO 0 0 1 1 1
+cmn_pdiag_pll1_prog0_clk_ctrl_m1_30_24 7 24 RW 0 0 1 1 1
+cmn_pdiag_pll1_prog0_clk_ctrl_m1_31 1 31 RO 0 0 1 1 1
+
+r cmn_cfgcmn78 10
+cmn_pdiag_pll1_prog1_clk_ctrl_m0_0 1 0 RW 0 0 1 1 1
+cmn_pdiag_pll1_prog1_clk_ctrl_m0_1 1 1 RW 0 0 1 1 1
+cmn_pdiag_pll1_prog1_clk_ctrl_m0_2 1 2 RW 0 0 1 1 1
+cmn_pdiag_pll1_prog1_clk_ctrl_m0_7_3 5 3 RO 0 0 1 1 1
+cmn_pdiag_pll1_prog1_clk_ctrl_m0_11_8 4 8 RW 0 0 1 1 1
+cmn_pdiag_pll1_prog1_clk_ctrl_m0_15_12 4 12 RO 0 0 1 1 1
+cmn_pdiag_pll1_prog1_clk_ctrl_m0_22_16 7 16 RW 0 0 1 1 1
+cmn_pdiag_pll1_prog1_clk_ctrl_m0_23 1 23 RO 0 0 1 1 1
+cmn_pdiag_pll1_prog1_clk_ctrl_m0_30_24 7 24 RW 0 0 1 1 1
+cmn_pdiag_pll1_prog1_clk_ctrl_m0_31 1 31 RO 0 0 1 1 1
+
+r cmn_cfgcmn79 10
+cmn_pdiag_pll1_prog1_clk_ctrl_m1_0 1 0 RW 0 0 1 1 1
+cmn_pdiag_pll1_prog1_clk_ctrl_m1_1 1 1 RW 0 0 1 1 1
+cmn_pdiag_pll1_prog1_clk_ctrl_m1_2 1 2 RW 0 0 1 1 1
+cmn_pdiag_pll1_prog1_clk_ctrl_m1_7_3 5 3 RO 0 0 1 1 1
+cmn_pdiag_pll1_prog1_clk_ctrl_m1_11_8 4 8 RW 0 0 1 1 1
+cmn_pdiag_pll1_prog1_clk_ctrl_m1_15_12 4 12 RO 0 0 1 1 1
+cmn_pdiag_pll1_prog1_clk_ctrl_m1_22_16 7 16 RW 0 0 1 1 1
+cmn_pdiag_pll1_prog1_clk_ctrl_m1_23 1 23 RO 0 0 1 1 1
+cmn_pdiag_pll1_prog1_clk_ctrl_m1_30_24 7 24 RW 0 0 1 1 1
+cmn_pdiag_pll1_prog1_clk_ctrl_m1_31 1 31 RO 0 0 1 1 1
+
+r cmn_cfgcmn80 2
+cmn_pdiag_pll1_ref_clk_div_sel_m0_5_0 6 0 RW 0 0 1 1 1
+cmn_pdiag_pll1_ref_clk_div_sel_m0_31_6 26 6 RO 0 0 1 1 1
+
+r cmn_cfgcmn81 2
+cmn_pdiag_pll1_ref_clk_div_sel_m1_5_0 6 0 RW 0 0 1 1 1
+cmn_pdiag_pll1_ref_clk_div_sel_m1_31_6 26 6 RO 0 0 1 1 1
+
+r cmn_cfgcmn82 8
+cmn_pdiag_pll1_vco_ctrl_m0_3_0 4 0 RW 0 0 1 1 1
+cmn_pdiag_pll1_vco_ctrl_m0_6_4 3 4 RW 0 0 1 1 1
+cmn_pdiag_pll1_vco_ctrl_m0_7 1 7 RW 0 0 1 1 1
+cmn_pdiag_pll1_vco_ctrl_m0_11_8 4 8 RW 0 0 1 1 1
+cmn_pdiag_pll1_vco_ctrl_m0_16_12 5 12 RW 0 0 1 1 1
+cmn_pdiag_pll1_vco_ctrl_m0_18_17 2 17 RW 0 3 1 1 1
+cmn_pdiag_pll1_vco_ctrl_m0_19 1 19 RW 0 0 1 1 1
+cmn_pdiag_pll1_vco_ctrl_m0_31_20 12 20 RO 0 0 1 1 1
+
+r cmn_cfgcmn83 8
+cmn_pdiag_pll1_vco_ctrl_m1_3_0 4 0 RW 0 0 1 1 1
+cmn_pdiag_pll1_vco_ctrl_m1_6_4 3 4 RW 0 0 1 1 1
+cmn_pdiag_pll1_vco_ctrl_m1_7 1 7 RW 0 0 1 1 1
+cmn_pdiag_pll1_vco_ctrl_m1_11_8 4 8 RW 0 0 1 1 1
+cmn_pdiag_pll1_vco_ctrl_m1_16_12 5 12 RW 0 0 1 1 1
+cmn_pdiag_pll1_vco_ctrl_m1_18_17 2 17 RW 0 3 1 1 1
+cmn_pdiag_pll1_vco_ctrl_m1_19 1 19 RW 0 0 1 1 1
+cmn_pdiag_pll1_vco_ctrl_m1_31_20 12 20 RO 0 0 1 1 1
+
+r cmn_cfgcmn84 7
+cmn_pdiag_pll1_vreg_adj_m0_0 1 0 RW 0 0 1 1 1
+cmn_pdiag_pll1_vreg_adj_m0_1 1 1 RW 0 0 1 1 1
+cmn_pdiag_pll1_vreg_adj_m0_3_2 2 2 RW 0 0 1 1 1
+cmn_pdiag_pll1_vreg_adj_m0_5_4 2 4 RW 0 0 1 1 1
+cmn_pdiag_pll1_vreg_adj_m0_7_6 2 6 RW 0 0 1 1 1
+cmn_pdiag_pll1_vreg_adj_m0_12_8 5 8 RW 0 0 1 1 1
+cmn_pdiag_pll1_vreg_adj_m0_31_13 19 13 RO 0 0 1 1 1
+
+r cmn_cfgcmn85 7
+cmn_pdiag_pll1_vreg_adj_m1_0 1 0 RW 0 0 1 1 1
+cmn_pdiag_pll1_vreg_adj_m1_1 1 1 RW 0 0 1 1 1
+cmn_pdiag_pll1_vreg_adj_m1_3_2 2 2 RW 0 0 1 1 1
+cmn_pdiag_pll1_vreg_adj_m1_5_4 2 4 RW 0 0 1 1 1
+cmn_pdiag_pll1_vreg_adj_m1_7_6 2 6 RW 0 0 1 1 1
+cmn_pdiag_pll1_vreg_adj_m1_12_8 5 8 RW 0 0 1 1 1
+cmn_pdiag_pll1_vreg_adj_m1_31_13 19 13 RO 0 0 1 1 1
+
+r cmn_cfgcmn86 2
+cmn_pid_flv0_15_0 16 0 RO 0 26480 1 1 1
+cmn_pid_flv0_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn87 2
+cmn_pid_flv1_15_0 16 0 RO 0 0 1 1 1
+cmn_pid_flv1_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn88 2
+cmn_pid_iov_15_0 16 0 RO 0 288 1 1 1
+cmn_pid_iov_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn89 3
+cmn_pid_lanes_7_0 8 0 RO 0 2 1 1 1
+cmn_pid_lanes_15_8 8 8 RO 0 2 1 1 1
+cmn_pid_lanes_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn90 2
+cmn_pid_metal0_15_0 16 0 RO 0 0 1 1 1
+cmn_pid_metal0_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn91 2
+cmn_pid_metal1_15_0 16 0 RO 0 0 1 1 1
+cmn_pid_metal1_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn92 2
+cmn_pid_metal2_15_0 16 0 RO 0 0 1 1 1
+cmn_pid_metal2_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn93 2
+cmn_pid_metal3_15_0 16 0 RO 0 0 1 1 1
+cmn_pid_metal3_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn94 17
+cmn_pid_metald_0 1 0 RO 0 1 1 1 1
+cmn_pid_metald_1 1 1 RO 0 0 1 1 1
+cmn_pid_metald_2 1 2 RO 0 1 1 1 1
+cmn_pid_metald_3 1 3 RO 0 0 1 1 1
+cmn_pid_metald_4 1 4 RO 0 1 1 1 1
+cmn_pid_metald_5 1 5 RO 0 0 1 1 1
+cmn_pid_metald_6 1 6 RO 0 1 1 1 1
+cmn_pid_metald_7 1 7 RO 0 0 1 1 1
+cmn_pid_metald_8 1 8 RO 0 1 1 1 1
+cmn_pid_metald_9 1 9 RO 0 0 1 1 1
+cmn_pid_metald_10 1 10 RO 0 1 1 1 1
+cmn_pid_metald_11 1 11 RO 0 0 1 1 1
+cmn_pid_metald_12 1 12 RO 0 1 1 1 1
+cmn_pid_metald_13 1 13 RO 0 0 1 1 1
+cmn_pid_metald_14 1 14 RO 0 1 1 1 1
+cmn_pid_metald_15 1 15 RO 0 0 1 1 1
+cmn_pid_metald_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn95 2
+cmn_pid_mfg_15_0 16 0 RO 0 116 1 1 1
+cmn_pid_mfg_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn96 2
+cmn_pid_node_15_0 16 0 RO 0 4 1 1 1
+cmn_pid_node_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn97 2
+cmn_pid_num_15_0 16 0 RO 0 12545 1 1 1
+cmn_pid_num_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn98 2
+cmn_pid_rev_15_0 16 0 RO 0 256 1 1 1
+cmn_pid_rev_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn99 2
+cmn_pid_type_15_0 16 0 RO 0 29540 1 1 1
+cmn_pid_type_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn100 5
+cmn_pll0_dsm_diag_3_0 4 0 RW 0 4 1 1 1
+cmn_pll0_dsm_diag_13_4 10 4 RO 0 0 1 1 1
+cmn_pll0_dsm_diag_14 1 14 RW 0 1 1 1 1
+cmn_pll0_dsm_diag_15 1 15 RW 0 0 1 1 1
+cmn_pll0_dsm_diag_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn101 3
+cmn_pll0_dsm_fbh_ovrd_9_0 10 0 RW 0 64 1 1 1
+cmn_pll0_dsm_fbh_ovrd_15_10 6 10 RO 0 0 1 1 1
+cmn_pll0_dsm_fbh_ovrd_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn102 3
+cmn_pll0_dsm_fbl_ovrd_9_0 10 0 RW 0 28 1 1 1
+cmn_pll0_dsm_fbl_ovrd_15_10 6 10 RO 0 0 1 1 1
+cmn_pll0_dsm_fbl_ovrd_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn103 3
+cmn_pll0_fracdivh_2_0 3 0 RW 0 0 1 1 1
+cmn_pll0_fracdivh_15_3 13 3 RO 0 0 1 1 1
+cmn_pll0_fracdivh_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn104 2
+cmn_pll0_fracdivl_15_0 16 0 RW 0 0 1 1 1
+cmn_pll0_fracdivl_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn105 3
+cmn_pll0_high_thr_9_0 10 0 RW 0 0 1 1 1
+cmn_pll0_high_thr_15_10 6 10 RO 0 0 1 1 1
+cmn_pll0_high_thr_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn106 3
+cmn_pll0_intdiv_9_0 10 0 RW 0 0 1 1 1
+cmn_pll0_intdiv_15_10 6 10 RO 0 0 1 1 1
+cmn_pll0_intdiv_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn107 3
+cmn_pll0_lock_pllcnt_start_11_0 12 0 RW 0 399 1 1 1
+cmn_pll0_lock_pllcnt_start_15_12 4 12 RO 0 0 1 1 1
+cmn_pll0_lock_pllcnt_start_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn108 3
+cmn_pll0_lock_pllcnt_thr_11_0 12 0 RW 0 4 1 1 1
+cmn_pll0_lock_pllcnt_thr_15_12 4 12 RO 0 0 1 1 1
+cmn_pll0_lock_pllcnt_thr_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn109 3
+cmn_pll0_lock_refcnt_idle_11_0 12 0 RW 0 3 1 1 1
+cmn_pll0_lock_refcnt_idle_15_12 4 12 RO 0 0 1 1 1
+cmn_pll0_lock_refcnt_idle_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn110 3
+cmn_pll0_lock_refcnt_start_11_0 12 0 RW 0 399 1 1 1
+cmn_pll0_lock_refcnt_start_15_12 4 12 RO 0 0 1 1 1
+cmn_pll0_lock_refcnt_start_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn111 7
+cmn_pll0_ss_ctrl1_0 1 0 RW 0 0 1 1 1
+cmn_pll0_ss_ctrl1_1 1 1 RW 0 1 1 1 1
+cmn_pll0_ss_ctrl1_7_2 6 2 RO 0 0 1 1 1
+cmn_pll0_ss_ctrl1_14_8 7 8 RW 0 0 1 1 1
+cmn_pll0_ss_ctrl1_15 1 15 RO 0 0 1 1 1
+cmn_pll0_ss_ctrl1_30_16 15 16 RW 0 0 1 1 1
+cmn_pll0_ss_ctrl1_31 1 31 RO 0 0 1 1 1
+
+r cmn_cfgcmn112 5
+cmn_pll0_ss_ctrl2_6_0 7 0 RW 0 0 1 1 1
+cmn_pll0_ss_ctrl2_7 1 7 RO 0 0 1 1 1
+cmn_pll0_ss_ctrl2_14_8 7 8 RW 0 0 1 1 1
+cmn_pll0_ss_ctrl2_15 1 15 RO 0 0 1 1 1
+cmn_pll0_ss_ctrl2_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn113 2
+cmn_pll0_ss_ctrl3_18_0 19 0 RW 0 0 1 1 1
+cmn_pll0_ss_ctrl3_31_19 13 19 RO 0 0 1 1 1
+
+r cmn_cfgcmn114 8
+cmn_pll0_varcal_ctrl_4_0 5 0 RO 0 0 1 1 1
+cmn_pll0_varcal_ctrl_7_5 3 5 RO 0 0 1 1 1
+cmn_pll0_varcal_ctrl_8 1 8 RW 0 0 1 1 1
+cmn_pll0_varcal_ctrl_11_9 3 9 RO 0 0 1 1 1
+cmn_pll0_varcal_ctrl_13_12 2 12 RO 0 0 1 1 1
+cmn_pll0_varcal_ctrl_14 1 14 RO 0 0 1 1 1
+cmn_pll0_varcal_ctrl_15 1 15 RW 0 0 1 1 1
+cmn_pll0_varcal_ctrl_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn115 9
+cmn_pll0_varcal_icvf_cfg_2_0 3 0 RW 0 4 1 1 1
+cmn_pll0_varcal_icvf_cfg_3 1 3 RO 0 0 1 1 1
+cmn_pll0_varcal_icvf_cfg_6_4 3 4 RW 0 0 1 1 1
+cmn_pll0_varcal_icvf_cfg_7 1 7 RO 0 0 1 1 1
+cmn_pll0_varcal_icvf_cfg_10_8 3 8 RW 0 7 1 1 1
+cmn_pll0_varcal_icvf_cfg_11 1 11 RO 0 0 1 1 1
+cmn_pll0_varcal_icvf_cfg_12 1 12 RW 0 0 1 1 1
+cmn_pll0_varcal_icvf_cfg_15_13 3 13 RO 0 0 1 1 1
+cmn_pll0_varcal_icvf_cfg_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn116 2
+cmn_pll0_varcal_icvf_hstat_15_0 16 0 RO 0 0 1 1 1
+cmn_pll0_varcal_icvf_hstat_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn117 3
+cmn_pll0_varcal_icvf_init_tmr_9_0 10 0 RW 0 200 1 1 1
+cmn_pll0_varcal_icvf_init_tmr_15_10 6 10 RO 0 0 1 1 1
+cmn_pll0_varcal_icvf_init_tmr_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn118 2
+cmn_pll0_varcal_icvf_lstat_15_0 16 0 RO 0 0 1 1 1
+cmn_pll0_varcal_icvf_lstat_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn119 3
+cmn_pll0_varcal_init_tmr_13_0 14 0 RW 0 1000 1 1 1
+cmn_pll0_varcal_init_tmr_15_14 2 14 RO 0 0 1 1 1
+cmn_pll0_varcal_init_tmr_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn120 3
+cmn_pll0_varcal_iter_tmr_13_0 14 0 RW 0 500 1 1 1
+cmn_pll0_varcal_iter_tmr_15_14 2 14 RO 0 0 1 1 1
+cmn_pll0_varcal_iter_tmr_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn121 4
+cmn_pll0_varcal_ovrd_4_0 5 0 RW 0 0 1 1 1
+cmn_pll0_varcal_ovrd_14_5 10 5 RO 0 0 1 1 1
+cmn_pll0_varcal_ovrd_15 1 15 RW 0 0 1 1 1
+cmn_pll0_varcal_ovrd_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn122 2
+cmn_pll0_varcal_pllcnt_ovrd_15_0 16 0 RW 0 0 1 1 1
+cmn_pll0_varcal_pllcnt_ovrd_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn123 3
+cmn_pll0_varcal_reftim_start_13_0 14 0 RW 0 3329 1 1 1
+cmn_pll0_varcal_reftim_start_15_14 2 14 RO 0 0 1 1 1
+cmn_pll0_varcal_reftim_start_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn124 5
+cmn_pll0_varcal_start_4_0 5 0 RW 0 11 1 1 1
+cmn_pll0_varcal_start_11_5 7 5 RO 0 0 1 1 1
+cmn_pll0_varcal_start_14_12 3 12 RW 0 0 1 1 1
+cmn_pll0_varcal_start_15 1 15 RO 0 0 1 1 1
+cmn_pll0_varcal_start_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn125 3
+cmn_pll0_varcal_tctrl_2_0 3 0 RW 0 0 1 1 1
+cmn_pll0_varcal_tctrl_15_3 13 3 RO 0 0 1 1 1
+cmn_pll0_varcal_tctrl_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn126 5
+cmn_pll0_vcocal_ctrl_7_0 8 0 RO 0 0 1 1 1
+cmn_pll0_vcocal_ctrl_13_8 6 8 RO 0 0 1 1 1
+cmn_pll0_vcocal_ctrl_14 1 14 RO 0 0 1 1 1
+cmn_pll0_vcocal_ctrl_15 1 15 RW 0 0 1 1 1
+cmn_pll0_vcocal_ctrl_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn127 3
+cmn_pll0_vcocal_init_tmr_13_0 14 0 RW 0 1000 1 1 1
+cmn_pll0_vcocal_init_tmr_15_14 2 14 RO 0 0 1 1 1
+cmn_pll0_vcocal_init_tmr_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn128 3
+cmn_pll0_vcocal_iter_tmr_13_0 14 0 RW 0 16 1 1 1
+cmn_pll0_vcocal_iter_tmr_15_14 2 14 RO 0 0 1 1 1
+cmn_pll0_vcocal_iter_tmr_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn129 4
+cmn_pll0_vcocal_ovrd_7_0 8 0 RW 0 0 1 1 1
+cmn_pll0_vcocal_ovrd_14_8 7 8 RO 0 0 1 1 1
+cmn_pll0_vcocal_ovrd_15 1 15 RW 0 0 1 1 1
+cmn_pll0_vcocal_ovrd_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn130 2
+cmn_pll0_vcocal_pllcnt_start_15_0 16 0 RW 0 15834 1 1 1
+cmn_pll0_vcocal_pllcnt_start_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn131 3
+cmn_pll0_vcocal_reftim_start_13_0 14 0 RW 0 3166 1 1 1
+cmn_pll0_vcocal_reftim_start_15_14 2 14 RO 0 0 1 1 1
+cmn_pll0_vcocal_reftim_start_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn132 5
+cmn_pll0_vcocal_start_7_0 8 0 RW 0 116 1 1 1
+cmn_pll0_vcocal_start_11_8 4 8 RO 0 0 1 1 1
+cmn_pll0_vcocal_start_14_12 3 12 RW 0 2 1 1 1
+cmn_pll0_vcocal_start_15 1 15 RO 0 0 1 1 1
+cmn_pll0_vcocal_start_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn133 3
+cmn_pll0_vcocal_tctrl_2_0 3 0 RW 0 3 1 1 1
+cmn_pll0_vcocal_tctrl_15_3 13 3 RO 0 0 1 1 1
+cmn_pll0_vcocal_tctrl_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn134 5
+cmn_pll1_dsm_diag_3_0 4 0 RW 0 4 1 1 1
+cmn_pll1_dsm_diag_13_4 10 4 RO 0 0 1 1 1
+cmn_pll1_dsm_diag_14 1 14 RW 0 1 1 1 1
+cmn_pll1_dsm_diag_15 1 15 RW 0 0 1 1 1
+cmn_pll1_dsm_diag_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn135 3
+cmn_pll1_dsm_fbh_ovrd_9_0 10 0 RW 0 64 1 1 1
+cmn_pll1_dsm_fbh_ovrd_15_10 6 10 RO 0 0 1 1 1
+cmn_pll1_dsm_fbh_ovrd_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn136 3
+cmn_pll1_dsm_fbl_ovrd_9_0 10 0 RW 0 28 1 1 1
+cmn_pll1_dsm_fbl_ovrd_15_10 6 10 RO 0 0 1 1 1
+cmn_pll1_dsm_fbl_ovrd_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn137 3
+cmn_pll1_fracdivh_2_0 3 0 RW 0 0 1 1 1
+cmn_pll1_fracdivh_15_3 13 3 RO 0 0 1 1 1
+cmn_pll1_fracdivh_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn138 2
+cmn_pll1_fracdivl_15_0 16 0 RW 0 0 1 1 1
+cmn_pll1_fracdivl_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn139 3
+cmn_pll1_high_thr_9_0 10 0 RW 0 0 1 1 1
+cmn_pll1_high_thr_15_10 6 10 RO 0 0 1 1 1
+cmn_pll1_high_thr_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn140 3
+cmn_pll1_intdiv_9_0 10 0 RW 0 0 1 1 1
+cmn_pll1_intdiv_15_10 6 10 RO 0 0 1 1 1
+cmn_pll1_intdiv_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn141 7
+cmn_pll1_ss_ctrl1_0 1 0 RW 0 0 1 1 1
+cmn_pll1_ss_ctrl1_1 1 1 RW 0 1 1 1 1
+cmn_pll1_ss_ctrl1_7_2 6 2 RO 0 0 1 1 1
+cmn_pll1_ss_ctrl1_14_8 7 8 RW 0 0 1 1 1
+cmn_pll1_ss_ctrl1_15 1 15 RO 0 0 1 1 1
+cmn_pll1_ss_ctrl1_30_16 15 16 RW 0 0 1 1 1
+cmn_pll1_ss_ctrl1_31 1 31 RO 0 0 1 1 1
+
+r cmn_cfgcmn142 5
+cmn_pll1_ss_ctrl2_6_0 7 0 RW 0 0 1 1 1
+cmn_pll1_ss_ctrl2_7 1 7 RO 0 0 1 1 1
+cmn_pll1_ss_ctrl2_14_8 7 8 RW 0 0 1 1 1
+cmn_pll1_ss_ctrl2_15 1 15 RO 0 0 1 1 1
+cmn_pll1_ss_ctrl2_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn143 2
+cmn_pll1_ss_ctrl3_18_0 19 0 RW 0 0 1 1 1
+cmn_pll1_ss_ctrl3_31_19 13 19 RO 0 0 1 1 1
+
+r cmn_cfgcmn144 5
+cmn_pll1_vcocal_ctrl_7_0 8 0 RO 0 0 1 1 1
+cmn_pll1_vcocal_ctrl_13_8 6 8 RO 0 0 1 1 1
+cmn_pll1_vcocal_ctrl_14 1 14 RO 0 0 1 1 1
+cmn_pll1_vcocal_ctrl_15 1 15 RW 0 0 1 1 1
+cmn_pll1_vcocal_ctrl_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn145 3
+cmn_pll1_vcocal_init_tmr_13_0 14 0 RW 0 1000 1 1 1
+cmn_pll1_vcocal_init_tmr_15_14 2 14 RO 0 0 1 1 1
+cmn_pll1_vcocal_init_tmr_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn146 3
+cmn_pll1_vcocal_iter_tmr_13_0 14 0 RW 0 16 1 1 1
+cmn_pll1_vcocal_iter_tmr_15_14 2 14 RO 0 0 1 1 1
+cmn_pll1_vcocal_iter_tmr_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn147 4
+cmn_pll1_vcocal_ovrd_7_0 8 0 RW 0 0 1 1 1
+cmn_pll1_vcocal_ovrd_14_8 7 8 RO 0 0 1 1 1
+cmn_pll1_vcocal_ovrd_15 1 15 RW 0 0 1 1 1
+cmn_pll1_vcocal_ovrd_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn148 3
+cmn_pll1_vcocal_reftim_start_13_0 14 0 RW 0 3166 1 1 1
+cmn_pll1_vcocal_reftim_start_15_14 2 14 RO 0 0 1 1 1
+cmn_pll1_vcocal_reftim_start_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn149 5
+cmn_pll1_vcocal_start_7_0 8 0 RW 0 100 1 1 1
+cmn_pll1_vcocal_start_11_8 4 8 RO 0 0 1 1 1
+cmn_pll1_vcocal_start_14_12 3 12 RW 0 2 1 1 1
+cmn_pll1_vcocal_start_15 1 15 RO 0 0 1 1 1
+cmn_pll1_vcocal_start_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn150 3
+cmn_pll1_vcocal_tctrl_2_0 3 0 RW 0 3 1 1 1
+cmn_pll1_vcocal_tctrl_15_3 13 3 RO 0 0 1 1 1
+cmn_pll1_vcocal_tctrl_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn151 20
+cmn_pllsm0_sm_ctrl_0 1 0 RW 0 0 1 1 1
+cmn_pllsm0_sm_ctrl_1 1 1 RW 0 1 1 1 1
+cmn_pllsm0_sm_ctrl_3_2 2 2 RO 0 0 1 1 1
+cmn_pllsm0_sm_ctrl_4 1 4 RW 0 0 1 1 1
+cmn_pllsm0_sm_ctrl_5 1 5 RW 0 0 1 1 1
+cmn_pllsm0_sm_ctrl_6 1 6 RW 0 0 1 1 1
+cmn_pllsm0_sm_ctrl_7 1 7 RW 0 0 1 1 1
+cmn_pllsm0_sm_ctrl_8 1 8 RW 0 0 1 1 1
+cmn_pllsm0_sm_ctrl_9 1 9 RW 0 0 1 1 1
+cmn_pllsm0_sm_ctrl_10 1 10 RW 0 0 1 1 1
+cmn_pllsm0_sm_ctrl_11 1 11 RW 0 0 1 1 1
+cmn_pllsm0_sm_ctrl_12 1 12 RW 0 0 1 1 1
+cmn_pllsm0_sm_ctrl_13 1 13 RW 0 0 1 1 1
+cmn_pllsm0_sm_ctrl_15_14 2 14 RO 0 0 1 1 1
+cmn_pllsm0_sm_ctrl_16 1 16 RW 0 0 1 1 1
+cmn_pllsm0_sm_ctrl_27_17 11 17 RW 0 0 1 1 1
+cmn_pllsm0_sm_ctrl_28 1 28 RW 0 0 1 1 1
+cmn_pllsm0_sm_ctrl_29 1 29 RW 0 0 1 1 1
+cmn_pllsm0_sm_ctrl_30 1 30 RW 0 0 1 1 1
+cmn_pllsm0_sm_ctrl_31 1 31 RW 0 0 1 1 1
+
+r cmn_cfgcmn152 3
+cmn_pllsm0_st_13_0 14 0 RO 0 0 1 1 1
+cmn_pllsm0_st_15_14 2 14 RO 0 0 1 1 1
+cmn_pllsm0_st_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn153 4
+cmn_pllsm0_tmr_1_3_0 4 0 RW 0 1 1 1 1
+cmn_pllsm0_tmr_1_15_4 12 4 RO 0 0 1 1 1
+cmn_pllsm0_tmr_1_23_16 8 16 RW 0 25 1 1 1
+cmn_pllsm0_tmr_1_31_24 8 24 RO 0 0 1 1 1
+
+r cmn_cfgcmn154 4
+cmn_pllsm0_tmr_2_7_0 8 0 RW 0 63 1 1 1
+cmn_pllsm0_tmr_2_15_8 8 8 RO 0 0 1 1 1
+cmn_pllsm0_tmr_2_19_16 4 16 RW 0 1 1 1 1
+cmn_pllsm0_tmr_2_31_20 12 20 RO 0 0 1 1 1
+
+r cmn_cfgcmn155 4
+cmn_pllsm0_tmr_3_9_0 10 0 RW 0 250 1 1 1
+cmn_pllsm0_tmr_3_15_10 6 10 RO 0 0 1 1 1
+cmn_pllsm0_tmr_3_19_16 4 16 RW 0 1 1 1 1
+cmn_pllsm0_tmr_3_31_20 12 20 RO 0 0 1 1 1
+
+r cmn_cfgcmn156 3
+cmn_pllsm0_tmr_4_1_0 2 0 RW 0 1 1 1 1
+cmn_pllsm0_tmr_4_15_2 14 2 RO 0 0 1 1 1
+cmn_pllsm0_tmr_4_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn157 32
+cmn_pllsm1_sm_ctrl0_0 1 0 RW 0 0 1 1 1
+cmn_pllsm1_sm_ctrl0_1 1 1 RW 0 0 1 1 1
+cmn_pllsm1_sm_ctrl0_2 1 2 RW 0 0 1 1 1
+cmn_pllsm1_sm_ctrl0_3 1 3 RW 0 0 1 1 1
+cmn_pllsm1_sm_ctrl0_4 1 4 RW 0 0 1 1 1
+cmn_pllsm1_sm_ctrl0_5 1 5 RW 0 0 1 1 1
+cmn_pllsm1_sm_ctrl0_6 1 6 RW 0 0 1 1 1
+cmn_pllsm1_sm_ctrl0_7 1 7 RW 0 0 1 1 1
+cmn_pllsm1_sm_ctrl0_8 1 8 RW 0 0 1 1 1
+cmn_pllsm1_sm_ctrl0_9 1 9 RW 0 0 1 1 1
+cmn_pllsm1_sm_ctrl0_10 1 10 RW 0 0 1 1 1
+cmn_pllsm1_sm_ctrl0_11 1 11 RW 0 0 1 1 1
+cmn_pllsm1_sm_ctrl0_12 1 12 RW 0 0 1 1 1
+cmn_pllsm1_sm_ctrl0_13 1 13 RW 0 0 1 1 1
+cmn_pllsm1_sm_ctrl0_14 1 14 RW 0 0 1 1 1
+cmn_pllsm1_sm_ctrl0_15 1 15 RW 0 0 1 1 1
+cmn_pllsm1_sm_ctrl0_16 1 16 RW 0 0 1 1 1
+cmn_pllsm1_sm_ctrl0_17 1 17 RW 0 0 1 1 1
+cmn_pllsm1_sm_ctrl0_18 1 18 RW 0 0 1 1 1
+cmn_pllsm1_sm_ctrl0_19 1 19 RW 0 0 1 1 1
+cmn_pllsm1_sm_ctrl0_20 1 20 RW 0 0 1 1 1
+cmn_pllsm1_sm_ctrl0_21 1 21 RW 0 0 1 1 1
+cmn_pllsm1_sm_ctrl0_22 1 22 RW 0 0 1 1 1
+cmn_pllsm1_sm_ctrl0_23 1 23 RW 0 0 1 1 1
+cmn_pllsm1_sm_ctrl0_24 1 24 RW 0 0 1 1 1
+cmn_pllsm1_sm_ctrl0_25 1 25 RW 0 0 1 1 1
+cmn_pllsm1_sm_ctrl0_26 1 26 RW 0 0 1 1 1
+cmn_pllsm1_sm_ctrl0_27 1 27 RW 0 0 1 1 1
+cmn_pllsm1_sm_ctrl0_28 1 28 RW 0 0 1 1 1
+cmn_pllsm1_sm_ctrl0_29 1 29 RW 0 0 1 1 1
+cmn_pllsm1_sm_ctrl0_30 1 30 RW 0 0 1 1 1
+cmn_pllsm1_sm_ctrl0_31 1 31 RW 0 0 1 1 1
+
+r cmn_cfgcmn158 15
+cmn_pllsm1_sm_ctrl1_0 1 0 RW 0 0 1 1 1
+cmn_pllsm1_sm_ctrl1_1 1 1 RW 0 0 1 1 1
+cmn_pllsm1_sm_ctrl1_2 1 2 RW 0 0 1 1 1
+cmn_pllsm1_sm_ctrl1_3 1 3 RW 0 0 1 1 1
+cmn_pllsm1_sm_ctrl1_4 1 4 RW 0 0 1 1 1
+cmn_pllsm1_sm_ctrl1_5 1 5 RW 0 0 1 1 1
+cmn_pllsm1_sm_ctrl1_6 1 6 RW 0 0 1 1 1
+cmn_pllsm1_sm_ctrl1_7 1 7 RW 0 0 1 1 1
+cmn_pllsm1_sm_ctrl1_8 1 8 RW 0 0 1 1 1
+cmn_pllsm1_sm_ctrl1_9 1 9 RW 0 0 1 1 1
+cmn_pllsm1_sm_ctrl1_10 1 10 RW 0 0 1 1 1
+cmn_pllsm1_sm_ctrl1_11 1 11 RW 0 0 1 1 1
+cmn_pllsm1_sm_ctrl1_15_12 4 12 RO 0 0 1 1 1
+cmn_pllsm1_sm_ctrl1_16 1 16 RW 0 0 1 1 1
+cmn_pllsm1_sm_ctrl1_31_17 15 17 RO 0 0 1 1 1
+
+r cmn_cfgcmn159 2
+cmn_pllsm1_st_24_0 25 0 RO 0 3170592 1 1 1
+cmn_pllsm1_st_31_25 7 25 RO 0 0 1 1 1
+
+r cmn_cfgcmn160 2
+cmn_pllsm1_tmr_1_15_0 16 0 RW 0 100 1 1 1
+cmn_pllsm1_tmr_1_31_16 16 16 RW 0 100 1 1 1
+
+r cmn_cfgcmn161 2
+cmn_pllsm1_tmr_2_15_0 16 0 RW 0 50 1 1 1
+cmn_pllsm1_tmr_2_31_16 16 16 RW 0 200 1 1 1
+
+r cmn_cfgcmn162 2
+cmn_pllsm1_tmr_3_15_0 16 0 RW 0 22 1 1 1
+cmn_pllsm1_tmr_3_31_16 16 16 RW 0 50 1 1 1
+
+r cmn_cfgcmn163 2
+cmn_pllsm1_tmr_4_15_0 16 0 RW 0 400 1 1 1
+cmn_pllsm1_tmr_4_31_16 16 16 RW 0 22 1 1 1
+
+r cmn_cfgcmn164 2
+cmn_pllsm1_tmr_5_15_0 16 0 RW 0 1000 1 1 1
+cmn_pllsm1_tmr_5_31_16 16 16 RW 0 1000 1 1 1
+
+r cmn_cfgcmn165 2
+cmn_pllsm1_tmr_6_15_0 16 0 RW 0 1200 1 1 1
+cmn_pllsm1_tmr_6_31_16 16 16 RW 0 16 1 1 1
+
+r cmn_cfgcmn166 2
+cmn_pllsm1_tmr_7_15_0 16 0 RW 0 16 1 1 1
+cmn_pllsm1_tmr_7_31_16 16 16 RW 0 16 1 1 1
+
+r cmn_cfgcmn167 2
+cmn_pllsm1_tmr_8_15_0 16 0 RW 0 16 1 1 1
+cmn_pllsm1_tmr_8_31_16 16 16 RW 0 16 1 1 1
+
+r cmn_cfgcmn168 7
+cmn_rxcal_ctrl_5_0 6 0 RO 0 0 1 1 1
+cmn_rxcal_ctrl_11_6 6 6 RO 0 0 1 1 1
+cmn_rxcal_ctrl_12 1 12 RO 0 0 1 1 1
+cmn_rxcal_ctrl_13 1 13 RO 0 0 1 1 1
+cmn_rxcal_ctrl_14 1 14 RO 0 0 1 1 1
+cmn_rxcal_ctrl_15 1 15 RW 0 0 1 1 1
+cmn_rxcal_ctrl_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn169 3
+cmn_rxcal_init_tmr_11_0 12 0 RW 0 752 1 1 1
+cmn_rxcal_init_tmr_15_12 4 12 RO 0 0 1 1 1
+cmn_rxcal_init_tmr_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn170 3
+cmn_rxcal_iter_tmr_11_0 12 0 RW 0 16 1 1 1
+cmn_rxcal_iter_tmr_15_12 4 12 RO 0 0 1 1 1
+cmn_rxcal_iter_tmr_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn171 5
+cmn_rxcal_ovrd_5_0 6 0 RW 0 0 1 1 1
+cmn_rxcal_ovrd_13_6 8 6 RO 0 0 1 1 1
+cmn_rxcal_ovrd_14 1 14 RW 0 0 1 1 1
+cmn_rxcal_ovrd_15 1 15 RW 0 0 1 1 1
+cmn_rxcal_ovrd_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn172 4
+cmn_rxcal_start_5_0 6 0 RW 0 16 1 1 1
+cmn_rxcal_start_14_6 9 6 RO 0 0 1 1 1
+cmn_rxcal_start_15 1 15 RW 0 0 1 1 1
+cmn_rxcal_start_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn173 3
+cmn_rxcal_tune_5_0 6 0 RW 0 0 1 1 1
+cmn_rxcal_tune_15_6 10 6 RO 0 0 1 1 1
+cmn_rxcal_tune_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn174 5
+cmn_sd_cal_ctrl_4_0 5 0 RO 0 0 1 1 1
+cmn_sd_cal_ctrl_13_5 9 5 RO 0 0 1 1 1
+cmn_sd_cal_ctrl_14 1 14 RO 0 0 1 1 1
+cmn_sd_cal_ctrl_15 1 15 RW 0 0 1 1 1
+cmn_sd_cal_ctrl_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn175 3
+cmn_sd_cal_init_tmr_7_0 8 0 RW 0 6 1 1 1
+cmn_sd_cal_init_tmr_15_8 8 8 RO 0 0 1 1 1
+cmn_sd_cal_init_tmr_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn176 3
+cmn_sd_cal_iter_tmr_7_0 8 0 RW 0 2 1 1 1
+cmn_sd_cal_iter_tmr_15_8 8 8 RO 0 0 1 1 1
+cmn_sd_cal_iter_tmr_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn177 4
+cmn_sd_cal_ovrd_4_0 5 0 RW 0 0 1 1 1
+cmn_sd_cal_ovrd_14_5 10 5 RO 0 0 1 1 1
+cmn_sd_cal_ovrd_15 1 15 RW 0 0 1 1 1
+cmn_sd_cal_ovrd_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn178 3
+cmn_sd_cal_pllcnt_start_9_0 10 0 RW 0 299 1 1 1
+cmn_sd_cal_pllcnt_start_15_10 6 10 RO 0 0 1 1 1
+cmn_sd_cal_pllcnt_start_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn179 3
+cmn_sd_cal_reftim_start_7_0 8 0 RW 0 14 1 1 1
+cmn_sd_cal_reftim_start_15_8 8 8 RO 0 0 1 1 1
+cmn_sd_cal_reftim_start_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn180 5
+cmn_sd_cal_start_4_0 5 0 RW 0 30 1 1 1
+cmn_sd_cal_start_11_5 7 5 RO 0 0 1 1 1
+cmn_sd_cal_start_14_12 3 12 RW 0 1 1 1 1
+cmn_sd_cal_start_15 1 15 RO 0 0 1 1 1
+cmn_sd_cal_start_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn181 3
+cmn_sd_cal_tctrl_2_0 3 0 RW 0 1 1 1 1
+cmn_sd_cal_tctrl_15_3 13 3 RO 0 0 1 1 1
+cmn_sd_cal_tctrl_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn182 23
+cmn_ssm_sm_ctrl_0 1 0 RW 0 1 1 1 1
+cmn_ssm_sm_ctrl_1 1 1 RW 0 1 1 1 1
+cmn_ssm_sm_ctrl_3_2 2 2 RO 0 0 1 1 1
+cmn_ssm_sm_ctrl_4 1 4 RW 0 0 1 1 1
+cmn_ssm_sm_ctrl_5 1 5 RW 0 0 1 1 1
+cmn_ssm_sm_ctrl_6 1 6 RW 0 0 1 1 1
+cmn_ssm_sm_ctrl_7 1 7 RW 0 0 1 1 1
+cmn_ssm_sm_ctrl_8 1 8 RW 0 0 1 1 1
+cmn_ssm_sm_ctrl_9 1 9 RW 0 0 1 1 1
+cmn_ssm_sm_ctrl_10 1 10 RW 0 0 1 1 1
+cmn_ssm_sm_ctrl_11 1 11 RW 0 0 1 1 1
+cmn_ssm_sm_ctrl_15_12 4 12 RO 0 0 1 1 1
+cmn_ssm_sm_ctrl_16 1 16 RW 0 1 1 1 1
+cmn_ssm_sm_ctrl_17 1 17 RW 0 0 1 1 1
+cmn_ssm_sm_ctrl_23_18 6 18 RW 0 0 1 1 1
+cmn_ssm_sm_ctrl_24 1 24 RW 0 0 1 1 1
+cmn_ssm_sm_ctrl_25 1 25 RW 0 0 1 1 1
+cmn_ssm_sm_ctrl_26 1 26 RW 0 0 1 1 1
+cmn_ssm_sm_ctrl_27 1 27 RW 0 0 1 1 1
+cmn_ssm_sm_ctrl_28 1 28 RW 0 0 1 1 1
+cmn_ssm_sm_ctrl_29 1 29 RW 0 0 1 1 1
+cmn_ssm_sm_ctrl_30 1 30 RW 0 0 1 1 1
+cmn_ssm_sm_ctrl_31 1 31 RW 0 0 1 1 1
+
+r cmn_cfgcmn183 3
+cmn_ssm_st_9_0 10 0 RO 0 0 1 1 1
+cmn_ssm_st_15_10 6 10 RO 0 0 1 1 1
+cmn_ssm_st_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn184 4
+cmn_ssm_tmr_1_6_0 7 0 RW 0 25 1 1 1
+cmn_ssm_tmr_1_15_7 9 7 RO 0 0 1 1 1
+cmn_ssm_tmr_1_20_16 5 16 RW 0 1 1 1 1
+cmn_ssm_tmr_1_31_21 11 21 RO 0 0 1 1 1
+
+r cmn_cfgcmn185 4
+cmn_ssm_tmr_2_3_0 4 0 RW 0 1 1 1 1
+cmn_ssm_tmr_2_15_4 12 4 RO 0 0 1 1 1
+cmn_ssm_tmr_2_19_16 4 16 RW 0 1 1 1 1
+cmn_ssm_tmr_2_31_20 12 20 RO 0 0 1 1 1
+
+r cmn_cfgcmn186 7
+cmn_txpdcal_ctrl_5_0 6 0 RO 0 0 1 1 1
+cmn_txpdcal_ctrl_11_6 6 6 RO 0 0 1 1 1
+cmn_txpdcal_ctrl_12 1 12 RO 0 0 1 1 1
+cmn_txpdcal_ctrl_13 1 13 RO 0 0 1 1 1
+cmn_txpdcal_ctrl_14 1 14 RO 0 0 1 1 1
+cmn_txpdcal_ctrl_15 1 15 RW 0 0 1 1 1
+cmn_txpdcal_ctrl_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn187 3
+cmn_txpdcal_init_tmr_6_0 7 0 RW 0 32 1 1 1
+cmn_txpdcal_init_tmr_15_7 9 7 RO 0 0 1 1 1
+cmn_txpdcal_init_tmr_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn188 3
+cmn_txpdcal_iter_tmr_6_0 7 0 RW 0 16 1 1 1
+cmn_txpdcal_iter_tmr_15_7 9 7 RO 0 0 1 1 1
+cmn_txpdcal_iter_tmr_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn189 5
+cmn_txpdcal_ovrd_5_0 6 0 RW 0 0 1 1 1
+cmn_txpdcal_ovrd_13_6 8 6 RO 0 0 1 1 1
+cmn_txpdcal_ovrd_14 1 14 RW 0 0 1 1 1
+cmn_txpdcal_ovrd_15 1 15 RW 0 0 1 1 1
+cmn_txpdcal_ovrd_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn190 4
+cmn_txpdcal_start_5_0 6 0 RW 0 16 1 1 1
+cmn_txpdcal_start_14_6 9 6 RO 0 0 1 1 1
+cmn_txpdcal_start_15 1 15 RW 0 0 1 1 1
+cmn_txpdcal_start_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn191 3
+cmn_txpdcal_tune_5_0 6 0 RW 0 0 1 1 1
+cmn_txpdcal_tune_15_6 10 6 RO 0 0 1 1 1
+cmn_txpdcal_tune_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn192 7
+cmn_txpucal_ctrl_5_0 6 0 RO 0 0 1 1 1
+cmn_txpucal_ctrl_11_6 6 6 RO 0 0 1 1 1
+cmn_txpucal_ctrl_12 1 12 RO 0 0 1 1 1
+cmn_txpucal_ctrl_13 1 13 RO 0 0 1 1 1
+cmn_txpucal_ctrl_14 1 14 RO 0 0 1 1 1
+cmn_txpucal_ctrl_15 1 15 RW 0 0 1 1 1
+cmn_txpucal_ctrl_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn193 3
+cmn_txpucal_init_tmr_6_0 7 0 RW 0 32 1 1 1
+cmn_txpucal_init_tmr_15_7 9 7 RO 0 0 1 1 1
+cmn_txpucal_init_tmr_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn194 3
+cmn_txpucal_iter_tmr_6_0 7 0 RW 0 16 1 1 1
+cmn_txpucal_iter_tmr_15_7 9 7 RO 0 0 1 1 1
+cmn_txpucal_iter_tmr_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn195 5
+cmn_txpucal_ovrd_5_0 6 0 RW 0 0 1 1 1
+cmn_txpucal_ovrd_13_6 8 6 RO 0 0 1 1 1
+cmn_txpucal_ovrd_14 1 14 RW 0 0 1 1 1
+cmn_txpucal_ovrd_15 1 15 RW 0 0 1 1 1
+cmn_txpucal_ovrd_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn196 4
+cmn_txpucal_start_5_0 6 0 RW 0 16 1 1 1
+cmn_txpucal_start_14_6 9 6 RO 0 0 1 1 1
+cmn_txpucal_start_15 1 15 RW 0 0 1 1 1
+cmn_txpucal_start_31_16 16 16 RO 0 0 1 1 1
+
+r cmn_cfgcmn197 3
+cmn_txpucal_tune_5_0 6 0 RW 0 0 1 1 1
+cmn_txpucal_tune_15_6 10 6 RO 0 0 1 1 1
+cmn_txpucal_tune_31_16 16 16 RO 0 0 1 1 1
+
+
+ ** --  RegFiles configuration -- **
+
+
+ ** --  Blocks configuration -- **
+
+b pma_cmn_registers.sd3101_t4_registers_sd3101_phy_registers 197 0 0 0 1 1 1
+T_cmn_bgcal_ctrl_1033 cmn_cfgcmn1 cmn_bgcal_ctrl 384 4 RW 0 1 8
+T_cmn_bgcal_init_tmr_1037 cmn_cfgcmn2 cmn_bgcal_init_tmr 400 4 RW 0 1 8
+T_cmn_bgcal_iter_tmr_1038 cmn_cfgcmn3 cmn_bgcal_iter_tmr 404 4 RW 0 1 8
+T_cmn_bgcal_ovrd_1034 cmn_cfgcmn4 cmn_bgcal_ovrd 388 4 RW 0 1 8
+T_cmn_bgcal_start_1035 cmn_cfgcmn5 cmn_bgcal_start 392 4 RW 0 1 8
+T_cmn_bgcal_tune_1036 cmn_cfgcmn6 cmn_bgcal_tune 396 4 RW 0 1 8
+T_cmn_cdiag_ccal_pwri_ovrd_1023 cmn_cfgcmn7 cmn_cdiag_ccal_pwri_ovrd 268 4 RW 0 1 8
+T_cmn_cdiag_dcya_1032 cmn_cfgcmn8 cmn_cdiag_dcya 380 4 RW 0 1 8
+T_cmn_cdiag_diag_pwri_ovrd_1025 cmn_cfgcmn9 cmn_cdiag_diag_pwri_ovrd 276 4 RW 0 1 8
+T_cmn_cdiag_pllc_pwri_ovrd_1022 cmn_cfgcmn10 cmn_cdiag_pllc_pwri_ovrd 264 4 RW 0 1 8
+T_cmn_cdiag_pllsm_calmc_cs_1030 cmn_cfgcmn11 cmn_cdiag_pllsm_calmc_cs 364 4 RW 0 1 8
+T_cmn_cdiag_psmclk_ctrl_1027 cmn_cfgcmn12 cmn_cdiag_psmclk_ctrl 292 4 RW 0 1 8
+T_cmn_cdiag_pwri_tmr_1021 cmn_cfgcmn13 cmn_cdiag_pwri_tmr 256 4 RW 0 1 8
+T_cmn_cdiag_refclk_ctrl_1026 cmn_cfgcmn14 cmn_cdiag_refclk_ctrl 288 4 RW 0 1 8
+T_cmn_cdiag_rst_diag_1031 cmn_cfgcmn15 cmn_cdiag_rst_diag 372 4 RW 0 1 8
+T_cmn_cdiag_sdosc_ctrl_1028 cmn_cfgcmn16 cmn_cdiag_sdosc_ctrl 296 4 RW 0 1 8
+T_cmn_cdiag_ssm_calmc_cs_1029 cmn_cfgcmn17 cmn_cdiag_ssm_calmc_cs 360 4 RW 0 1 8
+T_cmn_cdiag_xcvrc_pwri_ovrd_1024 cmn_cfgcmn18 cmn_cdiag_xcvrc_pwri_ovrd 272 4 RW 0 1 8
+T_cmn_cmsmt_clk_freq_msmt_ctrl_1122 cmn_cfgcmn19 cmn_cmsmt_clk_freq_msmt_ctrl 1408 4 RW 0 1 8
+T_cmn_cmsmt_ref_clk_tmr_value_1124 cmn_cfgcmn20 cmn_cmsmt_ref_clk_tmr_value 1416 4 RW 0 1 8
+T_cmn_cmsmt_test_clk_cnt_value_1125 cmn_cfgcmn21 cmn_cmsmt_test_clk_cnt_value 1420 4 RW 0 1 8
+T_cmn_cmsmt_test_clk_sel_1123 cmn_cfgcmn22 cmn_cmsmt_test_clk_sel 1412 4 RW 0 1 8
+T_cmn_diag_atb_adc_ctrl_1170 cmn_cfgcmn23 cmn_diag_atb_adc_ctrl 1944 4 RW 0 1 8
+T_cmn_diag_atb_ctrl_1169 cmn_cfgcmn24 cmn_diag_atb_ctrl 1940 4 RW 0 1 8
+T_cmn_diag_bandgap_ovrd_1164 cmn_cfgcmn25 cmn_diag_bandgap_ovrd 1920 4 RW 0 1 8
+T_cmn_diag_bias_adj_1179 cmn_cfgcmn26 cmn_diag_bias_adj 1980 4 RW 0 1 8
+T_cmn_diag_bias_ovrd_1165 cmn_cfgcmn27 cmn_diag_bias_ovrd 1924 4 RW 0 1 8
+T_cmn_diag_cal_filt_ctrl_1177 cmn_cfgcmn28 cmn_diag_cal_filt_ctrl 1972 4 RW 0 1 8
+T_cmn_diag_cya_1173 cmn_cfgcmn29 cmn_diag_cya 1956 4 RW 0 1 8
+T_cmn_diag_gpana_1_1174 cmn_cfgcmn30 cmn_diag_gpana_1 1960 4 RW 0 1 8
+T_cmn_diag_gpana_2_1175 cmn_cfgcmn31 cmn_diag_gpana_2 1964 4 RW 0 1 8
+T_cmn_diag_gpana_st_1176 cmn_cfgcmn32 cmn_diag_gpana_st 1968 4 RW 0 1 8
+T_cmn_diag_hsrrsm_ctrl_1171 cmn_cfgcmn33 cmn_diag_hsrrsm_ctrl 1948 4 RW 0 1 8
+T_cmn_diag_mom_osc_ctrl_1178 cmn_cfgcmn34 cmn_diag_mom_osc_ctrl 1976 4 RW 0 1 8
+T_cmn_diag_pm_ctrl_1166 cmn_cfgcmn35 cmn_diag_pm_ctrl 1928 4 RW 0 1 8
+T_cmn_diag_rst_diag_1172 cmn_cfgcmn36 cmn_diag_rst_diag 1952 4 RW 0 1 8
+T_cmn_diag_sh_bg_res_1167 cmn_cfgcmn37 cmn_diag_sh_bg_res 1932 4 RW 0 1 8
+T_cmn_diag_sh_sdclk_1168 cmn_cfgcmn38 cmn_diag_sh_sdclk 1936 4 RW 0 1 8
+T_cmn_diag_tmpsns_ana_ctrl_1180 cmn_cfgcmn39 cmn_diag_tmpsns_ana_ctrl 1984 4 RW 0 1 8
+T_cmn_diag_tmpsns_filt_ctrl_1181 cmn_cfgcmn40 cmn_diag_tmpsns_filt_ctrl 1988 4 RW 0 1 8
+T_cmn_diag_tmpsns_filt_out_1182 cmn_cfgcmn41 cmn_diag_tmpsns_filt_out 1992 4 RW 0 1 8
+T_cmn_ibcal_ctrl_1039 cmn_cfgcmn42 cmn_ibcal_ctrl 448 4 RW 0 1 8
+T_cmn_ibcal_init_tmr_1043 cmn_cfgcmn43 cmn_ibcal_init_tmr 464 4 RW 0 1 8
+T_cmn_ibcal_iter_tmr_1044 cmn_cfgcmn44 cmn_ibcal_iter_tmr 468 4 RW 0 1 8
+T_cmn_ibcal_ovrd_1040 cmn_cfgcmn45 cmn_ibcal_ovrd 452 4 RW 0 1 8
+T_cmn_ibcal_start_1041 cmn_cfgcmn46 cmn_ibcal_start 456 4 RW 0 1 8
+T_cmn_ibcal_tune_1042 cmn_cfgcmn47 cmn_ibcal_tune 460 4 RW 0 1 8
+T_cmn_pdiag_pll0_cp_iadj_m0_1130 cmn_cfgcmn48 cmn_pdiag_pll0_cp_iadj_m0 1680 4 RW 0 1 8
+T_cmn_pdiag_pll0_cp_iadj_m1_1139 cmn_cfgcmn49 cmn_pdiag_pll0_cp_iadj_m1 1744 4 RW 0 1 8
+T_cmn_pdiag_pll0_cp_padj_m0_1129 cmn_cfgcmn50 cmn_pdiag_pll0_cp_padj_m0 1676 4 RW 0 1 8
+T_cmn_pdiag_pll0_cp_padj_m1_1138 cmn_cfgcmn51 cmn_pdiag_pll0_cp_padj_m1 1740 4 RW 0 1 8
+T_cmn_pdiag_pll0_ctrl_m0_1126 cmn_cfgcmn52 cmn_pdiag_pll0_ctrl_m0 1664 4 RW 0 1 8
+T_cmn_pdiag_pll0_ctrl_m1_1135 cmn_cfgcmn53 cmn_pdiag_pll0_ctrl_m1 1728 4 RW 0 1 8
+T_cmn_pdiag_pll0_filt_padj_m0_1131 cmn_cfgcmn54 cmn_pdiag_pll0_filt_padj_m0 1684 4 RW 0 1 8
+T_cmn_pdiag_pll0_filt_padj_m1_1140 cmn_cfgcmn55 cmn_pdiag_pll0_filt_padj_m1 1748 4 RW 0 1 8
+T_cmn_pdiag_pll0_pkvco_bw_ctrl_m0_1128 cmn_cfgcmn56 cmn_pdiag_pll0_pkvco_bw_ctrl_m0 1672 4 RW 0 1 8
+T_cmn_pdiag_pll0_pkvco_bw_ctrl_m1_1137 cmn_cfgcmn57 cmn_pdiag_pll0_pkvco_bw_ctrl_m1 1736 4 RW 0 1 8
+T_cmn_pdiag_pll0_post_div_m0_1134 cmn_cfgcmn58 cmn_pdiag_pll0_post_div_m0 1696 4 RW 0 1 8
+T_cmn_pdiag_pll0_post_div_m1_1143 cmn_cfgcmn59 cmn_pdiag_pll0_post_div_m1 1760 4 RW 0 1 8
+T_cmn_pdiag_pll0_prog0_clk_ctrl_m0_1132 cmn_cfgcmn60 cmn_pdiag_pll0_prog0_clk_ctrl_m0 1688 4 RW 0 1 8
+T_cmn_pdiag_pll0_prog0_clk_ctrl_m1_1141 cmn_cfgcmn61 cmn_pdiag_pll0_prog0_clk_ctrl_m1 1752 4 RW 0 1 8
+T_cmn_pdiag_pll0_prog1_clk_ctrl_m0_1133 cmn_cfgcmn62 cmn_pdiag_pll0_prog1_clk_ctrl_m0 1692 4 RW 0 1 8
+T_cmn_pdiag_pll0_prog1_clk_ctrl_m1_1142 cmn_cfgcmn63 cmn_pdiag_pll0_prog1_clk_ctrl_m1 1756 4 RW 0 1 8
+T_cmn_pdiag_pll0_tune_m0_1127 cmn_cfgcmn64 cmn_pdiag_pll0_tune_m0 1668 4 RW 0 1 8
+T_cmn_pdiag_pll0_tune_m1_1136 cmn_cfgcmn65 cmn_pdiag_pll0_tune_m1 1732 4 RW 0 1 8
+T_cmn_pdiag_pll1_cp_ctrl_m0_1146 cmn_cfgcmn66 cmn_pdiag_pll1_cp_ctrl_m0 1800 4 RW 0 1 8
+T_cmn_pdiag_pll1_cp_ctrl_m1_1156 cmn_cfgcmn67 cmn_pdiag_pll1_cp_ctrl_m1 1864 4 RW 0 1 8
+T_cmn_pdiag_pll1_lock_det_ctrl_m0_1149 cmn_cfgcmn68 cmn_pdiag_pll1_lock_det_ctrl_m0 1812 4 RW 0 1 8
+T_cmn_pdiag_pll1_lock_det_ctrl_m1_1159 cmn_cfgcmn69 cmn_pdiag_pll1_lock_det_ctrl_m1 1876 4 RW 0 1 8
+T_cmn_pdiag_pll1_lpf_ctrl_m0_1147 cmn_cfgcmn70 cmn_pdiag_pll1_lpf_ctrl_m0 1804 4 RW 0 1 8
+T_cmn_pdiag_pll1_lpf_ctrl_m1_1157 cmn_cfgcmn71 cmn_pdiag_pll1_lpf_ctrl_m1 1868 4 RW 0 1 8
+T_cmn_pdiag_pll1_pfd_ctrl_m0_1145 cmn_cfgcmn72 cmn_pdiag_pll1_pfd_ctrl_m0 1796 4 RW 0 1 8
+T_cmn_pdiag_pll1_pfd_ctrl_m1_1155 cmn_cfgcmn73 cmn_pdiag_pll1_pfd_ctrl_m1 1860 4 RW 0 1 8
+T_cmn_pdiag_pll1_post_div_m0_1150 cmn_cfgcmn74 cmn_pdiag_pll1_post_div_m0 1816 4 RW 0 1 8
+T_cmn_pdiag_pll1_post_div_m1_1160 cmn_cfgcmn75 cmn_pdiag_pll1_post_div_m1 1880 4 RW 0 1 8
+T_cmn_pdiag_pll1_prog0_clk_ctrl_m0_1152 cmn_cfgcmn76 cmn_pdiag_pll1_prog0_clk_ctrl_m0 1824 4 RW 0 1 8
+T_cmn_pdiag_pll1_prog0_clk_ctrl_m1_1162 cmn_cfgcmn77 cmn_pdiag_pll1_prog0_clk_ctrl_m1 1888 4 RW 0 1 8
+T_cmn_pdiag_pll1_prog1_clk_ctrl_m0_1153 cmn_cfgcmn78 cmn_pdiag_pll1_prog1_clk_ctrl_m0 1828 4 RW 0 1 8
+T_cmn_pdiag_pll1_prog1_clk_ctrl_m1_1163 cmn_cfgcmn79 cmn_pdiag_pll1_prog1_clk_ctrl_m1 1892 4 RW 0 1 8
+T_cmn_pdiag_pll1_ref_clk_div_sel_m0_1151 cmn_cfgcmn80 cmn_pdiag_pll1_ref_clk_div_sel_m0 1820 4 RW 0 1 8
+T_cmn_pdiag_pll1_ref_clk_div_sel_m1_1161 cmn_cfgcmn81 cmn_pdiag_pll1_ref_clk_div_sel_m1 1884 4 RW 0 1 8
+T_cmn_pdiag_pll1_vco_ctrl_m0_1148 cmn_cfgcmn82 cmn_pdiag_pll1_vco_ctrl_m0 1808 4 RW 0 1 8
+T_cmn_pdiag_pll1_vco_ctrl_m1_1158 cmn_cfgcmn83 cmn_pdiag_pll1_vco_ctrl_m1 1872 4 RW 0 1 8
+T_cmn_pdiag_pll1_vreg_adj_m0_1144 cmn_cfgcmn84 cmn_pdiag_pll1_vreg_adj_m0 1792 4 RW 0 1 8
+T_cmn_pdiag_pll1_vreg_adj_m1_1154 cmn_cfgcmn85 cmn_pdiag_pll1_vreg_adj_m1 1856 4 RW 0 1 8
+T_cmn_pid_flv0_991 cmn_cfgcmn86 cmn_pid_flv0 40 4 RW 0 1 8
+T_cmn_pid_flv1_992 cmn_cfgcmn87 cmn_pid_flv1 44 4 RW 0 1 8
+T_cmn_pid_iov_993 cmn_cfgcmn88 cmn_pid_iov 48 4 RW 0 1 8
+T_cmn_pid_lanes_994 cmn_cfgcmn89 cmn_pid_lanes 52 4 RW 0 1 8
+T_cmn_pid_metal0_995 cmn_cfgcmn90 cmn_pid_metal0 64 4 RW 0 1 8
+T_cmn_pid_metal1_996 cmn_cfgcmn91 cmn_pid_metal1 68 4 RW 0 1 8
+T_cmn_pid_metal2_997 cmn_cfgcmn92 cmn_pid_metal2 72 4 RW 0 1 8
+T_cmn_pid_metal3_998 cmn_cfgcmn93 cmn_pid_metal3 76 4 RW 0 1 8
+T_cmn_pid_metald_999 cmn_cfgcmn94 cmn_pid_metald 80 4 RW 0 1 8
+T_cmn_pid_mfg_989 cmn_cfgcmn95 cmn_pid_mfg 32 4 RW 0 1 8
+T_cmn_pid_node_990 cmn_cfgcmn96 cmn_pid_node 36 4 RW 0 1 8
+T_cmn_pid_num_987 cmn_cfgcmn97 cmn_pid_num 12 4 RW 0 1 8
+T_cmn_pid_rev_988 cmn_cfgcmn98 cmn_pid_rev 16 4 RW 0 1 8
+T_cmn_pid_type_986 cmn_cfgcmn99 cmn_pid_type 0 4 RW 0 1 8
+T_cmn_pll0_dsm_diag_1057 cmn_cfgcmn100 cmn_pll0_dsm_diag 592 4 RW 0 1 8
+T_cmn_pll0_dsm_fbh_ovrd_1058 cmn_cfgcmn101 cmn_pll0_dsm_fbh_ovrd 596 4 RW 0 1 8
+T_cmn_pll0_dsm_fbl_ovrd_1059 cmn_cfgcmn102 cmn_pll0_dsm_fbl_ovrd 600 4 RW 0 1 8
+T_cmn_pll0_fracdivh_1055 cmn_cfgcmn103 cmn_pll0_fracdivh 584 4 RW 0 1 8
+T_cmn_pll0_fracdivl_1054 cmn_cfgcmn104 cmn_pll0_fracdivl 580 4 RW 0 1 8
+T_cmn_pll0_high_thr_1056 cmn_cfgcmn105 cmn_pll0_high_thr 588 4 RW 0 1 8
+T_cmn_pll0_intdiv_1053 cmn_cfgcmn106 cmn_pll0_intdiv 576 4 RW 0 1 8
+T_cmn_pll0_lock_pllcnt_start_1065 cmn_cfgcmn107 cmn_pll0_lock_pllcnt_start 632 4 RW 0 1 8
+T_cmn_pll0_lock_pllcnt_thr_1066 cmn_cfgcmn108 cmn_pll0_lock_pllcnt_thr 636 4 RW 0 1 8
+T_cmn_pll0_lock_refcnt_idle_1064 cmn_cfgcmn109 cmn_pll0_lock_refcnt_idle 628 4 RW 0 1 8
+T_cmn_pll0_lock_refcnt_start_1063 cmn_cfgcmn110 cmn_pll0_lock_refcnt_start 624 4 RW 0 1 8
+T_cmn_pll0_ss_ctrl1_1060 cmn_cfgcmn111 cmn_pll0_ss_ctrl1 608 4 RW 0 1 8
+T_cmn_pll0_ss_ctrl2_1061 cmn_cfgcmn112 cmn_pll0_ss_ctrl2 612 4 RW 0 1 8
+T_cmn_pll0_ss_ctrl3_1062 cmn_cfgcmn113 cmn_pll0_ss_ctrl3 616 4 RW 0 1 8
+T_cmn_pll0_varcal_ctrl_1067 cmn_cfgcmn114 cmn_pll0_varcal_ctrl 640 4 RW 0 1 8
+T_cmn_pll0_varcal_icvf_cfg_1075 cmn_cfgcmn115 cmn_pll0_varcal_icvf_cfg 672 4 RW 0 1 8
+T_cmn_pll0_varcal_icvf_hstat_1077 cmn_cfgcmn116 cmn_pll0_varcal_icvf_hstat 680 4 RW 0 1 8
+T_cmn_pll0_varcal_icvf_init_tmr_1074 cmn_cfgcmn117 cmn_pll0_varcal_icvf_init_tmr 668 4 RW 0 1 8
+T_cmn_pll0_varcal_icvf_lstat_1076 cmn_cfgcmn118 cmn_pll0_varcal_icvf_lstat 676 4 RW 0 1 8
+T_cmn_pll0_varcal_init_tmr_1071 cmn_cfgcmn119 cmn_pll0_varcal_init_tmr 656 4 RW 0 1 8
+T_cmn_pll0_varcal_iter_tmr_1072 cmn_cfgcmn120 cmn_pll0_varcal_iter_tmr 660 4 RW 0 1 8
+T_cmn_pll0_varcal_ovrd_1070 cmn_cfgcmn121 cmn_pll0_varcal_ovrd 652 4 RW 0 1 8
+T_cmn_pll0_varcal_pllcnt_ovrd_1078 cmn_cfgcmn122 cmn_pll0_varcal_pllcnt_ovrd 684 4 RW 0 1 8
+T_cmn_pll0_varcal_reftim_start_1073 cmn_cfgcmn123 cmn_pll0_varcal_reftim_start 664 4 RW 0 1 8
+T_cmn_pll0_varcal_start_1068 cmn_cfgcmn124 cmn_pll0_varcal_start 644 4 RW 0 1 8
+T_cmn_pll0_varcal_tctrl_1069 cmn_cfgcmn125 cmn_pll0_varcal_tctrl 648 4 RW 0 1 8
+T_cmn_pll0_vcocal_ctrl_1045 cmn_cfgcmn126 cmn_pll0_vcocal_ctrl 512 4 RW 0 1 8
+T_cmn_pll0_vcocal_init_tmr_1049 cmn_cfgcmn127 cmn_pll0_vcocal_init_tmr 528 4 RW 0 1 8
+T_cmn_pll0_vcocal_iter_tmr_1050 cmn_cfgcmn128 cmn_pll0_vcocal_iter_tmr 532 4 RW 0 1 8
+T_cmn_pll0_vcocal_ovrd_1048 cmn_cfgcmn129 cmn_pll0_vcocal_ovrd 524 4 RW 0 1 8
+T_cmn_pll0_vcocal_pllcnt_start_1052 cmn_cfgcmn130 cmn_pll0_vcocal_pllcnt_start 544 4 RW 0 1 8
+T_cmn_pll0_vcocal_reftim_start_1051 cmn_cfgcmn131 cmn_pll0_vcocal_reftim_start 536 4 RW 0 1 8
+T_cmn_pll0_vcocal_start_1046 cmn_cfgcmn132 cmn_pll0_vcocal_start 516 4 RW 0 1 8
+T_cmn_pll0_vcocal_tctrl_1047 cmn_cfgcmn133 cmn_pll0_vcocal_tctrl 520 4 RW 0 1 8
+T_cmn_pll1_dsm_diag_1090 cmn_cfgcmn134 cmn_pll1_dsm_diag 848 4 RW 0 1 8
+T_cmn_pll1_dsm_fbh_ovrd_1091 cmn_cfgcmn135 cmn_pll1_dsm_fbh_ovrd 852 4 RW 0 1 8
+T_cmn_pll1_dsm_fbl_ovrd_1092 cmn_cfgcmn136 cmn_pll1_dsm_fbl_ovrd 856 4 RW 0 1 8
+T_cmn_pll1_fracdivh_1088 cmn_cfgcmn137 cmn_pll1_fracdivh 840 4 RW 0 1 8
+T_cmn_pll1_fracdivl_1087 cmn_cfgcmn138 cmn_pll1_fracdivl 836 4 RW 0 1 8
+T_cmn_pll1_high_thr_1089 cmn_cfgcmn139 cmn_pll1_high_thr 844 4 RW 0 1 8
+T_cmn_pll1_intdiv_1086 cmn_cfgcmn140 cmn_pll1_intdiv 832 4 RW 0 1 8
+T_cmn_pll1_ss_ctrl1_1093 cmn_cfgcmn141 cmn_pll1_ss_ctrl1 864 4 RW 0 1 8
+T_cmn_pll1_ss_ctrl2_1094 cmn_cfgcmn142 cmn_pll1_ss_ctrl2 868 4 RW 0 1 8
+T_cmn_pll1_ss_ctrl3_1095 cmn_cfgcmn143 cmn_pll1_ss_ctrl3 872 4 RW 0 1 8
+T_cmn_pll1_vcocal_ctrl_1079 cmn_cfgcmn144 cmn_pll1_vcocal_ctrl 768 4 RW 0 1 8
+T_cmn_pll1_vcocal_init_tmr_1083 cmn_cfgcmn145 cmn_pll1_vcocal_init_tmr 784 4 RW 0 1 8
+T_cmn_pll1_vcocal_iter_tmr_1084 cmn_cfgcmn146 cmn_pll1_vcocal_iter_tmr 788 4 RW 0 1 8
+T_cmn_pll1_vcocal_ovrd_1082 cmn_cfgcmn147 cmn_pll1_vcocal_ovrd 780 4 RW 0 1 8
+T_cmn_pll1_vcocal_reftim_start_1085 cmn_cfgcmn148 cmn_pll1_vcocal_reftim_start 792 4 RW 0 1 8
+T_cmn_pll1_vcocal_start_1080 cmn_cfgcmn149 cmn_pll1_vcocal_start 772 4 RW 0 1 8
+T_cmn_pll1_vcocal_tctrl_1081 cmn_cfgcmn150 cmn_pll1_vcocal_tctrl 776 4 RW 0 1 8
+T_cmn_pllsm0_sm_ctrl_1004 cmn_cfgcmn151 cmn_pllsm0_sm_ctrl 160 4 RW 0 1 8
+T_cmn_pllsm0_st_1009 cmn_cfgcmn152 cmn_pllsm0_st 180 4 RW 0 1 8
+T_cmn_pllsm0_tmr_1_1005 cmn_cfgcmn153 cmn_pllsm0_tmr_1 164 4 RW 0 1 8
+T_cmn_pllsm0_tmr_2_1006 cmn_cfgcmn154 cmn_pllsm0_tmr_2 168 4 RW 0 1 8
+T_cmn_pllsm0_tmr_3_1007 cmn_cfgcmn155 cmn_pllsm0_tmr_3 172 4 RW 0 1 8
+T_cmn_pllsm0_tmr_4_1008 cmn_cfgcmn156 cmn_pllsm0_tmr_4 176 4 RW 0 1 8
+T_cmn_pllsm1_sm_ctrl0_1010 cmn_cfgcmn157 cmn_pllsm1_sm_ctrl0 192 4 RW 0 1 8
+T_cmn_pllsm1_sm_ctrl1_1011 cmn_cfgcmn158 cmn_pllsm1_sm_ctrl1 196 4 RW 0 1 8
+T_cmn_pllsm1_st_1020 cmn_cfgcmn159 cmn_pllsm1_st 232 4 RW 0 1 8
+T_cmn_pllsm1_tmr_1_1012 cmn_cfgcmn160 cmn_pllsm1_tmr_1 200 4 RW 0 1 8
+T_cmn_pllsm1_tmr_2_1013 cmn_cfgcmn161 cmn_pllsm1_tmr_2 204 4 RW 0 1 8
+T_cmn_pllsm1_tmr_3_1014 cmn_cfgcmn162 cmn_pllsm1_tmr_3 208 4 RW 0 1 8
+T_cmn_pllsm1_tmr_4_1015 cmn_cfgcmn163 cmn_pllsm1_tmr_4 212 4 RW 0 1 8
+T_cmn_pllsm1_tmr_5_1016 cmn_cfgcmn164 cmn_pllsm1_tmr_5 216 4 RW 0 1 8
+T_cmn_pllsm1_tmr_6_1017 cmn_cfgcmn165 cmn_pllsm1_tmr_6 220 4 RW 0 1 8
+T_cmn_pllsm1_tmr_7_1018 cmn_cfgcmn166 cmn_pllsm1_tmr_7 224 4 RW 0 1 8
+T_cmn_pllsm1_tmr_8_1019 cmn_cfgcmn167 cmn_pllsm1_tmr_8 228 4 RW 0 1 8
+T_cmn_rxcal_ctrl_1108 cmn_cfgcmn168 cmn_rxcal_ctrl 1088 4 RW 0 1 8
+T_cmn_rxcal_init_tmr_1112 cmn_cfgcmn169 cmn_rxcal_init_tmr 1104 4 RW 0 1 8
+T_cmn_rxcal_iter_tmr_1113 cmn_cfgcmn170 cmn_rxcal_iter_tmr 1108 4 RW 0 1 8
+T_cmn_rxcal_ovrd_1109 cmn_cfgcmn171 cmn_rxcal_ovrd 1092 4 RW 0 1 8
+T_cmn_rxcal_start_1110 cmn_cfgcmn172 cmn_rxcal_start 1096 4 RW 0 1 8
+T_cmn_rxcal_tune_1111 cmn_cfgcmn173 cmn_rxcal_tune 1100 4 RW 0 1 8
+T_cmn_sd_cal_ctrl_1114 cmn_cfgcmn174 cmn_sd_cal_ctrl 1152 4 RW 0 1 8
+T_cmn_sd_cal_init_tmr_1118 cmn_cfgcmn175 cmn_sd_cal_init_tmr 1168 4 RW 0 1 8
+T_cmn_sd_cal_iter_tmr_1119 cmn_cfgcmn176 cmn_sd_cal_iter_tmr 1172 4 RW 0 1 8
+T_cmn_sd_cal_ovrd_1117 cmn_cfgcmn177 cmn_sd_cal_ovrd 1164 4 RW 0 1 8
+T_cmn_sd_cal_pllcnt_start_1121 cmn_cfgcmn178 cmn_sd_cal_pllcnt_start 1184 4 RW 0 1 8
+T_cmn_sd_cal_reftim_start_1120 cmn_cfgcmn179 cmn_sd_cal_reftim_start 1176 4 RW 0 1 8
+T_cmn_sd_cal_start_1115 cmn_cfgcmn180 cmn_sd_cal_start 1156 4 RW 0 1 8
+T_cmn_sd_cal_tctrl_1116 cmn_cfgcmn181 cmn_sd_cal_tctrl 1160 4 RW 0 1 8
+T_cmn_ssm_sm_ctrl_1000 cmn_cfgcmn182 cmn_ssm_sm_ctrl 128 4 RW 0 1 8
+T_cmn_ssm_st_1003 cmn_cfgcmn183 cmn_ssm_st 140 4 RW 0 1 8
+T_cmn_ssm_tmr_1_1001 cmn_cfgcmn184 cmn_ssm_tmr_1 132 4 RW 0 1 8
+T_cmn_ssm_tmr_2_1002 cmn_cfgcmn185 cmn_ssm_tmr_2 136 4 RW 0 1 8
+T_cmn_txpdcal_ctrl_1102 cmn_cfgcmn186 cmn_txpdcal_ctrl 1056 4 RW 0 1 8
+T_cmn_txpdcal_init_tmr_1106 cmn_cfgcmn187 cmn_txpdcal_init_tmr 1072 4 RW 0 1 8
+T_cmn_txpdcal_iter_tmr_1107 cmn_cfgcmn188 cmn_txpdcal_iter_tmr 1076 4 RW 0 1 8
+T_cmn_txpdcal_ovrd_1103 cmn_cfgcmn189 cmn_txpdcal_ovrd 1060 4 RW 0 1 8
+T_cmn_txpdcal_start_1104 cmn_cfgcmn190 cmn_txpdcal_start 1064 4 RW 0 1 8
+T_cmn_txpdcal_tune_1105 cmn_cfgcmn191 cmn_txpdcal_tune 1068 4 RW 0 1 8
+T_cmn_txpucal_ctrl_1096 cmn_cfgcmn192 cmn_txpucal_ctrl 1024 4 RW 0 1 8
+T_cmn_txpucal_init_tmr_1100 cmn_cfgcmn193 cmn_txpucal_init_tmr 1040 4 RW 0 1 8
+T_cmn_txpucal_iter_tmr_1101 cmn_cfgcmn194 cmn_txpucal_iter_tmr 1044 4 RW 0 1 8
+T_cmn_txpucal_ovrd_1097 cmn_cfgcmn195 cmn_txpucal_ovrd 1028 4 RW 0 1 8
+T_cmn_txpucal_start_1098 cmn_cfgcmn196 cmn_txpucal_start 1032 4 RW 0 1 8
+T_cmn_txpucal_tune_1099 cmn_cfgcmn197 cmn_txpucal_tune 1036 4 RW 0 1 8
+

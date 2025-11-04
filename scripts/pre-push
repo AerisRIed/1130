@@ -1,0 +1,286 @@
+#!/bin/csh 
+
+# An example hook script to verify what is about to be pushed.  Called by "git
+# push" after it has checked the remote status, but before anything has been
+# pushed.  If this script exits with a non-zero status nothing will be pushed.
+#
+# This hook is called with the following parameters:
+#
+# $1 -- Name of the remote to which the push is being done
+# $2 -- URL to which the push is being done
+#
+# If pushing without using a named remote those arguments will be equal.
+#
+# Information about the commits which are being pushed is supplied as lines to
+# the standard input in the form:
+#
+#   <local ref> <local oid> <remote ref> <remote oid>
+#
+# This sample shows how to prevent push of commits where the log message starts
+# with "WIP" (work in progress).
+
+git pull
+set COMP_ONLY = 'YES'
+set dir_path = "$PHY_WORK_AREA/../Timberwolf_run_dir/git_sanity_check"
+
+set SANITY_TEST = "usb4_message_test"
+#set SANITY_TEST = "usb4_gen2_base_test"
+set BASE_BUILD = "usb4_base_build"
+set COMPLI_FILE = "$PHY_WORK_AREA/../Timberwolf_run_dir/git_sanity_check/build/$BASE_BUILD/comp.log"
+set LOG_FILE = "$PHY_WORK_AREA/../Timberwolf_run_dir/git_sanity_check/testlist.usb4_testlist/$SANITY_TEST/sim.log"
+
+set has_error = 0
+
+if ( -d $dir_path ) then
+    echo "Directory exists: $dir_path"
+    echo "Cleaning directory..."
+    rm -f ${dir_path}/*
+    echo "✓ Directory cleaned"
+else
+    echo "Directory does not exist: $dir_path"
+endif
+
+echo "$COMPLI_FILE"
+echo "$LOG_FILE"
+#pull the newest db
+#git pull origin main
+
+echo "=========================================="
+echo "Running pre-push checks... "
+echo "Starting to run usb4 sanity test in $PHY_WORK_AREA/../Timberwolf_run_dir/git_sanity_check"
+echo "=========================================="
+set CURRENT_DIR = `pwd`
+cd $PHY_WORK_AREA
+source sourceme.csh
+
+cd $CURRENT_DIR
+
+if ( $COMP_ONLY == YES ) then
+    wrun -t usb4_testlist.$SANITY_TEST -dir $PHY_WORK_AREA/../Timberwolf_run_dir/git_sanity_check -dump -co
+else 
+    wrun -t usb4_testlist.$SANITY_TEST -dir $PHY_WORK_AREA/../Timberwolf_run_dir/git_sanity_check -dump
+endif 
+
+if ($status != 0) then
+    echo "❌ Simulation command failed!"
+    echo " Can't complete push! please check ......"
+    exit 1
+endif
+
+# check sim error
+echo "============================================"
+echo "Step1 : Analyzing compile log for errors..."
+echo "============================================"
+
+if (! $?COMPLI_FILE) then
+    echo "COMPLI_FILE 未定义"
+    exit 1
+endif
+
+if (! -e "$COMPLI_FILE") then
+    echo "$COMPLI_FILE 文件不存在"
+    exit 1
+endif
+
+
+# check *E
+set verilog_e_count = `grep -c "\*E" $COMPLI_FILE`
+echo "  Verilog *E count: $verilog_e_count"
+
+if ( $verilog_e_count > 0 ) then
+    echo "  ❌ Found Verilog *E errors!"
+    set has_error = 1
+else
+    echo "  ✓ No Verilog *E errors"
+endif
+
+# check *F
+set verilog_f_count = `grep -c "\*F" $COMPLI_FILE`
+echo "  Verilog *F count: $verilog_f_count"
+
+if ( $verilog_f_count > 0 ) then
+    echo "  ❌ Found Verilog *F errors!"
+    set has_error = 1
+else
+    echo "  ✓ No Verilog *F errors"
+endif
+
+if ( $has_error == 1 ) then
+    echo ""
+    echo "=========================================="
+    echo "❌ Compile completed with ERRORS!"
+    echo "=========================================="
+    echo "Error Summary:"
+    echo "  Verilog *E: $verilog_e_count"
+    echo "  Verilog *F: $verilog_f_count"
+    echo ""
+    echo "Sample error messages:"
+    echo "─────────────────────────────────────────"
+    
+    if ($verilog_e_count > 0) then
+        echo "Verilog *E errors:"
+        grep "\*E" $LOG_FILE | head -5
+        echo ""
+    endif
+    
+    if ($verilog_f_count > 0) then
+        echo "Verilog *F errors:"
+        grep "\*F" $LOG_FILE | head -5
+        echo ""
+    endif
+
+    
+    echo "=========================================="
+    echo "Full log: $PHY_WORK_AREA/../Timberwolf_run_dir/git_sanity_check/build/$BASE_BUILD/comp.log"
+    echo ""
+    echo "❌git push failed..."
+    echo ""
+    echo "To bypass this check (emergency only):"
+    echo "  git push --no-verify"
+    echo "=========================================="
+    exit 1
+endif
+
+echo ""
+echo "  step 1 complie log check pass..."
+
+
+if ( $COMP_ONLY != YES ) then
+
+echo "============================================"
+echo "Step2 : Analyzing sim log for errors..."
+echo "============================================"
+
+if (! $?LOG_FILE) then
+    echo "LOG_FILE 未定义"
+    exit 1
+endif
+
+if (! -e "$LOG_FILE") then
+    echo "$LOG_FILE 文件不存在"
+    exit 1
+endif
+
+
+
+# check *E
+set verilog_e_count = `grep -c "\*E" $LOG_FILE`
+echo "  Verilog *E count: $verilog_e_count"
+
+if ( $verilog_e_count > 0 ) then
+    echo "  ❌ Found Verilog *E errors!"
+    set has_error = 1
+else
+    echo "  ✓ No Verilog *E errors"
+endif
+
+# check *F
+set verilog_f_count = `grep -c "\*F" $LOG_FILE`
+echo "  Verilog *F count: $verilog_f_count"
+
+if ( $verilog_f_count > 0 ) then
+    echo "  ❌ Found Verilog *F errors!"
+    set has_error = 1
+else
+    echo "  ✓ No Verilog *F errors"
+endif
+
+# check UVM_ERROR : <>
+set uvm_error_count = `grep "UVM_ERROR" $LOG_FILE | grep -E "UVM_ERROR\s*:\s*[0-9]+" | awk -F':' '{gsub(/[^0-9]/,"",$NF); print $NF}' | tail -1`
+if ( "$uvm_error_count" == "" ) then
+    set uvm_error_count = 0
+endif
+
+echo "  UVM_ERROR count: $uvm_error_count"
+if ( $uvm_error_count != 0 ) then
+    echo "  ❌ UVM_ERROR count is non-zero!"
+    set has_error = 1
+else
+    echo "  ✓ UVM_ERROR count is 0"
+endif
+
+# check UVM_FATAL : <>
+set uvm_fatal_count = `grep "UVM_FATAL" $LOG_FILE | grep -E "UVM_FATAL\s*:\s*[0-9]+" | awk -F':' '{gsub(/[^0-9]/,"",$NF); print $NF}' | tail -1`
+if ( "$uvm_fatal_count" == "" ) then
+    set uvm_fatal_count = 0
+endif
+
+echo "  UVM_FATAL count: $uvm_fatal_count"
+if ( $uvm_fatal_count != 0 ) then
+    echo "  ❌ UVM_FATAL count is non-zero!"
+    set has_error = 1
+else
+    echo "  ✓ UVM_FATAL count is 0"
+endif
+
+endif
+
+# check result
+if ( $has_error == 1 ) then
+    echo ""
+    echo "=========================================="
+    echo "❌ Simulation completed with ERRORS!"
+    echo "=========================================="
+    echo "Error Summary:"
+    echo "  Verilog *E: $verilog_e_count"
+    echo "  Verilog *F: $verilog_f_count"
+    echo "  UVM_ERROR:  $uvm_error_count"
+    echo "  UVM_FATAL:  $uvm_fatal_count"
+    echo ""
+    echo "Sample error messages:"
+    echo "─────────────────────────────────────────"
+    
+    if ($verilog_e_count > 0) then
+        echo "Verilog *E errors:"
+        grep "\*E" $LOG_FILE | head -5
+        echo ""
+    endif
+    
+    if ($verilog_f_count > 0) then
+        echo "Verilog *F errors:"
+        grep "\*F" $LOG_FILE | head -5
+        echo ""
+    endif
+
+    if ($uvm_error_count > 0) then
+        echo "UVM_ERROR messages:"
+        grep "UVM_ERROR" $LOG_FILE | grep -v "UVM_ERROR\s*:\s*0" | head -5
+        echo ""
+    endif
+    
+    if ($uvm_fatal_count > 0) then
+        echo "UVM_FATAL messages:"
+        grep "UVM_FATAL" $LOG_FILE | grep -v "UVM_FATAL\s*:\s*0" | head -5
+        echo ""
+    endif
+    
+    echo "=========================================="
+    echo "Full log: $PHY_WORK_AREA/../Timberwolf_run_dir/git_sanity_check/testlist.usb4_testlist/$SANITY_TEST/sim.log"
+    echo ""
+    echo "❌ git push failed..."
+    echo ""
+    echo "  To bypass this check (emergency only):"
+    echo "  git push --no-verify"
+    echo "=========================================="
+    exit 1
+endif
+
+endif
+# pass info
+
+echo "=========================================="
+echo "✅ All pre-push checks passed!"
+echo "  1. Simulation completed"
+echo "  2. No errors detected:"
+echo "     - Verilog *E: 0"
+echo "     - Verilog *F: 0"
+echo "     - UVM_ERROR:  0"
+echo "     - UVM_FATAL:  0"
+echo "Proceeding with push..."
+echo "  To bypass this check (emergency only):"
+echo "  git push --no-verify"
+echo "=========================================="
+
+git pull
+
+exit 0

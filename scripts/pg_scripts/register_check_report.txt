@@ -1,0 +1,193 @@
+寄存器检查详细报告
+================================================================================
+
+总寄存器数: 65
+找到的寄存器: 57
+未找到的寄存器: 8
+覆盖率: 87.69%
+
+找到的寄存器详情:
+--------------------------------------------------------------------------------
+
+cmn_bgcal_init_tmr:
+  - sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_bgcal_iter_tmr:
+  - sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_ibcal_init_tmr:
+  - sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_ibcal_iter_tmr:
+  - sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pdiag_pll0_prog0_clk_ctrl_m0:
+  - sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pdiag_pll0_prog1_clk_ctrl_m0:
+  - sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pdiag_pll1_post_div_m0:
+  - sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pdiag_pll1_prog0_clk_ctrl_m0:
+  - sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pdiag_pll1_prog1_clk_ctrl_m0:
+  - sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pll0_dsm_diag:
+  - sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pll0_fracdivh:
+  - sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pll0_fracdivl:
+  - sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pll0_high_thr:
+  - sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pll0_intdiv:
+  - sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pll0_lock_pllcnt_thr:
+  - sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pll0_vcocal_init_tmr:
+  - sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pll0_vcocal_iter_tmr:
+  - sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pll0_vcocal_pllcnt_start:
+  - sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pll0_vcocal_reftim_start:
+  - sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pll1_dsm_diag:
+  - sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pll1_dsm_fbh_ovrd:
+  - sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pll1_dsm_fbl_ovrd:
+  - sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pll1_fracdivh:
+  - sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pll1_fracdivl:
+  - sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pll1_high_thr:
+  - sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pll1_intdiv:
+  - sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pllsm0_tmr_1:
+  - sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pllsm0_tmr_2:
+  - sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pllsm0_tmr_3:
+  - sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pllsm1_tmr_1:
+  - sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pllsm1_tmr_2:
+  - sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_pllsm1_tmr_3:
+  - sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_rxcal_init_tmr:
+  - sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_rxcal_iter_tmr:
+  - sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_sd_cal_pllcnt_start:
+  - sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_sd_cal_reftim_start:
+  - sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_ssm_tmr_1:
+  - sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_txpdcal_init_tmr:
+  - sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_txpdcal_iter_tmr:
+  - sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_txpucal_init_tmr:
+  - sd3101_t4gp_pma_cmn_registers.xml
+
+cmn_txpucal_iter_tmr:
+  - sd3101_t4gp_pma_cmn_registers.xml
+
+phy_lane_off_ctl:
+  - sd3101_t4gp_phy_pcs_cmn_registers.xml
+
+phy_pma_cmn_ctrl_sts:
+  - sd3101_t4gp_phy_pma_cmn_registers.xml
+
+phy_pma_cmn_ctrl_sts_clr:
+  - sd3101_t4gp_phy_pma_cmn_registers.xml
+
+phy_pma_lane_map:
+  - sd3101_t4gp_phy_pcs_cmn_registers.xml
+
+rx_diag_xcvr_rate_sel:
+  - sd3101_t4gp_pma_rx_lane_registers.xml
+
+rx_psc_a0:
+  - sd3101_t4gp_pma_rx_lane_registers.xml
+
+rx_sdcal0_init_tmr:
+  - sd3101_t4gp_pma_rx_lane_registers.xml
+
+rx_sdcal0_iter_tmr:
+  - sd3101_t4gp_pma_rx_lane_registers.xml
+
+rx_sdcal1_init_tmr:
+  - sd3101_t4gp_pma_rx_lane_registers.xml
+
+rx_sdcal1_iter_tmr:
+  - sd3101_t4gp_pma_rx_lane_registers.xml
+
+tx_psc_a0:
+  - sd3101_t4gp_pma_tx_lane_registers.xml
+
+tx_rcvdet_st_tmr:
+  - sd3101_t4gp_pma_tx_lane_registers.xml
+
+xcvr_diag_bidi_ctrl:
+  - sd3101_t4gp_pma_tx_lane_registers.xml
+
+xcvr_diag_hsclk_div:
+  - sd3101_t4gp_pma_tx_lane_registers.xml
+
+xcvr_diag_hsclk_sel:
+  - sd3101_t4gp_pma_tx_lane_registers.xml
+
+xcvr_diag_plldrc_ctrl:
+  - sd3101_t4gp_pma_tx_lane_registers.xml
+
+
+未找到的寄存器:
+--------------------------------------------------------------------------------
+  - cmn_pll0_ss_ctrl1_m0
+  - cmn_pll0_ss_ctrl2_m0
+  - cmn_pll0_ss_ctrl3_m0
+  - cmn_pll0_ss_ctrl4_m0
+  - cmn_pll1_ss_ctrl1_m0
+  - cmn_pll1_ss_ctrl2_m0
+  - cmn_pll1_ss_ctrl3_m0
+  - cmn_pll1_ss_ctrl4_m0

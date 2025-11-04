@@ -1,0 +1,311 @@
+#!/bin/tcsh -f
+#-------------------------------------------------------------------------------------------------
+#-   This confidential and proprietary HVL soft description of a Hardware Verification Component 
+#-   may be used only as authorized by a licensing agreement from Cadence Design Systems, Inc.. 
+#-   In the event of publication, the following notice is applicable:
+#-
+#-                    (C) COPYRIGHT 2015 Cadence Design Systems, Inc.
+#-                                ALL RIGHTS RESERVED
+#-
+#-    The entire notice above must be reproduced on all authorized copies of this code.
+#-------------------------------------------------------------------------------------------------
+#- File URL       : $URL:$
+#- Version        : $Revision:$
+#- Orignal Author : Louis-Pierre Lafrance
+#- Last Changed   : $LastChangedBy: $
+#-                : $LastChangedDate:  $
+#-------------------------------------------------------------------------------------------------
+#- Description    : Creates IPXACT and optionnlly VRAD files
+#-   
+#-------------------------------------------------------------------------------------------------
+#<usage>
+#<usage>  Usage:
+#<usage> 
+#<usage>    create_ipxact  [-h] [-noxml] [-rel] [-chkin] [-debug]
+#<usage>
+#<usage>    switches:
+#<usage>       -h          : help
+#<usage>       -chkin      : check in generated files
+#<usage>       -debug      : debug mode
+#<usage>
+#<usage>    Examples:
+#<usage>          create_ipxact                -> create ipxact files 
+#<usage>          create_ipxact -chkin         -> create ipxact files  and check in generated files  
+#-------------------------------------------------------------------------------------------------
+
+
+# -------------------------------------------------------------------------------------------------
+# Switches
+# -------------------------------------------------------------------------------------------------
+
+set tech = t4
+set vrad = no
+set chkin = no
+set debug = no 
+set xml = yes
+set rel = no
+set reg_grps = {PRE,PREM,PR,PRM,P,PM,RE,REM,R,RM}
+
+
+# -------------------------------------------------------------------------------------------------
+# Parse switches
+# -------------------------------------------------------------------------------------------------
+
+if ( $#argv > 0) then  
+   while ( $#argv > 0 )
+     switch( $argv[1] )
+       case "-h*":
+         grep '^#<usage>' create_ipxact | sed 's/#<usage>//'
+         exit
+       breaksw      
+       breaksw
+       case "-chkin":
+          set chkin = yes         
+       breaksw
+       case "-t4":
+          set tech = t4
+       breaksw    
+       case "-t3":
+          set tech = t3
+       breaksw    
+       case "-debug":
+          set debug = yes         
+       breaksw    
+       case "-noxml":
+          set xml = no         
+       breaksw
+       case "-norel":
+          set rel = no         
+       breaksw
+       default:
+         echo "This argument: " $argv[1] " is not supported"           
+         echo ""                
+         echo "See Usage:"     
+         echo ""               
+         grep '^#<usage>' create_ipxact.csh | sed 's/#<usage>//'
+         exit
+     endsw
+     shift argv
+   end
+endif
+
+
+# -------------------------------------------------------------------------------------------------
+# Start executing the script
+# -------------------------------------------------------------------------------------------------
+echo "\n-> Creating the SD2101 Register IPXACT Models \n"
+pushd .
+
+if (${debug} == yes) then
+   set reg_grps = {PREM}
+endif 
+
+
+# -------------------------------------------------------------------------------------------------
+# Extract IPXACT files out of the Framemaker XML
+# -------------------------------------------------------------------------------------------------
+if ($xml == yes) then
+#   ./projects/sd3101_t4/scripts/sd3101_t4_crt_reg
+   echo "\n-> Creating IPXACT Files for PHY registers\n"
+
+   # 检查必要的环境变量
+   if ( ! $?LSF_VMGR_QUEUE ) then
+      echo "错误: 环境变量 LSF_VMGR_QUEUE 未定义"
+      echo "请检查 sourceme_noi.csh 是否正确设置了此变量"
+      exit 1
+   endif
+
+   if ( ! $?PHY_IPXACT_HOME ) then
+      echo "错误: 环境变量 PHY_IPXACT_HOME 未定义"
+      echo "请检查 sourceme_noi.csh 是否正确设置了此变量"
+      exit 1
+   endif
+
+   echo "使用队列: ${LSF_VMGR_QUEUE}"
+   echo "IPXACT 路径: ${PHY_IPXACT_HOME}"
+
+   echo "\n-> IPXACT files generated , path is  ${PHY_IPXACT_HOME}/T4 \n"
+    
+   # 检查目标目录是否存在
+   if ( ! -d "${PHY_IPXACT_HOME}/../" ) then
+      echo "错误: 目录 ${PHY_IPXACT_HOME}/../ 不存在"
+      exit 1
+   endif
+    
+   cd  ${PHY_IPXACT_HOME}/../
+   echo "当前工作目录: `pwd`"
+
+   set job_ids = ()
+
+   # 检查XML文件是否存在
+   set xml_files = ( \
+     "ipxact/t4/sd3101_t4gp_pma_cmn_registers.xml" \
+     "ipxact/t4/sd3101_t4gp_phy_pma_cmn_registers.xml" \
+     "ipxact/t4/sd3101_t4gp_phy_pcs_cmn_registers.xml" \
+     "ipxact/t4/sd3101_t4gp_phy_pcs_lane_registers.xml" \
+     "ipxact/t4/sd3101_t4gp_phy_pma_lane_registers.xml" \
+     "ipxact/t4/sd3101_t4gp_pma_tx_lane_registers.xml" \
+     "ipxact/t4/sd3101_t4gp_illegal_registers.xml" \
+     "ipxact/t4/sd3101_t4gp_pma_rx_lane_registers.xml" )
+
+   echo "\n-> 检查XML文件是否存在..."
+   set missing_files = 0
+   foreach xml_file ( $xml_files )
+      if ( ! -f "$xml_file" ) then
+         echo "警告: XML文件不存在: $xml_file"
+         set missing_files = 1
+      else
+         echo "找到: $xml_file"
+      endif
+   end
+
+   if ( $missing_files == 1 ) then
+      echo "\n-> 部分XML文件缺失，请检查文件路径。"
+      echo "-> 跳过作业提交，直接运行Python脚本..."
+      goto run_python_scripts
+   endif
+
+   echo "\n-> 提交 reg_verifier 作业（按顺序执行）...\n"
+   
+   # 定义作业信息数组
+   set job_names = ("pma_cmn_registers" "phy_pma_cmn_registers" "phy_pcs_cmn_registers" "phy_pcs_lane_registers" "phy_pma_lane_registers" "pma_tx_lane_registers" "pma_rx_lane_registers" "illegal_registers")
+   set xml_files_list = ("ipxact/t4/sd3101_t4gp_pma_cmn_registers.xml" "ipxact/t4/sd3101_t4gp_phy_pma_cmn_registers.xml" "ipxact/t4/sd3101_t4gp_phy_pcs_cmn_registers.xml" "ipxact/t4/sd3101_t4gp_phy_pcs_lane_registers.xml" "ipxact/t4/sd3101_t4gp_phy_pma_lane_registers.xml" "ipxact/t4/sd3101_t4gp_pma_tx_lane_registers.xml" "ipxact/t4/sd3101_t4gp_pma_rx_lane_registers.xml" "ipxact/t4/sd3101_t4gp_illegal_registers.xml")
+   set out_files = ("cdn_pma_cmn_regs" "cdn_phy_pma_cmn_regs" "cdn_phy_pcs_cmn_regs" "cdn_phy_pcs_lane_regs" "cdn_phy_pma_lane_regs" "cdn_pma_tx_lane_regs" "cdn_pma_rx_lane_regs" "cdn_illegal_regs")
+   set pkg_names = ("cdn_pma_cmn_reg_pkg" "cdn_phy_pma_cmn_reg_pkg" "cdn_phy_pcs_cmn_reg_pkg" "cdn_phy_pcs_lane_reg_pkg" "cdn_phy_pma_lane_reg_pkg" "cdn_pma_tx_lane_reg_pkg" "cdn_pma_rx_lane_reg_pkg" "cdn_illegal_reg_pkg")
+   set cdns_pkg_list = ("cdns_uvmreg_utils_pkg_pma_cmn_registers.sv" "cdns_uvmreg_utils_pkg_phy_pma_cmn_registers.sv" "cdns_uvmreg_utils_pkg_phy_pcs_cmn_registers.sv" "cdns_uvmreg_utils_pkg_phy_pcs_lane_registers.sv" "cdns_uvmreg_utils_pkg_phy_pma_lane_registers.sv" "cdns_uvmreg_utils_pkg_pma_tx_lane_registers.sv" "cdns_uvmreg_utils_pkg_pma_rx_lane_registers.sv" "cdns_uvmreg_utils_pkg_illegal_registers.sv") 
+   rm -rf  ${PHY_IPXACT_HOME}/../reg_model_cdn_usb_phy_top_reg
+   # 函数：等待单个作业完成
+   set wait_for_job_completion = 1
+   
+   # 逐个提交并等待作业完成
+   set job_count = 1
+   while ( $job_count <= 8 )
+      echo "提交作业 ${job_count}/8: $job_names[$job_count]"
+      
+      # 修改bsub命令，移除mv操作
+      set out = `bsub -q ${LSF_VMGR_QUEUE} reg_verifier -dut_name $job_names[$job_count] -top $xml_files_list[$job_count] -domain uvmreg -out_file $out_files[$job_count] -cov -pkg $pkg_names[$job_count] -target_dir reg_model_cdn_usb_phy_top_reg`
+      echo "bsub 输出: $out"
+      
+      set current_jid = ""
+      if ( "$out" =~ Job* ) then
+         set current_jid = `echo $out | sed -n 's/Job <\([0-9][0-9]*\)>.*/\1/p'`
+         if ( "$current_jid" != "" ) then
+            echo "成功提交作业 ID: $current_jid"
+            
+            # 等待当前作业完成
+            echo "等待作业 $current_jid 完成..."
+            set wait_timeout = 180  # 3分钟超时
+            set wait_count = 0
+            set job_completed = 0
+            
+            while ( $wait_count < $wait_timeout )
+               bjobs $current_jid >& /tmp/bjobs_check_$$.tmp
+               set bjobs_status = $status
+               
+               if ( $bjobs_status == 0 ) then
+                  # 作业仍然存在，检查其状态
+                  set job_line = `bjobs $current_jid | tail -1`
+                  set job_status = `echo "$job_line" | awk '{print $3}'`
+                  
+                  if ( "$job_status" == "RUN" || "$job_status" == "PEND" || "$job_status" == "USUSP" ) then
+                     # 作业仍在运行
+                     if ( $wait_count % 6 == 0 ) then  # 每分钟打印一次状态
+                        echo "作业 $current_jid 状态: $job_status (等待时间: ${wait_count}0秒)"
+                     endif
+                  else
+                     echo "作业 $current_jid 已完成 (状态: $job_status)"
+                     set job_completed = 1
+                     break
+                  endif
+               else
+                  echo "作业 $current_jid 已从队列中移除，认为已完成"
+                  set job_completed = 1
+                  break
+               endif
+               
+               # 清理临时文件
+               rm -f /tmp/bjobs_check_$$.tmp
+               sleep 10
+               @ wait_count = $wait_count + 1
+            end
+            
+            if ( $job_completed == 0 ) then
+               echo "警告: 作业 $current_jid 等待超时，继续提交下一个作业"
+            else
+               echo "作业 $current_jid 已完成，等待2秒后开始执行mv操作"
+               sleep 2
+    
+               # 在作业完成后执行mv操作 - 添加文件存在检查和等待逻辑
+               set source_file = "./reg_model_cdn_usb_phy_top_reg/uvmreg/cdns_uvmreg_utils_pkg.sv"
+               set target_file = "./reg_model_cdn_usb_phy_top_reg/uvmreg/$cdns_pkg_list[$job_count]"
+               
+               # 等待文件出现，最多等待1分钟
+               set file_wait_timeout = 12  # 12次 * 5秒 = 60秒
+               set file_wait_count = 0
+               set file_found = 0
+               
+               echo "检查文件是否存在: $source_file"
+               while ( $file_wait_count < $file_wait_timeout )
+                  if ( -f "$source_file" ) then
+                     echo "找到文件: $source_file"
+                     set file_found = 1
+                     break
+                  else
+                     echo "文件不存在，等待5秒... (${file_wait_count}/12)"
+                     sleep 5
+                     @ file_wait_count = $file_wait_count + 1
+                  endif
+               end
+               
+               if ( $file_found == 1 ) then
+                  mv "$source_file" "$target_file"
+                  echo "成功执行: mv $source_file $target_file"
+               else
+                  echo "错误: 文件 $source_file 在1分钟内未出现，停止脚本运行"
+                  exit 1
+               endif
+               
+               echo "等待2秒后提交下一个作业"
+               sleep 2
+            endif
+         else
+            echo "错误: 无法从bsub输出中提取作业ID"
+         endif
+      else
+         echo "错误: bsub命令执行失败"
+      endif
+      
+      @ job_count = $job_count + 1
+   end
+
+   echo "\n-> 所有作业已按顺序提交并完成\n"
+
+   run_python_scripts:
+   echo "\n-> 开始运行Python脚本处理生成的文件...\n"
+   python -B ../scripts/reg_model_gen_u4/py_files/regmodel_m.py reg_model_cdn_usb_phy_top_reg/uvmreg/cdn_phy_pcs_cmn_regs_rdb.sv
+   python -B ../scripts/reg_model_gen_u4/py_files/regmodel_m.py reg_model_cdn_usb_phy_top_reg/uvmreg/cdn_phy_pcs_lane_regs_rdb.sv
+   python -B ../scripts/reg_model_gen_u4/py_files/regmodel_m.py reg_model_cdn_usb_phy_top_reg/uvmreg/cdn_phy_pma_cmn_regs_rdb.sv
+   python -B ../scripts/reg_model_gen_u4/py_files/regmodel_m.py reg_model_cdn_usb_phy_top_reg/uvmreg/cdn_phy_pma_lane_regs_rdb.sv
+   python -B ../scripts/reg_model_gen_u4/py_files/regmodel_m.py reg_model_cdn_usb_phy_top_reg/uvmreg/cdn_pma_tx_lane_regs_rdb.sv
+   python -B ../scripts/reg_model_gen_u4/py_files/regmodel_m.py reg_model_cdn_usb_phy_top_reg/uvmreg/cdn_pma_rx_lane_regs_rdb.sv
+   python -B ../scripts/reg_model_gen_u4/py_files/regmodel_m.py reg_model_cdn_usb_phy_top_reg/uvmreg/cdn_pma_cmn_regs_rdb.sv
+   python -B ../scripts/reg_model_gen_u4/py_files/regmodel_m.py reg_model_cdn_usb_phy_top_reg/uvmreg/cdn_illegal_regs_rdb.sv
+   python -B ../scripts/reg_model_gen_u4/py_files/regmodel_m.py reg_model_cdn_usb_phy_top_reg/uvmreg/cdns_uvmreg_utils_pkg_phy_pcs_cmn_registers.sv
+   python -B ../scripts/reg_model_gen_u4/py_files/regmodel_m.py reg_model_cdn_usb_phy_top_reg/uvmreg/cdns_uvmreg_utils_pkg_phy_pma_cmn_registers.sv
+   python -B ../scripts/reg_model_gen_u4/py_files/regmodel_m.py reg_model_cdn_usb_phy_top_reg/uvmreg/cdns_uvmreg_utils_pkg_phy_pcs_lane_registers.sv
+   python -B ../scripts/reg_model_gen_u4/py_files/regmodel_m.py reg_model_cdn_usb_phy_top_reg/uvmreg/cdns_uvmreg_utils_pkg_phy_pma_lane_registers.sv
+   python -B ../scripts/reg_model_gen_u4/py_files/regmodel_m.py reg_model_cdn_usb_phy_top_reg/uvmreg/cdns_uvmreg_utils_pkg_pma_cmn_registers.sv
+   python -B ../scripts/reg_model_gen_u4/py_files/regmodel_m.py reg_model_cdn_usb_phy_top_reg/uvmreg/cdns_uvmreg_utils_pkg_pma_rx_lane_registers.sv
+   python -B ../scripts/reg_model_gen_u4/py_files/regmodel_m.py reg_model_cdn_usb_phy_top_reg/uvmreg/cdns_uvmreg_utils_pkg_pma_tx_lane_registers.sv
+   python -B ../scripts/reg_model_gen_u4/py_files/regmodel_m.py reg_model_cdn_usb_phy_top_reg/uvmreg/cdns_uvmreg_utils_pkg_illegal_registers.sv
+   echo "\n-> REG MODELS generated done path is ${PHY_IPXACT_HOME}/../reg_model_cdn_usb_phy_top_reg \n"
+
+endif
+
+# Restore current directory location
+popd
+
+#
+# -------------------------------------------------------------------------------------------------
+echo "-> Done"
+# -------------------------------------------------------------------------------------------------

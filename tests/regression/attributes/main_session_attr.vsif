@@ -1,0 +1,28 @@
+//----------------------------------------------------------------------------
+// Contains main session attributes
+//----------------------------------------------------------------------------
+
+// Setup regresssion are
+
+top_dir : $ENV(REGRESS_AREA);
+
+
+// LSF parameters
+
+
+default_dispatch_parameters : <text>-q $ENV(LSF_REGRESSION_QUEUE)</text>;
+// default_dispatch_parameters : <text>-q normal</text>;
+
+drm : <text>lsf</text>; 
+
+queuing_policy: vsif_order;
+
+master_submission_policy : execute_locally;
+
+max_runs_in_parallel :1000;
+
+output_mode: log_only;
+
+create_debug_logs : TRUE;
+
+post_session_script : "$ENV(PHY_VERIF_AREA)/vm/post_session.sh";

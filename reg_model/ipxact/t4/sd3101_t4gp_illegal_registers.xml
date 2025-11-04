@@ -1,0 +1,161 @@
+<spirit:component xmlns:spirit="http://www.spiritconsortium.org/XMLSchema/SPIRIT/1685-2009"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.spiritconsortium.org/XMLSchema/SPIRIT/1685-2009
+                      http://www.accellera.org/XMLSchema/SPIRIT/1685-2009/index.xsd">
+  <spirit:vendor>cadence</spirit:vendor>
+  <spirit:library>cdns_lib</spirit:library>
+  <spirit:name>illegal_registers</spirit:name>
+  <spirit:version>1685-2009</spirit:version>
+  <spirit:memoryMaps>
+    <spirit:memoryMap>
+      <spirit:name>sd3101_t4_registers</spirit:name>
+      <spirit:addressBlock>
+        <spirit:name>sd3101_phy_registers</spirit:name>
+        <spirit:displayName>PHY Illegal registers.</spirit:displayName>
+        <spirit:baseAddress>0x00000</spirit:baseAddress>
+        <spirit:range>0x3ffff</spirit:range>
+        <spirit:width>32</spirit:width>
+            <!-- Common illegal register -->
+            <spirit:register>
+                <spirit:name>cmn_illegal_reg</spirit:name>
+                <spirit:description>Common illegal register</spirit:description>
+                <spirit:addressOffset>0xfffc</spirit:addressOffset>
+                <spirit:size>32</spirit:size>
+                <spirit:access>read-write</spirit:access>
+                <spirit:reset>
+                    <spirit:value>0x0</spirit:value>
+                    <spirit:mask>0xffffffff</spirit:mask>
+                </spirit:reset>
+                <!-- FIELDS -->
+                <spirit:field>
+                    <spirit:name>cmn_illegal_reg_31_0</spirit:name>
+                    <spirit:description>Reserved</spirit:description>
+                    <spirit:bitOffset>0</spirit:bitOffset>
+                    <spirit:bitWidth>32</spirit:bitWidth>
+                    <spirit:access>read-only</spirit:access>
+                </spirit:field>
+            </spirit:register>
+            <!-- PMA TX illegal register -->
+            <spirit:register>
+                <spirit:name>pma_tx_illegal_reg</spirit:name>
+                <spirit:description>PMA TX illegal register</spirit:description>
+                <spirit:addressOffset>0x107fc</spirit:addressOffset>
+                <spirit:size>32</spirit:size>
+                <spirit:access>read-write</spirit:access>
+                <spirit:reset>
+                    <spirit:value>0x0</spirit:value>
+                    <spirit:mask>0xffffffff</spirit:mask>
+                </spirit:reset>
+                <!-- FIELDS -->
+                <spirit:field>
+                    <spirit:name>pma_tx_illegal_reg_31_0</spirit:name>
+                    <spirit:description>Reserved</spirit:description>
+                    <spirit:bitOffset>0</spirit:bitOffset>
+                    <spirit:bitWidth>32</spirit:bitWidth>
+                    <spirit:access>read-only</spirit:access>
+                </spirit:field>
+            </spirit:register>
+            <!-- PMA RX illegal register -->
+            <spirit:register>
+                <spirit:name>pma_rx_illegal_reg</spirit:name>
+                <spirit:description>PMA RX illegal register</spirit:description>
+                <spirit:addressOffset>0x207fc</spirit:addressOffset>
+                <spirit:size>32</spirit:size>
+                <spirit:access>read-write</spirit:access>
+                <spirit:reset>
+                    <spirit:value>0x0</spirit:value>
+                    <spirit:mask>0xffffffff</spirit:mask>
+                </spirit:reset>
+                <!-- FIELDS -->
+                <spirit:field>
+                    <spirit:name>pma_rx_illegal_reg_31_0</spirit:name>
+                    <spirit:description>Reserved</spirit:description>
+                    <spirit:bitOffset>0</spirit:bitOffset>
+                    <spirit:bitWidth>32</spirit:bitWidth>
+                    <spirit:access>read-only</spirit:access>
+                </spirit:field>
+            </spirit:register>
+            <!-- PHY PCS CMN illegal register -->
+            <spirit:register>
+                <spirit:name>phy_pcs_cmn_illegal_reg</spirit:name>
+                <spirit:description>PHY PCS CMN illegal register</spirit:description>
+                <spirit:addressOffset>0x33ffc</spirit:addressOffset>
+                <spirit:size>32</spirit:size>
+                <spirit:access>read-write</spirit:access>
+                <spirit:reset>
+                    <spirit:value>0x0</spirit:value>
+                    <spirit:mask>0xffffffff</spirit:mask>
+                </spirit:reset>
+                <!-- FIELDS -->
+                <spirit:field>
+                    <spirit:name>phy_pcs_cmn_illegal_reg_31_0</spirit:name>
+                    <spirit:description>Reserved</spirit:description>
+                    <spirit:bitOffset>0</spirit:bitOffset>
+                    <spirit:bitWidth>32</spirit:bitWidth>
+                    <spirit:access>read-only</spirit:access>
+                </spirit:field>
+            </spirit:register>
+            <!-- PHY PMA CMN illegal register -->
+            <spirit:register>
+                <spirit:name>phy_pma_cmn_illegal_reg</spirit:name>
+                <spirit:description>PHY PMA CMN illegal register</spirit:description>
+                <spirit:addressOffset>0x3bffc</spirit:addressOffset>
+                <spirit:size>32</spirit:size>
+                <spirit:access>read-write</spirit:access>
+                <spirit:reset>
+                    <spirit:value>0x0</spirit:value>
+                    <spirit:mask>0xffffffff</spirit:mask>
+                </spirit:reset>
+                <!-- FIELDS -->
+                <spirit:field>
+                    <spirit:name>phy_pma_cmn_illegal_reg_31_0</spirit:name>
+                    <spirit:description>Reserved</spirit:description>
+                    <spirit:bitOffset>0</spirit:bitOffset>
+                    <spirit:bitWidth>32</spirit:bitWidth>
+                    <spirit:access>read-only</spirit:access>
+                </spirit:field>
+            </spirit:register>
+            <!-- PHY PCS LANE illegal register -->
+            <spirit:register>
+                <spirit:name>phy_pcs_lane_illegal_reg</spirit:name>
+                <spirit:description>PHY PCS LANE illegal register</spirit:description>
+                <spirit:addressOffset>0x37ffc</spirit:addressOffset>
+                <spirit:size>32</spirit:size>
+                <spirit:access>read-write</spirit:access>
+                <spirit:reset>
+                    <spirit:value>0x0</spirit:value>
+                    <spirit:mask>0xffffffff</spirit:mask>
+                </spirit:reset>
+                <!-- FIELDS -->
+                <spirit:field>
+                    <spirit:name>phy_pcs_lane_illegal_reg_31_0</spirit:name>
+                    <spirit:description>Reserved</spirit:description>
+                    <spirit:bitOffset>0</spirit:bitOffset>
+                    <spirit:bitWidth>32</spirit:bitWidth>
+                    <spirit:access>read-only</spirit:access>
+                </spirit:field>
+            </spirit:register>
+            <!-- PHY PMA LANE illegal register -->
+            <spirit:register>
+                <spirit:name>phy_pma_lane_illegal_reg</spirit:name>
+                <spirit:description>PHY PMA LANE illegal register</spirit:description>
+                <spirit:addressOffset>0x3fffc</spirit:addressOffset>
+                <spirit:size>32</spirit:size>
+                <spirit:access>read-write</spirit:access>
+                <spirit:reset>
+                    <spirit:value>0x0</spirit:value>
+                    <spirit:mask>0xffffffff</spirit:mask>
+                </spirit:reset>
+                <!-- FIELDS -->
+                <spirit:field>
+                    <spirit:name>phy_pma_lane_illegal_reg_31_0</spirit:name>
+                    <spirit:description>Reserved</spirit:description>
+                    <spirit:bitOffset>0</spirit:bitOffset>
+                    <spirit:bitWidth>32</spirit:bitWidth>
+                    <spirit:access>read-only</spirit:access>
+                </spirit:field>
+            </spirit:register>
+      </spirit:addressBlock>
+    </spirit:memoryMap>
+  </spirit:memoryMaps>
+</spirit:component>

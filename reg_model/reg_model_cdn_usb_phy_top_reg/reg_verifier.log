@@ -1,0 +1,141 @@
+Activation command: reg_verifier -dut_name pma_rx_lane_registers -top ipxact/t4/sd3101_t4gp_pma_rx_lane_registers.xml -domain uvmreg -out_file cdn_pma_rx_lane_regs -cov -pkg cdn_pma_rx_lane_reg_pkg -target_dir reg_model_cdn_usb_phy_top_reg
+------------------
+Running Glue Version: glue64.nightlys released (KG) build-tag: jenkins-KrazyGlue-315 build-revision: 0a0490dd4f81 tip Runtime: 11.0.10+9 build-host: vlsj-vipsia-fusion system-arch: amd64
+
+Command Line Arguments:
+	--quirks
+	--jar /apps/ssg_tools/production/xcelium/2409/24.09.006/tools.lnx86/sia/lib/image/rdve.jar
+	--logfile reg_model_cdn_usb_phy_top_reg/reg_verifier
+	--execute /tmp/reg_verifier_144618.js
+
+Packaged as 24.04.071-a released 2024-04-15T11:24:16.177036+03:00
+
+Initializing
+
+*** Warning: Replacing function 'post_release_generate_hook' callable by script which was previously registered for package 'tti_bnr'  At tti_bnr_manager.init() 
+
+*** Warning: Replacing function 'regapp_import_files' callable by script which was previously registered for package 'script'  At tti_reg_manager.init() 
+
+Initialize time (ms): 157
+
+Package main.init() done.
+
+(----------19 September 2025 2:53:14 PM----------)
+
+Loading script /tmp/reg_verifier_144618.js
+
+HINT /tmp/reg_verifier_144618.js:1 - The argument 'something' is unused
+
+0 errors
+0 warnings
+1 hints
+
+
+Reading XML file ipxact/t4/sd3101_t4gp_pma_rx_lane_registers.xml
+
+Parsing ipxact/t4/sd3101_t4gp_pma_rx_lane_registers.xml
+
+Importing ipxact source ipxact/t4/sd3101_t4gp_pma_rx_lane_registers.xml
+
+Checking existence of license: Xcelium_Single_Core at 14:53:16 PM
+
+License Xcelium_Single_Core exists
+
+  Generating cdn_pma_rx_lane_regs_rdb.sv ...
+
+  Generating cdn_pma_rx_lane_regs_config.dat ...
+
+  Generating cdn_pma_rx_lane_regs_hdlpaths.dat ...
+
+  Generating cdns_uvmreg_utils_pkg.sv ...
+
+Code generation complete.
+
+Execution time (ms): 2248
+
+Execution done - exiting.
+
+(----------19 September 2025 2:53:17 PM----------)
+
+a_tx_lane_regs_config.dat ...
+
+  Generating cdn_pma_tx_lane_regs_hdlpaths.dat ...
+
+  Generating cdns_uvmreg_utils_pkg.sv ...
+
+Code generation complete.
+
+Execution time (ms): 3584
+
+Execution done - exiting.
+
+(----------19 September 2025 2:52:54 PM----------)
+
+g cdn_phy_pma_lane_regs_config.dat ...
+
+  Generating cdn_phy_pma_lane_regs_hdlpaths.dat ...
+
+  Generating cdns_uvmreg_utils_pkg.sv ...
+
+Code generation complete.
+
+Execution time (ms): 2293
+
+Execution done - exiting.
+
+(----------19 September 2025 2:52:32 PM----------)
+
+phy_pcs_lane_regs_config.dat ...
+
+  Generating cdn_phy_pcs_lane_regs_hdlpaths.dat ...
+
+  Generating cdns_uvmreg_utils_pkg.sv ...
+
+Code generation complete.
+
+Execution time (ms): 2090
+
+Execution done - exiting.
+
+(----------19 September 2025 2:52:07 PM----------)
+
+cmn_regs_config.dat ...
+
+  Generating cdn_phy_pcs_cmn_regs_hdlpaths.dat ...
+
+  Generating cdns_uvmreg_utils_pkg.sv ...
+
+Code generation complete.
+
+Execution time (ms): 2893
+
+Execution done - exiting.
+
+(----------19 September 2025 2:51:48 PM----------)
+
+y_pma_cmn_regs_config.dat ...
+
+  Generating cdn_phy_pma_cmn_regs_hdlpaths.dat ...
+
+  Generating cdns_uvmreg_utils_pkg.sv ...
+
+Code generation complete.
+
+Execution time (ms): 2271
+
+Execution done - exiting.
+
+(----------19 September 2025 2:51:25 PM----------)
+
+erating cdn_pma_cmn_regs_hdlpaths.dat ...
+
+  Generating cdns_uvmreg_utils_pkg.sv ...
+
+Code generation complete.
+
+Execution time (ms): 2550
+
+Execution done - exiting.
+
+(----------19 September 2025 2:50:53 PM----------)
+
