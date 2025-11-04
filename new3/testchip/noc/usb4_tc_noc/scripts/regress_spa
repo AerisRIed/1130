@@ -1,0 +1,43 @@
+#!/usr/bin/perl -w
+# +---------------------------------------------------------------------------+
+# |  Copyright (c) 2013-2025 Cadence Design Systems Inc. ALL RIGHTS RESERVED. |
+# |                                                                           |
+# |   These coded instructions, statements, and computer programs             |
+# |   are the copyrighted works and confidential proprietary                  |
+# |   information of Tensilica Inc.  They may not be modified,                |
+# |   copied, reproduced, distributed, or disclosed to third                  |
+# |   parties in any manner, medium, or form, in whole or in part,            |
+# |   without the prior written consent of Tensilica Inc.                     |
+# +---------------------------------------------------------------------------+
+
+use lib ('./lib');
+use Params;
+use Cwd; 
+
+if (!defined $ENV{CDN_SYSVIP_ROOT}) {
+    $ENV{CDN_SYSVIP_ROOT} = "/cad/cadence_root/SYSVIP01";
+}
+my $spa = $ENV{CDN_SYSVIP_ROOT}."/tools/spa/bin/spa";
+my $rundir = cwd();
+
+#Setup SPA config and start server.
+$ENV{SYSVIP_DATA_DIR} = $rundir."/spa_config";
+if (!-d "${rundir}/spa_config") {
+    system("$spa -create_config -username spaUser -password spaPass > ${rundir}/spa_config.log");
+}
+system("$spa -start > ${rundir}/spa_server_output.log");
+system("$spa -enable_recording -instance \"*passive*\" +model svd > ${rundir}/spa_recording_output.log");
+$ENV{SYSVIP_DATA_DIR} = $rundir."/spa_config";
+$ENV{DENALIRC} = $rundir."/.denalirc";
+
+#Run performance tests
+#system("./nocrun -test max_bandwidth_test -plus \"+STG_IPC_READWRITE=READ_WRITE +STG_IPC_LENGTH=256\"");
+#system("./nocrun -test min_latency_test -plus \"+STG_IPC_READWRITE=READ_WRITE +STG_IPC_LENGTH=256\"");
+#system("./nocrun -test ot_sweep_test");
+
+#Generate basic reports
+system("$spa -runs_report > ${rundir}/spa_report.log");
+
+#Log into the server http://<localhostname>:<portnum> to take a detailed look.
+#use login and password from the create_config step. 
+#Select recorded tests and analyze

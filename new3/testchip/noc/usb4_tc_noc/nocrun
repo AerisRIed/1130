@@ -1,0 +1,602 @@
+eval '(exit $?0)' && eval 'exec /usr/bin/perl  -S $0 ${1+"$@"}' 
+    & eval 'exec /usr/bin/perl  -S $0 $argv:q'
+    if 0;
+
+# +---------------------------------------------------------------------------+
+# |  Copyright (c) 2013-2025 Cadence Design Systems Inc. ALL RIGHTS RESERVED. |
+# |                                                                           |
+# |   These coded instructions, statements, and computer programs             |
+# |   are the copyrighted works and confidential proprietary                  |
+# |   information of Tensilica Inc.  They may not be modified,                |
+# |   copied, reproduced, distributed, or disclosed to third                  |
+# |   parties in any manner, medium, or form, in whole or in part,            |
+# |   without the prior written consent of Tensilica Inc.                     |
+# +---------------------------------------------------------------------------+
+
+use lib ('./lib');
+use lib ($ENV{'REGRESS_DIR'} . "/" . $ENV{'CONFIG'} . "/lib");
+use Params;
+use Getopt::Long;
+use Cwd;
+use File::Path;
+
+my $status = 0;
+my($opt_test, $opt_testlist, $opt_seed, $rundir, $dumptrn, $dumpvcd, $dumpsaif, $timescale, $opt_plus, $opt_plusrun, $opt_pluscomp, $help, $verbosity);
+my $nobuild = 0;
+my $comp = 0;
+my $opt_nosvd = 0;
+my($opt_gate, $opt_csf, $opt_sdf, $opt_nosdf, $opt_timingcheck);
+my $random_resp_order = 1;
+
+GetOptions(
+	   "test=s"               => \$opt_test,     # test name
+	   "testlist=s"           => \$opt_testlist, # test name
+	   "rundir=s"             => \$rundir,       # results directory
+	   "seed=s"               => \$opt_seed,     # seed
+	   "suffix=s"             => \$opt_suffix,   # suffix to append test name
+	   "dumptrn"              => \$dumptrn,      # dump waves
+	   "dumpvcd"              => \$dumpvcd,      # dump vcd 
+	   "dumpsaif"             => \$dumpsaif,     # dump saif
+	   "nobuild"              => \$nobuild,      # don't elaborate
+	   "timescale:s"          => \$timescale,    # timescale
+	   "comp"                 => \$comp,         # compile only
+	   "random_resp_order!"   => \$random_resp_order,
+	   "verbosity=s"          => \$verbosity,    # verbosity  
+	   "plus=s"               => \$opt_plus,     # compile and run arguments
+	   "plusrun=s"            => \$opt_plusrun,  # run arguments
+	   "pluscomp=s"           => \$opt_pluscomp, # compile arguments
+	   "csf=s"                => \$opt_csf,      # CadSetup file
+	   "gate=s"               => \$opt_gate,     # run GLS + netlist
+	   "nosdf=s"              => \$opt_nosdf,    # run GLS + netlist
+	   "sdf=s"                => \$opt_sdf,      # run GLS + netlist
+	   "timingcheck!"         => \$opt_timingcheck,      # require timing checks
+	   "nosvd"                => \$opt_nosvd,    # run GLS + netlist
+	   "help|?"               => \$help          # help message  
+	   );
+
+
+$opt_test //= "single_master_single_slave_test";
+$opt_seed //= 1;
+$rundir //= "/results";
+$rundir = cwd()."/$rundir";
+$dumptrn //= 0;
+$dumpvcd //= 0;
+$dumpsaif //= 0;
+$opt_suffix //= '';
+$timescale //= "1ps/1ps";
+my @tests;
+my $perfopts = "";
+my $access = "rcw";
+
+my $results_dir = cwd()."/results";
+
+$ENV{CDS_ARCH} = "lnx86";
+$ENV{CDN_VIP_UVMHOME} = "$ENV{XCELIUM_ROOT}/tools.$ENV{CDS_ARCH}/methodology/UVM/CDNS-1.1d/sv";
+$ENV{SPECMAN_PRE_COMMANDS} = "test";
+$ENV{SPECMAN} = "$ENV{XCELIUM_ROOT}/tools.$ENV{CDS_ARCH}/specman";
+$ENV{DENALI} = "$ENV{CDN_VIP_ROOT}/tools.$ENV{CDS_ARCH}/denali_64bit";
+$ENV{CDS_GCC} = "$ENV{XCELIUM_ROOT}/tools/cdsgcc/gcc/4.8";
+$ENV{SYSTEMC} = "$ENV{XCELIUM_ROOT}/tools/systemc";
+my $DENALI = $ENV{CDN_VIP_ROOT}."/tools.lnx86/denali_64bit";
+my $IPG_WKAREA = $ENV{IPG_WKAREA};
+my $BUILD_DIR = $ENV{BUILD_DIR_NOC};
+my $axi4 = ($axi4IeaCnt>0 || $axi4TeaCnt>0 || $topMod =~ /Axi4P/);
+my $apb = ($apbIeaCnt>0 || $apbTeaCnt>0);
+my $ahb = ($ahbIeaCnt>0 || $ahbTeaCnt>0);
+
+my $stg_home = defined $ENV{CDN_SYSVIP_ROOT} ? $ENV{CDN_SYSVIP_ROOT}."/tools/stg" : "/cad/cadence_root/SYSVIP01/tools/stg";
+my $stg = "$stg_home/bin/stg";
+
+my @elab_cmds = ('xrun -c +define+CADENCE -64bit -mess -uvm', 
+                    "-mccodegen -nxmbind -fast_recompilation -errormax 100 -xmerror UEXPSC $perfopts",
+                    "-l build.log +sv +access+${access} -uvmhome CDNS-1.1d -timescale ${timescale}",
+                    '+define+DENALI_SV_NC +define+DENALI_UVM',
+                    "-loadpli1 $ENV{CDN_VIP_UVMHOME}/lib/libuvmpli.so:uvm_pli_boot:export",
+                    "-loadvpi $DENALI/verilog/libcdnsv.so:cdnsvVIP:export",
+                    "-top worklib.dut_${topMod} -top worklib.dut_${topMod}_usr_pkg",
+                    "-f $rundir/final.vf",
+                    "-f $cfg_dir/${testbench}/scripts/run.xrunargs",
+                    "-incdir $cfg_dir -incdir $cfg_dir/.. $cfg_dir/${testbench}/dut_${topMod}.sv $cfg_dir/${testbench}/usr/dut_${topMod}_usr_pkg.sv",
+                    );
+
+my @error_strings = (
+        "UVM_ERROR"              ,
+        "UVM_FATAL"              ,
+        "xmsim: *"            
+    );
+
+# ANSI color change escape sequences
+$ansi_red     = "[31m";
+$ansi_green   = "[32m";
+$ansi_nocolor = "[0m";
+$ansi_bold    = "[1m";
+
+my $verilog_lib;
+my $syn_with_mem;
+my $syn_with_subsystem;
+my $xnne_block_dir;
+my $mem_vendor;
+my $mem_core_array_name;
+my $mem_fault_array_name;
+my $real_mem_debug_print;
+my $real_mem_block_x;
+my $insert_scan;
+my $insert_mbist;
+my $xtmem_block_dir;
+
+sub parse_testlist {
+    if (defined $opt_testlist) {
+        open(TESTLIST, "<${opt_testlist}") || die "Can't open testlist at: $opt_testlist for reading\n";
+        foreach my $line (<TESTLIST>) {
+            my @words = split(" ", $line);
+            if (defined $words[0]) {
+                push(@tests, $words[0]);
+            }
+        }
+    }
+    else {
+        push(@tests, $opt_test);
+    }
+}
+
+sub parse_csf {
+    my $cwd = cwd(); 
+    open(CADSETUP, "<${cwd}/$opt_csf") || die "Can't open CadSetup.file at: ${cwd}/$opt_csf for reading\n";
+    foreach my $line (<CADSETUP>) {
+        if ($line =~ /^\s*Lib_VerilogSimulationLibrary\s+(.*)$/) {
+            print "\n$line\n";
+            $verilog_lib = $1;
+            $verilog_lib =~ s/{|}//g;
+            $verilog_lib =~ s/,/ /g;
+        }
+        elsif ($line =~ /^\s*Syn_UseMemoryMacros\s+(\S+)/) {
+            $syn_with_mem = $1;
+        }
+        elsif ($line =~ /^\s*Syn_UseSubsystem\s+(\S+)/) {
+            $syn_with_subsystem = $1;
+        }
+        elsif ($line =~ /^\s*Target_XNNEBlockDir\s+(\S+)/) {
+            $xnne_block_dir = $1;
+        }
+        elsif ($line =~ /^\s*Target_XtmemBlockDir\s+(\S+)/) {
+            $xtmem_block_dir = $1;
+        }
+        elsif ($line =~ /^\s*Sim_MemVendor\s+(\S+)/) {
+            $mem_vendor = $1;
+        }
+        elsif ($line =~ /^\s*Sim_MemCoreName\s+(.*)$/) {
+            $mem_core_array_name = $1;
+            $mem_core_array_name =~ s/{|}//g;
+            $mem_core_array_name =~ s/\s+//g;
+        }
+        elsif ($line =~ /^\s*Sim_MemFaultArrayName\s+(.*)$/) {
+            $mem_fault_array_name = $1;
+            $mem_fault_array_name =~ s/{|}//g;
+            $mem_fault_array_name =~ s/\s+//g;
+        }
+        elsif ($line =~ /^\s*Sim_MemPrintDebug\s+(\S+)/) {
+            $real_mem_debug_print = $1;
+        }
+        elsif ($line =~ /^\s*Sim_MemBlockX\s+(\S+)/) {
+            $real_mem_block_x = $1;
+        }
+        elsif ($line =~ /^Syn_InsertScan\s+1/) {
+            $insert_scan = 1;
+        }
+        elsif ($line =~ /^Genus_InsertMBIST\s+1/) {
+            $insert_mbist = 1;
+            die(
+"xtgo Error: Setting Genus_InsertMBIST to 1 also requires that Syn_InsertScan to be set to 1 in CadSetup.file: $csf\n"
+            ) if ($insert_scan != 1);
+        }
+    }
+}
+
+sub mymkpath {
+    return if (-d $_[0]);
+    die("empty argument to mymkpath") if (!defined $_[0] or $_[0] eq '');
+    my @paths = mkpath(@_);
+    die ("$!: $_[0]") unless ($paths[$#paths] eq $_[0]);
+}
+
+sub gen_vf {
+    my $axi4 = ($axi4IeaCnt > 0 || $axi4TeaCnt > 0 || $axi4p);
+    my $apb  = ($apbIeaCnt > 0  || $apbTeaCnt > 0);
+    my $ahb  = ($ahbIeaCnt > 0  || $ahbTeaCnt > 0);
+    if ($opt_gate) {
+        my $vf = "";
+        $vf .= "-incdir ${DENALI}/ddvapi/sv\n";
+        $vf .= "${DENALI}/ddvapi/sv/denaliMem.sv\n";
+        $vf .= "${DENALI}/ddvapi/sv/denaliSvd.sv\n";
+        if ($axi4) {
+            $vf .= "${DENALI}/ddvapi/sv/denaliCdn_axi.sv \n";
+        }
+        if ($apb) {
+            $vf .= "${DENALI}/ddvapi/sv/denaliCdn_apb.sv \n";
+        }
+        if ($ahb) {
+            $vf .= "${DENALI}/ddvapi/sv/denaliCdn_ahb.sv \n";
+        }
+        if ($opt_nosvd==0) {
+            $vf .= "-incdir ${DENALI}/ddvapi/sv/uvm/svd\n";
+            $vf .= "${DENALI}/ddvapi/sv/uvm/svd/cdnSvdUvmTop.sv\n";
+        }
+        if ($axi4) {
+            $vf .= "-incdir ${DENALI}/ddvapi/sv/uvm/cdn_axi\n";
+            $vf .= "${DENALI}/ddvapi/sv/uvm/cdn_axi/cdnAxiUvmTop.sv\n";
+        }
+        if ($apb) {
+            $vf .= "-incdir ${DENALI}/ddvapi/sv/uvm/cdn_apb\n";
+            $vf .= "${DENALI}/ddvapi/sv/uvm/cdn_apb/cdnApbUvmTop.sv\n";
+        }
+        if ($ahb) {
+            $vf .= "-incdir ${DENALI}/ddvapi/sv/uvm/cdn_ahb\n";
+            $vf .= "${DENALI}/ddvapi/sv/uvm/cdn_ahb/cdnAhbUvmTop.sv\n";
+        }
+
+        my $cwd = cwd();
+        $vf .= "${cwd}/${opt_gate}\n";
+        my @vlib_array = split(/\s+/, $verilog_lib);
+        foreach my $entry (@vlib_array) {
+            $vf .= "-v $entry\n";
+        }
+
+        open(STG_VF, ">${rundir}/final.vf") || die "Couldn't open file ${cfg_dir}/${testbench}/${testbench}.vf";
+        print STG_VF "$vf";
+        close(STG_VF) || die "Couldn't open file ${cfg_dir}/${testbench}/${testbench}.vf";
+    }
+    else {
+        system("cp ${cfg_dir}/${testbench}/${testbench}.vf ${rundir}/final.vf");
+    }
+}
+
+sub setup_vipcat {
+    my $self = shift;
+
+    print "\nSetting up VIPCAT\n";
+    die "\nERROR: Please setenv CDN_VIP_ROOT to use VIPCAT!\n\n" unless ($ENV{CDN_VIP_ROOT});
+    my $pwd = cwd();
+    mymkpath($rundir, 1, 0755);
+    if (exists($ENV{CDN_VIP_LIB_PATH}) && 1) {
+    }
+    else {
+        #if (-e "$results_dir/VIPCAT_LIBS/complete") {
+        if (-e "$rundir/VIPCAT_LIBS/complete") {
+            print "\nValid VIPCAT_LIBS build detected, skipping re-build\n\n";
+        } else {
+            #chdir($results_dir) or die "Error: unable to chdir to $results_dir";
+            chdir($rundir) or die "Error: unable to chdir to $rundir";
+            #my $cdnvip_libpath = "-cdn_vip_lib ${results_dir}/VIPCAT_LIBS";
+            my $cdnvip_libpath = "-cdn_vip_lib ${rundir}/VIPCAT_LIBS";
+            my $cmd = $ENV{CDN_VIP_ROOT} . "/bin/cdn_vip_setup_env -csh -cdn_vip_root $ENV{CDN_VIP_ROOT} -64 ";
+            my $bus = "";
+            if ($axi4) {$bus .= "axi ";}
+            if ($apb) {$bus .= "apb ";}
+            if ($ahb) {$bus .= "ahb ";}
+            #if ($opt_nosvd==0) {$bus .= "svd";}
+            $bus .= "svd";
+            $cmd .= "-sim xrun -cdnautotest -method sv_uvm $cdnvip_libpath -install \"$bus\" -sim_root $ENV{XCELIUM_ROOT}";
+            print "Executing VIPCAT setup script\n\t$cmd\n\n";
+            if (system($cmd) == 0) {
+                print "VIPCAT_LIB build complete\n";
+                #system("touch ${results_dir}/VIPCAT_LIBS/complete");
+                system("touch ${rundir}/VIPCAT_LIBS/complete");
+                chdir($pwd) or die "Error: unable to chdir to $pwd";
+            } else {
+                die "\nVIPCAT_LIB build failed, exiting\n\n";
+            }
+        }
+        #$ENV{CDN_VIP_LIB_PATH} = "${results_dir}/VIPCAT_LIBS";
+        $ENV{CDN_VIP_LIB_PATH} = "${rundir}/VIPCAT_LIBS";
+    }
+    $ENV{SPECMAN_PATH} =  "$ENV{CDN_VIP_ROOT}/packages:$ENV{CDN_VIP_LIB_PATH}/64bit";
+
+    #$ENV{PATH} = "$ENV{XTSC_IUS_GCC64_PATH}/bin:${results_dir}/VIPCAT_LIBS/64bit:$ENV{DENALI}/bin:$ENV{DENALI}/verilog:$ENV{SPECMAN}/lib/64bit:$ENV{SPECMAN}/bin:$ENV{XCELIUM_ROOT}/tools/bin/64bit:$ENV{XCELIUM_ROOT}/tools/bin:$ENV{XCELIUM_ROOT}/tools/lib/64bit:$ENV{CDS_GCC}/install/bin:$ENV{CDS_GCC}/install/lib64:$ENV{PATH}";
+    $ENV{PATH} = "$ENV{XTSC_IUS_GCC64_PATH}/bin:${rundir}/VIPCAT_LIBS/64bit:$ENV{DENALI}/bin:$ENV{DENALI}/verilog:$ENV{SPECMAN}/lib/64bit:$ENV{SPECMAN}/bin:$ENV{XCELIUM_ROOT}/tools/bin/64bit:$ENV{XCELIUM_ROOT}/tools/bin:$ENV{XCELIUM_ROOT}/tools/lib/64bit:$ENV{CDS_GCC}/install/bin:$ENV{CDS_GCC}/install/lib64:$ENV{PATH}";
+    #$ENV{LD_LIBRARY_PATH} = "$ENV{XTSC_IUS_GCC64_PATH}/bin:$ENV{XTSC_IUS_GCC64_PATH}/lib64:${results_dir}/VIPCAT_LIBS/64bit:$ENV{DENALI}/verilog:$ENV{DENALI}/lib:$ENV{SPECMAN}/lib/64bit:$ENV{SPECMAN}/bin:$ENV{SYSTEMC}/lib/64bit/gnu/4.8:$ENV{SYSTEMC}/lib/64bit:$ENV{XCELIUM_ROOT}/verilog/lib:$ENV{XCELIUM_ROOT}/lib/64bit:$ENV{XCELIUM_ROOT}/lib:/cad/sequence/2008.1.1/PowerTheater/lib/linux:$ENV{SWTOOLS}/lib/iss-GCC-4.8";
+    $ENV{LD_LIBRARY_PATH} = "$ENV{XTSC_IUS_GCC64_PATH}/bin:$ENV{XTSC_IUS_GCC64_PATH}/lib64:${rundir}/VIPCAT_LIBS/64bit:$ENV{DENALI}/verilog:$ENV{DENALI}/lib:$ENV{SPECMAN}/lib/64bit:$ENV{SPECMAN}/bin:$ENV{SYSTEMC}/lib/64bit/gnu/4.8:$ENV{SYSTEMC}/lib/64bit:$ENV{XCELIUM_ROOT}/verilog/lib:$ENV{XCELIUM_ROOT}/lib/64bit:$ENV{XCELIUM_ROOT}/lib:/cad/sequence/2008.1.1/PowerTheater/lib/linux:$ENV{SWTOOLS}/lib/iss-GCC-4.8";
+
+    print "LD_LIBRARY_PATH = $ENV{LD_LIBRARY_PATH} ";
+}
+
+sub elaborate {
+    push(@elab_cmds, "-xmlibdirname $rundir/nc/INCA_libs");
+    if ($opt_gate){
+      
+      if(defined $opt_plus){
+        $opt_plus .= " +define+GATE ";
+      }
+      else {
+        $opt_plus = " +define+GATE ";
+      }
+
+      if($opt_sdf && $opt_sdf ne ""){
+        $opt_plus .= " +define+SDF ";
+      }
+    }
+    if ($opt_plus) {
+        push(@elab_cmds, "${opt_plus} ");
+    }
+    if ($opt_pluscomp) {
+        push(@elab_cmds, "${opt_pluscomp} ");
+    }
+    if ($opt_gate && $opt_nosdf) {
+        push(@elab_cmds, "-delay_mode zero -nospecify -sequdp_nba_delay -gateloopwarn -access +c -add_seq_delay 1 +no_stat_vec_sel_wiggle ") if ($opt_nosdf eq 'zero');
+        push(@elab_cmds, "-delay_mode unit ") if ($opt_nosdf eq 'unit');
+    }
+    if ($opt_gate && $opt_sdf) {
+        my $cwd = cwd();
+        push(@elab_cmds, "-sdf_file ${cwd}/${opt_sdf} -sdf_verbose -sdfstats unannotated_sdf.log") if ($opt_sdf ne "");
+        if(!$opt_timingcheck){
+          push(@elab_cmds, "-notimingchecks");
+        }
+    }
+    if ($ahbIeaCnt >0) {
+        push(@elab_cmds, "+define+STG_CONFIGURE_DUT_EVENT ");
+    }
+    my $cwd = cwd();
+
+    #mymkpath($results_dir."/nc", 0, 0755);
+    #chdir $results_dir."/nc" || die ("cannot cd to $results_dir/nc\n");
+    mymkpath($rundir . "/nc", 0, 0755);
+    chdir $rundir . "/nc" || die("cannot cd to $rundir/nc\n");
+    my $cmd = join(' ', @elab_cmds);
+    print STDERR "Elaborate\n---\n$cmd\n---\n";
+    my $ret = system($cmd);
+    chdir $cwd || die("cannot cd to ", $cwd, "\n");
+    die("Could not elaborate design\n") if ($ret);
+    $ret;
+}
+
+sub getTrnArgs {
+    my ($dump_on, $dump_off) = split(/,/, $dumptrn);
+    my ($clkPeriod) = 10; # default clock period is 10
+    my $dump_scope = "dut_${topMod}";
+    $dump_off = 0 if ($dump_off eq '');
+    $dump_on = 0 if ($dump_on eq '');
+    $dump_on = $clkPeriod * $dump_on if ($dump_on);
+    $dump_off = $clkPeriod * $dump_off if ($dump_off);
+    my $dump_off_diff = $dump_off - $dump_on;
+    $dump_off_diff = 0 if ($dump_off_diff < 0);
+    my @dumpArgs = q(-input @'set assert_report_incompletes 0;);
+    push( @dumpArgs,  "database -open -default -shm -compress -into waves.shm waves;");
+    push( @dumpArgs, "run $dump_on ns;") if ($dump_on != 0);
+    push (@dumpArgs, "probe $dump_scope -tasks -functions -all -depth all -memories -database waves -name my_probe;");
+    if ($dump_off_diff != 0) {
+      push( @dumpArgs, "run $dump_off_diff ns;");
+      push (@dumpArgs, "probe -disable my_probe;");
+    }
+    if($dumpsaif){
+      my $saif_scope = "dut_${topMod}.i_${topMod}";
+      push( @dumpArgs, "dumpsaif -scope ${saif_scope} -eot -inctoggle -overwrite -verbose -output saif_gate_toggle_file.saif;");
+    }
+    push (@dumpArgs, q('));
+    return join(" ", @dumpArgs);
+}
+
+sub getVcdArgs {
+    my ($dump_on, $dump_off) = split(/,/, $dumpvcd);
+    my ($clkPeriod) = 10; # default clock period is 10
+    my $dump_scope = "dut_${topMod}";
+    $dump_off = 0 if ($dump_off eq '');
+    $dump_on = 0 if ($dump_on eq '');
+    $dump_on = $clkPeriod * $dump_on if ($dump_on);
+    $dump_off = $clkPeriod * $dump_off if ($dump_off);
+    my $dump_off_diff = $dump_off - $dump_on;
+    $dump_off_diff = 0 if ($dump_off_diff < 0);
+    my @dumpArgs = q(-input @'set assert_report_incompletes 0;);
+    push( @dumpArgs, "database -open ${topMod}_vcd -vcd -into vcd_dump.vcd;");
+    push( @dumpArgs, "run $dump_on ns;") if ($dump_on != 0);
+    push (@dumpArgs, "probe $dump_scope -tasks -functions -all -depth all -memories -database ${topMod}_vcd -name my_probe;");
+    if ($dump_off_diff != 0) {
+      push( @dumpArgs, "run $dump_off_diff ns;");
+      push (@dumpArgs, "probe -disable my_probe;");
+    }
+    if($dumpsaif){
+      my $saif_scope = "dut_${topMod}.i_${topMod}";
+      push( @dumpArgs, "dumpsaif -scope ${saif_scope} -eot -inctoggle -overwrite -verbose -output saif_gate_toggle_file.saif;");
+    }
+    push (@dumpArgs, q('));
+    return join(" ", @dumpArgs);
+}
+
+sub simulate {
+    my $test = shift;
+    my @sim_cmds = ("xrun -R -64 $perfopts", 
+	            "+UVM_TESTNAME=${test}",
+                "-svseed ${opt_seed}"
+                );
+    push(@sim_cmds, "-sv_lib ".$ENV{CDN_VIP_LIB_PATH}."/64bit/libcdnvipcuvm.so") ;
+    #push(@sim_cmds, "-xmlibdirname $results_dir/nc/INCA_libs"); 
+    push(@sim_cmds, "-xmlibdirname $rundir/nc/INCA_libs"); 
+    if ($dumptrn) {
+        push (@sim_cmds, getTrnArgs());
+        push (@sim_cmds, "-lwdgen "); #remove if we are running xtsc
+        push (@sim_cmds, "-createdebugdb "); 
+        push (@sim_cmds, "-shm_dyn_probe "); 
+    }
+    if ($dumpvcd) {
+        push (@sim_cmds, getVcdArgs());
+    }
+    if ($random_resp_order) {
+        push (@sim_cmds, '+random_response_order ');
+    }
+    if ($opt_nosvd) {
+        push (@sim_cmds, '+DISABLE_SVD ');
+    }
+    if($verbosity) {
+        push (@sim_cmds, "+UVM_VERBOSITY=$verbosity ");
+    }
+
+	push (@sim_cmds, "-input \"\@set assert_report_incompletes 0; run\"");
+    if ($opt_plus) {
+        push (@sim_cmds, "${opt_plus} ");
+    }
+    if ($opt_plusrun) {
+        my @opts = split(/\+/,$opt_plusrun);   
+        foreach my $opt(@opts) {
+            if($opt =~ /[a-z]/ || $opt =~ /[A-Z]/) { push(@sim_cmds, "+$opt ");}
+        }       
+    }
+    my $cwd = cwd();
+    my $test_dir = "${test}_${opt_seed}${opt_suffix}";
+    mymkpath($rundir."/$test_dir", 0, 0755);
+    chdir $rundir."/$test_dir" || die ("cannot cd to $rundir/$test_dir\n");
+    createRunCmd($test);
+    $cmd = join (' ', @sim_cmds);
+    print STDERR "Simulate\n---\n$cmd\n---\n";
+    my $ret = system($cmd);
+    chdir $cwd || die ("cannot cd to ", $cwd, "\n");
+}
+
+sub usage {
+    print "\n";
+    print "===========================================================================================\n";
+    print "============================== Available cmd line options =================================\n";
+    print "===========================================================================================\n\n";
+    print "-test < > \n";
+    print "   Test name to be run. Default: single_master_single_slave_test \n\n";
+    print "-rundir < > \n";
+    print "   Directory where simulation results will be generated. Default: results \n\n"; 
+    print "-dumptrn \n";
+    print "   If waves should be generated \n\n";
+    print "-dumpvcd \n";
+    print "   If vcd should be generated (Generally to be used with GLS) \n\n";
+    print "-nobuild \n";
+    print "   If elaborate step should be skipped \n\n";
+    print "-comp \n";
+    print "   Compile only \n\n";
+    print "-seed \n";
+    print "   Randomization seed. Default: 1 \n\n";
+    print "-verbosity < > \n";
+    print "   UVM verbosity level \n\n";
+    print "-nosvd < > \n";
+    print "   run without system scoreboard \n\n";
+    print "-plus \n";
+    print "   Additional options which would be used for both compilation and simulation\n\n";
+    print "-pluscomp \n";
+    print "   Additional options which would be used for compilation\n\n";
+    print "-plusrun \n";
+    print "   Additional options which would be used for simulation\n\n";
+    print "-timescale \n";
+    print "   Timescale used for simulation. Default is 1ps/1ps\n\n";
+    print "-gate <netlist> \n";
+    print "   Run gate level simulation and give path to netlist\n\n";
+    print "-sdf <file> \n";
+    print "   Override default SDF location.  SDF annotate from the given file name\n\n";
+    print "-nosdf <> \n";
+    print "   Don\'t use any SDF file. Use \'zero\' for zero delay mode and \'unit\' for unit delay mode.\n   Zero delay mode inserts a delay of precision unit on sequential components to avoid race conditions and zero elsewhere.\n   Using no SDF can lead to hold violation errors and it is recommended run with -timingcheck\n\n";
+    print "-timingcheck	\n";
+    print "   Enable Verilog simulator's timing checks\n\n";
+    print "-help \n";
+    print "   Displays this message\n\n";
+    exit 0;
+}
+
+sub parse_log {
+    my $test = shift;
+    my $test_dir = "${test}_${opt_seed}${opt_suffix}";
+    my $logfile = $rundir."/$test_dir"."/xrun.log";
+    my $finish = 0;    
+    my $error_msg = undef;
+    # Parse xrun.log for error msgs 
+    open(LOG,"<$logfile") or die "cannot open log file for parsing";
+    while ($line=<LOG>) {
+       foreach my $error (@error_strings) {
+           if ($line =~ /$error/) {
+               if (($error eq "UVM_ERROR") or ($error eq "UVM_FATAL")) {
+                  if ($line !~ /$error reports/ && $line !~ /^$error :/ && $line !~ /uvm_set_severity/) {
+                      $error_msg = $line;
+                  }
+               }
+               elsif($error eq "xmsim: *"){
+                  if($line =~ /$error.E,ASRTST/) { $error_msg = $line; }
+               }      
+               else { $error_msg = $line; }
+           }
+           if(defined($error_msg)) { last; }  
+       }
+       if(defined($error_msg)) {last;}
+       if($line =~ /Simulation complete/) { $finish = 1;}    
+    }
+
+    # Make sure we found all finish strings.
+    if (!$finish && !defined($error_msg)) {
+        $error_msg = "Simulation not finished properly, likely terminated";
+    }
+
+    #open (RES_LOG,">$results_dir/$test_dir/test.run") or die "Couldn't open file for writing, $!";
+    open (RES_LOG,">$rundir/$test_dir/test.run") or die "Couldn't open file for writing, $!";
+    # Determine pass/fail.
+    if (defined($error_msg)) {
+        print "\n${ansi_red}****************************  TEST STATUS : FAIL ****************************${ansi_nocolor}\n";
+        print "$error_msg\n";
+        print RES_LOG "FAIL\n";
+        print RES_LOG "$error_msg\n";
+        $status |= 1; 
+    }
+    else {
+        print "\n${ansi_green}****************************  TEST STATUS : PASS ****************************${ansi_nocolor}\n";
+        print RES_LOG "PASS\n";
+        $status |= 0; 
+    }
+    #print "${ansi_bold}TEST RESULTS:${ansi_nocolor} $results_dir/$test_dir \n\n"; 
+    print "${ansi_bold}TEST RESULTS:${ansi_nocolor} $rundir/$test_dir \n\n"; 
+    close(RES_LOG);
+}
+
+sub createRunCmd {
+    my $test = shift;
+    my $cmd = "${cfg_dir}/nocrun -test $test -seed $opt_seed ";
+    if ($dumptrn) {
+        $cmd .= "-dumptrn ";
+    }
+    if ($dumpvcd) {
+        $cmd .= "-dumpvcd ";
+    }
+    if ($comp) {
+        $cmd .= "-comp ";
+    }
+    if (defined $verbosity) {
+        $cmd .= "-verbosity $verbosity ";
+    }
+    if (defined $opt_plus) {
+        $cmd .= "-plus \"$opt_plus\" ";
+    }
+    if (defined $opt_plusrun) {
+        $cmd .= "-plusrun \"$opt_plusrun\" ";
+    }
+    if (defined $opt_pluscomp) {
+        $cmd .= "-pluscomp \"$opt_pluscomp\" ";
+    }
+    
+    open(CMD,">nocrun.run") or die "cannot open log file for writing";
+    print CMD "$cmd\n";
+    close(CMD);
+}
+
+if($help) {&usage;}
+
+#run
+parse_testlist();
+$ENV{SIA_HOME}          = "$stg_home/bin/lib";
+$ENV{STG_GENERATED_DIR} = "$cfg_dir/${testbench}";
+setup_vipcat();
+if ($opt_gate) {
+    parse_csf();
+}
+gen_vf();
+if (!$nobuild) {
+    elaborate();
+}
+foreach my $test (@tests) {
+    if (!$comp) {
+        simulate($test);
+    }
+}
+foreach my $test (@tests) {
+    if (!$comp) {
+        parse_log($test);
+    }
+}
+exit($status);

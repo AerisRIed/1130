@@ -1,0 +1,6 @@
+PROTOCOLS=svd apb
+METHODOLOGY=sv_uvm
+SOURCES=$STG_GENERATED_DIR/dut_usb4_tc_noc.sv $STG_GENERATED_DIR/usr/dut_usb4_tc_noc_usr_pkg.sv
+TOPMODULE=dut_usb4_tc_noc dut_usb4_tc_noc_usr_pkg 
+UVM_TESTNAME=all_masters_all_slaves_test
+OPTIONS_COMP_simKind=-f $STG_GENERATED_DIR/scripts/run.simKindargs 

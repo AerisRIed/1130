@@ -1,0 +1,7 @@
+memories/mem_defines.svh
+noc/usb4_tc_noc.sv
+memories/usb4_tc_noc_tpRam_8_35_awn_raws.sv
+memories/usb4_tc_noc_tpRam_8_25_awn_raws.sv
+memories/usb4_tc_noc_tpRam_8_37_awn_raws.sv
+memories/usb4_tc_noc_tpRam_8_61_awn_raws.sv
+primitives/usb4_tc_noc_primitives.v

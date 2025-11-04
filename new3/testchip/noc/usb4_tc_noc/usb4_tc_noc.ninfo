@@ -1,0 +1,58 @@
+PACKET:
+nidW           = 3
+tidW           = 2
+aidW           = 1
+pLenW          = 3
+addrW          = 32
+rcUserW        = 0
+rdsUserW       = 0
+wcdUserW       = 0
+wsUserW        = 0
+inclRcES       = 1
+inclRcAM       = 1
+inclRcCA       = 0
+inclRcSA       = 0
+inclRcRS       = 0
+inclRcEA       = 0
+inclRcBCA      = 0
+inclWcdES      = 1
+inclWcdAM      = 1
+inclWcdCA      = 0
+inclWcdSA      = 0
+inclWcdRS      = 0
+inclWcdEA      = 0
+inclWcdBCA     = 0
+perDataRstatus = 1
+version        = 3
+segSize        = 4
+vcC            = 1
+
+AMAP: debug_regs_region
+0,80000,FF000,rw,,,3,,,
+
+AMAP: main0
+6,00000,C0000,rw,,,0,,,
+1,40000,FFE00,rw,,,0,,,
+2,50000,F0000,rw,,,0,,,
+3,60000,F0000,rw,,,0,,,
+4,70000,F0000,rw,,,0,,,
+5,40400,FFC00,rw,,,0,,,
+
+TEA: pam3_sub_sys(4)
+
+TEA: tc_reg(2)
+
+TEA: xcvr_ln_0(5)
+
+TEA: usb_sub_sys(3)
+
+TEA: apb_tgt(6)
+
+TEA: cmn_cdb(1)
+
+IEA: apb_mstr
+aMap1      = main0
+
+IEA: cdb
+aMap1      = debug_regs_region
+aMap2      = main0

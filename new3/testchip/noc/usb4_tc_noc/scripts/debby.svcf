@@ -1,0 +1,110 @@
+# Copyright (c) 2013-2025 by Cadence Design Systems Inc.  ALL RIGHTS RESERVED.
+# These coded instructions, statements, and computer programs are the copyrighted 
+# works and confidential proprietary information of Cadence Design Systems Inc.  
+# They may not be modified, copied, reproduced, distributed, or disclosed to 
+# third parties in any manner, medium, or form, in whole or in part, without the 
+# prior written consent of Cadence Design Systems Inc.
+
+# SimVision Command Script
+#
+# You can restore this configuration with:
+#
+#     simvision -input debby.svcf
+#  or simvision -input debby.svcf database1 database2 ...
+#
+
+#
+# Preferences
+#
+preferences set plugin-enable-svdatabrowser-new 1
+preferences set plugin-enable-groupscope 0
+preferences set sb-display-values 1
+preferences set sb-callstack-in-window 0
+preferences set plugin-enable-interleaveandcompare 0
+preferences set signal-trace-move-cursor 0
+preferences set signal-trace-stop-at-module-boundaries 0
+preferences set signal-trace-active-x-driver 0
+
+preferences set toolbar-Windows-WaveWindow {
+  usual
+  position -pos 4
+}
+preferences set key-bindings {Edit>Undo Ctrl+z PageUp PageUp View>Zoom>In Alt+i View>Zoom>Next {Alt+Right arrow} PageDown PageDown,Shift+PageDown Edit>Copy Ctrl+c ScrollDown {Down arrow} Edit>Select>All Ctrl+a Simulation>NextInScope F7 Edit>Create>Group Ctrl+g View>Zoom>FullY_widget y Format>Radix>Decimal Ctrl+Shift+D Edit>Ungroup Ctrl+Shift+G TopOfPage Home Edit>Create>Condition Ctrl+e {command -console SimVision {%w sidebar access designbrowser selectall}} Alt+a ScrollLeft {Left arrow} View>Zoom>FullX_widget = Edit>SelectAllText Alt+a Edit>TextSearchConsole Alt+s Windows>SendTo>Waveform Ctrl+w Windows>SendTo>SourceBrowser Ctrl+s Simulation>Return Shift+F5 View>CallstackDown {Ctrl+Down arrow} Select>All Ctrl+a Edit>Delete Del Format>Radix>Octal Ctrl+Shift+O Edit>Cut Ctrl+x Simulation>Run F2 Edit>Create>Marker Ctrl+m View>Center Alt+c View>CallstackInWindow Ctrl+k Edit>SelectAll Ctrl+a File>OpenDatabase Ctrl+o Edit>Redo Ctrl+y Format>Radix>Binary Ctrl+Shift+B View>ExpandSequenceTime>AtCursor Alt+x ScrollUp {Up arrow} File>CloseWindow Ctrl+Shift+W ScrollRight {Right arrow} View>Zoom>FullX {j,f,Alt+=} View>Zoom>FullY {} Edit>Create>Bus Ctrl+b Explore>NextEdge Ctrl+] View>Zoom>Cursor-Baseline Alt+z View>Zoom>OutX Alt+o Edit>GoToLine Ctrl+g View>Zoom>Fit Alt+= View>Zoom>OutX_widget {w,o} View>CallstackUp {Ctrl+Up arrow} View>Bookmarks>Add Ctrl+b View>ShowValues Ctrl+s Simulation>Next F6 Edit>Search Ctrl+f Format>Radix>Hexadecimal Ctrl+Shift+H Edit>Create>MarkerAtCursor Ctrl+Shift+M View>Zoom>InX Alt+i View>Zoom>Out Alt+o Edit>TextSearch Ctrl+f View>Zoom>Previous {l,Alt+Left arrow} Edit>Paste Ctrl+v Format>Signed Ctrl+Shift+S View>CollapseSequenceTime>AtCursor Alt+s View>Zoom>InX_widget {e,i} Format>Radix>ASCII Ctrl+Shift+A BottomOfPage End Simulation>Step F5 Explore>PreviousEdge {Ctrl+[}}
+
+
+#
+# Databases
+#
+array set dbNames ""
+set dbNames(realName1) [ database require waves -hints {
+      file ./results/RvAVP/Arithmetic/add/waves.shm/waves.trn
+}]
+if {$dbNames(realName1) == ""} {
+    set dbNames(realName1) waves
+}
+
+#
+# Conditions
+#
+
+#
+# Mnemonic Maps
+#
+mmap new -reuse -name {Boolean as Logic} -radix %b -contents {{%c=FALSE -edgepriority 1 -shape low}
+{%c=TRUE -edgepriority 1 -shape high}}
+# insert dis here
+}
+
+#
+# Waveform windows
+#
+if {[catch {window new WaveWindow -name "Waveform 1"}] != ""} {
+    window geometry "Waveform 1" 1910x1058-0+21
+}
+window target "Waveform 1" on
+waveform using {Waveform 1}
+waveform sidebar select designbrowser
+waveform set 
+    -primarycursor TimeA 
+    -signalnames name 
+    -signalwidth 192 
+    -units ns 
+    -valuewidth 200
+waveform baseline set -time 180ns
+
+set id [waveform add -signals [subst  {
+        {$dbNames(realName1)::[format {dut_usb4_tc_noc.i_usb4_tc_noc.clk}]}
+        {$dbNames(realName1)::[format {dut_usb4_tc_noc.i_usb4_tc_noc.rst_n}]}
+        } ]]
+
+waveform xview limits 0 3818ns
+
+
+
+#
+# Waveform Window Links
+#
+
+#
+# Source Browser windows
+#
+if {[catch {window new SrcBrowser -name "Source Browser 1"}] != ""} {
+    window geometry "Source Browser 1" 1400x1058+85+21
+}
+window target "Source Browser 1" on
+srcbrowser using {Source Browser 1}
+srcbrowser set 
+    -primarycursor TimeA 
+    -units ns 
+    -radix default 
+    -showstrength 0 
+    -showcallstack 0 
+    -displayvalues 1
+
+srcbrowser sidebar select designbrowser
+
+#
+# Console windows
+#
+console set -windowname Console
+window geometry Console 600x250+345+345

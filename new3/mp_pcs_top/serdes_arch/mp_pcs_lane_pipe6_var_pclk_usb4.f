@@ -1,0 +1,7 @@
++incdir+$SERDES_PCS_RTL_HOME
+$SERDES_PCS_RTL_HOME/mp_cmn_if_pipe6_usb4.v
+$SERDES_PCS_RTL_HOME/mp_pwr_rate_ctrl_pipe6_var_pclk_usb4.v
+$SERDES_PCS_RTL_HOME/mp_rcv_det_pipe6_usb4.sv
+$SERDES_PCS_RTL_HOME/mp_tpcs_pipe6_var_pclk_usb4.v
+$SERDES_PCS_RTL_HOME/mp_rpcs_pipe6_usb4.v
+$SERDES_PCS_RTL_HOME/mp_pcs_lane_pipe6_var_pclk_usb4.v

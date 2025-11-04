@@ -1,0 +1,19 @@
+class passive_master_usb4_tc_noc_cmn_cdb_config extends cdnApbUvmConfig;
+
+   `uvm_object_utils(passive_master_usb4_tc_noc_cmn_cdb_config)
+
+   function new(string name = "passive_master_usb4_tc_noc_cmn_cdb_config");
+      super.new(name);
+   endfunction : new
+
+   virtual function void setFieldsValues();
+      set_use_apb_amba4_extension(1);
+      set_number_of_slaves(1);
+      set_idle_mode_optimization(CDN_APB_CFG_IDLE_MODE_OPTIMIZATION_OPTIMIZED_CB);
+      set_is_active(UVM_PASSIVE);
+      set_DeviceType(CDN_APB_CFG_MASTER);
+      set_use_apb_ver_d_extension(1);
+
+   endfunction: setFieldsValues
+
+endclass : passive_master_usb4_tc_noc_cmn_cdb_config

@@ -1,0 +1,6 @@
+single_master_all_slaves_test
+all_masters_all_slaves_test
+single_master_single_slave_test
+all_masters_single_slave_test
+single_master_mapped_segments_test
+all_masters_mapped_segments_test

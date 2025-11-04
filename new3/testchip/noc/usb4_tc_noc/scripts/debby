@@ -1,0 +1,47 @@
+eval '(exit $?0)' && eval 'exec /usr/xtensa/stools-8.0/bin/perl -w -S $0 ${1+"$@"}' 
+    & eval 'exec /usr/xtensa/stools-8.0/bin/perl -w -S $0 $argv:q'
+    if 0;
+
+
+# Copyright (c) 2025 by Cadence Design Systems Inc.  ALL RIGHTS RESERVED.
+# These coded instructions, statements, and computer programs are the
+# copyrighted works and confidential proprietary information of Cadence Design Systems Inc.
+# They may not be modified, copied, reproduced, distributed, or disclosed to
+# third parties in any manner, medium, or form, in whole or in part, without
+# the prior written consent of Cadence Design Systems Inc.
+
+#  $Id$
+
+
+# Perl includes required for this script
+use strict;
+use warnings;
+use Carp;
+use English;
+use Cwd qw(abs_path);
+use lib ('./lib');
+use Params;
+
+my $PREFIX = $cfg_dir;
+my $RESULTS;
+
+if (defined $ARGV[0]) {
+  $RESULTS = abs_path($ARGV[0]);
+} elsif (-e -f -r "waves.shm/waves.trn") {
+  $RESULTS = "$ENV{PWD}";
+} else {
+  croak "debby ERROR: no argument provided.  Usage is % debby <results/diag_run_dir>";
+}
+
+if (-e "$RESULTS/ida_database_test") {
+  system("indago -input $PREFIX/scripts/indy.wsf -db $RESULTS/ida_database_test");
+} else {
+  system("simvision -64bit -input $PREFIX/scripts/debby.svcf $RESULTS/waves.shm");
+}
+
+# Local Variables:
+# mode:perl
+# perl-indent-level:2
+# cperl-indent-level:2
+# End:
+# vim:syntax=perl

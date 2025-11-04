@@ -1,0 +1,40 @@
+# general definitions
+-defineall USING_DENALI_SVD
+-defineall CDN_STG_ROUTING_MODEL_MAX_ADDR_WIDTH=64
+
+-defineall CDN_VIPCAT_APB_HAS_CLEAR_MEMORY_MAP
+-defineall CDN_APB_INTERFACE_SIGNALS_AS_PORTS
+
+# compile general RDVE SV
+-incdir $SIA_HOME/sia/lib/sv
+-incdir $SIA_HOME/sia/lib/sv/cdn_stg/sv
+-incdir $SIA_HOME/sia/lib/templates/vip/icm/uvmsv
+$SIA_HOME/sia/lib/verilog/tb_clk_rst/tb_clk_rst_intf.sv
+$SIA_HOME/sia/lib/sv/cdn_stg/sv/cdn_stg_pkg.sv
+$SIA_HOME/sia/lib/sv/cdn_stg/sv/cdn_stg_clock_gen_if.sv
+$SIA_HOME/sia/lib/sv/cdn_stg/sv/cdn_stg_clock_controller_if.sv
+$SIA_HOME/sia/lib/sv/cdn_stg/sv/cdn_stg_reset_controller_if.sv
+
+$SIA_HOME/sia/lib/verilog/tb_clk_rst/tb_clk_rst_gen.v
+$SIA_HOME/sia/lib/verilog/tb_clk_rst/tb_clk_gen.v
+$SIA_HOME/sia/lib/verilog/tb_clk_rst/tb_rst_gen.v
+$SIA_HOME/sia/lib/verilog/tb_clk_rst/cdn_clk_rst_no_gen.v
+$SIA_HOME/sia/lib/verilog/tb_clk_rst/cdn_tb_rst_in.v
+$SIA_HOME/sia/lib/verilog/tb_clk_rst/cdn_tb_clk_in.v
+$SIA_HOME/sia/lib/verilog/tb_clk_rst/cdn_tb_clk_2in.v
+$SIA_HOME/sia/lib/verilog/tb_clk_rst/cdn_tb_clk_in__rst_out.v
+$SIA_HOME/sia/lib/verilog/tb_clk_rst/cdn_tb_clk_out.v
+$SIA_HOME/sia/lib/verilog/tb_clk_rst/cdn_tb_clk_out__rst_out.v
+
+
+# compile SV env and tb
+-incdir $STG_GENERATED_DIR/usr/usr_hdl_extensions 
+-incdir $STG_GENERATED_DIR/env/sv
+-incdir $STG_GENERATED_DIR/env/uvm_cfg
+-incdir $STG_GENERATED_DIR/tests 
+-incdir $STG_GENERATED_DIR/usr 
+-incdir $STG_GENERATED_DIR/usr/usr_uvm_cfg 
+$STG_GENERATED_DIR/env/sv/dut_usb4_tc_noc_env_pkg.sv
+$STG_GENERATED_DIR/tests/dut_usb4_tc_noc_tb_test_pkg.sv
+$DENALI/ddvapi/sv/hdl_interfaces/cdn_apb/cb_interfaces/p2p/cdnApb4Interface.sv
+

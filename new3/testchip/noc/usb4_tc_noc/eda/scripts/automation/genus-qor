@@ -1,0 +1,321 @@
+#!/usr/bin/env perl
+
+#############################################################################################
+# Copyright (c) 2006-2025 by Cadence Design Systems Inc. ALL RIGHTS RESERVED.               #
+# These coded instructions, statements, and computer programs are the                       #
+# copyrighted works and confidential proprietary information of Cadence Design Systems Inc. #
+# They may not be modified, copied, reproduced, distributed, or disclosed to                #
+# third parties in any manner, medium, or form, in whole or in part, without                #
+# the prior written consent of Cadence Design Systems Inc.                                  #
+#############################################################################################
+
+################################################################################
+# Filename: genus-qor                                                          #
+# Objective: Extract qor reports from  Genus logfile                           #
+# Input:  Genus_compile.log                           			       #
+################################################################################
+use strict;
+use FileHandle;
+use Getopt::Long;
+use Cwd;
+use File::Path;
+use File::Copy;
+use File::Basename;
+use FindBin qw($RealBin);
+
+################################################################################
+# supporting routines                                                          #
+################################################################################
+sub sec2hrmin {
+  my ($sec, $min, $hr, $hhmm);
+  ($sec) = @_;
+  $hr = $sec/3600;
+  $hr =~ s/(\d+)\.\d+/$1/g;
+  $min = $sec/60;
+  $min =~ s/(\d+)\.\d+/$1/g;
+  $min -= $hr * 60;
+  $hhmm = sprintf "%2d:%2d", $hr, $min;  
+  $hhmm =~ s/:\s/:0/;
+  return "$hhmm";
+}
+
+sub TimeConverter {
+  my $InputTime = $_[0];
+  chomp($InputTime);
+  my $Hours = int($InputTime / 3600);
+  my $Minutes = int(($InputTime - ($Hours * 3600)) / 60);
+  my $Seconds = int($InputTime - ($Hours * 3600) - ($Minutes * 60));
+  return sprintf("%2d:%02d:%02d",$Hours,$Minutes,$Seconds);
+}
+
+sub PowerUnitConversion {
+  my $DataPoint = $_[0];
+  $DataPoint =~ s/([a-zA-Z]+)//g;
+  my $Units = $1;
+  $DataPoint =~ s/ //g;
+  SWITCH: {
+     if ($Units eq "W")  {$DataPoint *= 1000; last SWITCH;}
+     if ($Units eq "mW") {$DataPoint *= 1; last SWITCH;}
+     if ($Units eq "uW") {$DataPoint *= 0.001; last SWITCH;}
+     if ($Units eq "nW") {$DataPoint *= 0.000001; last SWITCH;}
+     if ($Units eq "pW") {$DataPoint *= 0.000000001; last SWITCH;}
+     if ($Units eq "fW") {$DataPoint *= 0.000000000001; last SWITCH;}
+  }
+  $DataPoint = sprintf("%.3f",$DataPoint);
+  return $DataPoint;
+}
+
+################################################################################
+# read in the options                                                          #
+################################################################################
+my $help = 0;
+my $genus = 0;
+my $pwd = cwd();
+my $InputFile = "Genus_compile.log";
+my $ret;
+
+my $usage = <<USAGE;
+  $0 [options]
+
+  This script extracts qor reports from the logfile and presents them in tabular format.
+
+  -input <filename>	Name of input logfile. Defaults to $InputFile
+
+  -genus		Use to parse Genus logfiles
+ 
+USAGE
+
+$ret = GetOptions(
+    "help" => \$help,
+    "genus" => \$genus,
+    "input=s" => \$InputFile);
+
+if ($help || ! $ret) {
+  print $usage;
+  exit;
+}
+
+$InputFile = "$pwd/$InputFile" unless (($InputFile =~ /^\//) || ($InputFile =~ /^\.\//));
+my $logfile = $InputFile;
+
+################################################################################
+# parse compilation logfile                                                    #
+################################################################################
+open(LOGFILE,"<$logfile") or die ("Cannot open $logfile\n");
+
+if ($genus) {
+  my %DataHash;
+  my $incr_pass_index = 0;
+  my $pso_mode = 0;
+  my (@FlowStepArray, @RuntimeArray);
+  my ($RuntimeStep, $EpochTime);
+  my @PathGroupArray = qw(CLK JTCK mem_io power_clkgate I2F F2O I2O);
+  my @PathItemsArray = qw(WNS TNS GATES);
+  my @NonTimingArray = qw(comb_instance_count seq_instance_count leaf_instance_count cell_area elapsed_runtime peak_memory);
+  my ($module, $step, $search_group, $search_wns, $search_tns, $search_gates);
+  my ($leaf_inst, $seq_inst, $comb_inst, $cell_area, $runtime, $memory);
+
+  while (<LOGFILE>) {
+   chomp;
+    if ($_ =~ /^The\s+system\s+time\s+after\s+(\S+)\s+is/) {
+      $RuntimeStep = $1;
+      $_ = <LOGFILE>;
+      $_ = <LOGFILE> if ($_ =~ /sh\s+date/);
+      chomp;
+      $EpochTime = $_;
+      push @RuntimeArray, "$RuntimeStep $EpochTime";
+    } elsif ($_ =~ /^Runtime\s+&\s+Memory\s+after\s+(\S+)/) {
+      $step = $1;
+      if ($step =~ /optional_incremental/) {
+	$step .= "_" . $incr_pass_index;
+	$incr_pass_index++;
+      }
+      push @FlowStepArray, $step;
+    } elsif ($_ =~ /^\s*Module:\s+(\S+)/) {
+      $module = $1;
+    } elsif ($_ =~ /^\s*Mode\s+Clock\s+Period\s*$/) {
+      $pso_mode = 1;
+    } elsif (($_ =~ /Error   :/) || ($_ =~ /ERROR:/)) {
+      print "$_\n";
+    }
+  }
+  close(LOGFILE);
+  open(LOGFILE,"<$logfile") or die ("Cannot open $logfile\n");
+
+  print "Summary report for: $module\n\n";
+
+  foreach my $step_key (@FlowStepArray) {
+    foreach my $path_key (@PathGroupArray) {
+      foreach my $item_key (@PathItemsArray) {
+	$DataHash{$step_key}{"${path_key}_${item_key}"} = "N/A";
+      }
+    }
+    $DataHash{$step_key}{leaf_instance_count} = "N/A";
+    $DataHash{$step_key}{seq_instance_count} = "N/A";
+    $DataHash{$step_key}{comb_instance_count} = "N/A";
+    $DataHash{$step_key}{cell_area} = "N/A";
+    $DataHash{$step_key}{elapsed_runtime} = "N/A";
+    $DataHash{$step_key}{peak_memory} = "N/A";
+  }
+
+  $incr_pass_index = 0;
+  while (<LOGFILE>) {
+    chomp;
+    if ($_ =~ /^Runtime\s+&\s+Memory\s+after\s+(\S+)/) {
+      $step = $1;
+      if ($step =~ /optional_incremental/) {
+	$step .= "_" . $incr_pass_index;
+	$incr_pass_index++;
+      }
+      $search_group = $search_wns = $search_tns = $search_gates = "N/A";
+      $leaf_inst = $seq_inst = $comb_inst = $cell_area = $runtime = $memory = "N/A";
+      die "The following run step does not exist in the logfile: $step\n" unless (defined ${DataHash}{$step});
+      until (($_ =~ /^Hostname/) || (eof)) {
+	$_ = <LOGFILE>;
+	chomp;
+        if ($_ =~ /^Leaf\s+Instance\s+Count\s+(\S+)/) {
+          $leaf_inst = $1;
+	  $DataHash{$step}{leaf_instance_count} = $leaf_inst;
+        } elsif ($_ =~ /^Sequential\s+Instance\s+Count\s+(\S+)/) {
+          $seq_inst = $1;
+	  $DataHash{$step}{seq_instance_count} = $seq_inst;
+        } elsif ($_ =~ /^Combinational\s+Instance\s+Count\s+(\S+)/) {
+          $comb_inst = $1;
+	  $DataHash{$step}{comb_instance_count} = $comb_inst;
+        } elsif ($_ =~ /^Cell\s+Area\s+(\S+)/) {
+          $cell_area = sprintf("%.0f",$1);
+	  $DataHash{$step}{cell_area} = $cell_area;
+        } elsif ($_ =~ /^Elapsed\s+Runtime\s+(\S+)\s+seconds/) {
+          $runtime = TimeConverter($1);
+	  $DataHash{$step}{elapsed_runtime} = $runtime;
+        } elsif ($_ =~ /^Genus\s+peak\s+memory\s+usage:?\s+(\d+)\./) {
+          $memory = $1;
+	  $DataHash{$step}{peak_memory} = $memory;
+	} elsif (($pso_mode == 0) && ($_ =~ /^(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s*\S*/)) {
+	  $search_group = $1;
+	  $search_wns = $2;
+	  $search_tns = $3;
+	  $search_gates = $4;
+	  next if (($search_tns eq "paths") || !(defined $DataHash{$step}{"${search_group}_WNS"}));
+	  $DataHash{$step}{"${search_group}_WNS"} = $search_wns;
+	  $DataHash{$step}{"${search_group}_TNS"} = $search_tns;
+	  $DataHash{$step}{"${search_group}_GATES"} = $search_gates;
+	} elsif (($pso_mode == 1) && (($_ =~ /^AllOn\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s*$/) || ($_ =~ /^\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s*$/))) {
+	  $search_group = $1;
+	  $search_wns = $2;
+	  $search_tns = $3;
+	  next if (($search_tns eq "paths") || !(defined $DataHash{$step}{"${search_group}_WNS"}));
+	  $DataHash{$step}{"${search_group}_WNS"} = $search_wns;
+	  $DataHash{$step}{"${search_group}_TNS"} = $search_tns;
+	} elsif ($_ =~ /^\S*\s+(\S+)\s+(\S+)\s*\S*/) {
+	  $search_group = $1;
+	  $search_wns = $2;
+	  next if (($search_wns eq "No") || !(defined $DataHash{$step}{"${search_group}_WNS"}));
+	  $DataHash{$step}{"${search_group}_WNS"} = $search_wns;
+	}
+      }
+    }
+  }
+  close(LOGFILE);
+
+  my $dash_line_length = 30 * (scalar(@FlowStepArray) + 1);
+  printf("%-30s","QOR Metric");
+  foreach my $step (@FlowStepArray) {
+    printf("%30s",$step);
+  }
+  print "\n";
+  print "-" x $dash_line_length, "\n";
+  foreach my $entry (@NonTimingArray) {
+    printf("%-30s",$entry);
+    foreach my $step (@FlowStepArray) {
+      printf("%30s",$DataHash{$step}{$entry});
+    }
+    print "\n";
+    print "-" x $dash_line_length, "\n";
+  }
+  foreach my $key (sort keys %{$DataHash{first_synthesis}}) {
+    next if ($key !~ /_(WNS|TNS|GATES)/);
+    next if ($DataHash{first_synthesis}{$key} eq "N/A");
+    printf("%-30s",$key);
+    foreach my $step (@FlowStepArray) {
+      printf("%30s",$DataHash{$step}{$key});
+    }
+    print "\n";
+    print "-" x $dash_line_length, "\n";
+  }
+  print "\n\nWall clock runtimes for each step:\n\n";
+  my ($previous,$current,$elapsed,$first_point,$last_point) = (0,0,0,0,0);
+  my $step_name;
+  foreach (my $index = 1; $index <= $#RuntimeArray; $index++) {
+    $RuntimeArray[$index-1] =~ /(\d+)/;
+    $previous = $1;
+    $first_point = $previous if ($index == 1);
+    $RuntimeArray[$index] =~ /(\d+)/;
+    $current = $1;
+    $last_point = $current if ($index == $#RuntimeArray);
+    $RuntimeArray[$index] =~ /^(\S+)/;
+    $step_name = $1;
+    $elapsed = TimeConverter($current-$previous);
+    printf("%-35s  %10s\n",$step_name,$elapsed);
+  }
+  $elapsed = TimeConverter($last_point-$first_point);
+  printf("\n%-35s  %10s\n","Total flow runtime:",$elapsed);
+} else {
+  my ($design, $step, $inst, $area, $cpu, $total_cpu, $mem);
+  my @pathgroups = qw(CLK I2F F2O mem_io);
+  $design = $step = $inst = $area = $cpu = $total_cpu = $mem = "N/A";
+  my %qor = ();
+  printf "%40s %6s %20s %20s %20s\n","","","|------ CLK -------|","|---- I2F ----|","|---- F2O ----|","|--- mem_io --|";
+  printf "%-40s %6s %6s %9s %3s %6s %9s %3s %6s %9s %3s %8s %9s %6s %6s\n", 
+    "design", "step", "wns", "tns", "lev", "wns", "tns", "lev", "wns", "tns", "lev", "inst", "area", "cpu", "total";
+  while (<LOGFILE>) {
+    chomp;
+    if ($_ =~ /^Report : qor/) {
+      my $group = "";
+      my $show_group = 0;
+      until (($_ =~ /Overall\s+Compile\s+Time:/) || (eof)) {
+	$_ = <LOGFILE>;
+        chomp;
+        if ($_ =~ /^Design :\s+(\S+)/) {
+          $design = $1;
+        } elsif ($_ =~ /Timing\s+Path\s+Group\s+'(\S+)'/) {
+          $group = $1;
+          $show_group = grep /$group/, @pathgroups;
+        } elsif ($_ =~ /Levels\s+of\s+Logic:\s+(\S+)/ && $show_group) {
+          $qor{$group}{levels} = $1;
+        } elsif ($_ =~ /Critical\s+Path\s+Slack:\s+(\S+)/ && $show_group) {
+          $qor{$group}{wns} = $1;
+        } elsif ($_ =~ /Total\s+Negative\s+Slack:\s+(\S+)/ && $show_group) {
+          $qor{$group}{tns} = $1;
+        } elsif ($_ =~ /Leaf\s+Cell\s+Count:\s+(\S+)/) {
+          $inst = $1;
+        } elsif ($_ =~ /Design\s+Area:\s+(\S+)/) {
+          $area = $1;
+        }
+      }
+    } elsif ($_ =~ /elapsed\s+time\s+is\s+(\d+)/) {
+      $cpu = $1;
+    } elsif ($_ =~ /total\s+time\s+is\s+(\d+)/) {
+      $total_cpu = $1;
+    } elsif ($_ =~ /memory\s+is\s+(\d+)/) {
+      $mem = $1;
+      s/^\s*//;
+      my @a = split /\s+/;
+      ($step = $a[0]) =~ s/.*_//;
+      printf "%-40s %6s %6.2f %9.2f %3d %6.2f %9.2f %3d %6.2f %9.2f %3d %8d %9d %6s %6s\n", 
+      $design, $step, 
+      $qor{CLK}{wns}, $qor{CLK}{tns}, $qor{CLK}{levels}, 
+      $qor{I2F}{wns}, $qor{I2F}{tns}, $qor{I2F}{levels},
+      $qor{F2O}{wns}, $qor{F2O}{tns}, $qor{F2O}{levels},
+      $qor{mem_io}{wns}, $qor{mem_io}{tns}, $qor{mem_io}{levels},
+      $inst, $area, sec2hrmin($cpu), sec2hrmin($total_cpu);  
+      foreach my $p (@pathgroups) {
+        $qor{$p}{wns} = $qor{$p}{tns} = $qor{$p}{levels} = "N/A";
+      }
+      $design = $step = $inst = $area = $cpu = $total_cpu = $mem = "N/A";
+    } elsif ($_ =~ /Error:/) {
+      print "$_\n";
+    }
+  }
+  close(LOGFILE);
+}

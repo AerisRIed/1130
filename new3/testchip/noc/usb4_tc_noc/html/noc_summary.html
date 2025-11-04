@@ -1,0 +1,3041 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+NoC Summary</title>
+<style>
+body { background: #FFFFFF; font-size: 11pt; font-family: Arial, Helvetica, Verdana, sans-serif; padding-left: 15pt; }
+h1   { font-size: 18pt; font-weight: bold; margin-top: 20pt; margin-bottom: 5pt; font-family: Arial, Helvetica, Verdana, sans-serif; color: #336699; }
+h2   { font-size: 14pt; font-weight: bold; margin-top: 20pt; margin-bottom: 3pt; font-family: Arial, Helvetica, Verdana, sans-serif; color: #336699; }
+h3   { font-size: 12pt; font-weight: bold; margin-top: 15pt; margin-bottom: 3pt; font-family: Arial, Helvetica, Verdana, sans-serif; color: #006666; }
+p    { font-size: 11pt; margin-top: 10px; margin-bottom: 10px; font-family: Arial, Helvetica, Verdana, sans-serif; }
+
+table    { width:80%; border-collapse:collapse; padding:0; margin:0; border: 1px solid black; }
+table.lr { width:80%; }
+td       { font-size: 11pt; font-family: Arial, Helvetica, Verdana, sans-serif; text-indent: 8px; border: 1px solid black; }
+th       { font-size: 11pt; font-weight: bold; font-family: Arial, Helvetica, Verdana, sans-serif; background-color: #DDDDFF; border: 1px solid black; }
+th.w30   { width: 30% }
+th.w20   { width: 20% }\r\nth.w10   { width: 10% }
+.img_container {
+  position: relative;
+  width:80%;
+  text-align: center;
+  color: black;
+  font-size: 8pt;
+}
+.bottom-right {
+  position: absolute;
+  bottom: 8px;
+  right: 16px;
+}img {
+    transition:transform 0.5s ease;
+}
+img:active {
+    -webkit-transform:scale(2.0);
+    transform:scale(2.0);
+}</style>
+</head>
+<body>
+<h1>
+<label>
+NoC Configuration Summary</label>
+</h1>
+<p>
+<label>
+Summary of the NoC components and their parameters.</label>
+</p>
+<h3>
+<label>
+Diagram</label>
+</h3>
+<div class="img_container">
+<img src="noc_summary.png" usemap="#coordinates" width="100%">
+<div class="bottom-right">
+This image has been scaled to fit all the components. Click and hold on the image to zoom the image.</div>
+</div>
+<h3>
+<label>
+Build Details</label>
+</h3>
+<table>
+<tr>
+<th class="w20">
+Build Info</th>
+<th>
+Value</th>
+</tr>
+<tr>
+<td>
+ID</td>
+<td>
+443277</td>
+</tr>
+<tr>
+<td>
+Mode</td>
+<td>
+Evaluation</td>
+</tr>
+<tr>
+<td>
+Release</td>
+<td>
+NOC-2025.1</td>
+</tr>
+<tr>
+<td>
+Time</td>
+<td>
+2025/10/27 01:12:37</td>
+</tr>
+<tr>
+<td>
+XPG Account</td>
+<td>
+cdns_dip_usb/prod</td>
+</tr>
+</table>
+<br>
+<h3>
+<label>
+Overview</label>
+</h3>
+<table>
+<tr>
+<th class="w20">
+Project Info</th>
+<th>
+Details</th>
+</tr>
+<tr>
+<td>
+Name</td>
+<td>
+usb4_tc_noc</td>
+</tr>
+</table>
+<br>
+<table>
+<tr>
+<th class="w20">
+Components</th>
+<th>
+Count</th>
+<th>
+Name/References</th>
+</tr>
+<tr>
+<td>
+Clock Domain(s)</td>
+<td>
+2</td>
+<td>
+<a href="#tap2apb_pclk">
+tap2apb_pclk</a>
+, <a href="#noc_clk">
+noc_clk</a>
+</td>
+</tr>
+<tr>
+<td>
+Address Map(s)</td>
+<td>
+2</td>
+<td>
+<a href="#main0">
+main0</a>
+, <a href="#debug_regs_region">
+debug_regs_region</a>
+</td>
+</tr>
+<tr>
+<td>
+APB Initiator(s)</td>
+<td>
+2</td>
+<td>
+<a href="#tap2apb">
+tap2apb*</a>
+, <a href="#apb_mstr">
+apb_mstr</a>
+</td>
+</tr>
+<tr>
+<td>
+APB Target(s)</td>
+<td>
+6</td>
+<td>
+<a href="#pam3_xcvr_TEA">
+pam3_xcvr_TEA</a>
+, <a href="#usb4_phy_TEA">
+usb4_phy_TEA</a>
+, <a href="#pam3_sub_sys_TEA">
+pam3_sub_sys_TEA</a>
+, <a href="#usb_sub_sys_TEA">
+usb_sub_sys_TEA</a>
+, <a href="#tc_reg_TEA">
+tc_reg_TEA</a>
+, <a href="#pam3_cmn_TEA">
+pam3_cmn_TEA</a>
+</td>
+</tr>
+<tr>
+<td>
+Router(s)</td>
+<td>
+1</td>
+<td>
+<a href="#rtrList[0]">
+rtrList[0]*</a>
+</td>
+</tr>
+<tr>
+<td>
+Link(s)</td>
+<td>
+1</td>
+<td>
+<a href="#linkList[0]">
+linkList[0]</a>
+</td>
+</tr>
+</table>
+<p style="font-size: 10pt">
+(Initiator/Router marked with * have access to debug registers.)</p>
+<h3>
+<label>
+Noc (Noc)</label>
+</h3>
+<table>
+<tr>
+<th class="w20">
+Parameter</th>
+<th class="w10">
+Value</th>
+</tr>
+<tr>
+<td>
+Debug Register Base Address</td>
+<td>
+80000</td>
+</tr>
+<tr>
+<td>
+Debug Register enabled on</td>
+<td>
+<a href="#rtrList[0]">
+rtrList[0]</a>
+</td>
+</tr>
+<tr>
+<td>
+Asynchronous reset (asyncRst)</td>
+<td>
+1</td>
+</tr>
+<tr>
+<td>
+Clock gating enable (clkGateEn)</td>
+<td>
+1</td>
+</tr>
+<tr>
+<td>
+Include TMode (inclTMode)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Packet Mode (pktMode)</td>
+<td>
+3</td>
+</tr>
+<tr>
+<td>
+Top level reset name (topRst)</td>
+<td>
+rst_n</td>
+</tr>
+<tr>
+<td>
+NoC Name (nocName)</td>
+<td>
+usb4_tc_noc</td>
+</tr>
+</table>
+<h3>
+<label>
+cfg (cfg)</label>
+</h3>
+<table>
+<tr>
+<th class="w20">
+Parameter</th>
+<th class="w10">
+Value</th>
+</tr>
+<tr>
+<td>
+Automatic initiator ID (iIDBase)</td>
+<td>
+1</td>
+</tr>
+<tr>
+<td>
+Automatic target ID (tIDBase)</td>
+<td>
+1</td>
+</tr>
+</table>
+<h3 id="noc_clk">
+<label>
+noc_clk (Clock Domain)</label>
+</h3>
+<table>
+<tr>
+<th class="w20">
+Component</th>
+<th class="w30">
+Parameter</th>
+<th class="w10">
+Value</th>
+</tr>
+<tr>
+<td rowspan="3">
+<h5>
+<label>
+noc_clk (cDomain)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+Name of clock domain/pin (name)</td>
+<td>
+noc_clk</td>
+</tr>
+<tr>
+<td>
+Clock frequency (frequency)</td>
+<td>
+100</td>
+</tr>
+</table>
+<h3 id="tap2apb_pclk">
+<label>
+tap2apb_pclk (Clock Domain)</label>
+</h3>
+<table>
+<tr>
+<th class="w20">
+Component</th>
+<th class="w30">
+Parameter</th>
+<th class="w10">
+Value</th>
+</tr>
+<tr>
+<td rowspan="3">
+<h5>
+<label>
+tap2apb_pclk (cDomain)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+Name of clock domain/pin (name)</td>
+<td>
+tap2apb_pclk</td>
+</tr>
+<tr>
+<td>
+Clock frequency (frequency)</td>
+<td>
+100</td>
+</tr>
+</table>
+<h3 id="debug_regs_region">
+<label>
+debug_regs_region (Address Map)</label>
+</h3>
+<table>
+<tr>
+<th class="w20">
+Component</th>
+<th class="w30">
+Parameter</th>
+<th class="w10">
+Value</th>
+</tr>
+<tr>
+<td rowspan="2">
+<h5>
+<label>
+debug_regs_region (aMap)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+Address Map name (name)</td>
+<td>
+debug_regs_region</td>
+</tr>
+<tr>
+<td rowspan="6">
+<h5>
+<label>
+entry[0] (entry)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+Target TEA name (tgtName)</td>
+<td>
+*ID0</td>
+</tr>
+<tr>
+<td>
+Target base address (baseAddr)</td>
+<td>
+80000</td>
+</tr>
+<tr>
+<td>
+Address mask for addresses in the range of this entry (mask)</td>
+<td>
+FF000</td>
+</tr>
+<tr>
+<td>
+Address match for reads, writes, or both (rw)</td>
+<td>
+rw</td>
+</tr>
+<tr>
+<td>
+Decode level for the entry (lvl)</td>
+<td>
+3</td>
+</tr>
+</table>
+<h3 id="main0">
+<label>
+main0 (Address Map)</label>
+</h3>
+<table>
+<tr>
+<th class="w20">
+Component</th>
+<th class="w30">
+Parameter</th>
+<th class="w10">
+Value</th>
+</tr>
+<tr>
+<td rowspan="2">
+<h5>
+<label>
+main0 (aMap)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+Address Map name (name)</td>
+<td>
+main0</td>
+</tr>
+<tr>
+<td rowspan="6">
+<h5>
+<label>
+entry[0] (entry)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+Target TEA name (tgtName)</td>
+<td>
+apb_tgt</td>
+</tr>
+<tr>
+<td>
+Target base address (baseAddr)</td>
+<td>
+00000</td>
+</tr>
+<tr>
+<td>
+Address mask for addresses in the range of this entry (mask)</td>
+<td>
+C0000</td>
+</tr>
+<tr>
+<td>
+Address match for reads, writes, or both (rw)</td>
+<td>
+rw</td>
+</tr>
+<tr>
+<td>
+Decode level for the entry (lvl)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td rowspan="6">
+<h5>
+<label>
+entry[1] (entry)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+Target TEA name (tgtName)</td>
+<td>
+cmn_cdb</td>
+</tr>
+<tr>
+<td>
+Target base address (baseAddr)</td>
+<td>
+40000</td>
+</tr>
+<tr>
+<td>
+Address mask for addresses in the range of this entry (mask)</td>
+<td>
+FFE00</td>
+</tr>
+<tr>
+<td>
+Address match for reads, writes, or both (rw)</td>
+<td>
+rw</td>
+</tr>
+<tr>
+<td>
+Decode level for the entry (lvl)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td rowspan="6">
+<h5>
+<label>
+entry[2] (entry)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+Target TEA name (tgtName)</td>
+<td>
+tc_reg</td>
+</tr>
+<tr>
+<td>
+Target base address (baseAddr)</td>
+<td>
+50000</td>
+</tr>
+<tr>
+<td>
+Address mask for addresses in the range of this entry (mask)</td>
+<td>
+F0000</td>
+</tr>
+<tr>
+<td>
+Address match for reads, writes, or both (rw)</td>
+<td>
+rw</td>
+</tr>
+<tr>
+<td>
+Decode level for the entry (lvl)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td rowspan="6">
+<h5>
+<label>
+entry[3] (entry)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+Target TEA name (tgtName)</td>
+<td>
+usb_sub_sys</td>
+</tr>
+<tr>
+<td>
+Target base address (baseAddr)</td>
+<td>
+60000</td>
+</tr>
+<tr>
+<td>
+Address mask for addresses in the range of this entry (mask)</td>
+<td>
+F0000</td>
+</tr>
+<tr>
+<td>
+Address match for reads, writes, or both (rw)</td>
+<td>
+rw</td>
+</tr>
+<tr>
+<td>
+Decode level for the entry (lvl)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td rowspan="6">
+<h5>
+<label>
+entry[4] (entry)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+Target TEA name (tgtName)</td>
+<td>
+pam3_sub_sys</td>
+</tr>
+<tr>
+<td>
+Target base address (baseAddr)</td>
+<td>
+70000</td>
+</tr>
+<tr>
+<td>
+Address mask for addresses in the range of this entry (mask)</td>
+<td>
+F0000</td>
+</tr>
+<tr>
+<td>
+Address match for reads, writes, or both (rw)</td>
+<td>
+rw</td>
+</tr>
+<tr>
+<td>
+Decode level for the entry (lvl)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td rowspan="6">
+<h5>
+<label>
+entry[5] (entry)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+Target TEA name (tgtName)</td>
+<td>
+xcvr_ln_0</td>
+</tr>
+<tr>
+<td>
+Target base address (baseAddr)</td>
+<td>
+40400</td>
+</tr>
+<tr>
+<td>
+Address mask for addresses in the range of this entry (mask)</td>
+<td>
+FFC00</td>
+</tr>
+<tr>
+<td>
+Address match for reads, writes, or both (rw)</td>
+<td>
+rw</td>
+</tr>
+<tr>
+<td>
+Decode level for the entry (lvl)</td>
+<td>
+0</td>
+</tr>
+</table>
+<h3 id="apb_mstr">
+<label>
+apb_mstr (APB Initiator)</label>
+</h3>
+<table>
+<tr>
+<th class="w20">
+Component</th>
+<th class="w30">
+Parameter</th>
+<th class="w10">
+Value</th>
+</tr>
+<tr>
+<td rowspan="7">
+<h5>
+<label>
+apb_mstr (apbIeaList)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+Clock domain name (cDomain)</td>
+<td>
+noc_clk</td>
+</tr>
+<tr>
+<td>
+Hierarchy domain (hDomain)</td>
+<td>
+main</td>
+</tr>
+<tr>
+<td>
+External initiator name (eName)</td>
+<td>
+apb_mstr</td>
+</tr>
+<tr>
+<td>
+Internal name (iName)</td>
+<td>
+apb_mstr</td>
+</tr>
+<tr>
+<td>
+Router sets flit widths (iUseRef)</td>
+<td>
+1</td>
+</tr>
+<tr>
+<td>
+Address map reference (aMapRef)</td>
+<td>
+main0</td>
+</tr>
+<tr>
+<td rowspan="10">
+<h5>
+<label>
+iInfo (iInfo)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+Absolute initiator/target ID (nodeID)</td>
+<td>
+1</td>
+</tr>
+<tr>
+<td>
+R/W Access types supported (rw)</td>
+<td>
+rw</td>
+</tr>
+<tr>
+<td>
+Add Pipeline Stage (pipe)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Request bus user data (USER_REQ_WIDTH)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Response bus user data (USER_RESP_WIDTH)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Address width (ADDR_WIDTH)</td>
+<td>
+32</td>
+</tr>
+<tr>
+<td>
+Data Bus Width (DATA_WIDTH)</td>
+<td>
+32</td>
+</tr>
+<tr>
+<td>
+Slave Error (Slave_Error)</td>
+<td>
+True</td>
+</tr>
+<tr>
+<td>
+Protection (Protection)</td>
+<td>
+False</td>
+</tr>
+<tr>
+<td rowspan="4">
+<h5>
+<label>
+fcInfo[0] (fcInfo)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+Flit width (bits) (fW)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Include pipeline flag for interface (pipe)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Virtual channel count (vcC)</td>
+<td>
+1</td>
+</tr>
+<tr>
+<td rowspan="4">
+<h5>
+<label>
+fcInfo[1] (fcInfo)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+Flit width (bits) (fW)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Include pipeline flag for interface (pipe)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Virtual channel count (vcC)</td>
+<td>
+1</td>
+</tr>
+<tr>
+<td rowspan="4">
+<h5>
+<label>
+rcInfo[0] (rcInfo)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+Flit width (bits) (fW)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Include pipeline flag for interface (pipe)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Virtual channel count (vcC)</td>
+<td>
+1</td>
+</tr>
+<tr>
+<td rowspan="4">
+<h5>
+<label>
+rcInfo[1] (rcInfo)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+Flit width (bits) (fW)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Include pipeline flag for interface (pipe)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Virtual channel count (vcC)</td>
+<td>
+1</td>
+</tr>
+</table>
+<h3 id="tap2apb">
+<label>
+tap2apb (APB Initiator)</label>
+</h3>
+<table>
+<tr>
+<th class="w20">
+Component</th>
+<th class="w30">
+Parameter</th>
+<th class="w10">
+Value</th>
+</tr>
+<tr>
+<td rowspan="7">
+<h5>
+<label>
+tap2apb (apbIeaList)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+Clock domain name (cDomain)</td>
+<td>
+tap2apb_pclk</td>
+</tr>
+<tr>
+<td>
+Hierarchy domain (hDomain)</td>
+<td>
+main</td>
+</tr>
+<tr>
+<td>
+External initiator name (eName)</td>
+<td>
+cdb</td>
+</tr>
+<tr>
+<td>
+Internal name (iName)</td>
+<td>
+tap2apb</td>
+</tr>
+<tr>
+<td>
+Router sets flit widths (iUseRef)</td>
+<td>
+1</td>
+</tr>
+<tr>
+<td>
+Address map reference (aMapRef)</td>
+<td>
+debug_regs_region main0</td>
+</tr>
+<tr>
+<td rowspan="10">
+<h5>
+<label>
+iInfo (iInfo)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+Absolute initiator/target ID (nodeID)</td>
+<td>
+2</td>
+</tr>
+<tr>
+<td>
+R/W Access types supported (rw)</td>
+<td>
+rw</td>
+</tr>
+<tr>
+<td>
+Add Pipeline Stage (pipe)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Request bus user data (USER_REQ_WIDTH)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Response bus user data (USER_RESP_WIDTH)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Address width (ADDR_WIDTH)</td>
+<td>
+32</td>
+</tr>
+<tr>
+<td>
+Data Bus Width (DATA_WIDTH)</td>
+<td>
+32</td>
+</tr>
+<tr>
+<td>
+Slave Error (Slave_Error)</td>
+<td>
+True</td>
+</tr>
+<tr>
+<td>
+Protection (Protection)</td>
+<td>
+False</td>
+</tr>
+<tr>
+<td rowspan="4">
+<h5>
+<label>
+fcInfo[0] (fcInfo)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+Flit width (bits) (fW)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Include pipeline flag for interface (pipe)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Virtual channel count (vcC)</td>
+<td>
+1</td>
+</tr>
+<tr>
+<td rowspan="4">
+<h5>
+<label>
+fcInfo[1] (fcInfo)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+Flit width (bits) (fW)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Include pipeline flag for interface (pipe)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Virtual channel count (vcC)</td>
+<td>
+1</td>
+</tr>
+<tr>
+<td rowspan="4">
+<h5>
+<label>
+rcInfo[0] (rcInfo)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+Flit width (bits) (fW)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Include pipeline flag for interface (pipe)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Virtual channel count (vcC)</td>
+<td>
+1</td>
+</tr>
+<tr>
+<td rowspan="4">
+<h5>
+<label>
+rcInfo[1] (rcInfo)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+Flit width (bits) (fW)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Include pipeline flag for interface (pipe)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Virtual channel count (vcC)</td>
+<td>
+1</td>
+</tr>
+</table>
+<h3 id="pam3_cmn_TEA">
+<label>
+pam3_cmn_TEA (APB Target)</label>
+</h3>
+<table>
+<tr>
+<th class="w20">
+Component</th>
+<th class="w30">
+Parameter</th>
+<th class="w10">
+Value</th>
+</tr>
+<tr>
+<td rowspan="5">
+<h5>
+<label>
+pam3_cmn_TEA (apbTeaList)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+Clock domain name (cDomain)</td>
+<td>
+noc_clk</td>
+</tr>
+<tr>
+<td>
+Hierarchy Domain (hDomain)</td>
+<td>
+main</td>
+</tr>
+<tr>
+<td>
+Internal name (iName)</td>
+<td>
+pam3_cmn_TEA</td>
+</tr>
+<tr>
+<td>
+Router sets flit widths (iUseRef)</td>
+<td>
+1</td>
+</tr>
+<tr>
+<td rowspan="11">
+<h5>
+<label>
+tInfo[0] (tInfo)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+External port name. (name)</td>
+<td>
+cmn_cdb</td>
+</tr>
+<tr>
+<td>
+Absolute initiator/target ID (nodeID)</td>
+<td>
+1</td>
+</tr>
+<tr>
+<td>
+R/W Access types supported (rw)</td>
+<td>
+rw</td>
+</tr>
+<tr>
+<td>
+Add Pipeline Stage (pipe)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Request bus user data (USER_REQ_WIDTH)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Response bus user data (USER_RESP_WIDTH)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Address width (ADDR_WIDTH)</td>
+<td>
+9</td>
+</tr>
+<tr>
+<td>
+Data Bus Width (DATA_WIDTH)</td>
+<td>
+32</td>
+</tr>
+<tr>
+<td>
+Slave Error (Slave_Error)</td>
+<td>
+False</td>
+</tr>
+<tr>
+<td>
+Protection (Protection)</td>
+<td>
+False</td>
+</tr>
+<tr>
+<td rowspan="4">
+<h5>
+<label>
+fcInfo[0] (fcInfo)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+Flit width (bits) (fW)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Include pipeline flag for interface (pipe)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Virtual channel count (vcC)</td>
+<td>
+1</td>
+</tr>
+<tr>
+<td rowspan="4">
+<h5>
+<label>
+fcInfo[1] (fcInfo)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+Flit width (bits) (fW)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Include pipeline flag for interface (pipe)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Virtual channel count (vcC)</td>
+<td>
+1</td>
+</tr>
+<tr>
+<td rowspan="4">
+<h5>
+<label>
+rcInfo[0] (rcInfo)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+Flit width (bits) (fW)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Include pipeline flag for interface (pipe)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Virtual channel count (vcC)</td>
+<td>
+1</td>
+</tr>
+<tr>
+<td rowspan="4">
+<h5>
+<label>
+rcInfo[1] (rcInfo)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+Flit width (bits) (fW)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Include pipeline flag for interface (pipe)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Virtual channel count (vcC)</td>
+<td>
+1</td>
+</tr>
+</table>
+<h3 id="tc_reg_TEA">
+<label>
+tc_reg_TEA (APB Target)</label>
+</h3>
+<table>
+<tr>
+<th class="w20">
+Component</th>
+<th class="w30">
+Parameter</th>
+<th class="w10">
+Value</th>
+</tr>
+<tr>
+<td rowspan="5">
+<h5>
+<label>
+tc_reg_TEA (apbTeaList)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+Clock domain name (cDomain)</td>
+<td>
+noc_clk</td>
+</tr>
+<tr>
+<td>
+Hierarchy Domain (hDomain)</td>
+<td>
+main</td>
+</tr>
+<tr>
+<td>
+Internal name (iName)</td>
+<td>
+tc_reg_TEA</td>
+</tr>
+<tr>
+<td>
+Router sets flit widths (iUseRef)</td>
+<td>
+1</td>
+</tr>
+<tr>
+<td rowspan="11">
+<h5>
+<label>
+tInfo[0] (tInfo)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+External port name. (name)</td>
+<td>
+tc_reg</td>
+</tr>
+<tr>
+<td>
+Absolute initiator/target ID (nodeID)</td>
+<td>
+2</td>
+</tr>
+<tr>
+<td>
+R/W Access types supported (rw)</td>
+<td>
+rw</td>
+</tr>
+<tr>
+<td>
+Add Pipeline Stage (pipe)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Request bus user data (USER_REQ_WIDTH)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Response bus user data (USER_RESP_WIDTH)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Address width (ADDR_WIDTH)</td>
+<td>
+16</td>
+</tr>
+<tr>
+<td>
+Data Bus Width (DATA_WIDTH)</td>
+<td>
+32</td>
+</tr>
+<tr>
+<td>
+Slave Error (Slave_Error)</td>
+<td>
+False</td>
+</tr>
+<tr>
+<td>
+Protection (Protection)</td>
+<td>
+False</td>
+</tr>
+<tr>
+<td rowspan="4">
+<h5>
+<label>
+fcInfo[0] (fcInfo)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+Flit width (bits) (fW)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Include pipeline flag for interface (pipe)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Virtual channel count (vcC)</td>
+<td>
+1</td>
+</tr>
+<tr>
+<td rowspan="4">
+<h5>
+<label>
+fcInfo[1] (fcInfo)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+Flit width (bits) (fW)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Include pipeline flag for interface (pipe)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Virtual channel count (vcC)</td>
+<td>
+1</td>
+</tr>
+<tr>
+<td rowspan="4">
+<h5>
+<label>
+rcInfo[0] (rcInfo)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+Flit width (bits) (fW)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Include pipeline flag for interface (pipe)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Virtual channel count (vcC)</td>
+<td>
+1</td>
+</tr>
+<tr>
+<td rowspan="4">
+<h5>
+<label>
+rcInfo[1] (rcInfo)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+Flit width (bits) (fW)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Include pipeline flag for interface (pipe)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Virtual channel count (vcC)</td>
+<td>
+1</td>
+</tr>
+</table>
+<h3 id="usb_sub_sys_TEA">
+<label>
+usb_sub_sys_TEA (APB Target)</label>
+</h3>
+<table>
+<tr>
+<th class="w20">
+Component</th>
+<th class="w30">
+Parameter</th>
+<th class="w10">
+Value</th>
+</tr>
+<tr>
+<td rowspan="5">
+<h5>
+<label>
+usb_sub_sys_TEA (apbTeaList)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+Clock domain name (cDomain)</td>
+<td>
+noc_clk</td>
+</tr>
+<tr>
+<td>
+Hierarchy Domain (hDomain)</td>
+<td>
+main</td>
+</tr>
+<tr>
+<td>
+Internal name (iName)</td>
+<td>
+usb_sub_sys_TEA</td>
+</tr>
+<tr>
+<td>
+Router sets flit widths (iUseRef)</td>
+<td>
+1</td>
+</tr>
+<tr>
+<td rowspan="11">
+<h5>
+<label>
+tInfo[0] (tInfo)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+External port name. (name)</td>
+<td>
+usb_sub_sys</td>
+</tr>
+<tr>
+<td>
+Absolute initiator/target ID (nodeID)</td>
+<td>
+3</td>
+</tr>
+<tr>
+<td>
+R/W Access types supported (rw)</td>
+<td>
+rw</td>
+</tr>
+<tr>
+<td>
+Add Pipeline Stage (pipe)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Request bus user data (USER_REQ_WIDTH)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Response bus user data (USER_RESP_WIDTH)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Address width (ADDR_WIDTH)</td>
+<td>
+16</td>
+</tr>
+<tr>
+<td>
+Data Bus Width (DATA_WIDTH)</td>
+<td>
+32</td>
+</tr>
+<tr>
+<td>
+Slave Error (Slave_Error)</td>
+<td>
+False</td>
+</tr>
+<tr>
+<td>
+Protection (Protection)</td>
+<td>
+False</td>
+</tr>
+<tr>
+<td rowspan="4">
+<h5>
+<label>
+fcInfo[0] (fcInfo)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+Flit width (bits) (fW)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Include pipeline flag for interface (pipe)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Virtual channel count (vcC)</td>
+<td>
+1</td>
+</tr>
+<tr>
+<td rowspan="4">
+<h5>
+<label>
+fcInfo[1] (fcInfo)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+Flit width (bits) (fW)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Include pipeline flag for interface (pipe)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Virtual channel count (vcC)</td>
+<td>
+1</td>
+</tr>
+<tr>
+<td rowspan="4">
+<h5>
+<label>
+rcInfo[0] (rcInfo)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+Flit width (bits) (fW)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Include pipeline flag for interface (pipe)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Virtual channel count (vcC)</td>
+<td>
+1</td>
+</tr>
+<tr>
+<td rowspan="4">
+<h5>
+<label>
+rcInfo[1] (rcInfo)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+Flit width (bits) (fW)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Include pipeline flag for interface (pipe)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Virtual channel count (vcC)</td>
+<td>
+1</td>
+</tr>
+</table>
+<h3 id="pam3_sub_sys_TEA">
+<label>
+pam3_sub_sys_TEA (APB Target)</label>
+</h3>
+<table>
+<tr>
+<th class="w20">
+Component</th>
+<th class="w30">
+Parameter</th>
+<th class="w10">
+Value</th>
+</tr>
+<tr>
+<td rowspan="5">
+<h5>
+<label>
+pam3_sub_sys_TEA (apbTeaList)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+Clock domain name (cDomain)</td>
+<td>
+noc_clk</td>
+</tr>
+<tr>
+<td>
+Hierarchy Domain (hDomain)</td>
+<td>
+main</td>
+</tr>
+<tr>
+<td>
+Internal name (iName)</td>
+<td>
+pam3_sub_sys_TEA</td>
+</tr>
+<tr>
+<td>
+Router sets flit widths (iUseRef)</td>
+<td>
+1</td>
+</tr>
+<tr>
+<td rowspan="11">
+<h5>
+<label>
+tInfo[0] (tInfo)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+External port name. (name)</td>
+<td>
+pam3_sub_sys</td>
+</tr>
+<tr>
+<td>
+Absolute initiator/target ID (nodeID)</td>
+<td>
+4</td>
+</tr>
+<tr>
+<td>
+R/W Access types supported (rw)</td>
+<td>
+rw</td>
+</tr>
+<tr>
+<td>
+Add Pipeline Stage (pipe)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Request bus user data (USER_REQ_WIDTH)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Response bus user data (USER_RESP_WIDTH)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Address width (ADDR_WIDTH)</td>
+<td>
+16</td>
+</tr>
+<tr>
+<td>
+Data Bus Width (DATA_WIDTH)</td>
+<td>
+32</td>
+</tr>
+<tr>
+<td>
+Slave Error (Slave_Error)</td>
+<td>
+False</td>
+</tr>
+<tr>
+<td>
+Protection (Protection)</td>
+<td>
+False</td>
+</tr>
+<tr>
+<td rowspan="4">
+<h5>
+<label>
+fcInfo[0] (fcInfo)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+Flit width (bits) (fW)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Include pipeline flag for interface (pipe)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Virtual channel count (vcC)</td>
+<td>
+1</td>
+</tr>
+<tr>
+<td rowspan="4">
+<h5>
+<label>
+fcInfo[1] (fcInfo)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+Flit width (bits) (fW)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Include pipeline flag for interface (pipe)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Virtual channel count (vcC)</td>
+<td>
+1</td>
+</tr>
+<tr>
+<td rowspan="4">
+<h5>
+<label>
+rcInfo[0] (rcInfo)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+Flit width (bits) (fW)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Include pipeline flag for interface (pipe)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Virtual channel count (vcC)</td>
+<td>
+1</td>
+</tr>
+<tr>
+<td rowspan="4">
+<h5>
+<label>
+rcInfo[1] (rcInfo)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+Flit width (bits) (fW)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Include pipeline flag for interface (pipe)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Virtual channel count (vcC)</td>
+<td>
+1</td>
+</tr>
+</table>
+<h3 id="usb4_phy_TEA">
+<label>
+usb4_phy_TEA (APB Target)</label>
+</h3>
+<table>
+<tr>
+<th class="w20">
+Component</th>
+<th class="w30">
+Parameter</th>
+<th class="w10">
+Value</th>
+</tr>
+<tr>
+<td rowspan="5">
+<h5>
+<label>
+usb4_phy_TEA (apbTeaList)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+Clock domain name (cDomain)</td>
+<td>
+noc_clk</td>
+</tr>
+<tr>
+<td>
+Hierarchy Domain (hDomain)</td>
+<td>
+main</td>
+</tr>
+<tr>
+<td>
+Internal name (iName)</td>
+<td>
+usb4_phy_TEA</td>
+</tr>
+<tr>
+<td>
+Router sets flit widths (iUseRef)</td>
+<td>
+1</td>
+</tr>
+<tr>
+<td rowspan="11">
+<h5>
+<label>
+tInfo[0] (tInfo)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+External port name. (name)</td>
+<td>
+apb_tgt</td>
+</tr>
+<tr>
+<td>
+Absolute initiator/target ID (nodeID)</td>
+<td>
+6</td>
+</tr>
+<tr>
+<td>
+R/W Access types supported (rw)</td>
+<td>
+rw</td>
+</tr>
+<tr>
+<td>
+Add Pipeline Stage (pipe)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Request bus user data (USER_REQ_WIDTH)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Response bus user data (USER_RESP_WIDTH)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Address width (ADDR_WIDTH)</td>
+<td>
+18</td>
+</tr>
+<tr>
+<td>
+Data Bus Width (DATA_WIDTH)</td>
+<td>
+32</td>
+</tr>
+<tr>
+<td>
+Slave Error (Slave_Error)</td>
+<td>
+True</td>
+</tr>
+<tr>
+<td>
+Protection (Protection)</td>
+<td>
+False</td>
+</tr>
+<tr>
+<td rowspan="4">
+<h5>
+<label>
+fcInfo[0] (fcInfo)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+Flit width (bits) (fW)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Include pipeline flag for interface (pipe)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Virtual channel count (vcC)</td>
+<td>
+1</td>
+</tr>
+<tr>
+<td rowspan="4">
+<h5>
+<label>
+fcInfo[1] (fcInfo)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+Flit width (bits) (fW)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Include pipeline flag for interface (pipe)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Virtual channel count (vcC)</td>
+<td>
+1</td>
+</tr>
+<tr>
+<td rowspan="4">
+<h5>
+<label>
+rcInfo[0] (rcInfo)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+Flit width (bits) (fW)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Include pipeline flag for interface (pipe)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Virtual channel count (vcC)</td>
+<td>
+1</td>
+</tr>
+<tr>
+<td rowspan="4">
+<h5>
+<label>
+rcInfo[1] (rcInfo)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+Flit width (bits) (fW)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Include pipeline flag for interface (pipe)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Virtual channel count (vcC)</td>
+<td>
+1</td>
+</tr>
+</table>
+<h3 id="pam3_xcvr_TEA">
+<label>
+pam3_xcvr_TEA (APB Target)</label>
+</h3>
+<table>
+<tr>
+<th class="w20">
+Component</th>
+<th class="w30">
+Parameter</th>
+<th class="w10">
+Value</th>
+</tr>
+<tr>
+<td rowspan="5">
+<h5>
+<label>
+pam3_xcvr_TEA (apbTeaList)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+Clock domain name (cDomain)</td>
+<td>
+noc_clk</td>
+</tr>
+<tr>
+<td>
+Hierarchy Domain (hDomain)</td>
+<td>
+main</td>
+</tr>
+<tr>
+<td>
+Internal name (iName)</td>
+<td>
+pam3_xcvr_TEA</td>
+</tr>
+<tr>
+<td>
+Router sets flit widths (iUseRef)</td>
+<td>
+1</td>
+</tr>
+<tr>
+<td rowspan="11">
+<h5>
+<label>
+tInfo[0] (tInfo)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+External port name. (name)</td>
+<td>
+xcvr_ln_0</td>
+</tr>
+<tr>
+<td>
+Absolute initiator/target ID (nodeID)</td>
+<td>
+5</td>
+</tr>
+<tr>
+<td>
+R/W Access types supported (rw)</td>
+<td>
+rw</td>
+</tr>
+<tr>
+<td>
+Add Pipeline Stage (pipe)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Request bus user data (USER_REQ_WIDTH)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Response bus user data (USER_RESP_WIDTH)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Address width (ADDR_WIDTH)</td>
+<td>
+10</td>
+</tr>
+<tr>
+<td>
+Data Bus Width (DATA_WIDTH)</td>
+<td>
+32</td>
+</tr>
+<tr>
+<td>
+Slave Error (Slave_Error)</td>
+<td>
+False</td>
+</tr>
+<tr>
+<td>
+Protection (Protection)</td>
+<td>
+False</td>
+</tr>
+<tr>
+<td rowspan="4">
+<h5>
+<label>
+fcInfo[0] (fcInfo)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+Flit width (bits) (fW)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Include pipeline flag for interface (pipe)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Virtual channel count (vcC)</td>
+<td>
+1</td>
+</tr>
+<tr>
+<td rowspan="4">
+<h5>
+<label>
+fcInfo[1] (fcInfo)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+Flit width (bits) (fW)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Include pipeline flag for interface (pipe)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Virtual channel count (vcC)</td>
+<td>
+1</td>
+</tr>
+<tr>
+<td rowspan="4">
+<h5>
+<label>
+rcInfo[0] (rcInfo)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+Flit width (bits) (fW)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Include pipeline flag for interface (pipe)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Virtual channel count (vcC)</td>
+<td>
+1</td>
+</tr>
+<tr>
+<td rowspan="4">
+<h5>
+<label>
+rcInfo[1] (rcInfo)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+Flit width (bits) (fW)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Include pipeline flag for interface (pipe)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Virtual channel count (vcC)</td>
+<td>
+1</td>
+</tr>
+</table>
+<h3 id="rtrList[0]">
+<label>
+rtrList[0] (Router)</label>
+</h3>
+<table>
+<tr>
+<th class="w20">
+Component</th>
+<th class="w30">
+Parameter</th>
+<th class="w10">
+Value</th>
+</tr>
+<tr>
+<td rowspan="16">
+<h5>
+<label>
+rtrList[0] (rtrList)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+Clock domain name (cDomain)</td>
+<td>
+noc_clk</td>
+</tr>
+<tr>
+<td>
+Hierarchy domain (hDomain)</td>
+<td>
+main</td>
+</tr>
+<tr>
+<td>
+Internal name (iName)</td>
+<td>
+RTR0</td>
+</tr>
+<tr>
+<td>
+Pipeline enable for ingress paths (inPipe)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Pipeline enable for egress paths (egPipe)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Center path pipeline (ctrPipe)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+QOS arbitration type (arbType)</td>
+<td>
+wprr</td>
+</tr>
+<tr>
+<td>
+SPRR arbitration threshold count (arbThreshold)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+SPRR arbitration priority levels (pLevels)</td>
+<td>
+4</td>
+</tr>
+<tr>
+<td>
+Forward channel flit width (fcW[0])</td>
+<td>
+32</td>
+</tr>
+<tr>
+<td>
+Forward channel flit width (fcW[1])</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Reverse channel flit width (rcW[0])</td>
+<td>
+32</td>
+</tr>
+<tr>
+<td>
+Reverse channel flit width (rcW[1])</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Include null target (inclNullTgt)</td>
+<td>
+1</td>
+</tr>
+<tr>
+<td>
+Include Link (inclLink)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td rowspan="4">
+<h5>
+<label>
+apb_mstr (ini)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+name (name)</td>
+<td>
+apb_mstr</td>
+</tr>
+<tr>
+<td>
+Initiator port connectivity map (connMap)</td>
+<td>
+*</td>
+</tr>
+<tr>
+<td>
+VC Enable (vcEnable)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td rowspan="4">
+<h5>
+<label>
+RTR_INI0 (ini)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+name (name)</td>
+<td>
+RTR_INI0</td>
+</tr>
+<tr>
+<td>
+Initiator port connectivity map (connMap)</td>
+<td>
+*</td>
+</tr>
+<tr>
+<td>
+VC Enable (vcEnable)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td rowspan="3">
+<h5>
+<label>
+pam3_cmn_TEA (tgt)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+name (name)</td>
+<td>
+pam3_cmn_TEA</td>
+</tr>
+<tr>
+<td>
+VC Enable (vcEnable)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td rowspan="3">
+<h5>
+<label>
+tc_reg_TEA (tgt)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+name (name)</td>
+<td>
+tc_reg_TEA</td>
+</tr>
+<tr>
+<td>
+VC Enable (vcEnable)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td rowspan="3">
+<h5>
+<label>
+usb_sub_sys_TEA (tgt)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+name (name)</td>
+<td>
+usb_sub_sys_TEA</td>
+</tr>
+<tr>
+<td>
+VC Enable (vcEnable)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td rowspan="3">
+<h5>
+<label>
+pam3_sub_sys_TEA (tgt)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+name (name)</td>
+<td>
+pam3_sub_sys_TEA</td>
+</tr>
+<tr>
+<td>
+VC Enable (vcEnable)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td rowspan="3">
+<h5>
+<label>
+usb4_phy_TEA (tgt)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+name (name)</td>
+<td>
+usb4_phy_TEA</td>
+</tr>
+<tr>
+<td>
+VC Enable (vcEnable)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td rowspan="3">
+<h5>
+<label>
+pam3_xcvr_TEA (tgt)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+name (name)</td>
+<td>
+pam3_xcvr_TEA</td>
+</tr>
+<tr>
+<td>
+VC Enable (vcEnable)</td>
+<td>
+0</td>
+</tr>
+</table>
+<h3 id="linkList[0]">
+<label>
+linkList[0] (Link)</label>
+</h3>
+<table>
+<tr>
+<th class="w20">
+Component</th>
+<th class="w30">
+Parameter</th>
+<th class="w10">
+Value</th>
+</tr>
+<tr>
+<td rowspan="8">
+<h5>
+<label>
+linkList[0] (linkList)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+Source connection name (sRef)</td>
+<td>
+tap2apb</td>
+</tr>
+<tr>
+<td>
+Target connection name (tRef)</td>
+<td>
+RTR_INI0</td>
+</tr>
+<tr>
+<td>
+Number of pipeline stages (pipeCnt)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Use a sync read RAM and delay rdata by 1 cycle (syncRAM)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+SRAM ECC (sramECC)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+SRAM Export (sramExport)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Number of sync stages beyond the base flop for async links (syncStages)</td>
+<td>
+2</td>
+</tr>
+<tr>
+<td rowspan="3">
+<h5>
+<label>
+fc[0] (fc)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+Enable LLK ingress pipes on this channel (iPipe)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Enable LLK egress pipes on this channel (ePipe)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td rowspan="3">
+<h5>
+<label>
+bufInfo[0] (bufInfo)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+Forwarding mode (fwdMode)</td>
+<td>
+tct</td>
+</tr>
+<tr>
+<td>
+Buffer size (bufSize)</td>
+<td>
+8</td>
+</tr>
+<tr>
+<td rowspan="3">
+<h5>
+<label>
+fc[1] (fc)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+Enable LLK ingress pipes on this channel (iPipe)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Enable LLK egress pipes on this channel (ePipe)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td rowspan="3">
+<h5>
+<label>
+bufInfo[0] (bufInfo)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+Forwarding mode (fwdMode)</td>
+<td>
+tct</td>
+</tr>
+<tr>
+<td>
+Buffer size (bufSize)</td>
+<td>
+8</td>
+</tr>
+<tr>
+<td rowspan="3">
+<h5>
+<label>
+rc[0] (rc)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+Enable LLK ingress pipes on this channel (iPipe)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Enable LLK egress pipes on this channel (ePipe)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td rowspan="3">
+<h5>
+<label>
+bufInfo[0] (bufInfo)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+Forwarding mode (fwdMode)</td>
+<td>
+tct</td>
+</tr>
+<tr>
+<td>
+Buffer size (bufSize)</td>
+<td>
+8</td>
+</tr>
+<tr>
+<td rowspan="3">
+<h5>
+<label>
+rc[1] (rc)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+Enable LLK ingress pipes on this channel (iPipe)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td>
+Enable LLK egress pipes on this channel (ePipe)</td>
+<td>
+0</td>
+</tr>
+<tr>
+<td rowspan="3">
+<h5>
+<label>
+bufInfo[0] (bufInfo)</label>
+</h5>
+</td>
+</tr>
+<tr>
+<td>
+Forwarding mode (fwdMode)</td>
+<td>
+tct</td>
+</tr>
+<tr>
+<td>
+Buffer size (bufSize)</td>
+<td>
+8</td>
+</tr>
+</table>
+<br>
+<h3>
+<label>
+Messages</label>
+</h3>
+<table>
+<tr>
+<th class="w20">
+Severity</th>
+<th class="w80">
+Message</th>
+</tr>
+<tr>
+<td>
+Warning</td>
+<td>
+apb_mstr: ADDR_WIDTH(32bit) is greater than the address map mask(20bit) (aMap[1]/entry[0])</td>
+</tr>
+<tr>
+<td>
+Warning</td>
+<td>
+apb_mstr: ADDR_WIDTH(32bit) is greater than the address map mask(20bit) (aMap[1]/entry[1])</td>
+</tr>
+<tr>
+<td>
+Warning</td>
+<td>
+apb_mstr: ADDR_WIDTH(32bit) is greater than the address map mask(20bit) (aMap[1]/entry[2])</td>
+</tr>
+<tr>
+<td>
+Warning</td>
+<td>
+apb_mstr: ADDR_WIDTH(32bit) is greater than the address map mask(20bit) (aMap[1]/entry[3])</td>
+</tr>
+<tr>
+<td>
+Warning</td>
+<td>
+apb_mstr: ADDR_WIDTH(32bit) is greater than the address map mask(20bit) (aMap[1]/entry[4])</td>
+</tr>
+<tr>
+<td>
+Warning</td>
+<td>
+apb_mstr: ADDR_WIDTH(32bit) is greater than the address map mask(20bit) (aMap[1]/entry[5])</td>
+</tr>
+<tr>
+<td>
+Warning</td>
+<td>
+tap2apb: ADDR_WIDTH(32bit) is greater than the address map mask(20bit) (aMap[0]/entry[0])</td>
+</tr>
+<tr>
+<td>
+Warning</td>
+<td>
+tap2apb: ADDR_WIDTH(32bit) is greater than the address map mask(20bit) (aMap[1]/entry[0])</td>
+</tr>
+<tr>
+<td>
+Warning</td>
+<td>
+tap2apb: ADDR_WIDTH(32bit) is greater than the address map mask(20bit) (aMap[1]/entry[1])</td>
+</tr>
+<tr>
+<td>
+Warning</td>
+<td>
+tap2apb: ADDR_WIDTH(32bit) is greater than the address map mask(20bit) (aMap[1]/entry[2])</td>
+</tr>
+<tr>
+<td>
+Warning</td>
+<td>
+tap2apb: ADDR_WIDTH(32bit) is greater than the address map mask(20bit) (aMap[1]/entry[3])</td>
+</tr>
+<tr>
+<td>
+Warning</td>
+<td>
+tap2apb: ADDR_WIDTH(32bit) is greater than the address map mask(20bit) (aMap[1]/entry[4])</td>
+</tr>
+<tr>
+<td>
+Warning</td>
+<td>
+tap2apb: ADDR_WIDTH(32bit) is greater than the address map mask(20bit) (aMap[1]/entry[5])</td>
+</tr>
+</table>
+<br>
+<script>
+</script>
+</body>
+</html>

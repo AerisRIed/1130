@@ -1,0 +1,12 @@
+User / CoreID          : cdns_dip_usb/prod / usb4_tc_noc
+BuildUniqueID          : 443277
+Config desc. name      : 
+Config save Time       : 2025/10/27 01:12:37
+TIE source             : usb4_tc_noc.zip
+Build type             : Evaluation
+Build time             : 2025/10/27 01:12:37
+Generator version      : NOC-2025.1
+Build result           : Passed
+magic1                 : 1761552757530
+magic2                 : 1761552757530
+Product                : noc

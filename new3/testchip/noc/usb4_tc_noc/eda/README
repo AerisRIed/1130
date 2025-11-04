@@ -1,0 +1,64 @@
+#############################################################################################
+#        Copyright (c) 2008-2025 by Cadence Design Systems Inc. ALL RIGHTS RESERVED.        #
+# These coded instructions, statements, and computer programs are the                       #
+# copyrighted works and confidential proprietary information of Cadence Design Systems Inc. #
+# They may not be modified, copied, reproduced, distributed, or disclosed to                #
+# third parties in any manner, medium, or form, in whole or in part, without                #
+# the prior written consent of Cadence Design Systems Inc.                                  #
+#############################################################################################
+
+###############################################################################################
+## Disclaimer : This EDA Flow is going through internal review process and subject to change  #
+###############################################################################################
+
+--> This flow should be run from inside the eda directory
+
+###############################################################################################
+### Step 1: Setting tool versions
+--> Set variables to use proper tool versions for the EDA Flow
+###############################################################################################
+
+###############################################################################################
+## Step 2: Setting design variables
+--> Modify the <design_name>_env.sh file to provide appropriate inputs
+--> Follow the comments in this file to understand each variable
+--> source <design_name>_env.sh
+###############################################################################################
+
+###############################################################################################
+## Step 3: Running Synthesis
+--> Modify the CadSetup.file and set required variables
+--> Check the constraints and provide the constraints file in <design_name>_env.sh 
+--> Run "make syn >& run_syn.log &"
+--> Check for any errors inside syn_genus/*.log file
+--> Check the Synthesis reports inside 'syn_genus' directory
+    This contains post-syn netlist, spef and different area/timing reports
+################################################################################################
+
+################################################################################################
+## Step 4: Running PNR and Signoff
+--> Modify the CadSetup.file and set required variables
+--> Create a floorplan and provide the path to DEF file in CadSetup.file
+--> Run "make layout > run_pnr.log ; make extract verify >& run_signoff.log &"
+--> Check for any errors inside layout_innovus/*.log file
+--> Check the PNR reports inside 'layout_innovus' directory
+    This contains post-PNR netlist and different area/timing, DRC reports
+--> Check SPEF files inside 'extract_qrc' directory
+--> Check the Sign-Off timing reports and SDF inside 'verify_tempus' directory
+#################################################################################################
+
+#################################################################################################
+## Step 5: Gate-level simulations
+--> Using the Verification Environment for Syn/PNR netlist, perform gate-level simulation and generate VCD/SAIF files for specific diags
+#################################################################################################
+
+#################################################################################################
+## Step 6: Gate-level Power analysis
+## Examples given for VCD, same applies to SAIF by modifying respective switches
+--> Run below command to perform gate-level power analysis for a given Syn/PNR netlist-
+    ./scripts/gate_level_power/Gate_Level_Power.pl -testlist ./diag.list -netlist <Path to Netlist> -spef <Path to SPEF> -rundir gate_power_analysis -scope <Scope name> >& gate_power.log &
+
+--> Power analysis reports will be available inside 'gate_power_analysis' directory
+--> Note : All dynamic power analysis is done at typical corner 
+####################################################################################################
+

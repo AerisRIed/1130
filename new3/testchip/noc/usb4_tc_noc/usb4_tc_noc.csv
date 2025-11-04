@@ -1,0 +1,12 @@
+Total Flops,6067
+Non-Safe 'n',6067
+Parity 'p',0
+Non-Correcting 'nc',0
+Correcting 'c',0
+
+Non-Safe 'implied',0
+Non-Safe 'noncrit',0
+Non-Safe 'system',0
+Non-Safe (no waiver),6067
+
+Aggregator Name, AId, CCnt, Slot, CId, Module, Checker, ClockGrp, Type, Fault Class, cErr, InjW, Flops/Signals

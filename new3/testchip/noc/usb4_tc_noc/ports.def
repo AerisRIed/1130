@@ -1,0 +1,225 @@
+Module: usb4_tc_noc
+Interface: def
+Class: ADHOC() clk() rst() pre()
+Ports:
+tap2apb_pclk dir(input) isClk(100MHz) isRst() pwidth(1) uwidth(1) clk() rst()
+noc_clk dir(input) isClk(100MHz) isRst() pwidth(1) uwidth(1) clk() rst()
+rst_n dir(input) isClk() isRst(an) pwidth(1) uwidth(1) clk() rst()
+
+Interface: apb_mstr
+Class: apb(subord) clk(noc_clk) rst(rst_n) pre(apb_mstr.)
+Configuration:
+cfg.clk = noc_clk
+cfg.rst = rst_n
+cfg.iID = 1
+cfg.rw = rw
+cfg.addrW = 32
+cfg.dataW = 32
+cfg.optS = pslverr 
+cfg.pipe = 0
+cfg.userReqW = 0
+cfg.userDataW = 0
+cfg.userRespW = 0
+logEn = 0
+logID = apb_mstr
+Ports:
+apb_mstr.paddr dir(input) isClk() isRst() pwidth(32) uwidth(1) clk(noc_clk) rst(rst_n)
+apb_mstr.psel dir(input) isClk() isRst() pwidth(1) uwidth(1) clk(noc_clk) rst(rst_n)
+apb_mstr.penable dir(input) isClk() isRst() pwidth(1) uwidth(1) clk(noc_clk) rst(rst_n)
+apb_mstr.pwrite dir(input) isClk() isRst() pwidth(1) uwidth(1) clk(noc_clk) rst(rst_n)
+apb_mstr.pwdata dir(input) isClk() isRst() pwidth(32) uwidth(1) clk(noc_clk) rst(rst_n)
+apb_mstr.pstrb dir(input) isClk() isRst() pwidth(4) uwidth(1) clk(noc_clk) rst(rst_n)
+apb_mstr.pready dir(output) isClk() isRst() pwidth(1) uwidth(1) clk(noc_clk) rst(rst_n)
+apb_mstr.prdata dir(output) isClk() isRst() pwidth(32) uwidth(1) clk(noc_clk) rst(rst_n)
+apb_mstr.pslverr dir(output) isClk() isRst() pwidth(1) uwidth(1) clk(noc_clk) rst(rst_n)
+
+Interface: cdb
+Class: apb(subord) clk(tap2apb_pclk) rst(rst_n) pre(cdb.)
+Configuration:
+cfg.clk = tap2apb_pclk
+cfg.rst = rst_n
+cfg.iID = 2
+cfg.rw = rw
+cfg.addrW = 32
+cfg.dataW = 32
+cfg.optS = pslverr 
+cfg.pipe = 0
+cfg.userReqW = 0
+cfg.userDataW = 0
+cfg.userRespW = 0
+logEn = 0
+logID = cdb
+Ports:
+cdb.paddr dir(input) isClk() isRst() pwidth(32) uwidth(1) clk(tap2apb_pclk) rst(rst_n)
+cdb.psel dir(input) isClk() isRst() pwidth(1) uwidth(1) clk(tap2apb_pclk) rst(rst_n)
+cdb.penable dir(input) isClk() isRst() pwidth(1) uwidth(1) clk(tap2apb_pclk) rst(rst_n)
+cdb.pwrite dir(input) isClk() isRst() pwidth(1) uwidth(1) clk(tap2apb_pclk) rst(rst_n)
+cdb.pwdata dir(input) isClk() isRst() pwidth(32) uwidth(1) clk(tap2apb_pclk) rst(rst_n)
+cdb.pstrb dir(input) isClk() isRst() pwidth(4) uwidth(1) clk(tap2apb_pclk) rst(rst_n)
+cdb.pready dir(output) isClk() isRst() pwidth(1) uwidth(1) clk(tap2apb_pclk) rst(rst_n)
+cdb.prdata dir(output) isClk() isRst() pwidth(32) uwidth(1) clk(tap2apb_pclk) rst(rst_n)
+cdb.pslverr dir(output) isClk() isRst() pwidth(1) uwidth(1) clk(tap2apb_pclk) rst(rst_n)
+
+Interface: cmn_cdb
+Class: apb(manager) clk(noc_clk) rst(rst_n) pre(cmn_cdb.)
+Configuration:
+cfg.clk = noc_clk
+cfg.rst = rst_n
+cfg.eName = cmn_cdb
+cfg.tID = 1
+cfg.rw = rw
+cfg.addrW = 9
+cfg.dataW = 32
+cfg.optS =  
+cfg.pipe = 0
+cfg.userReqW = 0
+cfg.userDataW = 0
+cfg.userRespW = 0
+logEn = 0
+logID = cmn_cdb
+Ports:
+cmn_cdb.paddr dir(output) isClk() isRst() pwidth(9) uwidth(1) clk(noc_clk) rst(rst_n)
+cmn_cdb.psel dir(output) isClk() isRst() pwidth(1) uwidth(1) clk(noc_clk) rst(rst_n)
+cmn_cdb.penable dir(output) isClk() isRst() pwidth(1) uwidth(1) clk(noc_clk) rst(rst_n)
+cmn_cdb.pwrite dir(output) isClk() isRst() pwidth(1) uwidth(1) clk(noc_clk) rst(rst_n)
+cmn_cdb.pwdata dir(output) isClk() isRst() pwidth(32) uwidth(1) clk(noc_clk) rst(rst_n)
+cmn_cdb.pstrb dir(output) isClk() isRst() pwidth(4) uwidth(1) clk(noc_clk) rst(rst_n)
+cmn_cdb.pready dir(input) isClk() isRst() pwidth(1) uwidth(1) clk(noc_clk) rst(rst_n)
+cmn_cdb.prdata dir(input) isClk() isRst() pwidth(32) uwidth(1) clk(noc_clk) rst(rst_n)
+
+Interface: tc_reg
+Class: apb(manager) clk(noc_clk) rst(rst_n) pre(tc_reg.)
+Configuration:
+cfg.clk = noc_clk
+cfg.rst = rst_n
+cfg.eName = tc_reg
+cfg.tID = 2
+cfg.rw = rw
+cfg.addrW = 16
+cfg.dataW = 32
+cfg.optS =  
+cfg.pipe = 0
+cfg.userReqW = 0
+cfg.userDataW = 0
+cfg.userRespW = 0
+logEn = 0
+logID = tc_reg
+Ports:
+tc_reg.paddr dir(output) isClk() isRst() pwidth(16) uwidth(1) clk(noc_clk) rst(rst_n)
+tc_reg.psel dir(output) isClk() isRst() pwidth(1) uwidth(1) clk(noc_clk) rst(rst_n)
+tc_reg.penable dir(output) isClk() isRst() pwidth(1) uwidth(1) clk(noc_clk) rst(rst_n)
+tc_reg.pwrite dir(output) isClk() isRst() pwidth(1) uwidth(1) clk(noc_clk) rst(rst_n)
+tc_reg.pwdata dir(output) isClk() isRst() pwidth(32) uwidth(1) clk(noc_clk) rst(rst_n)
+tc_reg.pstrb dir(output) isClk() isRst() pwidth(4) uwidth(1) clk(noc_clk) rst(rst_n)
+tc_reg.pready dir(input) isClk() isRst() pwidth(1) uwidth(1) clk(noc_clk) rst(rst_n)
+tc_reg.prdata dir(input) isClk() isRst() pwidth(32) uwidth(1) clk(noc_clk) rst(rst_n)
+
+Interface: usb_sub_sys
+Class: apb(manager) clk(noc_clk) rst(rst_n) pre(usb_sub_sys.)
+Configuration:
+cfg.clk = noc_clk
+cfg.rst = rst_n
+cfg.eName = usb_sub_sys
+cfg.tID = 3
+cfg.rw = rw
+cfg.addrW = 16
+cfg.dataW = 32
+cfg.optS =  
+cfg.pipe = 0
+cfg.userReqW = 0
+cfg.userDataW = 0
+cfg.userRespW = 0
+logEn = 0
+logID = usb_sub_sys
+Ports:
+usb_sub_sys.paddr dir(output) isClk() isRst() pwidth(16) uwidth(1) clk(noc_clk) rst(rst_n)
+usb_sub_sys.psel dir(output) isClk() isRst() pwidth(1) uwidth(1) clk(noc_clk) rst(rst_n)
+usb_sub_sys.penable dir(output) isClk() isRst() pwidth(1) uwidth(1) clk(noc_clk) rst(rst_n)
+usb_sub_sys.pwrite dir(output) isClk() isRst() pwidth(1) uwidth(1) clk(noc_clk) rst(rst_n)
+usb_sub_sys.pwdata dir(output) isClk() isRst() pwidth(32) uwidth(1) clk(noc_clk) rst(rst_n)
+usb_sub_sys.pstrb dir(output) isClk() isRst() pwidth(4) uwidth(1) clk(noc_clk) rst(rst_n)
+usb_sub_sys.pready dir(input) isClk() isRst() pwidth(1) uwidth(1) clk(noc_clk) rst(rst_n)
+usb_sub_sys.prdata dir(input) isClk() isRst() pwidth(32) uwidth(1) clk(noc_clk) rst(rst_n)
+
+Interface: pam3_sub_sys
+Class: apb(manager) clk(noc_clk) rst(rst_n) pre(pam3_sub_sys.)
+Configuration:
+cfg.clk = noc_clk
+cfg.rst = rst_n
+cfg.eName = pam3_sub_sys
+cfg.tID = 4
+cfg.rw = rw
+cfg.addrW = 16
+cfg.dataW = 32
+cfg.optS =  
+cfg.pipe = 0
+cfg.userReqW = 0
+cfg.userDataW = 0
+cfg.userRespW = 0
+logEn = 0
+logID = pam3_sub_sys
+Ports:
+pam3_sub_sys.paddr dir(output) isClk() isRst() pwidth(16) uwidth(1) clk(noc_clk) rst(rst_n)
+pam3_sub_sys.psel dir(output) isClk() isRst() pwidth(1) uwidth(1) clk(noc_clk) rst(rst_n)
+pam3_sub_sys.penable dir(output) isClk() isRst() pwidth(1) uwidth(1) clk(noc_clk) rst(rst_n)
+pam3_sub_sys.pwrite dir(output) isClk() isRst() pwidth(1) uwidth(1) clk(noc_clk) rst(rst_n)
+pam3_sub_sys.pwdata dir(output) isClk() isRst() pwidth(32) uwidth(1) clk(noc_clk) rst(rst_n)
+pam3_sub_sys.pstrb dir(output) isClk() isRst() pwidth(4) uwidth(1) clk(noc_clk) rst(rst_n)
+pam3_sub_sys.pready dir(input) isClk() isRst() pwidth(1) uwidth(1) clk(noc_clk) rst(rst_n)
+pam3_sub_sys.prdata dir(input) isClk() isRst() pwidth(32) uwidth(1) clk(noc_clk) rst(rst_n)
+
+Interface: apb_tgt
+Class: apb(manager) clk(noc_clk) rst(rst_n) pre(apb_tgt.)
+Configuration:
+cfg.clk = noc_clk
+cfg.rst = rst_n
+cfg.eName = apb_tgt
+cfg.tID = 6
+cfg.rw = rw
+cfg.addrW = 18
+cfg.dataW = 32
+cfg.optS = pslverr 
+cfg.pipe = 0
+cfg.userReqW = 0
+cfg.userDataW = 0
+cfg.userRespW = 0
+logEn = 0
+logID = apb_tgt
+Ports:
+apb_tgt.paddr dir(output) isClk() isRst() pwidth(18) uwidth(1) clk(noc_clk) rst(rst_n)
+apb_tgt.psel dir(output) isClk() isRst() pwidth(1) uwidth(1) clk(noc_clk) rst(rst_n)
+apb_tgt.penable dir(output) isClk() isRst() pwidth(1) uwidth(1) clk(noc_clk) rst(rst_n)
+apb_tgt.pwrite dir(output) isClk() isRst() pwidth(1) uwidth(1) clk(noc_clk) rst(rst_n)
+apb_tgt.pwdata dir(output) isClk() isRst() pwidth(32) uwidth(1) clk(noc_clk) rst(rst_n)
+apb_tgt.pstrb dir(output) isClk() isRst() pwidth(4) uwidth(1) clk(noc_clk) rst(rst_n)
+apb_tgt.pready dir(input) isClk() isRst() pwidth(1) uwidth(1) clk(noc_clk) rst(rst_n)
+apb_tgt.prdata dir(input) isClk() isRst() pwidth(32) uwidth(1) clk(noc_clk) rst(rst_n)
+apb_tgt.pslverr dir(input) isClk() isRst() pwidth(1) uwidth(1) clk(noc_clk) rst(rst_n)
+
+Interface: xcvr_ln_0
+Class: apb(manager) clk(noc_clk) rst(rst_n) pre(xcvr_ln_0.)
+Configuration:
+cfg.clk = noc_clk
+cfg.rst = rst_n
+cfg.eName = xcvr_ln_0
+cfg.tID = 5
+cfg.rw = rw
+cfg.addrW = 10
+cfg.dataW = 32
+cfg.optS =  
+cfg.pipe = 0
+cfg.userReqW = 0
+cfg.userDataW = 0
+cfg.userRespW = 0
+logEn = 0
+logID = xcvr_ln_0
+Ports:
+xcvr_ln_0.paddr dir(output) isClk() isRst() pwidth(10) uwidth(1) clk(noc_clk) rst(rst_n)
+xcvr_ln_0.psel dir(output) isClk() isRst() pwidth(1) uwidth(1) clk(noc_clk) rst(rst_n)
+xcvr_ln_0.penable dir(output) isClk() isRst() pwidth(1) uwidth(1) clk(noc_clk) rst(rst_n)
+xcvr_ln_0.pwrite dir(output) isClk() isRst() pwidth(1) uwidth(1) clk(noc_clk) rst(rst_n)
+xcvr_ln_0.pwdata dir(output) isClk() isRst() pwidth(32) uwidth(1) clk(noc_clk) rst(rst_n)
+xcvr_ln_0.pstrb dir(output) isClk() isRst() pwidth(4) uwidth(1) clk(noc_clk) rst(rst_n)
+xcvr_ln_0.pready dir(input) isClk() isRst() pwidth(1) uwidth(1) clk(noc_clk) rst(rst_n)
+xcvr_ln_0.prdata dir(input) isClk() isRst() pwidth(32) uwidth(1) clk(noc_clk) rst(rst_n)
+

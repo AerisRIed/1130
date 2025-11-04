@@ -1,0 +1,9 @@
+-incdir $CDN_VIP_ROOT/tools.lnx86/denali_64bit/ddvapi/sv
+$CDN_VIP_ROOT/tools.lnx86/denali_64bit/ddvapi/sv/denaliMem.sv
+$CDN_VIP_ROOT/tools.lnx86/denali_64bit/ddvapi/sv/denaliSvd.sv
+$CDN_VIP_ROOT/tools.lnx86/denali_64bit/ddvapi/sv/denaliCdn_apb.sv 
+-incdir $CDN_VIP_ROOT/tools.lnx86/denali_64bit/ddvapi/sv/uvm/svd
+$CDN_VIP_ROOT/tools.lnx86/denali_64bit/ddvapi/sv/uvm/svd/cdnSvdUvmTop.sv
+-incdir $CDN_VIP_ROOT/tools.lnx86/denali_64bit/ddvapi/sv/uvm/cdn_apb
+$CDN_VIP_ROOT/tools.lnx86/denali_64bit/ddvapi/sv/uvm/cdn_apb/cdnApbUvmTop.sv
+-f /project/cust/genapp/NOC-2025.1/build/cdns_dip_usb/prod/usb4_tc_noc/443277/NOC-2025.1-linux/usb4_tc_noc/rtl/dut.vf

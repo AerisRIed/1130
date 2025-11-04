@@ -1,0 +1,1163 @@
+#############################################################################################
+#        Copyright (c) 2008-2025 by Cadence Design Systems Inc. ALL RIGHTS RESERVED.        #
+# These coded instructions, statements, and computer programs are the                       #
+# copyrighted works and confidential proprietary information of Cadence Design Systems Inc. #
+# They may not be modified, copied, reproduced, distributed, or disclosed to                #
+# third parties in any manner, medium, or form, in whole or in part, without                #
+# the prior written consent of Cadence Design Systems Inc.                                  #
+#############################################################################################
+
+#############################################################################################
+## Disclaimer: This EDA Flow is going through internal review process and subject to change #
+#############################################################################################
+ 
+################################################################################
+# CadSetup.file.                                                               #
+# This file is used to specify implementation goals, library views, and        #
+# EDA tool-specific variables.                                                 #
+# The file specifies a set of variable/value pairs, one pair per line.         #
+# The format is as follows:                                                    #
+#        # comment(s) following hash until the end of the line                 #
+#        variableName  value						       #
+# where:                                                       		       #
+#      "variableName" refers to a predefined name and should not be altered.   #
+#      "value" can be a text string (<string>), an integer (<integer>), a      #
+#      floating-point number (<float>), a boolean, or a list specified using   #
+#      braces "{ }". The angle brackets "< >" must be removed when replacing   #
+#      the placeholder with the actual value.				       #
+################################################################################
+
+################################################################################
+#									       #
+#                       SELECTION OF NON-CORE COMPONENTS                       #
+#									       #
+################################################################################
+# Module for target of internal block-level synthesis scripts.
+# Default value is "Core" for script error checking.
+CORE_BLOCK  Core
+
+
+################################################################################
+#									       #
+#                       SIMPLIFIED FLOW TARGET SELECTOR                        #
+#									       #
+################################################################################
+# Use of this variable will override several CadSetup.file (CSF) values to better
+# optimize against a given global flow objective when using Genus/Innovus. Variables
+# that are not specified in the table below will continue to take the values as
+# defined in this file. Allowed values are:
+# 
+# None          - no CadSetup.file variables will be overwritten; they will be used
+#                 directly as specified in this file. This is the default
+#
+# LowPower      - tune all variables to achieve the lowest-possible design power; best
+#                 for when F_target <= 40% F_max
+#
+# Balanced      - tune variables to optimize for power while also allowing better frequency
+#                 performance; best for when 40% F_max < F_target < 85% F_max
+#
+# Fmax_PLE      - tune variables for maximum final speed performance while ignoring
+#                 any concurrent power goal; best for when F_target >= 85% F_max. This
+#                 flow will use Genus-PLE with a netlist handoff into Innovus
+#
+# Fmax_iSpatial - same tune as Fmax_PLE, but will use Genus iSpatial plus the
+#                 Early Clock Flow (ECF) with a DB handoff into Innovus, so that
+#                 the latter starts with an incremental placement. This is optimal
+#                 for designs larger than 2.5M instances, though there is a runtime penalty
+#
+# RTL_Comp      - tune variables to remove stochastic elements of the flow (WFP,
+#                 incremental OCV, SI analysis) while optimizing for both power
+#                 and timing without inserting additional clock gates. Final power
+#                 numbers should be computed with Joules glitch power analysis. The
+#                 iSpatial flow is used to help with placement consistency. The target
+#                 library should use a single gatelength and Vth class. Since OCV is
+#                 disabled, achieved frequencies will be artificially higher
+#
+# The following variables will be overridden when using a value other than "None":
+#
+# CadSetup.file variable         LowPower     Balanced     Fmax_PLE     Fmax_iSpatial     RTL_Comp
+# ------------------------------------------------------------------------------------------------
+# Target_MaxDataTransition            0.5     From CSF     From CSF          From CSF     From CSF
+# Target_MaxClockTransition           0.5     From CSF     From CSF          From CSF     From CSF
+# Target_LowPowerFlow                   1            1            0                 0            1
+# Target_LowPowerGoal                   5            4          N/A               N/A            4
+# Target_LowPowerLDR                  0.5          0.9          N/A               N/A          0.5
+# Target_UsePowerLibrary                1            1            0                 0            0
+# Target_UseMBCI                        1            1            0                 0            0
+# Syn_UseAdvancedFeatures               1            1            1                 1            1
+# Genus_SynthUncertainty                0          0.1         0.15              0.15         0.15
+# Genus_iSpatialEnable                  0            0            0                 1            1
+# Innovus_CcoptUsefulSkewEnabled        1            1            1                 1            1
+# Innovus_ClockShieldingEnabled         0            1            1                 1            1
+# Innovus_PreCTSUncertainty             0          0.1         0.15              0.15         0.15
+# Innovus_InsertionDelayFactor       1.18         1.18         1.18              1.18         1.18
+# Innovus_MaxAllowedDelay            0.12         0.12         0.12              0.12         0.12
+# Innovus_WFP                    From CSF     From CSF     From CSF          From CSF            0
+# Innovus_DerateMethod           From CSF     From CSF     From CSF          From CSF            0
+# Innovus_UseiSpatialDB                 0            0            0                 0            0
+# Innovus_ExtremeFlow                   0            0            1                 1            0
+# Innovus_MinAreaFlow                   1            1            0                 0            0
+# Innovus_EarlyClockFlow                0            0            0                 1            1
+# Tempus_WFP                     From CSF     From CSF     From CSF          From CSF            0
+# Tempus_SI                      From CSF     From CSF     From CSF          From CSF            0
+#
+# Note: these values are only overridden by Core_define.pl as part of the regular
+# make-based flow targets. Any other product offering that relies on parsing CadSetup.file
+# directly will not see these changes.
+# Used by: Genus, Innovus, Tempus
+Target_FlowGoal  None
+
+
+################################################################################
+#                                                                              #
+#                       GLOBAL DESIGN RULE CONSTRAINTS                         #
+#                                                                              #
+################################################################################
+# These front end design rule constraints (DRCs) apply to all tool flows. As
+# DRCs, they take precedence over other implementation targets (speed, area, or
+# power) in the tool's optimization cost function.
+
+# Specify the maximum data signal transition constraint in the target library
+# time unit. For example, Target_MaxDataTransition may be 0.35 nanoseconds in a
+# 45nm technology. This is a primary DRC used in all flows and hence must be
+# specified. The variable can take any floating point number greater than zero.
+Target_MaxDataTransition  <float>
+
+# Specify the maximum clock signal transition constraint in the target library
+# time unit. For example, Target_MaxClockTransistion may be 0.20 nanoseconds in a
+# 45nm technology. This is a primary DRC used in all flows and hence must be
+# specified. The variable can take any floating point number greater than zero.
+Target_MaxClockTransition  <float>
+
+# Specify the maximum fanout that any non-ideal input port or standard cell can drive.
+# Setting this value to zero implies there is no fanout constraint. 
+# This is a very crude constraint that generally should not be used for 28nm and newer
+# libraries; it is more effective to specify a maximum capacitance value instead.
+# Note that, even though this is a global DRC, some backend tools will not apply this
+# constraint during clock tree synthesis, since clock tree buffers have much higher
+# drive strengths than other standard cells. The variable can take any positive integer.
+Target_MaxFanout  0
+
+# Specify the maximum capacitance that any non-ideal input port or standard cell can drive.
+# This value should be given in the capacitance units of the target library.
+# Setting this value to zero implies there is no maximum capacitance constraint beyond
+# those set in the target library. The variable can take any positive floating point value.
+Target_MaxCapacitance  0
+
+
+################################################################################
+#                                                                              #
+#                         GLOBAL CLOCK CONSTRAINTS                             #
+#                                                                              #
+################################################################################
+# The following constraints are applied to all declared clocks in the design.
+
+# Specify the global target clock skew for all clocks by using the target library
+# time unit. For example, Target_ClockSkew may be 0.1 nanoseconds in a 45nm technology.
+# During clock tree synthesis (CTS) in Innovus, this value serves as an optimization target.
+Target_ClockSkew  <float>
+
+# Specify the maximum clock insertion delay target for all clocks, using the target
+# library time unit. This is used to compute a pre-CTS constraint on the time given
+# to the clock gate enable computation for Innovus flow. Normally, this
+# should be specified as 40% of the target clock period.
+Target_MaxClockInsertion  <float>
+
+# Specify the hold margin for all clocks, using the target library time unit. Since
+# hold margin functions as extra uncertainty, it is a constant drag on the hold timing paths
+# in the design, which may cause setup degradation and area growth during hold fixing steps.
+Target_HoldMargin  <float>
+
+
+################################################################################
+#                                                                              #
+#                       CORE CLOCK CONSTRAINTS                                 #
+#                                                                              #
+################################################################################
+# Specify the target period(s) for the clock(s) in the *_env.sh file.
+# The unit should match with the target library time unit.
+# Please note that if certain constraints in the input constraint specification file are a
+# percentage of clock period, the corresponding input or output delays will change accordingly.
+
+# Specify the clock source jitter for the core in the target library time unit.
+# Since jitter cannot be optimized away, it is a constant drag on the setup timing paths
+# in the design, being taken out of the maximum timing budget for each step in the flow.
+Target_ClockJitter  <float>
+
+
+################################################################################
+#                                                                              #
+#                             LOW POWER FLOW                                   #
+#                                                                              #
+################################################################################
+# By default, the implementation flow is geared towards achieving the
+# highest possible design speed. In cases where speed is not the primary design
+# objective, or if the frequency target is easily met, the low power flow can be used
+# to further reduce both static and dynamic power. Although RTL already
+# has multi-level clock gating, Genus is capable of additional automatic
+# clock gate insertion. Both clock gating and data gating are performed by the
+# low power flow. As this causes a functional difference to be seen between RTL
+# and the gate-level netlist, formal verification becomes more difficult, and is
+# only recommended with tools from the same vendor (i.e. use Conformal-Ultra 
+# if using Genus).
+# Setting the Target_LowPowerFlow variable to 1 will override several other
+# CadSetup.file variables to low-power values, i.e. changing these in their
+# respective sections in the CadSetup.file will have no effect if
+# Target_LowPowerFlow is set to 1. The new values will be:
+#
+# From the "GENERIC SYNTHESIS VARIABLES" section (Genus flows only):
+#       Syn_UseAdvancedFeatures  1
+#
+# There are other user-controllable variables that should be adjusted to achieve
+# the lowest possible power. Since clock power is a considerable component of total
+# design power, ensure that the number and size of the clock buffers is minimized.
+# Adjust the Lib_ClockBuffers and Lib_ClockInverters lists from the "POST-SYNTHESIS
+# RELATED LIBRARY VARIABLES" section to have only low drive-strength cells. Increase
+# the Target_ClockSkew, Target_MaxDataTransition and Target_MaxClockTransition values.
+# Increase the Fplan_CoreUtilization ratio from the "FLOOR PLAN VARIABLES" section to
+# the highest possible value that will still allow a DRC-clean route - this will
+# minimize wire lengths, thereby reducing switching power. Using a low power library
+# with a lower Vdd or with a higher threshold voltage is also recommended. Finally,
+# reduce all uncertainty values to prevent the clocks from being over-constrained.
+Target_LowPowerFlow  0
+
+# Total design power consists of both static and dynamic power consumption. Tools are
+# configured to optimize for one or both of these simultaneously. For example, if using
+# an older 130nm library where static power is trivial, it would be best to focus on
+# reducing dynamic power. When selecting either 4 or 5 below, optimization weights
+# are split evenly between static and dynamic power. Valid values are:
+# 1 = reduce static power only (ignore LDR below)
+# 2 = reduce dynamic power only (no additional clock gate insertion and ignore LDR below)
+# 3 = reduce dynamic power only (with additional clock gate insertion and ignore LDR below)
+# 4 = reduce total (static and dynamic) power (no additional clock gate insertion)
+# 5 = reduce total (static and dynamic) power (with additional clock gate insertion)
+Target_LowPowerGoal  5
+
+# If Target_LowPowerFlow is set to 1 and Target_LowPowerGoal is set to either 4 or 5,
+# the tool flows will attempt to optimize both static and dynamic power in an effort
+# to reduce total power consumption. However, the relative weight given to these two
+# power components can be adjusted; given that dynamic power gets scaled by frequency,
+# the leakage-to-dynamic-ratio (LDR) can be used to ensure leakage power gets
+# properly optimized. Setting the following variable to 1 means leakage power gets
+# 100% of the optimization weight. This floating point value can be set between
+# 0 and 1.
+# Used by: Genus, Innovus.
+Target_LowPowerLDR  0.5
+
+# By default only a single library domain is used for setup optimization during Genus
+# synthesis, and two library domains are used for both setup and hold optimization
+# during Innovus. Setting Target_UsePowerLibrary to 1 creates the default "timing"
+# library domain in Genus, but also a separate "leakage" library domain used to cost
+# against both dynamic and static power. This is derived from the equivalent "Min"
+# library variables in CadSetup.file. Similarly in Innovus the "Typ" corner is added
+# for dynamic power optimization, while the "Min" corner is used for leakage optimization.
+# Used by: Genus, Innovus.
+Target_UsePowerLibrary  0
+
+# If the Target_LowPowerFlow variable is set to 1, by default the tool flows will
+# optimize power based on statistical toggle activity, i.e., a vectorless analysis.
+# Values of 0.5 and 0.1 will be used for static probability and toggle rate, respectively,
+# on primary inputs and sequential outputs, and the calculated values will be propagated
+# through the design. If a RTL or post-netlist SAIF toggle file is available from simulation,
+# this more accurate information can be provided to better guide optimization.
+# Note that for best results, this file should be generated from a simulation run on the
+# results of the previous implementation step: for example, if running Genus, this should
+# be a forward SAIF from a RTL simulation; when running Innovus, the SAIF file should come
+# from simulating the post-Genus netlist. The file can be in .gz format.
+# Only a single file is allowed to be specified. This file must be of the SAIF format.
+#
+# Note: If specifying the SAIF file to be used to perform electromigration-aware optimization
+# in Innovus, it is recommended to use the highest activity diag available. If no SAIF file
+# is provided, Innovus will use a global toggle activity of 0.2 on every net.
+Target_LowPowerStimFile  {}
+
+# Multibit cell inferencing (MBCI) is a optimization strategy whereby single-bit library
+# cells can be combined into multibit versions of the same functional cell. This normally
+# applies to flops being clustered together into 2-/4-/6-/8-bit cells. Besides reducing
+# reducing sequential cell area by sharing internal nodes, the reduction in clock tree
+# leaf pins and routing results in decreased dynamic power consumption. MBCI is supported
+# for Genus and Innovus. If running physically-aware synthesis (Genus iSpatial), each tool takes
+# placement information into account when deciding which flops to pair into multibit cells.
+# Multibit flops are usually provided in a separate library, which must be specified
+# by the same Lib_* variables below used for the main standard cell library.
+# To enable MBCI, set Target_UseMBCI to 1. No further settings are required.
+Target_UseMBCI  0
+
+
+################################################################################
+#                                                                              #
+#                          OCV DERATING FACTORS				       #
+#                                                                              #
+################################################################################
+# Specify derating factors on the design. These are re-specified at the start
+# of every tool flow. The following targets are named according to the
+# set_timing_derate SDC command. Note that the "max" variables should be used
+# during setup (max corner) timing, while the "min" variables should be used
+# during hold (min corner) timing. Derating values must fall between 0.1 and 2.
+# A value of 1 indicates no derating should be applied. For example, if the user
+# wants cell delays on the data launch path for setup timing to be derated by
+# 10%, then set Target_derate_max_late_data_cell to 1.10. To derate the
+# corresponding capture path by -8%, set Target_derate_max_early_data_cell to 0.92.
+#
+# Note: technology nodes starting at 28nm include stage-based on chip variation
+# (SBOCV) files that introduce less pessimism. If available, specify them using
+# the Lib_MaxSBOCV and Lib_MinSBOCV variables. If these are specified, then the OCV
+# derates below are treated as incremental, i.e. their derate is directly added to
+# the corresponding SBOCV value. Continue to specify them as full derates, i.e.
+# an incremental derate of 7% should be specified as 1.07, not 0.07. This does not
+# apply to Genus, as the tool can handle only one of OCV/SBOCV/SOCV in a session.
+# Refer to the Genus_DerateMethod variable for handling derating in Genus. SBOCV
+# support is only available for the Cadence toolset.
+#
+# Note: for the supported statistical on chip variation (SOCV) flow, it is assumed
+# that sigma values are included in the provided Liberty files; the OCV derates
+# provided below are treated as additive incremental derates as described above for
+# SBOCV. The SOCV flow is only available for the Cadence toolset.
+#
+# Note: for the Cadence toolset, Innovus and Tempus derating are controlled separately;
+# refer to the Innovus_DerateMethod variable for more information.
+Target_derate_max_late_data_cell 	<float>
+Target_derate_max_late_data_net		<float>
+Target_derate_max_late_clock_cell	<float>
+Target_derate_max_late_clock_net	<float>
+Target_derate_max_early_data_cell	<float>
+Target_derate_max_early_data_net	<float>
+Target_derate_max_early_clock_cell	<float>
+Target_derate_max_early_clock_net	<float>
+Target_derate_min_late_data_cell	<float>
+Target_derate_min_late_data_net		<float>
+Target_derate_min_late_clock_cell	<float>
+Target_derate_min_late_clock_net	<float>
+Target_derate_min_early_data_cell	<float>
+Target_derate_min_early_data_net	<float>
+Target_derate_min_early_clock_cell	<float>
+Target_derate_min_early_clock_net	<float>
+
+
+################################################################################
+#                                                                              #
+#                   SYNTHESIS RELATED LIBRARY VARIABLES                        #
+#                                                                              #
+################################################################################
+# Specify a list of target libraries in Cadence Liberty (*.lib) format for the
+# slow/max process corner. These should contain all the combinational and
+# sequential cells, including any hard macros, intended for use in the design.
+# If using Genus with multiple libraries (i.e., for a multi-vt flow),
+# make sure all libraries have a unique name. This is a requirement for .sdf file
+# generation using Tempus via the "make tempus_genus_sdf" flow.
+# This variable in intended for use with Cadence tools.
+# For example, {/lib/130nm/cadence/slow.lib /lib/130nm/mylib/special.lib}
+Lib_CadenceLIB  {<string>}
+
+# Specify a list of target libraries in Cadence Liberty (*.lib) format for the
+# fast/min process corner. These should contain all the combinational and
+# sequential cells, including any hard macros, intended for use in the design.
+# This variable in intended for use with Cadence tools. For proper operation,
+# there must be the same number of files listed in the same order as their slow/max
+# process corner counterparts in Lib_CadenceLIB.
+# For example, {/lib/130nm/cadence/fast.lib}
+Lib_CadenceMinLIB  {<string>}
+
+# The operating conditions for which synthesis will be performed.
+Lib_OperatingCondition  <string>
+
+# The min operating conditions for hold violation analysis.
+Lib_MinOperatingCondition  <string>
+
+# A large D-type flip flop in the target library. For example, DFFX4
+Lib_DriveCell  <Cell>
+
+# Name of the output pin of the DFF above. For example, Q.
+Lib_DriveCellsPin  <OutputPin>
+
+# Name of the clock pin of the DFF above. For example, CK.
+Lib_DriveCellPinFrom  <InputPin>
+
+# Input pin of a cell to model a boundary load on Core. 
+# It should be in the form of Library/CellName/PinName.
+# For example, slow/INVX1/A
+Lib_BoundaryLoad  <Lib/Cell/InputPin>
+
+# List of library gates that will receive the set_prefer attribute.
+# The set_prefer attribute influences the optimization by encouraging
+# Genus to not remove a gate once it is found. For example, a
+# library may contain 4:1 non-inverting muxes prefixed by MX4, 4:1 inverting
+# muxes prefixed by MXI4, and adder cells prefixed by ADD. To put a set_prefer
+# on these library cells, set the variable to {slow/MX4* slow/MXI4* slow/ADD*}.
+Lib_PreferCells  {}
+
+# List of library gates to not use. Typically, for a high performance
+# design, these are low power cells. For example, if a "slow" library
+# has low power cells suffixed by XL, set the variable to {slow/*XL}
+# to direct Genus not to use these cells. Also, avoid using
+# multiplexed flops, as these have the same functionality as scan flops,
+# but do not have the scan cell attribute, causing Genus to
+# have difficulty with scan insertion. For example, set this key
+# to {slow/*MDFF*}.
+Lib_DontUseCells  {}
+
+
+################################################################################
+#                                                                              #
+#                 POST-SYNTHESIS RELATED LIBRARY VARIABLES                     #
+#                                                                              #
+################################################################################
+# List of physical reference libraries in Cadence LEF format. 
+# For example, {my_lib/lib.lef my_lib/macro.lef}
+# If specifying multiple files, the technology .lef (containing the metal
+# layer definitions) must be listed first. Use spaces to separate list entries.
+Lib_CadencePhysicalLibrary  {<string>}
+
+# Specify the simulation library, which contains verilog stubs for the reference cells.
+# For example, {my_lib/tsmc13.v} or for multiple verilog files
+# {my_lib/tsmc13.v my_lib/tsmc13_neg.v}
+Lib_VerilogSimulationLibrary  {<string>}
+
+# Specify the TLU+ file used for maximum/worst case condition calculation of resistance
+# and capacitance for flows using TLU+ models. These are more accurate than R/C values
+# found in technology file views.
+Lib_MaxTLUPlus  <string>
+
+# Specify the layer name mapping file between the technology library (.tf view) and the 
+# itf file (that used to generate the TLU+ views). This is a required file for flows
+# using TLU+ models.
+Lib_LayerNameMapFile  <string>
+
+# Specify the QRC Technology File for the maximum/worst case condition calculation
+# of the resistance and capacitance values. This file type contains the highest level
+# of granularity for R/C values, and hence is considered more accurate than the values
+# specified in a capacitance table or LEF file. For technology nodes of 28nm and below,
+# a QRC Technology File is preferred over a capacitance table. Values specified in this
+# file are used for extraction and delay calculation in Cadence tools (both Genus and Innovus).
+Lib_MaxQrcTechFile  {<string>}
+
+# Specify the QRC Technology File for the typical case condition calculation
+# of the resistance and capacitance values. This file type contains the highest level
+# of granularity for R/C values, and hence is considered more accurate than the values
+# specified in a capacitance table or LEF file. For technology nodes of 28nm and below,
+# a QRC Technology File is preferred over a capacitance table. Values specified in this
+# file are used for extraction and power reporting in Cadence tools (Genus, Innovus, Voltus).
+Lib_TypQrcTechFile  {<string>}
+
+# Specify the QRC Technology File for the minimum/best case condition calculation
+# of the resistance and capacitance values. This file type contains the highest level
+# of granularity for R/C values, and hence is considered more accurate than the values
+# specified in a capacitance table or LEF file. For technology nodes of 28nm and below,
+# a QRC Technology File is preferred over a capacitance table. Values specified in this
+# file are used for extraction and delay calculation in the Cadence Innovus tool only. If a
+# minimum file is not available, specify the same file as given to Lib_MaxQrcTechFile above.
+Lib_MinQrcTechFile  {<string>}
+
+# Specify the maximum/worst case sign-off corner temperature. 
+# This temperature is used during Innovus, QRC, Tempus and Voltus.
+Lib_MaxCornerTemp  <integer>
+
+# Specify the typical case corner temperature. This value is used
+# only for dynamic power analysis by Cadence tools.
+Lib_TypCornerTemp  <integer>
+
+# Specify the minimum/best case sign-off corner temperature.
+# This temperature is used during Innovus, QRC, Tempus and Voltus.
+Lib_MinCornerTemp  <integer>
+
+# Specify the stage-based on-chip variation (SBOCV) file for the maximum/worst case condition.
+# This file contains a 1-D lookup table for each cell in the corresponding Liberty library,
+# and provides a OCV derate value for the cell depending on the total path depth of the timing
+# path of interest. This results in a less pessimistic analysis, especially for deep logic paths.
+# See the description above the Target_derate_* variables to see how SBOCV and OCV values interact
+# with each other.
+# Used by: Genus (see Genus_DerateMethod variable), Innovus, Tempus, Voltus
+# Note: It is used only if Innovus_DerateMethod variale is set to 2 for Innovus and Tempus
+Lib_MaxSBOCV  {<string>}
+
+# Specify the stage-based on-chip variation (SBOCV) file for the minimum/best case condition.
+# This file contains a 1-D lookup table for each cell in the corresponding Liberty library,
+# and provides a OCV derate value for the cell depending on the total path depth of the timing
+# path of interest. This results in a less pessimistic analysis, especially for deep logic paths.
+# See the description above the Target_derate_* variables to see how SBOCV and OCV values interact
+# with each other.
+# Used by: Innovus, Tempus, Voltus
+# Note: It is used only if Innovus_DerateMethod variale is set to 2 for Innovus and Tempus
+Lib_MinSBOCV  {<string>}
+
+# Specify the Technology Capacitance table file for the maximum/worst case condition
+# calculation of resistance and capacitance values. This file will be ignored if a valid
+# Lib_MaxQrcTechFile is specified above. Values specified in this file are used for
+# extraction and delay calculation in Cadence tools (both Genus and Innovus).
+Lib_MaxCapTable  {<string>}
+
+# Specify the Technology Capacitance table file for the typical case condition
+# calculation of resistance and capacitance values. This file will be ignored if a valid
+# Lib_TypQrcTechFile is specified above. Values specified in this file are used for
+# extraction and power reporting in Cadence tools. If a typical file
+# is not available, specify the same file as given to Lib_MaxCapTable above.
+Lib_TypCapTable  {<string>}
+
+# Specify the Technology Capacitance table file for the minimum/best case condition
+# calculation of resistance and capacitance values. This file will be ignored if a valid
+# Lib_MinQrcTechFile is specified above. Values specified in this file are used for
+# extraction and delay calculation in the Cadence Innovus tool only. If a minimum file
+# is not available, specify the same file as given to Lib_MaxCapTable above.
+Lib_MinCapTable  {<string>}
+
+# Specify the allowed list of buffers used during clock tree synthesis for the
+# Innovus tool. These should have balanced rise and fall times.
+Lib_ClockBuffers  {<string> ...}
+
+# Specify the allowed list of inverters used during clock tree synthesis for the
+# Innovus tool. These should have balanced rise and fall times.
+Lib_ClockInverters  {<string> ...}
+
+# Specify list of filler cells and decap cells needed for Innovus and Voltus
+Lib_FillerCells  {<string> ...}
+
+# Specify the allowed list of buffers to be used to isolate I/O ports; these are used when
+# implementing a module in a bottom-up hierarchical context to introduce a consistent capacitance
+# on input ports and a consistent drive capability on output ports.
+Lib_IOBuffers  {<string> ...}
+
+# Specifies the target process node to the physically-aware portion of the Cadence tool
+# chain (Genus iSpatial/Innovus/Tempus). This value is then used to set appropriate variables
+# and scaling factors within each tool. The more generic Lib_ProcessNode value can be any
+# integer in the range between 3 to 250, and defines the technology value in nanometers; for
+# example, 7 would be used for any 7nm process. The more specific Lib_TechNode indicates
+# the foundry information as well, for example N7 would be used to indicate a TSMC N7 library.
+# Search Cadence Online Support for "design_tech_node" to determine the supported set of values.
+# If unknown or unsupported, the default value of "unspecified" should be used.
+# The allowed values are {3,5,7,12,16}.
+Lib_ProcessNode  <integer>
+Lib_TechNode  <string>
+
+# Ratio of .lef cell area to .lib cell area. Certain libraries normalize
+# synthesis cell areas by the smallest cell in the library. This causes
+# errors in floorplanning during physical implementation. If the area
+# value for a given cell is the same in both the .lib and .lef files, this
+# variable should be set to 1. Otherwise, it should be .lef area / .lib area.
+Lib_ScaleFactor  1 
+
+# Specifies that the target cell library consists of mixed-height cells; certain advanced
+# process nodes offer libraries with two or more cell heights that can be used concurrently
+# in the same standard cell placement region. The provided flow internally attempts to
+# balance usage of the different cell heights to maximize core utilization; the default
+# assumption is that there are alternating short and tall cell rows in the floorplan such
+# that there is an even number of each. Set Lib_MixedHeightLibrary to 1 to activate this
+# mixed-height flow; when set, the different cell heights must also be specified in microns.
+# If the library consists of only two cell heights, leave Lib_MHDoubleCellHeight at its
+# default value of 0.
+Lib_MixedHeightLibrary  0
+Lib_MHShortCellHeight  0
+Lib_MHTallCellHeight  0
+Lib_MHDoubleCellHeight  0
+
+################################################################################
+#                                                                              #
+#                 POWER-ANALYSIS RELATED LIBRARY VARIABLES                     #
+#                                                                              #
+################################################################################
+# Specify a list of typical libraries in Cadence Liberty (*.lib) format.
+# For example, {/lib/130nm/cadence/typical.lib /lib/130nm/mylib/special.lib}
+Lib_CadenceTypLIB  {<string>}
+
+# Specify a list of Max Leakage Corner libraries in Cadence Liberty (*.lib) format.
+# Current plan is to use this variable  for TSO and power analysis statistical (leakage power)
+# For simulation on TSO netlist plan is to edit TypLib variables and do noc_go
+Lib_CadenceLIBML  {<string>}
+
+# The operating conditions for which power analysis will be performed.
+Lib_TypOperatingCondition  <string>
+
+# Input pin of a cell to model a boundary load on Core in typical corner.
+# It should be in the form of Library/CellName/PinName.
+# For example, typical/INVX1/A
+Lib_TypBoundaryLoad  <Lib/Cell/InputPin>
+
+# List of library gates that will receive the set_prefer attribute in typical 
+# corner. The set_prefer attribute influences the optimization by encouraging
+# Genus to not remove a gate once it is found. For example, a
+# library may contain 4:1 non-inverting muxes prefixed by MX4, 4:1 inverting
+# muxes prefixed by MXI4, and adder cells prefixed by ADD. To put a set_prefer
+# on these library cells, set the variable to {typical/MX4* typical/MXI4* typical/ADD*}.
+Lib_TypPreferCells  {}
+
+# List of library gates to not use. Typically, for a high performance
+# design, these are low power cells. For example, if a "slow" library
+# has low power cells suffixed by XL, set the variable to {slow/*XL}
+# to direct Genus not to use these cells. Also, avoid using
+# multiplexed flops, as these have the same functionality as scan flops,
+# but do not have the scan cell attribute, causing Genus to
+# have difficulty with scan insertion. For example, set this key
+# to {typical/*MDFF*}.
+Lib_TypDontUseCells  {}
+
+
+################################################################################
+#                                                                              #
+#                         SCAN RELATED VARIABLES                               #
+#                                                                              #
+################################################################################
+# RTL is scan-ready, and this variable selects whether or not the synthesis tool
+# should perform scan chain insertion and stitching.
+Syn_InsertScan  1
+
+# This parameter controls whether test point insertion will be used by the synthesis
+# tool to increase test coverage of the design. This consists of adding control/observe
+# points with the goal of getting closer to 100% stuck-at fault coverage, at the expense
+# of increased area and possibly degraded timing. These points are added to the local
+# memory interface pins, and hence this parameter can only be set to 1 if synthesizing
+# the design having memories. If the memory hard macros do not have their input and output
+# ports registered, it is recommended to set this variable to 1. Syn_MaxTestCoverage can
+# only be set to 1 if the above Syn_InsertScan variable is also set to 1. Since this flow
+# results in additional logic being added during synthesis that does not exist in the RTL,
+# cross-vendor formal verification will not pass. If performing synthesis with Genus,
+# this feature requires a Modus_DFT_Opt license.
+Syn_MaxTestCoverage  0
+
+# This parameter controls the maximum length of all scan chains in the design.
+# By default, one scan chain is generated per clock domain, containing all of
+# the flops in the clock domain - clock mixing is not allowed. For large designs,
+# this will result in a very long scan chain for the primary system clock.
+# Setting this value to a positive integer will potentially create multiple
+# scan chains per clock domain, each with a unique pair of input/output ports.
+# This parallelism decreases test times at the expense of additional ports.
+# A positive integer must be used if specifying this value. Leaving the default
+# value of 0 will not place limits on the size of the scan chains.
+Syn_MaxScanChainLength  50000
+
+
+################################################################################
+#                                                                              #
+#                      GENERIC IMPLEMENTATION VARIABLES			       #
+#                                                                              #
+################################################################################
+# The parameters in this section are applicable to more than one tool flow.
+# Refer to the comments above each parameter for further details.
+
+# This parameter controls more advanced features of the synthesis tools, including
+# finite-state-machine (FSM) optimization, merging of sequential elements, and 
+# phase inversion of sequential elements. These features may improve the QOR of
+# the design, but may make the resulting netlist unable to pass formal verification.
+# Used by: Genus.
+Syn_UseAdvancedFeatures  0
+
+# This parameter enables various implementation tools to distribute their workload
+# to multiple CPUs on the same host. Specify the total number of threads that should
+# be run in parallel. Allowed values are either 1, or any even number between
+# 2 and 32. To disable multi-threading, set this parameter to 1. Additional licenses
+# for each tool may be required to enable high levels of multi-threading.
+# Used by: Genus, Innovus, QRC default command, Tempus, Voltus.
+Syn_SuperthreadCount  1
+
+# Use this parameter to synthesize the design having memories. The memories must be instantiated
+# in their appropriate locations in the rtl/memories/*.v files. If selecting this flow,
+# all memories must be defined as hard macros, and the top-level ports can be constrained via a
+# constraints file. If this switch remains at its default value of 0, synthesis will be performed
+# using only standard cells. Note that automatic placement of memory hard macros is not supported
+# in Innovus, thus Innovus requires specification of a floorplan via the Fplan_File variable.
+# All memory macros must also have the appropriate library views specified using (at a minimum)
+# the following variables:
+#
+# For Genus:
+#	Lib_CadenceLIB
+#	Lib_CadencePhysicalLibrary
+#	Lib_VerilogSimulationLibrary (for ATPG coverage)
+#
+# Not specifying the physical library views will result in the synthesis tool
+# issuing an error message and aborting the run.
+# Used by: All Cadence tools.
+Syn_UseMemoryMacros  0
+
+
+################################################################################
+#                                                                              #
+#                              GENUS VARIABLES				       #
+#                                                                              #
+################################################################################
+# In addition to the Genus_* variables of this section, the following variables
+# need to be specified for the Genus flow to work: all of the non-derating
+# Target_* variables, Lib_CadenceLIB, Lib_OperatingCondition, Lib_DriveCell,
+# Lib_DriveCellsPin, Lib_DriveCellPinFrom, Lib_BoundaryLoad, Lib_PreferCells,
+# Lib_DontUseCells, Lib_CadencePhysicalLibrary, Lib_MaxQrcTechFile, Lib_MaxCapTable
+
+# Specifies how on-chip-variation (OCV) derating is handled in Genus. The four
+# valid options are:
+#
+# 0 - no derating is applied. Will function with all Genus flows.
+#
+# 1 - standard OCV derating is applied. As Genus does not optimize for hold, only
+#     the Target_derate_max_* variables are used. Will function with all Genus flows.
+#
+# 2 - path-depth based derating is applied. Known as AOCV or SBOCV, if present the
+#     Lib_MaxSBOCV files will be used. Genus SBOCV support is limited to use with
+#     iSpatial; incremental OCV derates are not used by the Genus timing engine,
+#     but they are passed through to Innovus during iSpatial. Setting Genus_DerateMethod
+#     to 2 also requires setting Genus_iSpatialEnable to 1.
+#
+# 3 - statistical derating is applied (SOCV). This requires Liberty Variation Format (LVF)
+#     sigma data to be present in the CCS files specified by Lib_CadenceLIB. Genus
+#     SOCV support is limited to use with iSpatial; incremental OCV derates are not used
+#     by the Genus timing engine, but they are passed through to Innovus during iSpatial.
+#     Setting Genus_DerateMethod to 3 also requires setting Genus_iSpatialEnable to 1.
+#
+# All derates are removed prior to exporting the SDC file, so the targeted backend
+# flow can have a different derating method.
+Genus_DerateMethod  0
+
+# Specifies the clock uncertainty seen during all steps of the Genus synthesis flow;
+# the same value is applied to all defined clocks in the design. As clocks are
+# ideal, this value is added to the Target_*ClockJitter values above and set
+# as the uncertainty value for all setup paths. As such, the combined value
+# is taken directly out of the maximum timing budget for each path.
+Genus_SynthUncertainty  <float>
+
+# Specifies the technology dependent mapping effort of the synthesis step,
+# including any optional incremental passes. Allowed values are low, medium, and high.
+Genus_Effort  high
+
+# Specifies the number of incremental syn_opt passes performed after the mandatory full
+# syn_opt logical synthesis pass. Can be any positive integer or zero. This variable is
+# ignored if performing iSpatial physical synthesis.
+Genus_AdditionalPasses  2
+
+# Controls the use of integrated Spatial (iSpatial), which allows Genus to call the identical
+# placement engine used in Innovus to perform physical synthesis and incremental optimization
+# within Genus. Physical information is used and detailed placement is performed for all of
+# the syn_generic, syn_map, and syn_opt steps. Use of iSpatial requires a Genus_Physical_Opt
+# license key, as well as an installed and licensed version of Innovus. For optimal results,
+# use the same released version of both Genus and Innovus. iSpatial is currently unsupported
+# for the following flow features:
+#
+#     1) Bottom-up flows - ETM-/ILM-based implementations are not supported; only top-down
+#        single-pass synthesis flows can use iSpatial
+#
+# Note: iSpatial requires versions of Genus and Innovus to be 21.11 or later. The flow
+# will error out if attempting to use an earlier version.
+#
+# Note: as iSpatial is calling Innovus, several backend-related variables in other areas
+# of CadSetup.file are utilized and therefore must be populated:
+#
+#     Target_MaxClockTransition
+#     Target_ClockSkew
+#     Lib_ClockBuffers
+#     Lib_ClockInverters
+#     Lib_IOBuffers
+#     Fplan_File
+#     Innovus_CcoptUsefulSkewEnabled
+#     Innovus_InsertionDelayFactor
+#     Innovus_MaxAllowedDelay
+#     Innovus_EarlyClockFlow (if enabled, ICGs must be used via Genus_UseMacro)
+#
+# Note: Genus iSpatial requires an input floorplan to be specified via the Fplan_File
+# variable; Genus-PLE does not utilize a floorplan, but takes the Fplan_AspectRatio and
+# Fplan_CoreUtilization values instead to calculate die area. Keeping Genus_iSpatialEnable
+# at its default value of 0 performs Genus-PLE based logical synthesis. For subsequent
+# use of iSpatial output in the standalone Innovus flow, see the Innovus_UseiSpatialDB
+# variable description in the Innovus section below. Note that the floorplan DEF generated
+# by Genus iSpatial is not intended to be used in any subsequent Innovus flow.
+Genus_iSpatialEnable  0
+
+# Positive floating point scale factors for the wiring resistance and capacitance that Genus derives
+# from the input libraries. These same scale factors are used for all metal layers, and are not
+# dependent upon wire length. These can be used to adjust timing correlation between Genus and Innovus.
+# A value of 1 implies no scaling.
+Genus_ResScaleFactor  1
+Genus_CapScaleFactor  1
+
+# Total negative slack (TNS) optimization - by default Genus optimizes only the worst
+# negative slack (WNS) of each timing pathgroup, so that it can minimize design area by
+# sacrificing timing on non-critical paths. However, these non-critical paths can still violate
+# timing, and might turn critical during backend flows. Setting the following variable to 1
+# tells Genus to optimize all violating timing paths in the design. This may increase total
+# design area and tool runtime. However, it usually improves the WNS on all path groups.
+Genus_OptimizeTNS  1
+
+# Override default slack target for technology mapper across all path groups. Usefull for
+# triggering more aggressive timing optimization at the expense of area and runtime. This feature
+# is automatically disabled if setting Target_LowPowerFlow to 1.
+Genus_UseInitialTarget  1
+
+# If set to 1, dump out internal Genus database files at different stages
+# of compilation.
+Genus_Dump  0
+
+# Specify the number of critical paths to be printed in the timing report of flows
+# using Genus. The critical path is listed first within each path group.
+Genus_NumPaths  500
+
+# Write out the parasitics (resistance and capacitance information) of the design in
+# SPEF format. This file is useful for performing power analysis on a post-Genus netlist.
+Genus_WriteSPEF  1
+
+# Specifies the full path to a file containing additional SDC constraints. These are applied
+# after all other script-based constraints, both SDC and non-SDC. The file is loaded just
+# prior to the syn_generic call.
+Genus_AdditionalSDCCons  _none_
+
+
+################################################################################
+#                                                                              #
+#                      	   FLOOR PLAN VARIABLES                                #
+#                                                                              #
+################################################################################
+# Following variables are used to control and customize the design's floor plan.
+# A floor plan consists of a bounding box (also called PR boundary or I/O boundary),
+# a core area, a power plan, the block placement if the design contains hard macros,
+# and I/O pin placement. The bounding box is the enclosure of all physical objects.
+# I/O pins are placed abutting the bounding box. The core is a rectangular area 
+# inside the bounding box. Core is filled with horizontal placement rows where 
+# cells can be placed. Optionally, a pair of power and ground rings can be placed 
+# between the core and the bounding box and several pairs of power and ground 
+# stripes can be placed vertically across the core area connecting to the power
+# rings and the power rails of the standard cells.
+#
+# All numbers are in microns.
+# These values will be adjusted to the nearest integer multiple of the foundary
+# specified grid x- and y-dimensions or of the pitch of corresponding layers
+
+# Specify the aspect ratio and the utilization of a rectangular floor plan area.
+# Aspect ratio is y-dimension/x-dimension.
+# Fplan_CoreUtilization must be between 0.0 and 1.0
+# For core only designs, core area  = std cell area / Fplan_CoreUtilization
+# For core + mem designs, core area = ((std cell area + memory macro area)/ Fplan_CoreUtilization) 
+#
+# Lower utilization allows more routing space, but increases die area.
+# Higher utilization reduces die area at the expense of routing space (and may improve performance).
+Fplan_AspectRatio  1
+Fplan_CoreUtilization  0.60
+
+# Set this variable to 1 to add EndCap and Tap cell to floorplan before placement.
+# It is supported for TSMC 28/16/7/5 nm technologies.
+# It also supports 3nm flow with EndCap, Staggered Well Tap, as well as the Tap Wall.
+Fplan_AddEndcapTap  0
+
+# Specify the distance in um between the core boundary and the I/O boundary.
+# When core power rings are created, this distance should be wide enough to accommodate
+# both the rings and their minimum spacing requirements.
+Fplan_CoreToIOSpacing  <float>
+
+# Specify the max number of routing layers to be used in this design. 
+# For example, if the process used has 6 routing layers and the top layer is reserved for
+# power distribution, then Fplan_MaxRoutingLayer = 5
+Fplan_MaxRoutingLayer  <integer>
+
+# Specify the I/O pin layers.
+Fplan_TopBottomPinLayer  <string>
+Fplan_LeftRightPinLayer  <string>
+ 
+# Specify the power and ground net names for the design.
+# For example: VDD and VSS
+Fplan_PowerNetName   <string>
+Fplan_GroundNetName  <string>
+
+# Floorplan to be used in Genus/Innovus flows. Modify *_FP_Use variables
+# to enable floorplan reading for respective tools.
+Fplan_File  _none_
+
+# Specify bump cells which should be used for Flip Chip Package. 
+# By default "none" indicates it is a wire bound package.
+# Valid BumpCell names for 7G - PAD75UBMBOT_0DEG, PAD75UBMBOT_45DEG, PAD75UBMBOT_90DEG
+# It is recommended to use "PAD75UBMBOT_90DEG" for Horizontal stripes on Top Layer,
+# and PAD75UBMBOT_0DEG for Vertical stripes on Top Layer.
+# For example, if 12LM stack used, M12 is horizontal, use PAD75UBMBOT_90DEG.
+Fplan_FlipChipBumpCell  <string>
+
+# Specify pitch (in um) between adjacent bumps. Bump placement is in checker-board pattern.
+Fplan_FlipChipBumpPitch  <integer>
+
+# Specify if Innovus flow should add Bumps. Bumps will be added based on the Bump cell and pitch variables.
+# Roughly 33% of all the bumps will be power (VDD and VSS), and the rest signal bumps.
+Fplan_AddFlipChipBump  0
+
+
+################################################################################
+#                                                                              #
+#                              INNOVUS VARIABLES                               #
+#                                                                              #
+################################################################################
+# In addition to the Innovus_* variables of this section, the following variables
+# need to be specified for Innovus to work: all of the Target_* variables,
+# Lib_CadenceLIB, Lib_CadenceMinLIB, Lib_CadencePhysicalLibrary, Lib_ClockBuffers,
+# Lib_ClockInverters, Lib_IOBuffers, and all of the Fplan_* variables.
+# Specify atleast one of the following: (Lib_MaxQrcTechFile and Lib_MinQrcTechFile)
+# or (Lib_MaxCapTable and Lib_MinCapTable). Use of QrcTechFile is recommended.
+
+# IO pin placement and optimization settings. Valid values are: 
+# 0: Use Innovus pin optimization to place IO pins.
+# 1: Place IO pins according to values specified in
+#    the Innovus_*Pins variables. Ensure to specify all IO pins.
+#    Wildcard "*" is allowed.
+# 2: No pin placement/optimization.
+# When Innovus_PlaceIOPins=1, pin layers can be specified using
+# Fplan_TopBottomPinLayer and Fplan_LeftRightPinLayer variables in the 
+# CadSetup.file
+Innovus_PlaceIOPins  1
+Innovus_TopPins {}
+Innovus_BotPins {}
+Innovus_LeftPins {}
+Innovus_RightPins {}
+
+# Specify the number of paths to be printed in the timing reports of flows
+# using Innovus
+Innovus_NumPaths  500
+
+# Export SDF 
+Innovus_WriteSDF  0
+
+# Perform net capacitance extraction, including coupling capacitance,
+# and generate a SPEF file. This is useful for final timing analysis if 
+# a standalone 3D extraction tool is unavailable.
+# This file is also required to perform power analysis on a post-Innovus netlist.
+Innovus_WriteSPEF  0
+
+# Specifies how Innovus generates the floorplan. Valid values are -
+# 0 - Use the automated floorplanner for PNR and continue with non-hierarchical flow
+#     after floorplan has been generated if the variable Innovus_MixedPlacer is 1.
+# 1 - Use the automated floorplanner for PNR, save floorplan DEF and exit.
+#     The user can then refine this floorplan by placing the macros and resume
+#     the flow by setting Innovus_FP_Use to 2.
+# 2 - Use the DEF file specified by Fplan_File variable as the floorplan.
+Innovus_FP_Use  0
+
+# Set Innovus_CcoptUsefulSkewEnabled=1 to enable CCOPT useful skew optimization. This 
+# feature needs a CCOPT license. 
+Innovus_CcoptUsefulSkewEnabled  1
+
+# Set Innovus_ClockShieldingEnabled=1 to enable CCOPT clock shielding on top layers trunk nets.
+# This switch is turned on only for large design where SI impact on clock net is significant.
+# The clock nets are shielded with VSS net, therefore powerplan is required. Either turn on the
+# Innovus_EnablePowerPlan variable or provide a floorplan with powerplan through Fplan_File variable
+Innovus_ClockShieldingEnabled  0
+
+# Innovus preCTS uncertainty for better QOR postCTS. High preCTS uncertainty
+# may achieve better QOR results at the expense of runtime and/or area. This
+# uncertainty is in addition to the clock jitter and is specified in the library
+# unit.
+Innovus_PreCTSUncertainty  <float>
+
+# Innovus CTS uncertainty for better QOR postRoute. High preRoute uncertainty
+# may achieve better QOR results at the expense of runtime and/or area. This
+# uncertainty is in addition to the clock jitter and is specified in the library
+# unit.
+Innovus_CTSUncertainty  <float>
+
+# High postRoute uncertainty may achieve better QOR results at the expense of
+# runtime and/or area. This uncertainty is in addition to the clock jitter and
+# is specified in the library unit.
+Innovus_PostRouteUncertainty  <float>
+
+# Certain processes and metal stacks need special nanoroute settings to ensure 
+# DRC clean routing. Set this variable to the value supplied by the CAD team to
+# improve post route DRC performance. Setting this variable to _default_ will
+# enable the standard router settings that are known to achieve good DRC 
+# performance for most processes.
+Innovus_RoutingFlow  _default_
+
+# CCOpt attempts to keep the insertion delay of each clock tree a fixed multiple of the
+# longest insertion delay that would result from a global skew approach.
+# Setting a lower value helps to limit hold issues in challenging designs.
+Innovus_InsertionDelayFactor  1.5
+
+# Setting the value to a lower value limits the amount of slack (in nanoseconds)
+# that the software can borrow from
+# neighboring flip-flops when performing useful skew operations
+Innovus_MaxAllowedDelay  1
+
+# Enable waveform effects in Innovus Implementation
+# Default 0, Recommended to be set for 28hpc+ and smaller nodes
+Innovus_WFP  0
+
+# Specifies how on-chip-variation (OCV) derating is handled in Innovus and Tempus.
+# The four valid options are:
+#
+# 0 - no derating is applied.
+#
+# 1 - Standard OCV derating is applied.
+#     Target_derate_* variables are used to apply the OCV derates.
+#     
+# 2 - Path-depth based derating is applied. Known as AOCV or SBOCV.
+#     Lib_MaxSBOCV & Lib_MinSBOCV files are used.
+#     OCV Derates specified by Target_derate_* are treated as incremental derates.
+#
+# 3 - Statistical derating is applied (SOCV). This requires Liberty Variation Format (LVF)/sigma variation
+#     to be part of the CCS files specified by Lib_Cadence*LIB variables.
+#     OCV Derates specified by Target_derate_* are treated as incremental derates.
+#
+# All derates are removed prior to exporting the SDC file, so the targeted backend
+# flow can have a different derating method.
+Innovus_DerateMethod  0
+
+# If performing Genus iSpatial synthesis (controlled via Genus_iSpatialEnable in the Genus tool variable
+# section), the following Innovus_UseiSpatialDB controls the starting input into Innovus. If left at the default
+# value of 0, Innovus will take in the verilog ASCII netlist from Genus and perform a full placement, regardless
+# if Genus was run in PLE or iSpatial mode. If Innovus_UseiSpatialDB is set to 1, Innovus will instead load
+# the invs2genus_db generated by Genus iSpatial as the starting point of the Innovus flow, and subsequently run
+# an incremental placement. If Innovus_UseiSpatialDB is set to 1 and Genus iSpatial was not previously run,
+# the Innovus flow will error out. Regardless of the value of Innovus_UseiSpatialDB, it is never intended for
+# Innovus to use the DEF file generated by Genus iSpatial; the value of Fplan_File should remain the same when
+# launching either Genus iSpatial or Innovus, and should not contain any placed combinational logic.
+Innovus_UseiSpatialDB  0
+
+# Setting Innovus_ExtremeFlow to 1 will enable high effort optimizations.
+# Useful for designs where timing closure is challenging
+# with some cost in turnaround time
+Innovus_ExtremeFlow  0
+
+# Setting Innovus_MinAreaFlow to 1 will enhance area relaim effort in all optimization stages.
+# During pre/post CTS opt, reclaimArea will set to "true", instead of "default".
+# At postRoute opt, -postRouteAreaReclaim will be enabled.
+Innovus_MinAreaFlow  0
+
+# Setting Innovus_EarlyClockFlow to 1 will enable Early Clock Flow in innovus.
+# Early Clock Flow is a new feature in innovus which will make better correlation between Placement and CTS.
+# Enabling Early Clock Flow may results in Timing improvement and Hold Buffer reduction.
+# User need to make sure innovus version is 18.1 or newer in order to use the feature.
+Innovus_EarlyClockFlow  0
+
+# Setting Innovus_DfmFlow to 1 or 2 will enable addition of DFM features
+# Setting Innovus_DfmFlow to '1' enables addition of Well Tap,Endcap, Tie-Hi, Tie-Lo, Filler, I/O Buffer and Spare cells, in addition to adding Metal Fill, EM and Antenna checks and Power Via checks
+# Setting Innovus_DfmFlow to '2' enables all the features that are enabled for the above case and also enables addition of DECAP cells
+# Default value is 0
+Innovus_DfmFlow  0
+
+# Enable via pillar flow by setting Innovus_ViaPillarFlow=1. Setting this flag will enable via pillar in postRoute.
+# This feature helps to prevent EM violations, improve timing, utilization and add to the robustness of slack.
+# vp_rules.lef and vp_associations.tcl are required to enable via pillar flow.
+# vp_rules.lef with via pillar rule definition, vp_associations.tcl with standard cell pins associated with applicable via pillars.
+Innovus_ViaPillarFlow  0
+Lib_ViaPillar_LEF  _none_
+Lib_ViaPillar_Associations  _none_
+
+# For a CNOD process, meaning the wells of adjacent cells abut each other, implying that this creates an additional device when different Vth cells are abutted.
+# CNOD leakage is coupled to low power flow for leakage optimization.
+# Specifying CNODEdge_Info, CNODLeak_Info and CNODLeak_Config files here will enbale CNOD boundary leakage analysis when Target_LowPowerFlow sets to 1.
+Lib_CNODEdge_Info  {<string>}
+Lib_MinCNODLeak_Info  {<string>}
+Lib_TypCNODLeak_Info  {<string>}
+Lib_CNODLeak_Config  {<string>}
+
+# Specify the DeCap Cell Candidates here. The DeCap Cells are used to reduce 
+# the dynamic IR drop on Power/Ground rails. Along with the candaidate cells
+# please mention the capacitance of each cell in fF which is the default unit.
+# Example DECAP4 10 DECAP8 20. This translates to cell DECAP4 having a capacitance 
+# of 10fF & DECAP8 having a capacitance of 20fF. If you dont know the capacitance value 
+# of the DeCap cell candidates, they can be found out during the IR Drop analysis
+# If no cells are mentioned below, DeCap cells wont be placed in the design.
+# Default value is _none_ 
+Innovus_DecapCells  _none_
+
+# Specify the total Decoupling capacitance in fF per square micron. This is used to calculate the Total Decap to be placed in the 
+# design, excluding the pre-placed memory macros. This value is a 'Best estimate' provided by the user and is not pre-defined
+# Default value is 0fF
+Innovus_DecapPerUnitArea  0
+
+# In the mixed placement implementation flow, the macros and standard cells are placed concurrently during 
+# preCtsOpt, which is driven by congestion, wire-length, and timing. It helps reduce a lot of manual work 
+# and effort to achieve faster TAT with comparable or better QoR than the traditional flow.
+# Set Innovus_MixedPlacer to 1 to enable the mixed placement flow and provide a powerplan script to the Innovus_PPlan_File variable.
+Innovus_MixedPlacer  0
+
+# Setting Innovus_EnablePowerPlan to 1 generates powerplan as specified by the script in the Innovus_PPlan_File variable.
+# If you enable Innovus_EnablePowerPlan, also populate the Innovus_PPlan_File variable.
+# User should ensure no connectivity and DRC issues post sourcing the script.
+Innovus_EnablePowerPlan  0
+
+# Specify the powerplan script to be sourced during Innovus Mixed Placer flow or Xttop flow.
+Innovus_PPlan_File  _none_
+
+# Advanced SOCV options for leading-edge FinFET process nodes.
+# Will only take effect if Innovus_DerateMethod is set to "3".
+# Recommended for signoff runs, as the runtime cost is much more than the QoR benefits.
+# Delay Calculation mode accuracy level will be set to "3" (On a scale of lowest 0-4 max, "0" in default flow).
+# SOCV accuracy level  will be set to "ultra" in delay calculation mode ("low" in default flow).
+# Advanced pincap mode will be set to "2" ("0" in default flow) and SOCV machine learning level will be set to "1" ("0" in default flow).
+# Note: Major runtime hit expected (10% to 50% increase based on our experiment), timing improvement is limited (~1% improvement in achieved frequency).
+# No significant impact on placement area/density.
+Innovus_UltraAccuracyMode  0
+
+
+################################################################################
+#                                                                              #
+#                         QRC EXTRACTION VARIABLES                             #
+#                                                                              #
+################################################################################
+# The following section is relevant only for the standard min/max timing
+# analysis flow. Command files used to drive the Cadence QRC extraction tool.
+# These consist of paths to target technology files, as well as extraction-specific
+# information, such as the technology layer map definition. Two files can be
+# specified - the mandatory worst/slow corner file for setup path testing,
+# and the optional best/fast corner file for hold path testing - if the
+# best/fast file is not specified or is the same as that given for the
+# worst/slow corner, then only a single QRC run will be performed.
+
+# Specify the QRC command file for max/slow and min/fast corners.
+# The flow expects one QRC command file that can perform multiple corner
+# (e.g. max/min) extraction. 
+# However, if you do not have any QRC command file, you can leave this 
+# variable's value as "default" - in that case the "make extract" flow 
+# will automatically generate a QRC command file based on the following 
+# variables specified in other portions of the CadSetup.file:
+#   Lib_CadencePhysicalLibrary, Lib_MaxQrcTechFile, Lib_TypQrcTechFile,
+#   Lib_MinQrcTechFile, QRC_LayerMappingFile, Lib_ProcessNode, Lib_TechNode,
+#   Lib_MaxCornerTemp, Lib_TypCornerTemp, Lib_MinCornerTemp
+QRC_CmdFile  <QRCCmdFileName>
+
+# qrcTechFile and LEF file layer mapping file
+# The file content should be in the following format: 
+#    LEF_layer_name  qrcTechFile_layer_name
+# An example layer mapping file's content is shown below:
+#      M1   metal1
+#      M2   metal2
+QRC_LayerMappingFile  <QRC_LayerMappingFileName>
+
+
+################################################################################
+#                                                                              #
+#              Tempus Timing Signoff Solution (Tempus) VARIABLES               #
+#                                                                              #
+################################################################################
+# In addition to the Tempus_* variables of this section, the following variables need
+# to be specified for the Tempus Timing Signoff Solution flow to work: all of the Target_*
+# variables, Lib_CadenceLIB, Lib_CadenceMinLIB, Lib_DriveCell, Lib_OperatingCondition,
+# Lib_MinOperatingCondition, Lib_DriveCellsPin, Lib_DriveCellPinFrom, Lib_BoundaryLoad.
+
+# Analyze timing with waveform propagation effects
+# Default 0, Recommended to be set for nodes 16 nm and below
+Tempus_WFP  0
+
+# Perform Signal Integrity analysis. 
+# To not perform SI analysis, set this variable to 0.
+Tempus_SI  1
+
+# Tempus can run GBA, IPBA or EPBA. Each algorithm have a trade-off between runtime and accuracy.
+# Set this variable to 0 to only run GBA (early stages, prototyping)
+# Set this variable to 1 to run IPBA (Infinite Path-Based Analysis). Slower than GBA, much faster than EPBA with similar results.
+# Set this variable to 2 to run EPBA (Exhaustive Path-Based Analysis). Higher runtime, most accurate.
+Tempus_PBA 2
+
+# Specify the number of paths to be printed in the timing reports of flows
+# using Tempus. The critical path is listed first within each path group.
+Tempus_NumPaths  500
+
+# Write out post-Tempus standard delay format (SDF) files.
+Tempus_WriteSDF  1
+
+# Tempus can perform signoff optimization to minimize leakage power
+# by sizing/cell-change and Vt-Swap using low leakage libraries.
+# Similarly, Tempus can also recover area, and fix setup and/or hold.
+# An ECO file input to Innovus will be dumped to generate a new netlist.
+# If Tempus_TSO_Opt_Pass2 is set, Tempus_TSO_Opt will be ignored and the
+# source files (input netlist, DEF, SPEF) will be picked up from tempus_tso directory.
+# Else if only Tempus_TSO_Opt is set, source files will be picked up from layout_innovus directory.
+# Set the variables to 1 for leakage optimization
+# Set the variables to 2 for setup optimization
+# Set the variables to 3 for hold optimization
+# Set the variables to 4 for area recovery
+# Set the variables to 5 for incr (hold then setup) optimization
+Tempus_TSO_Opt  0
+Tempus_TSO_Opt_Pass2  0
+
+# Generate an Extracted Timing Model (ETM) of the design. This will create a Liberty
+# timing model for the I/O ports of the design, so that the core can now be used as an
+# instantiated macro within an upper level of hierarchy. For the default two corner
+# flow, this will generate both setup and hold views.
+Tempus_GenerateETM  0
+
