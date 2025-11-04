@@ -1,0 +1,10 @@
++define+SD3101_N4P_22_VS130_1XAH1XBV1XCH1XDV1YAH1YBV4YHVHV2X
++define+SYNTHESIS
++define+USE_TSMC_N4P_LIB
+$PHY_DESIGN_AREA/design/reuse/pma/reuse/cdnsdru_scan_tp_obs_v1/hdl/hdl_src/cdnsdru_scan_tp_obs_v1.v
+$PHY_DESIGN_AREA/design/reuse/pma/rtl/ana_rtl_hbdc/hbdc_b2t_enc_wrapper.sv
+$PHY_DESIGN_AREA/design/reuse/pma/rtl/pma_cmn/sandh_latch.v
+$PHY_DESIGN_AREA/design/reuse/pma/reuse/cdnsdru_therm_code_1_bit_v0/hdl/hdl_src/cdnsdru_therm_code_1_bit_v0.v
+$PHY_DESIGN_AREA/design/reuse/pma/reuse/cdnsdru_therm_code_n_bits_v0/hdl/hdl_src/cdnsdru_therm_code_n_bits_v0.v
+$PHY_DESIGN_AREA/design/reuse/pma/reuse/cdnsdru_h_bridge_drv_ctrl_v5_v0/hdl/hdl_src/cdnsdru_hbdc_v5_emp_v0.v
+$PHY_DESIGN_AREA/design/reuse/pma/reuse/cdnsdru_h_bridge_drv_ctrl_v5_v0/hdl/hdl_src/cdnsdru_hbdc_v5_b2t_enc_v0.v

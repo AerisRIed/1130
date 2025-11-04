@@ -1,0 +1,1 @@
+./check_tech_lib_contents.pl > results_check_tech_lib.log

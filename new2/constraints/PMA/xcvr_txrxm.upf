@@ -1,0 +1,973 @@
+upf_version 2.0
+
+   # some elements in this UPF get optimized away during synthesis
+   # this variable is used include these elements or not.
+   # The default is post synthesis
+   if { ![info exists is_post_synth] } { set is_post_synth 1 }
+
+   # need variable for wreal simulations
+   if { ![info exists is_wreal] } { set is_wreal NO }
+   if { ![info exists is_mlm] }   { set is_mlm   NO }
+
+   #################################################
+   ##  Define Power nets
+   #################################################
+	
+   set supply_nets { \
+      avdd \
+      avdd_h \
+      avdd_clk \
+      agnd \
+      vdd \
+      avdd_rx \
+      avdd_tx \
+   } 
+
+   foreach sn $supply_nets {
+      create_supply_net $sn
+      create_supply_port $sn
+      connect_supply_net $sn -ports $sn 
+   }
+
+   # internal nets for switched domains
+   create_supply_net xcvr_pso_xcvrc -resolve parallel
+   create_supply_net xcvr_pso_xcal  -resolve parallel
+   create_supply_net xcvr_pso_xdp   -resolve parallel
+   create_supply_net xcvr_pso_diag  -resolve parallel
+
+   ######################################
+   # Create supply_sets
+   ######################################
+
+   create_supply_set  SS_xcvr_avdd 	-function {power  avdd} 	 	-function {ground  agnd} \
+                                        -function {nwell  avdd} 	 	-function {pwell   agnd}
+   create_supply_set  SS_xcvr_avdd_h 	-function {power  avdd_h} 	 	-function {ground  agnd} \
+                                        -function {nwell  avdd} 	 	-function {pwell   agnd}
+   create_supply_set  SS_xcvr_avdd_clk 	-function {power  avdd_clk}     	-function {ground  agnd} \
+                                        -function {nwell  avdd} 	 	-function {pwell   agnd}
+   create_supply_set  SS_xcvr_xcvrc 	-function {power  xcvr_pso_xcvrc} 	-function {ground  agnd} \
+                                        -function {nwell  avdd} 	 	-function {pwell   agnd}
+   create_supply_set  SS_xcvr_xcal 	-function {power  xcvr_pso_xcal} 	-function {ground  agnd} \
+                                        -function {nwell  avdd} 	 	-function {pwell   agnd}
+   create_supply_set  SS_xcvr_xdp 	-function {power  xcvr_pso_xdp} 	-function {ground  agnd} \
+                                        -function {nwell  avdd} 	 	-function {pwell   agnd}
+   create_supply_set  SS_xcvr_diag 	-function {power  xcvr_pso_diag} 	-function {ground  agnd} \
+                                        -function {nwell  avdd} 	 	-function {pwell   agnd}
+   create_supply_set  SS_vdd            -function {power  vdd}                  -function {ground  agnd}
+
+   create_supply_set  SS_xcvr_avdd_tx 	-function {power  avdd_tx} 	 	-function {ground  agnd} \
+                                        -function {nwell  avdd} 	 	-function {pwell   agnd}
+   create_supply_set  SS_xcvr_avdd_rx 	-function {power  avdd_rx} 	 	-function {ground  agnd} \
+                                        -function {nwell  avdd} 	 	-function {pwell   agnd}
+
+   #################################################
+   ##  Connect up Macro model supplies
+   #################################################
+
+   if { $is_wreal == NO } {
+      connect_supply_net  avdd               -ports u_xcvr_ana/avdd
+      connect_supply_net  agnd               -ports u_xcvr_ana/agnd -vct UPF_GNDZERO2SV_LOGIC
+      connect_supply_net  avdd_h             -ports u_xcvr_ana/avdd_h
+      connect_supply_net  avdd_clk           -ports u_xcvr_ana/avdd_clk
+      connect_supply_net  avdd_rx            -ports u_xcvr_ana/avdd_rx
+      connect_supply_net  avdd_tx            -ports u_xcvr_ana/avdd_tx
+   }
+
+   ###################################################
+   # List of instances
+   ###################################################
+
+   # instances for PDcdb
+   set PDcdb_regs_retnt_inst [list \
+      u_xcvr_ctrl/u_power_sm_v4_top/u_power_sm_v4_cdb_regs \
+      u_xcvr_ctrl/u_power_state_ctrl_v3_tx \
+      u_xcvr_ctrl/u_power_state_ctrl_v3_rx \
+      u_drv_ctrl/u_drv_ctrl_diag_ovrd/u_drv_ctrl_diag_ovrd_cdb_regs \
+      u_drv_ctrl/u_tx_coef_calc/u_tx_coef_calc_cdb_regs \
+      u_rx_ctrl/u_sd_cal_ctrl_apb_icfg/u_bin_cal_apb_0/u_bin_cal_apb_cdb_regs \
+      u_rx_ctrl/u_sd_cal_ctrl_apb_icfg/u_bin_cal_apb_1/u_bin_cal_apb_cdb_regs \
+      u_rx_ctrl/u_cdrlf_config/u_cdrlf_config_cdb_regs \
+      u_rx_ctrl/u_rx_sampler_latch_cal_wrapper/u_rx_sampler_latch_cal_wrapper_cdb_regs \
+      u_rx_ctrl/u_sampler_dac_ctrl/u_sampler_dac_ctrl_cdb_regs \
+      u_rx_ctrl/u_rx_equalizer_engine/u_rx_equalizer_engine_cdb_regs \
+      u_rx_ctrl/u_rx_equalizer_engine/u_ree_ana_ctrl_sm_v2_top_epath/u_ree_ana_ctrl_sm_v2_cdb_regs \
+      u_rx_ctrl/u_rx_equalizer_engine/u_ree_attenuation/u_ree_attenuation_v3_cdb_regs \
+      u_rx_ctrl/u_rx_equalizer_engine/u_ree_gen_ctrl_sm_1/u_ree_gen_ctrl_sm_v4_cdb_regs \
+      u_rx_ctrl/u_rx_equalizer_engine/u_ree_gen_ctrl_sm_2/u_ree_gen_ctrl_sm_v4_cdb_regs \
+      u_rx_ctrl/u_rx_equalizer_engine/u_ree_gen_ctrl_sm_periodic/u_ree_gen_ctrl_sm_v4_cdb_regs \
+      u_rx_ctrl/u_rx_equalizer_engine/u_ree_gen_ctrl_sm_usb/u_ree_gen_ctrl_sm_v4_cdb_regs \
+      u_rx_ctrl/u_rx_equalizer_engine/u_ree_offset_cor_coef/u_ree_offset_cor_coef_v4_cdb_regs \
+      u_rx_ctrl/u_rx_equalizer_engine/u_ree_pcieg3_tx_eq_ctrl_sm/u_ree_pcieg3_ctrl_sm_v2_cdb_regs \
+      u_rx_ctrl/u_rx_equalizer_engine/u_ree_peaking_amp_gain/u_ree_peaking_amp_gain_v6_cdb_regs \
+      u_rx_ctrl/u_rx_equalizer_engine/u_ree_lfeq_ctrl_v3_top/u_ree_lfeq_ctrl_v3_cdb_regs \
+      u_rx_ctrl/u_rx_equalizer_engine/u_ree_sc_cor_v1_top/u_ree_sc_cor_v1_cdb_regs \
+      u_rx_ctrl/u_rx_equalizer_engine/u_ree_tap_coef_1/u_ree_tap_coef_v5_cdb_regs \
+      u_rx_ctrl/u_rx_equalizer_engine/u_ree_vga_gain/u_ree_vga_gain_v5_cdb_regs \
+      u_rx_ctrl/u_rx_equalizer_engine/u_tx_post_cursor/u_ree_peaking_amp_gain_v6_cdb_regs \
+      u_rx_ctrl/u_rx_equalizer_engine/u_tx_pre_cursor/u_ree_tap_coef_v5_cdb_regs \
+   ]
+
+   set PDcdb_regs_noretnt_inst [list \
+   ]
+
+   # instances for PDxcvr_avdd
+   set PDcdb_data_sync_inst [list \
+      u_rx_ctrl/u_sd_cal_ctrl_apb_icfg/u_bin_cal_apb_0/u_bin_cal_apb_cdb_regs/u_data_sync_cal_done \
+      u_rx_ctrl/u_sd_cal_ctrl_apb_icfg/u_bin_cal_apb_1/u_bin_cal_apb_cdb_regs/u_data_sync_cal_done \
+      u_rx_ctrl/u_cdrlf_config/u_cdrlf_config_cdb_regs/u_data_sync_rxda_cdrlf_fphl_locked \
+      u_rx_ctrl/u_rx_sampler_latch_cal_wrapper/u_rx_sampler_latch_cal_wrapper_cdb_regs/u_data_sync_rx_sampler_latch_cal_done \
+   ]
+
+   # instances for PDxcvr_avdd
+   set PDxcvr_avdd_regs_inst [list \
+      u_drv_ctrl/u_tx_rcv_detect_v2_apb/u_tx_rcv_detect_v2_apb_cdb_regs \
+      u_xcvr_ctrl/u_xcvr_diag_ovrd/u_xcvr_diag_ovrd_cdb_regs \
+      u_tx_ctrl/u_tx_diag_ovrd/u_tx_diag_ovrd_cdb_regs \
+      u_rx_ctrl/u_rx_diag_ovrd/u_rx_diag_ovrd_cdb_regs \
+      u_rx_ctrl/u_rx_sig_detect_filt_apb_icfg/u_rx_sig_detect_filt_low_apb/u_rx_sig_detect_filt_low_v2_cdb_regs \
+      u_rx_ctrl/u_rx_sig_detect_filt_apb_icfg/u_rx_sig_detect_filt_apb/u_rx_sig_detect_filt_v2_cdb_regs \
+   ]
+
+   # instances for PDxcvrc and state retention
+   set PDxcvrc_retnt_inst [list \
+      u_xcvr_ctrl/u_multical_sm_v3_psm_cal \
+      u_xcvr_ctrl/u_power_sm_v4_top \
+      u_xcvr_ctrl/u_xcvr_hsrrsm_rx \
+      u_xcvr_ctrl/u_xcvr_hsrrsm_tx \
+   ]
+   #   u_xcvr_ctrl/u_xcvr_clk_rst_sm \
+
+   # instances for PDxcvrc and NO state retention
+   set PDxcvrc_noretnt_inst [list \
+      u_drv_ctrl/u_fast_est_cmn_mode \
+      u_drv_ctrl/u_hbdc_usb4_wrapper \
+      u_drv_ctrl/u_tx_coef_calc \
+   ]
+
+   # data_sync instances for PDxcvr_avdd
+   set PDxcvrc_data_sync_inst [list \
+      u_xcvr_ctrl/u_power_sm_v4_top/u_power_sm_v4/u_data_sync_psm_a0_diag_entry_ack \
+      u_xcvr_ctrl/u_power_sm_v4_top/u_power_sm_v4/u_data_sync_psm_a0_diag_exit_ack \
+      u_xcvr_ctrl/u_power_sm_v4_top/u_power_sm_v4/u_data_sync_psm_a1_diag_entry_ack \
+      u_xcvr_ctrl/u_power_sm_v4_top/u_power_sm_v4/u_data_sync_psm_a1_diag_exit_ack \
+      u_xcvr_ctrl/u_power_sm_v4_top/u_power_sm_v4/u_data_sync_psm_a3_diag_entry_ack \
+      u_xcvr_ctrl/u_power_sm_v4_top/u_power_sm_v4/u_data_sync_psm_a3_diag_exit_ack \
+      u_xcvr_ctrl/u_power_sm_v4_top/u_power_sm_v4/u_data_sync_psm_a4_diag_entry_ack \
+      u_xcvr_ctrl/u_power_sm_v4_top/u_power_sm_v4/u_data_sync_psm_a4_diag_exit_ack \
+      u_xcvr_ctrl/u_xcvr_hsrrsm_rx/u_data_sync_dig_reset_release_ack \
+      u_xcvr_ctrl/u_xcvr_hsrrsm_tx/u_data_sync_dig_reset_release_ack \
+      u_drv_ctrl/u_fast_est_cmn_mode/u_data_sync_fecm_run_psm \
+      u_drv_ctrl/u_fast_est_cmn_mode/u_data_sync_fecm_run_ssm \
+      u_drv_ctrl/u_fast_est_cmn_mode/u_data_sync_txda_cm_sense_comp_out \
+      u_drv_ctrl/u_tx_coef_calc/u_data_sync_tx_get_local_preset_coef \
+      u_xcvr_ctrl/u_power_sm_v4_top/u_power_sm_v4/u_data_sync_psm_a2_diag_entry_ack \
+      u_xcvr_ctrl/u_power_sm_v4_top/u_power_sm_v4/u_data_sync_psm_a2_diag_exit_ack \
+      u_xcvr_ctrl/u_power_sm_v4_top/u_power_sm_v4/u_data_sync_psm_cal_diag_entry_ack \
+   ]
+
+
+      # the following get removed in synthesis
+      set PDxcvrc_data_sync_inst [concat $PDxcvrc_data_sync_inst \
+         u_xcvr_ctrl/u_power_sm_v4_top/u_power_sm_v4/u_data_sync_psm_a5_diag_entry_ack \
+         u_xcvr_ctrl/u_power_sm_v4_top/u_power_sm_v4/u_data_sync_psm_a5_diag_exit_ack \
+        u_xcvr_ctrl/u_power_sm_v4_top/u_power_sm_v4/u_data_sync_psm_cal_diag_exit_ack \
+      ]
+  
+
+   # instances for PDxcal and state retention
+   set PDxcal_retnt_inst [list \
+   ]
+
+   # instances for PDxcal and NO state retention
+   set PDxcal_noretnt_inst [list \
+      u_rx_ctrl/u_sd_cal_ctrl_apb_icfg \
+      u_rx_ctrl/u_rx_sampler_latch_cal_wrapper \
+   ]
+
+   # data_sync instances for PDxcvr_avdd
+   #
+   # The following remains on PDxcal
+   #  u_rx_ctrl/u_rx_sampler_latch_cal_wrapper/u_rx_sampler_latch_cal/u_data_sync_rx_sampler_latch_cal_diag_ctrl_en
+   #
+   set PDxcal_data_sync_inst [list \
+      u_rx_ctrl/u_sd_cal_ctrl_apb_icfg/u_bin_cal_apb_0/u_bin_cal/u_data_sync_cal_run \
+      u_rx_ctrl/u_sd_cal_ctrl_apb_icfg/u_bin_cal_apb_0/u_bin_cal/u_data_sync_da_ana_cal_resp \
+      u_rx_ctrl/u_sd_cal_ctrl_apb_icfg/u_bin_cal_apb_1/u_bin_cal/u_data_sync_cal_run \
+      u_rx_ctrl/u_sd_cal_ctrl_apb_icfg/u_bin_cal_apb_1/u_bin_cal/u_data_sync_da_ana_cal_resp \
+      u_rx_ctrl/u_rx_sampler_latch_cal_wrapper/u_rx_sampler_latch_cal/u_rx_sampler_latch_cal_ctrl/u_data_sync_run \
+      u_rx_ctrl/u_rx_sampler_latch_cal_wrapper/u_rx_sampler_latch_cal/u_rx_sampler_latch_cal_i_data/u_rx_sampler_ind_latch_cal/u_data_sync_voter_override_en \
+      u_rx_ctrl/u_rx_sampler_latch_cal_wrapper/u_rx_sampler_latch_cal/u_rx_sampler_latch_cal_i_data/u_rx_sampler_ind_latch_cal/u_data_sync_voter_override_neg \
+      u_rx_ctrl/u_rx_sampler_latch_cal_wrapper/u_rx_sampler_latch_cal/u_rx_sampler_latch_cal_i_data/u_rx_sampler_ind_latch_cal/u_data_sync_voter_override_pos \
+      u_rx_ctrl/u_rx_sampler_latch_cal_wrapper/u_rx_sampler_latch_cal/u_rx_sampler_latch_cal_q_data/u_rx_sampler_ind_latch_cal/u_data_sync_voter_override_en \
+      u_rx_ctrl/u_rx_sampler_latch_cal_wrapper/u_rx_sampler_latch_cal/u_rx_sampler_latch_cal_q_data/u_rx_sampler_ind_latch_cal/u_data_sync_voter_override_neg \
+      u_rx_ctrl/u_rx_sampler_latch_cal_wrapper/u_rx_sampler_latch_cal/u_rx_sampler_latch_cal_q_data/u_rx_sampler_ind_latch_cal/u_data_sync_voter_override_pos \
+      u_rx_ctrl/u_rx_sampler_latch_cal_wrapper/u_rx_sampler_latch_cal/u_rx_sampler_latch_cal_sequencer/u_data_sync_run \
+      u_rx_ctrl/u_rx_sampler_latch_cal_wrapper/u_rx_sampler_latch_cal/u_rx_sampler_latch_cal_e_data/u_rx_sampler_ind_latch_cal/u_data_sync_voter_override_en \
+      u_rx_ctrl/u_rx_sampler_latch_cal_wrapper/u_rx_sampler_latch_cal/u_rx_sampler_latch_cal_e_data/u_rx_sampler_ind_latch_cal/u_data_sync_voter_override_neg \
+      u_rx_ctrl/u_rx_sampler_latch_cal_wrapper/u_rx_sampler_latch_cal/u_rx_sampler_latch_cal_e_data/u_rx_sampler_ind_latch_cal/u_data_sync_voter_override_pos \
+      u_rx_ctrl/u_rx_equalizer_engine/u_data_sync_rx_eq_eval \
+   ]
+
+   # instances for PDxdp and state retention
+   set PDxdp_retnt_inst [list \
+      u_rx_ctrl/u_rx_equalizer_engine \
+   ]
+
+   # instances for PDxdp and NO state retention
+   set PDxdp_noretnt_inst [list \
+      u_tx_dsync \
+      u_rx_dsync \
+      u_rx_ctrl/u_sampler_dac_ctrl \
+   ]
+
+   # data_sync and reset_sync instances for PDxcvr_avdd
+   # 
+   # data_sync exist in u_tx_dsync. These were not included in this list.
+   # The u_tx_dsync data_sync will not require to be always on since all are reset on power up
+   #
+   # u_rx_ctrl/u_rx_equalizer_engine/u_eq_mode_change_det contains both a data_sync and reset_sync
+   # The tie to one inside gives me fits. Adding the extra layer of hierarchy and putting
+   # this on avdd fixed the issue.
+   set PDxdp_data_sync_inst [list \
+      u_rx_ctrl/u_rx_equalizer_engine/u_eq_mode_change_det \
+      u_rx_ctrl/u_rx_equalizer_engine/u_data_sync_ree_gen_sm_1_en \
+      u_rx_ctrl/u_rx_equalizer_engine/u_data_sync_ree_gen_sm_2_en \
+      u_rx_ctrl/u_rx_equalizer_engine/u_data_sync_ree_gen_sm_en_periodic \
+      u_rx_ctrl/u_rx_equalizer_engine/u_data_sync_rx_signal_detect \
+      u_rx_ctrl/u_rx_equalizer_engine/u_ree_gen_ctrl_sm_1/u_ree_gen_ctrl_sm_v4/u_data_sync_force_run_eq \
+      u_rx_ctrl/u_rx_equalizer_engine/u_ree_gen_ctrl_sm_2/u_ree_gen_ctrl_sm_v4/u_data_sync_force_run_eq \
+      u_rx_ctrl/u_rx_equalizer_engine/u_ree_gen_ctrl_sm_periodic/u_ree_gen_ctrl_sm_v4/u_data_sync_force_run_eq \
+      u_rx_ctrl/u_rx_equalizer_engine/u_data_sync_reg_deq_sync \
+      u_rx_ctrl/u_rx_equalizer_engine/u_data_sync_reg_enq_sync \
+      u_rx_ctrl/u_rx_equalizer_engine/u_data_sync_rx_eq_eval \
+      u_rx_ctrl/u_rx_equalizer_engine/u_data_sync_rx_eq_training \
+      u_rx_ctrl/u_rx_equalizer_engine/u_data_sync_rx_eq_training_data_valid \
+      u_rx_ctrl/u_rx_equalizer_engine/u_ree_gen_ctrl_sm_usb/u_ree_gen_ctrl_sm_v4/u_data_sync_force_run_eq \
+   ]
+    #  u_rx_ctrl/u_rx_equalizer_engine/u_tx_pre_cursor/u_ree_tap_coef_v4/u_ree_gain_int_v2/u_ree_voter_override_ctrl/u_data_sync_voter_ovrd_en \
+    #  u_rx_ctrl/u_rx_equalizer_engine/u_tx_pre_cursor/u_ree_tap_coef_v4/u_ree_gain_int_v2/u_ree_voter_override_ctrl/u_data_sync_voter_ovrd_neg \
+    #  u_rx_ctrl/u_rx_equalizer_engine/u_tx_pre_cursor/u_ree_tap_coef_v4/u_ree_gain_int_v2/u_ree_voter_override_ctrl/u_data_sync_voter_ovrd_pos \
+    #  u_rx_ctrl/u_rx_equalizer_engine/u_tx_post_cursor/u_ree_peaking_amp_gain_v6/u_ree_gain_int_v3/u_ree_voter_override_ctrl/u_data_sync_voter_ovrd_en \
+    #  u_rx_ctrl/u_rx_equalizer_engine/u_tx_post_cursor/u_ree_peaking_amp_gain_v6/u_ree_gain_int_v3/u_ree_voter_override_ctrl/u_data_sync_voter_ovrd_neg \
+    #  u_rx_ctrl/u_rx_equalizer_engine/u_tx_post_cursor/u_ree_peaking_amp_gain_v6/u_ree_gain_int_v3/u_ree_voter_override_ctrl/u_data_sync_voter_ovrd_pos \
+    #  u_rx_ctrl/u_rx_equalizer_engine/u_ree_offset_cor_coef/u_ree_offset_cor_coef_v4/u_ree_gain_int_v3/u_ree_voter_override_ctrl/u_data_sync_voter_ovrd_en \
+    #  u_rx_ctrl/u_rx_equalizer_engine/u_ree_offset_cor_coef/u_ree_offset_cor_coef_v4/u_ree_gain_int_v3/u_ree_voter_override_ctrl/u_data_sync_voter_ovrd_pos \
+    #  u_rx_ctrl/u_rx_equalizer_engine/u_ree_offset_cor_coef/u_ree_offset_cor_coef_v4/u_ree_gain_int_v3/u_ree_voter_override_ctrl/u_data_sync_voter_ovrd_neg \
+    #  u_rx_ctrl/u_rx_equalizer_engine/u_ree_peaking_amp_gain/u_ree_peaking_amp_gain_v6/u_ree_gain_int_v3/u_ree_voter_override_ctrl/u_data_sync_voter_ovrd_en \
+    #  u_rx_ctrl/u_rx_equalizer_engine/u_ree_peaking_amp_gain/u_ree_peaking_amp_gain_v6/u_ree_gain_int_v3/u_ree_voter_override_ctrl/u_data_sync_voter_ovrd_pos \
+    #  u_rx_ctrl/u_rx_equalizer_engine/u_ree_peaking_amp_gain/u_ree_peaking_amp_gain_v6/u_ree_gain_int_v3/u_ree_voter_override_ctrl/u_data_sync_voter_ovrd_neg \
+    #  u_rx_ctrl/u_rx_equalizer_engine/u_ree_lfeq_ctrl_v3_top/u_ree_lfeq_ctrl_v3/u_ree_gain_int_v3/u_ree_voter_override_ctrl/u_data_sync_voter_ovrd_en \
+    #  u_rx_ctrl/u_rx_equalizer_engine/u_ree_lfeq_ctrl_v3_top/u_ree_lfeq_ctrl_v3/u_ree_gain_int_v3/u_ree_voter_override_ctrl/u_data_sync_voter_ovrd_pos \
+    #  u_rx_ctrl/u_rx_equalizer_engine/u_ree_lfeq_ctrl_v3_top/u_ree_lfeq_ctrl_v3/u_ree_gain_int_v3/u_ree_voter_override_ctrl/u_data_sync_voter_ovrd_neg \
+    #  u_rx_ctrl/u_rx_equalizer_engine/u_ree_tap_coef_1/u_ree_tap_coef_v5/u_ree_gain_int_v3/u_ree_voter_override_ctrl/u_data_sync_voter_ovrd_en \
+    #  u_rx_ctrl/u_rx_equalizer_engine/u_ree_tap_coef_1/u_ree_tap_coef_v5/u_ree_gain_int_v3/u_ree_voter_override_ctrl/u_data_sync_voter_ovrd_pos \
+    #  u_rx_ctrl/u_rx_equalizer_engine/u_ree_tap_coef_1/u_ree_tap_coef_v5/u_ree_gain_int_v3/u_ree_voter_override_ctrl/u_data_sync_voter_ovrd_neg \
+    #  u_rx_ctrl/u_rx_equalizer_engine/u_ree_vga_gain/u_ree_vga_gain_v5/u_ree_gain_int_v3/u_ree_voter_override_ctrl/u_data_sync_voter_ovrd_en \
+    #  u_rx_ctrl/u_rx_equalizer_engine/u_ree_vga_gain/u_ree_vga_gain_v5/u_ree_gain_int_v3/u_ree_voter_override_ctrl/u_data_sync_voter_ovrd_pos \
+    #  u_rx_ctrl/u_rx_equalizer_engine/u_ree_vga_gain/u_ree_vga_gain_v5/u_ree_gain_int_v3/u_ree_voter_override_ctrl/u_data_sync_voter_ovrd_neg \
+
+
+   if { $is_post_synth == 0 } {
+
+      set PDxdp_data_sync_inst [concat $PDxdp_data_sync_inst \
+      ]
+   }
+
+   # instances for PDdiag
+   set PDdiag_inst [list \
+      u_tx_ctrl/u_tx_bist_core_apb \
+      u_rx_ctrl/u_rx_bist_core_apb \
+      u_rx_ctrl/u_eye_surf_ctrl_top     \
+      u_rx_ctrl/u_cmn_clk_freq_msmt_v1_top \
+   ]
+
+
+   # xcvr_bscan_cfg[1:0]  is not included in the list since it
+   # is connected to a tieoff at the rev layer
+   set PDxcvr_in [ list \
+      tx_get_local_init_coef \
+      xcvr_lane_suspend \
+      xcvr_link_reset_n \
+      xcvr_standard_mode[1:0] \
+      xcvr_data_width[2:0] \
+      xcvr_power_state_req[5:0] \
+      rx_sig_det_en_ext \
+      tx_cmn_mode_en_ext \
+      tx_reset_n \
+      rx_reset_n \
+      xcvr_pll_clk_en \
+      xcvr_psm_clk \
+      tx_rcv_detect_en \
+      tx_lfps_en \
+      tx_get_local_preset_coef \
+      tx_td_clk \
+      tx_td[19:0] \
+      tx_sfifo_enq_reset_n_in \
+      tx_bist_hold \
+      tx_elec_idle \
+      tx_deemphasis[17:0] \
+      tx_local_preset_index[3:0] \
+      tx_vmargin[2:0] \
+      tx_low_power_swing_en \
+      tx_sfifo_align_bump_in \
+      tx_differential_invert \
+      rx_differential_invert \
+      rx_termination \
+      rx_eq_training_data_valid \
+      rx_eq_training \
+      rx_eq_eval \
+      xcvr_lpbk_serial_en \
+      xcvr_lpbk_fe_parallel_en \
+      xcvr_lpbk_ne_parallel_en \
+      xcvr_lpbk_line_en \
+      xcvr_lpbk_isi_gen_en \
+      xcvr_lpbk_recovered_clk_en \
+      xcvr_scanclk_ser_clk \
+      xcvr_scanclk_pll_clk \
+      xcvr_scanmode \
+      xcvr_scanmode \
+      xcvr_scanin[63:0] \
+      xcvr_bscan_mode_en \
+      xcvr_bscan_mode_en \
+      tx_bscan_shiftdr \
+      tx_bscan_clockdr \
+      tx_bscan_updatedr \
+      tx_bscan_mode_c \
+      tx_bscan_acpulse \
+      tx_bscan_ac \
+      tx_bscan_tdi \
+      rx_bscan_shiftdr \
+      rx_bscan_clockdr \
+      rx_bscan_pc \
+      rx_bscan_ac \
+      rx_bscan_tdi \
+   ]
+
+if { $is_post_synth == 1 } {
+    set PDxcvr_in_others [list xcvr_scanen_cg xcvr_scanen]
+    set PDxcvr_in [concat $PDxcvr_in $PDxcvr_in_others]
+}
+
+   set PDxcvr_out [ list \
+      xcvr_psm_ready \
+      xcvr_pll_clk_fullrt \
+      xcvr_pll_clk_en_ack \
+      xcvr_pll_clk_datart \
+      tx_sfifo_enq_reset_n_out \
+      rx_rd_clk \
+      rx_rd[19:0] \
+      rx_eq_eval_status \
+      rx_eq_eval_complete \
+      rx_link_eval_fb_dir_change[5:0] \
+      rx_bist_status \
+      rx_bist_err_toggle \
+      rx_bist_sync \
+      xcvr_power_state_ack[5:0] \
+      tx_local_fs[5:0] \
+      tx_local_lf[5:0] \
+      tx_rcv_detected \
+      tx_rcv_detect_done \
+      tx_local_tx_coef_valid \
+      tx_local_tx_preset_coef \
+      tx_sfifo_align_bump_out \
+      rx_signal_detect \
+      tx_bscan_tdo \
+      rx_bscan_tdo \
+      rx_lfps_detect \
+      rx_pi_val[7:0] \
+      rx_eye_plot_pi_val[7:0] \
+      rx_cdrlf_fphl_locked \
+      xcvr_scanout[63:0] \
+      xcvr_psm_state[25:0] \
+      rx_sampler_latch_cal_diag[3:0] \
+   ]
+
+   ###################################################
+   # Create power domains
+   ###################################################
+
+   create_power_domain PDxcvr_avdd -include_scope -supply {primary SS_xcvr_avdd} \
+      -elements [concat \
+         $PDxcvr_avdd_regs_inst \
+         $PDxcvrc_data_sync_inst \
+         $PDxcal_data_sync_inst \
+         $PDxdp_data_sync_inst \
+         $PDcdb_data_sync_inst \
+         $PDcdb_regs_retnt_inst \
+      ]
+
+   create_power_domain PDxcvr_vdd -supply {primary SS_vdd} \
+      -supply {extra_supplies SS_xcvr_avdd} \
+      -elements {}
+
+   create_power_domain PDxcvrc  -supply {primary SS_xcvr_xcvrc} \
+      -supply {extra_supplies SS_xcvr_avdd } \
+      -elements [concat $PDxcvrc_retnt_inst $PDxcvrc_noretnt_inst]
+ 
+   create_power_domain PDxcal   -supply {primary SS_xcvr_xcal} \
+      -supply {extra_supplies SS_xcvr_avdd } \
+      -elements [concat $PDxcal_retnt_inst $PDxcal_noretnt_inst]
+ 
+   create_power_domain PDxdp    -supply {primary SS_xcvr_xdp} \
+      -supply {extra_supplies SS_xcvr_avdd } \
+      -elements [concat $PDxdp_retnt_inst $PDxdp_noretnt_inst]
+ 
+   create_power_domain PDdiag   -supply {primary SS_xcvr_diag} \
+      -supply {extra_supplies SS_xcvr_avdd } \
+      -elements $PDdiag_inst
+ 
+   # virtual power domains, the supply sets are needed for the analog models
+   create_power_domain PDxcvr_avdd_clk -supply {primary SS_xcvr_avdd_clk} -elements {}
+   create_power_domain PDxcvr_avdd_h   -supply {primary SS_xcvr_avdd_h}   -elements {}
+
+
+   ######################################
+   # Create level shifter strategy
+   ######################################
+   set_level_shifter LS1_xcvravdd_vdd -domain PDxcvr_avdd -applies_to outputs -location self \
+   -output_supply_set PDxcvr_vdd.primary -elements $PDxcvr_out -force_shift
+
+   set_level_shifter LS2_xcvravdd_vdd -domain PDxcvr_avdd -applies_to inputs -location self \
+   -input_supply_set PDxcvr_vdd.primary -output_supply_set PDxcvr_avdd.primary -elements $PDxcvr_in -force_shift
+
+   use_interface_cell LS1_CELL -domain PDxcvr_avdd -strategy LS1_xcvravdd_vdd -lib_cells {LVLLHBUFFSRCCWBALMZD4BWP210H6P51CNODSVT LVLLHBUFFSRCCWBALMZD4BWP210H6P51CNODLVT} -force_function
+   use_interface_cell LS2_CELL -domain PDxcvr_avdd -strategy LS2_xcvravdd_vdd -lib_cells {LVLLHBUFFSNKCWBALMZD4BWP210H6P51CNODSVT LVLLHBUFFSNKCWBALMZD4BWP210H6P51CNODLVT} -force_function
+
+   ######################################
+   # Port Attributes
+   #
+   # Further more the port attributes
+   # are ignored when using hierarchical
+   # UPF. Will only be applied at the
+   # top most level.
+   ######################################
+
+   set_port_attributes -applies_to inputs -driver_supply PDxcvr_vdd.primary -ports $PDxcvr_in
+   set_port_attributes -applies_to outputs -receiver_supply PDxcvr_vdd.primary -ports $PDxcvr_out
+
+
+   ######################################
+   # Create isolation rules
+   #
+   # Customer requires set_isolation_control
+   #
+   # If the power domain in -domain and -source are the same and
+   # along with -applies_to outputs
+   # use -location other
+   ######################################
+
+   set_isolation ISOxcvrc2xcal_lo -domain  PDxcal  \
+      -source PDxcvrc.primary \
+      -sink   PDxcal.primary \
+      -applies_to inputs \
+      -isolation_supply_set SS_xcvr_xcal \
+      -clamp_value 0
+
+   set_isolation_control ISOxcvrc2xcal_lo -domain  PDxcal  \
+      -isolation_signal  {xcvrc_isl_power_isolation_en_in} \
+      -isolation_sense   high
+
+   set_isolation ISOxcvrc2vdd_dft_lo -domain  PDxcvrc  \
+      -source PDxcvrc.primary \
+      -sink   PDxcvr_vdd.primary \
+      -applies_to outputs \
+      -location other \
+      -isolation_supply_set SS_xcvr_avdd \
+      -clamp_value 0
+
+   set_isolation_control ISOxcvrc2vdd_dft_lo -domain  PDxcvrc  \
+      -isolation_signal  {xcvrc_isl_power_isolation_en_in} \
+      -isolation_sense   high
+
+   set_isolation ISOxcvrc2avdd_lo -domain  PDxcvrc  \
+      -source PDxcvrc.primary \
+      -sink   PDxcvr_avdd.primary \
+      -applies_to outputs \
+      -location other \
+      -isolation_supply_set SS_xcvr_avdd \
+      -clamp_value 0
+
+   set_isolation_control ISOxcvrc2avdd_lo -domain  PDxcvrc  \
+      -isolation_signal  {xcvrc_isl_power_isolation_en_in} \
+      -isolation_sense   high
+
+   set iso_xcvrc_out [ list \
+      u_xcvr_ctrl/u_power_sm_v4_top/psm_state \
+      u_xcvr_ctrl/u_power_sm_v4_top/psm_ready \
+      u_drv_ctrl/u_tx_coef_calc/tx_local_tx_preset_coef \
+      u_drv_ctrl/u_tx_coef_calc/tx_local_tx_coef_valid \
+   ]
+
+   set_isolation ISOxcvrc2out_lo -domain  PDxcvrc  \
+      -source PDxcvrc.primary \
+      -applies_to outputs \
+      -elements $iso_xcvrc_out \
+      -location other \
+      -isolation_supply_set SS_xcvr_avdd \
+      -clamp_value 0
+
+   set_isolation_control ISOxcvrc2out_lo -domain  PDxcvrc  \
+      -isolation_signal  {xcvrc_isl_power_isolation_en_in} \
+      -isolation_sense   high
+
+   set sampler_latch_cal_hi_ports [list \
+      u_rx_ctrl/u_rx_sampler_latch_cal_wrapper/rxda_sampler_latch_cal_odd_m_en \
+      u_rx_ctrl/u_rx_sampler_latch_cal_wrapper/rxda_sampler_latch_cal_odd_p_en \
+      u_rx_ctrl/u_rx_sampler_latch_cal_wrapper/rxda_sampler_latch_cal_even_m_en \
+      u_rx_ctrl/u_rx_sampler_latch_cal_wrapper/rxda_sampler_latch_cal_even_p_en \
+   ]
+
+   set_isolation ISOxcal2avdd_hi -domain  PDxcal  \
+      -source PDxcal.primary \
+      -sink   PDxcvr_avdd.primary \
+      -elements $sampler_latch_cal_hi_ports \
+      -applies_to outputs \
+      -location other \
+      -isolation_supply_set SS_xcvr_avdd \
+      -clamp_value 1
+
+   set_isolation_control ISOxcal2avdd_hi -domain  PDxcal \
+      -isolation_signal  {u_pwr_isl_ctrl_sm_icfg_xcal/power_isolation_en} \
+      -isolation_sense   high
+
+   set_isolation ISOxcal2vdd_dft_lo -domain  PDxcal  \
+      -source PDxcal.primary \
+      -sink   PDxcvr_vdd.primary \
+      -applies_to outputs \
+      -location other \
+      -isolation_supply_set SS_xcvr_avdd \
+      -clamp_value 0
+
+   set_isolation_control ISOxcal2vdd_dft_lo -domain  PDxcal  \
+      -isolation_signal  {u_pwr_isl_ctrl_sm_icfg_xcal/power_isolation_en} \
+      -isolation_sense   high
+
+   set_isolation ISOxcal2avdd_lo -domain  PDxcal  \
+      -source PDxcal.primary \
+      -sink   PDxcvr_avdd.primary \
+      -applies_to outputs \
+      -location other \
+      -isolation_supply_set SS_xcvr_avdd \
+      -clamp_value 0
+
+   set_isolation_control ISOxcal2avdd_lo -domain  PDxcal  \
+      -isolation_signal  {u_pwr_isl_ctrl_sm_icfg_xcal/power_isolation_en} \
+      -isolation_sense   high
+
+   set iso_xcal_out [ list \
+      u_rx_ctrl/u_rx_sampler_latch_cal_wrapper/rx_sampler_latch_cal_diag \
+   ]
+
+   set_isolation ISOxcal2out_lo -domain  PDxcal  \
+      -source PDxcal.primary \
+      -applies_to outputs \
+      -elements $iso_xcal_out \
+      -location other \
+      -isolation_supply_set SS_xcvr_avdd \
+      -clamp_value 0
+
+   set_isolation_control ISOxcal2out_lo -domain  PDxcal  \
+      -isolation_signal  {u_pwr_isl_ctrl_sm_icfg_xcal/power_isolation_en} \
+      -isolation_sense   high
+
+   set_isolation ISOxdp2vdd_dft_lo -domain  PDxdp  \
+      -source PDxdp.primary \
+      -sink   PDxcvr_vdd.primary \
+      -applies_to outputs \
+      -location other \
+      -isolation_supply_set SS_xcvr_avdd \
+      -clamp_value 0
+
+   set_isolation_control ISOxdp2vdd_dft_lo -domain  PDxdp  \
+      -isolation_signal  {u_pwr_isl_ctrl_sm_icfg_xdp/power_isolation_en} \
+      -isolation_sense   high
+
+   set_isolation ISOxdp2avdd_lo -domain  PDxdp  \
+      -source PDxdp.primary \
+      -sink   PDxcvr_avdd.primary \
+      -applies_to outputs \
+      -location other \
+      -isolation_supply_set SS_xcvr_avdd \
+      -clamp_value 0
+
+   set_isolation_control ISOxdp2avdd_lo -domain  PDxdp  \
+      -isolation_signal  {u_pwr_isl_ctrl_sm_icfg_xdp/power_isolation_en} \
+      -isolation_sense   high
+
+   # need 0xAAAA isolation value on txda_ser_data (SER-9428)
+   # sync_fifo_elec_idle_delayed needs high isolation (SER-9405)
+   set PDxdp2avdd_iso_hi [list \
+       u_tx_dsync/sync_fifo_elec_idle_delayed \
+       u_tx_dsync/txda_ser_data[1] \
+       u_tx_dsync/txda_ser_data[3] \
+       u_tx_dsync/txda_ser_data[5] \
+       u_tx_dsync/txda_ser_data[7] \
+       u_tx_dsync/txda_ser_data[9] \
+       u_tx_dsync/txda_ser_data[11] \
+       u_tx_dsync/txda_ser_data[13] \
+       u_tx_dsync/txda_ser_data[15] \
+       u_tx_dsync/txda_ser_data[17] \
+       u_tx_dsync/txda_ser_data[19] \
+       u_rx_ctrl/u_rx_equalizer_engine/u_rx_equalizer_engine_cdb_regs/tx_fifo_empty \
+   ]
+   set_isolation ISOxdp2avdd_hi -domain  PDxdp  \
+      -source PDxdp.primary \
+      -sink   PDxcvr_avdd.primary \
+      -applies_to outputs \
+      -elements $PDxdp2avdd_iso_hi \
+      -location other \
+      -isolation_supply_set SS_xcvr_avdd \
+      -clamp_value 1
+
+   set_isolation_control ISOxdp2avdd_hi -domain  PDxdp  \
+      -isolation_signal  {u_pwr_isl_ctrl_sm_icfg_xdp/power_isolation_en} \
+      -isolation_sense   high
+
+   set_isolation ISOxdp2xcal_lo -domain  PDxdp  \
+      -source PDxdp.primary \
+      -sink   PDxcal.primary \
+      -applies_to outputs \
+      -location other \
+      -isolation_supply_set SS_xcvr_avdd \
+      -clamp_value 0
+
+   set_isolation_control ISOxdp2xcal_lo -domain  PDxdp  \
+      -isolation_signal  {u_pwr_isl_ctrl_sm_icfg_xdp/power_isolation_en} \
+      -isolation_sense   high
+
+   # specific rule to outputs that go to multiple power domains
+   set PDxdp_out [list \
+      u_rx_dsync/rx_rd_dsync_out \
+      u_rx_dsync/rx_rd_e_dsync_out \
+      u_rx_dsync/rx_rd_i_dsync_out \
+      u_rx_dsync/rx_rd_q_dsync_out \
+      u_tx_dsync/tx_sfifo_align_bump_out \
+      u_rx_ctrl/u_rx_equalizer_engine/rx_eq_eval_status \
+      u_rx_ctrl/u_rx_equalizer_engine/rx_eq_eval_complete \
+      u_rx_ctrl/u_rx_equalizer_engine/rx_link_eval_fb_dir_change \
+   ]
+
+   set_isolation ISOxdp2multi_lo -domain  PDxdp  \
+      -source PDxdp.primary \
+      -applies_to outputs \
+      -elements $PDxdp_out \
+      -location other \
+      -isolation_supply_set SS_xcvr_avdd \
+      -clamp_value 0
+
+   set_isolation_control ISOxdp2multi_lo -domain  PDxdp  \
+      -isolation_signal  {u_pwr_isl_ctrl_sm_icfg_xdp/power_isolation_en} \
+      -isolation_sense   high
+
+   set_isolation ISOxdp2diag_lo -domain  PDxdp  \
+      -source PDxdp.primary \
+      -sink   PDdiag.primary \
+      -applies_to outputs \
+      -location other \
+      -isolation_supply_set SS_xcvr_avdd \
+      -clamp_value 0
+
+   set_isolation_control ISOxdp2diag_lo -domain  PDxdp  \
+      -isolation_signal  {u_pwr_isl_ctrl_sm_icfg_xdp/power_isolation_en} \
+      -isolation_sense   high
+
+   set_isolation ISOdiag_lo -domain  PDdiag  \
+      -source PDdiag.primary \
+      -diff_supply_only TRUE \
+      -applies_to outputs \
+      -location other \
+      -isolation_supply_set SS_xcvr_avdd \
+      -clamp_value 0
+
+   set_isolation_control ISOdiag_lo -domain  PDdiag  \
+      -isolation_signal  {diag_isl_power_isolation_en_in} \
+      -isolation_sense   high
+
+   #
+   # isolate high
+   #
+   set drv_ctrl_hi_ports [list \
+      u_drv_ctrl/u_hbdc_usb4_wrapper/txda_drv_group0_main_zero \
+      u_drv_ctrl/u_hbdc_usb4_wrapper/txda_drv_group0_emp_zero \
+      u_drv_ctrl/u_hbdc_usb4_wrapper/txda_drv_group0_mgn_zero \
+      u_drv_ctrl/u_hbdc_usb4_wrapper/txda_drv_group1_main_zero \
+      u_drv_ctrl/u_hbdc_usb4_wrapper/txda_drv_group1_mgn_zero \
+      u_drv_ctrl/u_hbdc_usb4_wrapper/txda_drv_group2_main_zero \
+      u_drv_ctrl/u_hbdc_usb4_wrapper/txda_drv_group2_emp_zero \
+      u_drv_ctrl/u_hbdc_usb4_wrapper/txda_drv_group2_mgn_zero \
+      u_drv_ctrl/u_hbdc_usb4_wrapper/txda_drv_group3_main_zero \
+      u_drv_ctrl/u_hbdc_usb4_wrapper/txda_drv_group3_mgn_zero \
+      u_drv_ctrl/u_hbdc_usb4_wrapper/txda_drv_group4_main_zero \
+      u_drv_ctrl/u_hbdc_usb4_wrapper/txda_drv_group4_emp_zero \
+      u_drv_ctrl/u_hbdc_usb4_wrapper/txda_drv_group4_mgn_zero \
+   ]
+  #    u_drv_ctrl/u_hbdc_usb4_wrapper/txda_drv_pre_main_zero \
+  #    u_drv_ctrl/u_hbdc_usb4_wrapper/txda_drv_pre_emp_zero \
+  #    u_drv_ctrl/u_hbdc_usb4_wrapper/txda_drv_pre_mgn_zero \
+  #    u_drv_ctrl/u_hbdc_usb4_wrapper/txda_drv_pre_dis_one \
+  #    u_drv_ctrl/u_hbdc_usb4_wrapper/txda_drv_post_main_zero \
+  #    u_drv_ctrl/u_hbdc_usb4_wrapper/txda_drv_post_emp_zero \
+  #    u_drv_ctrl/u_hbdc_usb4_wrapper/txda_drv_post_mgn_zero \
+  #    u_drv_ctrl/u_hbdc_usb4_wrapper/txda_drv_post_dis_one \
+
+   set_isolation ISOxcvrc_hi -domain  PDxcvrc  \
+      -source PDxcvrc.primary \
+      -sink   PDxcvr_avdd.primary \
+      -applies_to outputs \
+      -elements $drv_ctrl_hi_ports \
+      -location other \
+      -isolation_supply_set SS_xcvr_avdd \
+      -clamp_value 1
+
+   set_isolation_control ISOxcvrc_hi -domain  PDxcvrc  \
+      -isolation_signal  {xcvrc_isl_power_isolation_en_in} \
+      -isolation_sense   high
+
+   # need rule for scan paths
+#   if { $is_post_synth == 1 } {
+
+      set_isolation ISOxcal2xdp_dft_lo -domain  PDxdp  \
+         -source PDxcal.primary \
+         -sink   PDxdp.primary \
+         -applies_to inputs \
+         -location other \
+         -isolation_supply_set SS_xcvr_avdd \
+         -clamp_value 0
+   
+      set_isolation_control ISOxcal2xdp_dft_lo -domain  PDxdp  \
+         -isolation_signal  {u_pwr_isl_ctrl_sm_icfg_xcal/power_isolation_en} \
+         -isolation_sense   high
+
+#   }
+
+   ######################################
+   # Create retention rules
+   ######################################
+
+   # lockup latches do not exist in the RTL. find_objects will warn if no match
+   # is found (which is stupid). To work around get all objects in that instance
+   # then use regexp to find the lockup latches
+   # 
+   # all of this just to prevent CLP errors after DFT insertion
+
+   ##############
+   # had to split up retention for PDxcvrc domain. Different restore and save conditions
+   set SRxcvrc_sm_inst [list \
+      u_xcvr_ctrl/u_multical_sm_v3_psm_cal \
+      u_xcvr_ctrl/u_power_sm_v4_top \
+   ]
+   set SRxcvrc_sm_exclude [list ]
+   foreach xcvrc_inst $SRxcvrc_sm_inst {
+      set all_inst [find_objects $xcvrc_inst -object_type inst -transitive TRUE -pattern {*}]
+      foreach inst $all_inst {
+         if {[regexp {DFT_lockup} $inst]} {
+            set SRxcvrc_sm_exclude [concat $SRxcvrc_sm_exclude $inst]
+	    #puts $inst
+         }
+      }
+   }
+
+   # active xcvr_psm_reset_n gates off the save and restore controls in the RTL
+   set_retention SRxcvrc_sm -domain PDxcvrc \
+	-elements          $SRxcvrc_sm_inst \
+  	-exclude_elements  $SRxcvrc_sm_exclude \
+	-save_signal       {u_xcvrc_pwr_isl_ctrl/state_ret_save    high} \
+	-restore_signal    {u_xcvrc_pwr_isl_ctrl/state_ret_restore low} \
+	-retention_supply_set  SS_xcvr_avdd
+
+   ##############
+   # had to split up retention for PDxcvrc domain. Different restore and save conditions
+   set SRxcvrc_tx_inst [list \
+      u_xcvr_ctrl/u_xcvr_hsrrsm_tx \
+   ]
+   set SRxcvrc_tx_exclude [list ]
+   foreach xcvrc_inst $SRxcvrc_tx_inst {
+      set all_inst [find_objects $xcvrc_inst -object_type inst -transitive TRUE -pattern {*}]
+      foreach inst $all_inst {
+         if {[regexp {DFT_lockup} $inst]} {
+            set SRxcvrc_tx_exclude [concat $SRxcvrc_tx_exclude $inst]
+	    #puts $inst
+         }
+      }
+   }
+
+   # active xcvr_psm_reset_n gates off the save and restore controls in the RTL
+   set_retention SRxcvrc_tx  -domain PDxcvrc \
+	-elements          $SRxcvrc_tx_inst \
+  	-exclude_elements  $SRxcvrc_tx_exclude \
+	-save_signal       {u_xcvrc_pwr_isl_ctrl/state_ret_save    high} \
+	-restore_signal    {u_xcvrc_pwr_isl_ctrl/state_ret_restore low} \
+	-save_condition    {u_xcvr_ctrl/tx_reset_sync_n} \
+	-restore_condition {u_xcvr_ctrl/tx_reset_sync_n} \
+	-retention_supply_set  SS_xcvr_avdd
+
+   ##############
+   # had to split up retention for PDxcvrc domain. Different restore and save conditions
+   set SRxcvrc_rx_inst [list \
+      u_xcvr_ctrl/u_xcvr_hsrrsm_rx \
+   ]
+   set SRxcvrc_rx_exclude [list ]
+   foreach xcvrc_inst $SRxcvrc_rx_inst {
+      set all_inst [find_objects $xcvrc_inst -object_type inst -transitive TRUE -pattern {*}]
+      foreach inst $all_inst {
+         if {[regexp {DFT_lockup} $inst]} {
+            set SRxcvrc_rx_exclude [concat $SRxcvrc_rx_exclude $inst]
+	    #puts $inst
+         }
+      }
+   }
+
+   # active xcvr_psm_reset_n gates off the save and restore controls in the RTL
+   set_retention SRxcvrc_rx  -domain PDxcvrc \
+	-elements          $SRxcvrc_rx_inst \
+  	-exclude_elements  $SRxcvrc_rx_exclude \
+	-save_signal       {u_xcvrc_pwr_isl_ctrl/state_ret_save    high} \
+	-restore_signal    {u_xcvrc_pwr_isl_ctrl/state_ret_restore low} \
+	-save_condition    {u_xcvr_ctrl/rx_reset_sync_n} \
+	-restore_condition {u_xcvr_ctrl/rx_reset_sync_n} \
+	-retention_supply_set  SS_xcvr_avdd
+
+   ##############
+   set SRxdp_ree_inst $PDxdp_retnt_inst
+
+   set SRxdp_ree_exclude [list ]
+   foreach xdp_inst $SRxdp_ree_inst {
+      set all_inst [find_objects $xdp_inst -object_type inst -transitive TRUE -pattern {*}]
+      foreach inst $all_inst {
+         if {[regexp {DFT_lockup} $inst]} {
+            set SRxdp_ree_exclude [concat $SRxdp_ree_exclude $inst]
+	    #puts $inst
+         }
+      }
+   }
+
+   # rx_ree_ctrl_reset_n gates off the save and restore controls in the RTL
+   set_retention SRxdp_ree  -domain PDxdp \
+	-elements          $SRxdp_ree_inst \
+  	-exclude_elements  $SRxdp_ree_exclude \
+	-save_signal       {u_xdp_pwr_isl_ctrl/state_ret_save   high} \
+	-restore_signal    {u_xdp_pwr_isl_ctrl/state_ret_restore low} \
+	-save_condition    {u_rx_ctrl/u_rx_equalizer_engine/rx_ree_fcn_reset_n}    \
+	-restore_condition {u_rx_ctrl/u_rx_equalizer_engine/rx_ree_fcn_reset_n}    \
+	-retention_supply_set  SS_xcvr_avdd
+
+
+   #################################################
+   ##  Define Power Swtiches
+   #################################################
+
+   create_power_switch PSxcal_ph_1 \
+	-domain PDxcal \
+	-input_supply_port  {TVDD PDxcvr_avdd.primary.power} \
+        -output_supply_port {VDD  PDxcal.primary.power} \
+ 	-control_port  { NSLEEPIN u_pwr_isl_ctrl_sm_icfg_xcal/power_en_ph_1 } \
+        -off_state {full_off !NSLEEPIN} \
+        -on_state  {full_on TVDD NSLEEPIN}
+
+   create_power_switch PSxcal_ph_2 \
+	-domain PDxcal \
+	-input_supply_port  {TVDD PDxcvr_avdd.primary.power} \
+        -output_supply_port {VDD  PDxcal.primary.power} \
+ 	-control_port  { NSLEEPIN u_pwr_isl_ctrl_sm_icfg_xcal/power_en_ph_2 } \
+        -off_state {full_off !NSLEEPIN} \
+        -on_state  {full_on TVDD NSLEEPIN}
+
+   create_power_switch PSxcvrc_ph_1 \
+	-domain PDxcvrc \
+	-input_supply_port  {TVDD PDxcvr_avdd.primary.power} \
+        -output_supply_port {VDD  PDxcvrc.primary.power} \
+ 	-control_port  { NSLEEPIN xcvrc_isl_power_en_ph_1_in } \
+        -off_state {full_off !NSLEEPIN} \
+        -on_state  {full_on TVDD NSLEEPIN}
+
+   create_power_switch PSxcvrc_ph_2 \
+	-domain PDxcvrc \
+	-input_supply_port  {TVDD PDxcvr_avdd.primary.power} \
+        -output_supply_port {VDD  PDxcvrc.primary.power} \
+ 	-control_port  { NSLEEPIN xcvrc_isl_power_en_ph_2_in } \
+        -off_state {full_off !NSLEEPIN} \
+        -on_state  {full_on TVDD NSLEEPIN}
+
+   create_power_switch PSxdp_ph_1 \
+	-domain PDxdp \
+	-input_supply_port  {TVDD PDxcvr_avdd.primary.power} \
+        -output_supply_port {VDD  PDxdp.primary.power} \
+ 	-control_port  { NSLEEPIN u_pwr_isl_ctrl_sm_icfg_xdp/power_en_ph_1 } \
+        -off_state {full_off !NSLEEPIN} \
+        -on_state  {full_on TVDD NSLEEPIN}
+
+   create_power_switch PSxdp_ph_2 \
+	-domain PDxdp \
+	-input_supply_port  {TVDD PDxcvr_avdd.primary.power} \
+        -output_supply_port {VDD  PDxdp.primary.power} \
+ 	-control_port  { NSLEEPIN u_pwr_isl_ctrl_sm_icfg_xdp/power_en_ph_2 } \
+        -off_state {full_off !NSLEEPIN} \
+        -on_state  {full_on TVDD NSLEEPIN}
+
+   create_power_switch PSdiag_ph_1 \
+	-domain PDdiag \
+	-input_supply_port  {TVDD PDxcvr_avdd.primary.power} \
+        -output_supply_port {VDD  PDdiag.primary.power} \
+ 	-control_port  { NSLEEPIN diag_isl_power_en_ph_1_in } \
+        -off_state {full_off !NSLEEPIN} \
+        -on_state  {full_on TVDD NSLEEPIN}
+
+   create_power_switch PSdiag_ph_2 \
+	-domain PDdiag \
+	-input_supply_port  {TVDD PDxcvr_avdd.primary.power} \
+        -output_supply_port {VDD  PDdiag.primary.power} \
+ 	-control_port  { NSLEEPIN diag_isl_power_en_ph_2_in } \
+        -off_state {full_off !NSLEEPIN} \
+        -on_state  {full_on TVDD NSLEEPIN}
+
+   #################################################
+   ##  Define Power States and Modes
+   #################################################
+
+   add_power_state SS_xcvr_avdd     -state  ONg {-supply_expr {ground== `{FULL_ON, 0.0 }}}
+   add_power_state SS_xcvr_avdd     -state  ON {-supply_expr {power == `{FULL_ON, 0.75}}} -state OFF {-supply_expr {power == `{OFF}}}
+   add_power_state SS_xcvr_avdd_h   -state  ON {-supply_expr {power == `{FULL_ON, 1.2}}} -state OFF {-supply_expr {power == `{OFF}}}
+   add_power_state SS_xcvr_avdd_clk -state  ON {-supply_expr {power == `{FULL_ON, 0.75}}} -state OFF {-supply_expr {power == `{OFF}}}
+   add_power_state SS_xcvr_xcal     -state  ON {-supply_expr {power == `{FULL_ON, 0.75}}} -state OFF {-supply_expr {power == `{OFF}}}
+   add_power_state SS_xcvr_xcvrc    -state  ON {-supply_expr {power == `{FULL_ON, 0.75}}} -state OFF {-supply_expr {power == `{OFF}}}
+   add_power_state SS_xcvr_xdp      -state  ON {-supply_expr {power == `{FULL_ON, 0.75}}} -state OFF {-supply_expr {power == `{OFF}}}
+   add_power_state SS_xcvr_diag     -state  ON {-supply_expr {power == `{FULL_ON, 0.75}}} -state OFF {-supply_expr {power == `{OFF}}}
+   add_power_state SS_vdd           -state  ONg {-supply_expr {ground== `{FULL_ON, 0.0 }}}
+   add_power_state SS_xcvr_avdd_tx  -state  ON {-supply_expr {power == `{FULL_ON, 0.75}}} -state OFF {-supply_expr {power == `{OFF}}}
+   add_power_state SS_xcvr_avdd_rx  -state  ON {-supply_expr {power == `{FULL_ON, 0.75}}} -state OFF {-supply_expr {power == `{OFF}}}
+
+
+# valid values for lib are 0.675 to 0.825
+   add_power_state SS_vdd           -state  ON {-supply_expr {power == `{FULL_ON, 0.675}}} -state OFF {-supply_expr {power == `{OFF}}}
+
+
+   #                                0      1        2          3              4           6              7            8             9           10      11
+   create_pst xcvr_pst -supplies { agnd    vdd   avdd       avdd_h       avdd_clk  xcvr_pso_xcal  xcvr_pso_xcvrc  xcvr_pso_xdp  xcvr_pso_diag  avdd_tx avdd_rx  }
+
+   #                                                     0    1   2   3   4   6   7   8   9   10 11
+   add_pst_state PM_func_all_on   -pst xcvr_pst -state { ONg  ON  ON  ON  ON  ON  ON  ON  ON  ON ON}
+   add_pst_state PM_all_off       -pst xcvr_pst -state { ONg OFF OFF OFF OFF OFF OFF OFF OFF OFF OFF}
+
+   # the base power modes from the Macro Power Modes table in the PMA spec
+   add_pst_state PM_a3xit         -pst xcvr_pst -state { ONg  ON  ON  ON  ON  OFF  ON  ON OFF ON ON} 
+   add_pst_state PM_sspnd         -pst xcvr_pst -state { ONg  ON  ON  ON  ON  OFF OFF OFF OFF ON ON}
+   add_pst_state PM_a4xit         -pst xcvr_pst -state { ONg  ON  ON  ON  ON  OFF  ON OFF OFF ON ON}
+
+   # remaining possible combinations for pllc, ccal, xcvrc, and diag
+   add_pst_state PM_xcvr_ovrd_1   -pst xcvr_pst -state { ONg  ON  ON  ON  ON  OFF OFF OFF  ON ON ON}
+   add_pst_state PM_xcvr_ovrd_2   -pst xcvr_pst -state { ONg  ON  ON  ON  ON  OFF OFF  ON OFF ON ON}
+   add_pst_state PM_xcvr_ovrd_3   -pst xcvr_pst -state { ONg  ON  ON  ON  ON  OFF OFF  ON  ON ON ON}
+   # duplicate of PM_a4xit
+#   add_pst_state PM_xcvr_ovrd_4   -pst xcvr_pst -state{ ONg  ON  ON  ON  ON  OFF  ON OFF OFF ON ON}
+   add_pst_state PM_xcvr_ovrd_5   -pst xcvr_pst -state { ONg  ON  ON  ON  ON  OFF  ON OFF  ON ON ON}
+   # duplicate of PM_a3xit
+#   add_pst_state PM_xcvr_ovrd_6   -pst xcvr_pst -stat { ONg  ON  ON  ON  ON  OFF  ON  ON OFF ON ON}
+   add_pst_state PM_xcvr_ovrd_7   -pst xcvr_pst -state { ONg  ON  ON  ON  ON  OFF  ON  ON  ON ON ON}
+   add_pst_state PM_xcvr_ovrd_8   -pst xcvr_pst -state { ONg  ON  ON  ON  ON  ON OFF OFF OFF  ON ON}
+   add_pst_state PM_xcvr_ovrd_9   -pst xcvr_pst -state { ONg  ON  ON  ON  ON  ON OFF OFF  ON  ON ON}
+   add_pst_state PM_xcvr_ovrd_10  -pst xcvr_pst -state { ONg  ON  ON  ON  ON  ON OFF  ON OFF  ON ON}
+   add_pst_state PM_xcvr_ovrd_11  -pst xcvr_pst -state { ONg  ON  ON  ON  ON  ON OFF  ON  ON  ON ON}
+   add_pst_state PM_xcvr_ovrd_12  -pst xcvr_pst -state { ONg  ON  ON  ON  ON  ON  ON OFF OFF  ON ON}
+   add_pst_state PM_xcvr_ovrd_13  -pst xcvr_pst -state { ONg  ON  ON  ON  ON  ON  ON OFF  ON  ON ON}
+   add_pst_state PM_xcvr_ovrd_14  -pst xcvr_pst -state { ONg  ON  ON  ON  ON  ON  ON  ON OFF  ON ON}
+

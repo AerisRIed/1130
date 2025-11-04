@@ -1,0 +1,77 @@
+# Indago Command Script (Fri, 12 Sep 2025 16:26:29 +0800)
+#
+# Version 24.09.002-s
+
+#
+# Markers
+#
+# CDL at time 251,210,000,000fs
+
+#
+# Time Folding
+#
+
+#
+# Sequence Time Expansions
+#
+
+#
+# Column Configuration
+#
+waveform column remove -all
+waveform column configure -align left -width 15 name
+waveform column configure -align left -width 4 value
+
+#
+# Signal List
+#
+waveform add {tb_top.u_dut.apb_pclk}
+waveform add {tb_top.u_dut.apb_preset_n}
+waveform add {tb_top.u_dut.apb_tgt_paddr}
+waveform add {tb_top.u_dut.apb_tgt_penable}
+waveform add {tb_top.u_dut.apb_tgt_perr}
+waveform add {tb_top.u_dut.apb_tgt_prdata}
+waveform add {tb_top.u_dut.apb_tgt_pready}
+waveform add {tb_top.u_dut.apb_tgt_psel}
+waveform add {tb_top.u_dut.apb_tgt_pwdata}
+waveform add {tb_top.u_dut.apb_tgt_pwrite}
+waveform add {tb_top.u_dut.pma_cmn_pll0_refclk_sel}
+waveform add {tb_top.u_dut.pma_cmn_pll1_refclk_sel}
+waveform add {tb_top.u_dut.pma_cmn_refclk0_int}
+waveform add {tb_top.u_dut.pma_cmn_refclk1_int}
+waveform add {tb_top.u_dut.pipe7_reset_n}
+waveform add {tb_top.u_dut.pipe7_l00_powerdown}
+waveform add {tb_top.u_dut.pipe7_pll0_en}
+waveform add {tb_top.u_dut.pipe7_pll0_ok}
+waveform add {tb_top.u_dut.pipe7_l00_rate}
+waveform add {tb_top.u_dut.pipe7_l00_clk}
+waveform add {tb_top.u_dut.pipe7_l01_clk}
+waveform add {tb_top.u_dut.pma_tx_td_clk}
+waveform add {tb_top.u_dut.uc_clk}
+waveform add {tb_top.u_dut.u_mp_pma.cmn_pll0_ready}
+waveform add {tb_top.u_dut.pipe7_clk_max_req}
+waveform add {tb_top.u_dut.pipe7_clk_max_ack}
+waveform add {tb_top.u_dut.pipe7_l00_clk}
+waveform add {tb_top.u_dut.pipe7_clk_max}
+waveform add {tb_top.u_dut.u_mp_pma.u_pma_rev.u_cmn.cmn_ready}
+waveform add {tb_top.u_dut.pipe7_l00_phy_status}
+waveform add {tb_top.u_dut.pipe7_l01_phy_status}
+waveform add {tb_top.u_dut.u_mp_pcs_top_ln_0.mp_pcs_serdes.i_cmn_if.pipe_clk}
+waveform add {tb_top.u_dut.u_phy_clkrst.u_gate_pcs_pipe7_l00_clk.i_clk_gate.clk_in}
+waveform add {tb_top.u_dut.u_phy_clkrst.u_gate_pcs_pipe7_l00_clk.i_clk_gate.clk_en}
+waveform add {tb_top.u_dut.u_phy_clkrst.pipe7_clk_en_ln_0}
+waveform add {tb_top.u_dut.u_phy_clkrst.usb_td_clk_en_ln_01}
+waveform add {tb_top.u_dut.u_phy_clkrst.iso_mode_usb4_en}
+waveform add {tb_top.u_dut.u_phy_clkrst.typec_conn_dir}
+waveform add {tb_top.u_dut.u_phy_clkrst.pma_if_sel[1:0]}
+waveform add {tb_top.u_dut.u_pcs_iso_ctrl_cmn.u_pcs_isomux_phy_mode.sel}
+
+#
+# Visible Time Range
+#
+waveform xview limits 0ns 752,234.15ns
+
+#
+# Insertion Point
+#
+waveform insertion {,39}

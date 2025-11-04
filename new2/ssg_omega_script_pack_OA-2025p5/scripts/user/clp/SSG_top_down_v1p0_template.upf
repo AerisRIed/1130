@@ -1,0 +1,54 @@
+upf_version 2.1
+set_design_attributes -elements {.} -attribute {domain_interface_def 2.1}
+set_scope /
+
+##############################################################################
+# This is a simple UPF for a single domain block
+# Set the net name here. It is assumed bias net are the same as the rail nets.
+# The voltage value refers to the voltage of the typical corner.
+##############################################################################
+set pwr_net VDD
+set gnd_net GND
+set pwr_voltage 0.75
+
+##############################################################################
+## Creating nets, ports and connecting both
+##############################################################################
+set supply_nets [concat ${pwr_net} ${gnd_net}] 
+foreach sn ${supply_nets} {
+   create_supply_net  ${sn}
+   create_supply_port ${sn}
+   connect_supply_net ${sn} -ports ${sn} 
+}
+
+##############################################################################
+## Create supply_sets
+##############################################################################
+set supply_set_name SS_${pwr_net}
+create_supply_set ${supply_set_name} \
+    -function [list power  ${pwr_net}] \
+    -function [list ground ${gnd_net}] \
+    -function [list nwell  ${pwr_net}] \
+    -function [list pwell  ${gnd_net}]
+
+##############################################################################
+## Create power domain and define it as top hierarchy
+##############################################################################
+set power_domain_name TOP
+create_power_domain ${power_domain_name} \
+    -supply [list primary ${supply_set_name}] \
+    -include_scope \
+    -elements {.}
+
+##############################################################################
+## Explicitly assign driver and receiver supply sets of top level boundary ports
+##############################################################################
+set_port_attributes -elements {.} -applies_to inputs  -driver_supply   ${supply_set_name}
+set_port_attributes -elements {.} -applies_to outputs -receiver_supply ${supply_set_name}
+
+##############################################################################
+##  Define Power States and Modes
+##############################################################################
+add_power_state ${supply_set_name}   -supply -state "ON -supply_expr {power == {FULL_ON, ${pwr_voltage}} && ground == {FULL_ON, 0.0}} -simstate NORMAL -legal -complete"
+add_power_state ${power_domain_name} -domain -state "PM_all_on -logic_expr {${supply_set_name} == ON} -legal -complete"
+

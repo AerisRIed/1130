@@ -1,0 +1,91 @@
+========================================
+Sanity_tb Simulation Usage Guide
+========================================
+
+Step-by-Step Simulation Procedure:
+----------------------------------
+1. Source the environment setup script:
+    cd ../../../../
+    source sourceme.csh
+
+2. Navigate to the simulation run directory:
+    cd $PHY_WORK_AREA/trunk/design/tb/run/
+
+3. Launch simulation with a specific testcase:
+    ./runsim.sh {testcase_name} {option}
+
+4. Open waveform viewer:
+    cd result_{testcase_name}_{option}
+    ./run_vdebug.sh
+
+Testcase Name Reference:
+------------------------
+All available testcase names are listed in:
+    $PHY_WORK_AREA/trunk/design/tb/test/testlib/
+
+Testcase list :
+----------------------------
+| Testcases         | Command  (x mains all legal value)                               |
+|-------------------|------------------------------------------------------------------|
+| DP_UHBR13P5_xlane |./runsim.sh test_sanity_dp_32bits       uhbr13p5  {x}lane dp_only |
+| DP_RBR_xlane      |./runsim.sh test_sanity_dp_20bits       rbr       {x}lane dp_only |
+| Usb4_genx_xlane   |./runsim.sh test_sanity_loopback_usb4   u4gen{x}  {x}lane         |
+| Usb32_gen12_xlane |./runsim.sh test_sanity_loopback_usb32  gen1      {x}lane         |
+|-------------------|------------------------------------------------------------------|
+
+Protocal Configuration Reference:
+-----------------------------
+| Lane Option   | Description                                      |
+|---------------|--------------------------------------------------|
+| dp_only       | test dp only protocal                            |
+| alt_mode      | test alt_mode protocal                           |
+| usb4          | (optional, bind with u4gen2/u4gen3)              |
+|---------------|--------------------------------------------------|
+
+Lane Configuration Reference:
+-----------------------------
+| Lane Option   | Description                                      |
+|---------------|--------------------------------------------------|
+| 1lane         | x1 PIPE7/4 lane or x1 DisplayPort lane           |
+| 2lane         | x2 PIPE7/4 lane or x2 DisplayPort lane           |
+| 4lane         | x4 DisplayPort lane                              |
+| u3_1dplane    | x1 PIPE4 lane and x1 DisplayPort lane            |
+| u3_2dplane    | x1 PIPE4 lane and x2 DisplayPort lane            |
+|---------------|--------------------------------------------------|
+
+Gen Configuration Reference:
+----------------------------
+| Gen Option    | Description                                      |
+|---------------|--------------------------------------------------|
+| u3gen1        | USB 3.2 Gen1                                     |
+| u3gen2        | USB 3.2 Gen2                                     |
+| u4gen2        | USB 4 Gen2                                       |
+| u4gen3        | USB 4 Gen3                                       |
+| uhbr20        | DisplayPort UHBR20                               |
+| uhbr13p5      | DisplayPort UHBR13.5                             |
+| uhbr10        | DisplayPort UHBR10                               |
+| hbr3          | DisplayPort HBR3                                 |
+| hbr2          | DisplayPort HBR2                                 |
+| hbr           | DisplayPort HBR                                  |
+| rbr           | DisplayPort RBR                                  |
+|---------------|--------------------------------------------------|
+
+Other Configuration Reference:
+----------------------------
+| Gen Option    | Description                                      |
+|---------------|--------------------------------------------------|
+| no_wave       | Simulaiton witout wavefrom                       |
+| jump_rxdet    | Jump rx detect for usb32                         |
+|---------------|--------------------------------------------------|
+
+Notes:
+------
+- Ensure the environment variable $PHY_WORK_AREA is correctly set before running simulations.
+- Waveform viewer (run_vdebug.sh) requires simulation output to be available.
+- For new testcases, add entries to the testlib directory and update run scripts accordingly.
+
+
+
+
+
+

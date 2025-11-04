@@ -1,0 +1,1098 @@
+
+upf_version 2.0
+
+   # rule required for post synth
+   # The default is post synthesis
+   if { ![info exists is_post_synth] } { set is_post_synth 1 }
+
+   # need variable for wreal simulations
+   if { ![info exists is_wreal] }      { set is_wreal NO }
+
+   # indication if running gates
+   if { ![info exists is_gate_sim] }   { set is_gate_sim 0 }
+
+   # indication if VCS simulation
+   if { ![info exists is_vcs_sim] }    { set is_vcs_sim 0 }
+
+   puts "For cmn.upf: is_vcs_sim var is set to $is_vcs_sim"
+
+
+   #################################################
+   ##  Define Power nets
+   #################################################
+	
+   #set supply_nets { \
+   #   cmn_avdd \ -> avdd
+   #   gnd \  -> agnd
+   #   cmn_avdd_clk \ -> avdd_clk
+   #   cmn_avdd_h \   -> avdd_h
+   #   vdd \   -> isolation usage
+   #   cmn_aonvdd \
+   #} 
+   
+
+   set supply_nets { \
+     avdd \
+     agnd \
+     avdd_clk \
+     avdd_h \
+     vdd    \
+     cmn_aonvdd \
+   } 
+
+
+   foreach sn $supply_nets {
+      create_supply_net $sn
+      create_supply_port $sn
+      connect_supply_net $sn -ports $sn 
+   }
+
+   # internal nets for switched domain
+#   create_supply_net cmn_pso_cdb  -resolve parallel
+   create_supply_net cmn_pso_pllc -resolve parallel
+   create_supply_net cmn_pso_ccal -resolve parallel
+   create_supply_net cmn_pso_diag -resolve parallel
+
+   ######################################
+   # Create supply_sets
+   ######################################
+
+
+#   create_supply_set  SS_cmn_avdd       -function {power  cmn_avdd} 	 	-function {ground  gnd} \
+#                                        -function {nwell  cmn_avdd} 	 	-function {pwell   gnd}
+#   create_supply_set  SS_cmn_avdd_clk 	-function {power  cmn_avdd_clk}	    -function {ground  gnd} \
+#                                        -function {nwell  cmn_avdd} 	 	-function {pwell   gnd}
+#   create_supply_set  SS_cmn_avdd_h 	-function {power  cmn_avdd_h}	        -function {ground  gnd} \
+#                                        -function {nwell  cmn_avdd} 	 	-function {pwell   gnd}
+##   create_supply_set  SS_cmn_pso_cdb 	-function {power  cmn_pso_cdb}  	-function {ground  gnd} \
+##                                        -function {nwell  cmn_avdd} 	 	-function {pwell   gnd}
+#   create_supply_set  SS_cmn_pso_pllc 	-function {power  cmn_pso_pllc}  	-function {ground  gnd} \
+#                                        -function {nwell  cmn_avdd} 	 	-function {pwell   gnd}
+#   create_supply_set  SS_cmn_pso_ccal	-function {power  cmn_pso_ccal}  	-function {ground  gnd} \
+#                                        -function {nwell  cmn_avdd} 	 	-function {pwell   gnd}
+#   create_supply_set  SS_cmn_pso_diag 	-function {power  cmn_pso_diag}  	-function {ground  gnd} \
+#                                        -function {nwell  cmn_avdd} 	 	-function {pwell   gnd}
+#   create_supply_set  SS_vdd            -function {power  vdd} 	 		-function {ground  gnd}
+#   create_supply_set  SS_cmn_aonvdd     -function {power  cmn_aonvdd}		-function {ground  gnd}
+
+
+   create_supply_set  SS_cmn_avdd       -function {power  avdd} 	 	-function {ground  agnd} \
+                                        -function {nwell  avdd} 	 	-function {pwell   agnd}
+   create_supply_set  SS_cmn_avdd_clk 	-function {power  avdd_clk}	    -function {ground  agnd} \
+                                        -function {nwell  avdd} 	 	-function {pwell   agnd}
+   create_supply_set  SS_cmn_avdd_h 	-function {power  avdd_h}	    -function {ground  agnd} \
+                                        -function {nwell  avdd} 	 	-function {pwell   agnd}
+   create_supply_set  SS_cmn_pso_pllc 	-function {power  cmn_pso_pllc} -function {ground  agnd} \
+                                        -function {nwell  avdd} 	 	-function {pwell   agnd}
+   create_supply_set  SS_cmn_pso_ccal	-function {power  cmn_pso_ccal} -function {ground  agnd} \
+                                        -function {nwell  avdd} 	 	-function {pwell   agnd}
+   create_supply_set  SS_cmn_pso_diag 	-function {power  cmn_pso_diag} -function {ground  agnd} \
+                                        -function {nwell  avdd} 	 	-function {pwell   agnd}
+   create_supply_set  SS_vdd            -function {power  vdd} 	 		-function {ground  agnd}
+   create_supply_set  SS_cmn_aonvdd     -function {power  cmn_aonvdd} 	-function {ground  agnd}
+
+
+
+   #################################################
+   ##  Connect up Macro model supplies
+   #################################################
+
+   if { $is_wreal == NO } {
+     # connect_supply_net  cmn_avdd           -ports u_cmn_ana/cmn_avdd
+     # connect_supply_net  gnd                -ports u_cmn_ana/gnd -vct UPF_GNDZERO2SV_LOGIC
+     # connect_supply_net  cmn_aonvdd         -ports u_cmn_ana/cmn_aonvdd
+     # connect_supply_net  cmn_avdd_h         -ports u_cmn_ana/cmn_avdd_h	
+     # connect_supply_net  cmn_avdd_clk       -ports u_cmn_ana/cmn_avdd_clk
+
+      connect_supply_net  avdd           -ports u_cmn_ana/avdd
+
+      #TODO ??
+      connect_supply_net  agnd           -ports u_cmn_ana/agnd -vct UPF_GNDZERO2SV_LOGIC
+      
+      connect_supply_net  cmn_aonvdd     -ports u_cmn_ana/cmn_aonvdd
+      connect_supply_net  avdd_h         -ports u_cmn_ana/avdd_h	
+      connect_supply_net  avdd_clk       -ports u_cmn_ana/avdd_clk
+   }
+
+   ######################################
+   # Lists of instances
+   ######################################
+      #u_cmn_pll1_ctrl/u_pll_ctrl_sm_v3_top/u_pll_ctrl_sm_v3_cdb_regs \
+      #u_cmn_pll1_ctrl/u_pll_ctrl/u_vco_cal_sm_v4_top/u_vco_cal_sm_v4_cdb_regs \
+      #u_cmn_pll1_ctrl/u_pll_ctrl/u_pll_var_trm_wrapper/u_pll_var_trm_cdb_regs \
+      #u_cmn_pll1_ctrl/u_pll_ctrl/u_pll_lock_detect_v4_top/u_pll_lock_detect_v4_cdb_regs \
+      #u_cmn_pll1_ctrl/u_pll_ctrl/u_ss_wave_signal_gen_top/u_ss_wave_signal_gen_cdb_regs \
+      #u_cmn_pll1_ctrl/u_pll_ctrl/u_pll_ds_modulator_v3_top/u_pll_ds_modulator_v3_cdb_regs \
+      #u_cmn_pll1_ctrl/u_pll_ctrl/u_pll_ctrl_cdb_regs \
+
+   # instances for PDcdb and state retention
+   set PDcdb_regs_inst [list \
+      u_cmn_pll0_ctrl/u_pll_ctrl_sm_v3_top/u_pll_ctrl_sm_v3_cdb_regs \
+      u_cmn_pll0_ctrl/u_pll_ctrl/u_vco_cal_sm_v4_top/u_vco_cal_sm_v4_cdb_regs \
+      u_cmn_pll0_ctrl/u_pll_ctrl/u_pll_var_trm_wrapper/u_pll_var_trm_cdb_regs \
+      u_cmn_pll0_ctrl/u_pll_ctrl/u_pll_lock_detect_v4_top/u_pll_lock_detect_v4_cdb_regs \
+      u_cmn_pll0_ctrl/u_pll_ctrl/u_ss_wave_signal_gen_top/u_ss_wave_signal_gen_cdb_regs \
+      u_cmn_pll0_ctrl/u_pll_ctrl/u_pll_ds_modulator_v3_top/u_pll_ds_modulator_v3_cdb_regs \
+      u_cmn_pll0_ctrl/u_pll_ctrl/u_pll_ctrl_cdb_regs \
+      u_ring_cmn_pll1_ctrl/u_ring_pll_ctrl_sm_v0_top/u_ring_pll_ctrl_sm_v0_cdb_regs \
+      u_ring_cmn_pll1_ctrl/u_ring_pll_ctrl/u_ss_wave_signal_gen_top/u_ss_wave_signal_gen_cdb_regs \
+      u_ring_cmn_pll1_ctrl/u_ring_pll_ctrl/u_pll_ds_modulator_v3_top/u_pll_ds_modulator_v3_cdb_regs \
+      u_ring_cmn_pll1_ctrl/u_ring_pll_ctrl/u_ring_pll_ctrl_cdb_regs \
+      u_cmn_func/u_bg_cal_ctrl_apb_icfg/u_bin_cal_apb/u_bin_cal_apb_cdb_regs \
+      u_cmn_func/u_tx_rescal_ctrl_pd_icfg/u_tx_rescal_ctrl_pd/u_bin_cal_apb_cdb_regs \
+      u_cmn_func/u_tx_rescal_ctrl_pu_icfg/u_tx_rescal_ctrl_pu/u_bin_cal_apb_cdb_regs \
+      u_cmn_func/u_rx_rescal_ctrl_icfg/u_rx_res_cal_ctrl/u_bin_cal_apb_cdb_regs \
+      u_cmn_func/u_cmn_ibiascal_icfg/u_bin_cal_apb/u_bin_cal_apb_cdb_regs \
+      u_cmn_func/u_sd_clk_cal_icfg/u_vco_cal_sm_v4_top/u_vco_cal_sm_v4_cdb_regs \
+   ]
+
+#  putting this on the cdb island is causing all sorts of isolation issues
+#  requires splitting output ports. One for each power domain.
+#      u_cmn_cdb/u_cdb_local_bridge \
+
+   # instances for PDcdb
+   set PDcdb_inst [concat \
+      $PDcdb_regs_inst \
+   ]
+
+   # data_sync instances for PDcmn_avdd
+   set PDcdb_data_sync_inst [list \
+      u_cmn_func/u_cmn_ibiascal_icfg/u_bin_cal_apb/u_bin_cal_apb_cdb_regs/u_data_sync_cal_done \
+      u_cmn_func/u_bg_cal_ctrl_apb_icfg/u_bin_cal_apb/u_bin_cal_apb_cdb_regs/u_data_sync_cal_done \
+      u_cmn_func/u_cmn_clk_freq_msmt_v1_top/u_clk_freq_msmt_v1_cdb_regs/u_data_sync_measurement_done \
+      u_cmn_func/u_cmn_fdiag_ovrd/u_cmn_fdiag_ovrd_cdb_regs/u_data_sync_cmnda_atba2d_dvalid \
+      u_cmn_func/u_rx_rescal_ctrl_icfg/u_rx_res_cal_ctrl/u_bin_cal_apb_cdb_regs/u_data_sync_cal_done \
+      u_cmn_func/u_sd_clk_cal_icfg/u_vco_cal_sm_v4_top/u_vco_cal_sm_v4_cdb_regs/u_data_sync_vco_cal_done \
+      u_cmn_pll0_ctrl/u_pll_ctrl/u_vco_cal_sm_v4_top/u_vco_cal_sm_v4_cdb_regs/u_data_sync_vco_cal_done \
+      #u_cmn_pll1_ctrl/u_pll_ctrl/u_vco_cal_sm_v4_top/u_vco_cal_sm_v4_cdb_regs/u_data_sync_vco_cal_done \
+      u_cmn_func/u_tx_rescal_ctrl_pd_icfg/u_tx_rescal_ctrl_pd/u_bin_cal_apb_cdb_regs/u_data_sync_cal_done \
+      u_cmn_func/u_tx_rescal_ctrl_pu_icfg/u_tx_rescal_ctrl_pu/u_bin_cal_apb_cdb_regs/u_data_sync_cal_done \
+   ]
+
+   # instances for PDcmn_avdd
+   set PDcmn_avdd_cdb_inst [list \
+      u_cmn_ctrl/u_startup_sm_v4_top/u_startup_sm_v4_cdb_regs \
+      u_cmn_ctrl/u_cmn_cdiag_ovrd/u_cmn_cdiag_ovrd_cdb_regs \
+   ]
+
+   # instances for PDcmn_avdd
+#      u_pwr_isl_ctrl_sm_icfg_cdb \
+
+   set PDcmn_avdd_inst [list \
+      u_cmn_clkrst \
+      u_pwr_isl_ctrl_sm_icfg_pllc \
+      u_pwr_isl_ctrl_sm_icfg_ccal \
+      u_pwr_isl_ctrl_sm_icfg_xcvrc \
+      u_pwr_isl_ctrl_sm_icfg_diag \
+      u_cmn_cdb \
+      u_cmn_ctrl/u_startup_sm_v4_top \
+      u_cmn_ctrl/u_multical_sm_v3_bg_cal \
+      u_cmn_ctrl/u_multical_sm_v3_auto_cal \
+      u_cmn_ctrl/u_multical_sm_v3_suspend_setup \
+      u_cmn_ctrl/u_multical_sm_v3_suspend_recovery \
+      u_cmn_ctrl/u_cmn_cdiag_ovrd \
+      u_cmn_func/u_cmn_hsrrsm_tx \
+      u_cmn_func/u_cmn_temp_sensor_filt \
+      u_cmn_func/u_cmn_fdiag_ovrd \
+   ]
+
+   # instances for PDdiag
+   set PDdiag_inst [list \
+      u_cmn_func/u_cmn_clk_freq_msmt_v1_top \
+   ]
+
+   # instances for PDccal
+   set PDccal_inst [list \
+      u_cmn_func/u_sd_clk_cal_icfg \
+      u_cmn_func/u_cmn_ibiascal_icfg \
+      u_cmn_func/u_bg_cal_ctrl_apb_icfg \
+      u_cmn_func/u_rx_rescal_ctrl_icfg \
+      u_cmn_func/u_tx_rescal_ctrl_pu_icfg \
+      u_cmn_func/u_tx_rescal_ctrl_pd_icfg \
+   ]
+
+   # data sync instances for PDcmn_avdd
+   # tx_pu/pd bin_cal data_sync in timberwolf 
+
+   set PDccal_data_sync_inst [list \
+      u_cmn_func/u_sd_clk_cal_icfg/u_vco_cal_sm_v4_top/u_vco_cal_sm_v4/u_data_sync_enable_pllcnt \
+      u_cmn_func/u_sd_clk_cal_icfg/u_vco_cal_sm_v4_top/u_vco_cal_sm_v4/u_data_sync_step_size_min_pllcnt \
+      u_cmn_func/u_sd_clk_cal_icfg/u_vco_cal_sm_v4_top/u_vco_cal_sm_v4/u_data_sync_vco_cal_run \
+      u_cmn_func/u_sd_clk_cal_icfg/u_vco_cal_sm_v4_top/u_vco_cal_sm_v4/u_data_sync_init_previous_clk_difference \
+      u_cmn_func/u_sd_clk_cal_icfg/u_vco_cal_sm_v4_top/u_vco_cal_sm_v4/u_data_sync_pllclk_gr_eq_ack \
+      u_cmn_func/u_sd_clk_cal_icfg/u_vco_cal_sm_v4_top/u_vco_cal_sm_v4/u_data_sync_pllclk_init_previous_clk_difference_ack \
+      u_cmn_func/u_sd_clk_cal_icfg/u_vco_cal_sm_v4_top/u_vco_cal_sm_v4/u_data_sync_pllclk_lt_ack \
+      u_cmn_func/u_cmn_ibiascal_icfg/u_bin_cal_apb/u_bin_cal/u_data_sync_cal_run \
+      u_cmn_func/u_cmn_ibiascal_icfg/u_bin_cal_apb/u_bin_cal/u_data_sync_da_ana_cal_resp \
+      u_cmn_func/u_bg_cal_ctrl_apb_icfg/u_bin_cal_apb/u_bin_cal/u_data_sync_cal_run \
+      u_cmn_func/u_bg_cal_ctrl_apb_icfg/u_bin_cal_apb/u_bin_cal/u_data_sync_da_ana_cal_resp \
+      u_cmn_func/u_rx_rescal_ctrl_icfg/u_rx_res_cal_ctrl/u_bin_cal/u_data_sync_cal_run \
+      u_cmn_func/u_rx_rescal_ctrl_icfg/u_rx_res_cal_ctrl/u_bin_cal/u_data_sync_da_ana_cal_resp \
+      u_cmn_func/u_tx_rescal_ctrl_pu_icfg/u_tx_rescal_ctrl_pu/u_bin_cal/u_data_sync_cal_run \
+      u_cmn_func/u_tx_rescal_ctrl_pu_icfg/u_tx_rescal_ctrl_pu/u_bin_cal/u_data_sync_da_ana_cal_resp \
+      u_cmn_func/u_tx_rescal_ctrl_pd_icfg/u_tx_rescal_ctrl_pd/u_bin_cal/u_data_sync_cal_run \
+      u_cmn_func/u_tx_rescal_ctrl_pd_icfg/u_tx_rescal_ctrl_pd/u_bin_cal/u_data_sync_da_ana_cal_resp \
+   ]
+
+#   if { $is_post_synth == 0 } {
+#      set PDccal_data_sync_inst [concat $PDccal_data_sync_inst \
+#         u_cmn_func/u_bg_cal_ctrl_apb_icfg/u_ana_cal_filter/u_data_sync_da_cal_comp_in \
+#         u_cmn_func/u_cmn_ibiascal_icfg/u_ana_cal_filter/u_data_sync_da_cal_comp_in \
+#         u_cmn_func/u_rx_rescal_ctrl_icfg/u_ana_cal_filter/u_data_sync_da_cal_comp_in \
+#         u_cmn_func/u_tx_rescal_ctrl_icfg/u_ana_cal_filter/u_data_sync_da_cal_comp_in \
+#         u_cmn_func/u_tx_rescal_ctrl_icfg/u_tx_rescal_ctrl_pd/u_bin_cal/u_data_sync_cal_run \
+#         u_cmn_func/u_tx_rescal_ctrl_icfg/u_tx_rescal_ctrl_pd/u_bin_cal/u_data_sync_da_ana_cal_resp \
+#      ]
+#   }
+
+   # instances for PDpllc
+   # u_cmn_pll1_ctrl
+
+   set PDpllc_inst [list \
+       u_cmn_pll0_ctrl \
+       u_ring_cmn_pll1_ctrl \
+   ]
+
+#       u_cmn_pll0_ctrl/u_pll_ctrl_sm_v3_top \
+#       u_cmn_pll0_ctrl/u_multical_sm_v3_pll_cal \
+#       u_cmn_pll0_ctrl/u_pll_ctrl/u_vco_cal_sm_v4_top \
+#       u_cmn_pll1_ctrl/u_pll_ctrl_sm_v3_top \
+#       u_cmn_pll1_ctrl/u_multical_sm_v3_pll_cal \
+#       u_cmn_pll1_ctrl/u_pll_ctrl/u_vco_cal_sm_v4_top \
+#       u_cmn_pll0_ctrl/u_pll_ctrl/u_pll_lock_detect_v4_top \
+#       u_cmn_pll0_ctrl/u_pll_ctrl/u_ss_wave_signal_gen_top \
+#       u_cmn_pll0_ctrl/u_pll_ctrl/u_pll_ds_modulator_v3_top \
+#       u_cmn_pll1_ctrl/u_pll_ctrl/u_pll_lock_detect_v4_top \
+#       u_cmn_pll1_ctrl/u_pll_ctrl/u_ss_wave_signal_gen_top \
+#       u_cmn_pll1_ctrl/u_pll_ctrl/u_pll_ds_modulator_v3_top \
+#       u_ana_en_del_ctrl_bias_bandgap_en \
+#       u_ana_en_del_ctrl_xcvr_ref_clk_buf_en_l \
+#       u_ana_en_del_ctrl_xcvr_ref_clk_buf_en_r \
+#       u_cmn_func/u_ana_en_del_ctrl_ibiascal_en \
+#       u_cmn_func/u_ana_en_del_ctrl_rescal_en_rx \
+#       u_cmn_func/u_ana_en_del_ctrl_rescal_en_tx \
+#       u_cmn_pll0_ctrl/u_ana_en_del_ctrl_cmnda_en \
+#       u_cmn_pll0_ctrl/u_ana_en_del_ctrl_cmn_pll_rst_n \
+#       u_cmn_pll1_ctrl/u_ana_en_del_ctrl_cmnda_en \
+#       u_cmn_pll1_ctrl/u_ana_en_del_ctrl_cmn_pll_rst_n \
+
+   # data sync instances for PDcmn_avdd
+    #  u_cmn_pll1_ctrl/u_pll_ctrl/u_pll_var_trm_wrapper/u_pll_var_trm/u_data_sync_reset_fbdiv_clk_counters \
+    #  u_cmn_pll1_ctrl/u_pll_ctrl/u_pll_var_trm_wrapper/u_pll_var_trm/u_data_sync_reset_var_trm_cal_run \
+    #  u_cmn_pll1_ctrl/u_data_sync_cmn_pll_en \
+    #  u_cmn_pll1_ctrl/u_data_sync_cmn_pll_locked \
+    #  u_cmn_pll1_ctrl/u_data_sync_cmn_vco_cal_done \
+    #  u_cmn_pll1_ctrl/u_data_sync_cmn_pll_clk_prog0_gate_ack \
+    #  u_cmn_pll1_ctrl/u_data_sync_cmn_pll_clk_prog1_gate_ack \
+    #  u_cmn_pll1_ctrl/u_data_sync_pll_lock_det_en_fbdiv_clk_ack \
+    #  u_cmn_pll1_ctrl/u_data_sync_pll_lock_det_en_ref_clk_ack \
+    #  u_cmn_pll1_ctrl/u_pll_ctrl/u_data_sync_cmn_pll_locked_override \
+    #  u_cmn_pll1_ctrl/u_pll_ctrl/u_vco_cal_sm_v4_top/u_vco_cal_sm_v4/u_data_sync_enable_pllcnt \
+    #  u_cmn_pll1_ctrl/u_pll_ctrl/u_vco_cal_sm_v4_top/u_vco_cal_sm_v4/u_data_sync_step_size_min_pllcnt \
+    #  u_cmn_pll1_ctrl/u_pll_ctrl/u_vco_cal_sm_v4_top/u_vco_cal_sm_v4/u_data_sync_vco_cal_run \
+    #  u_cmn_pll1_ctrl/u_pll_ctrl/u_vco_cal_sm_v4_top/u_vco_cal_sm_v4/u_data_sync_init_previous_clk_difference \
+    #  u_cmn_pll1_ctrl/u_pll_ctrl/u_vco_cal_sm_v4_top/u_vco_cal_sm_v4/u_data_sync_pllclk_gr_eq_ack \
+    #  u_cmn_pll1_ctrl/u_pll_ctrl/u_vco_cal_sm_v4_top/u_vco_cal_sm_v4/u_data_sync_pllclk_init_previous_clk_difference_ack \
+    #  u_cmn_pll1_ctrl/u_pll_ctrl/u_vco_cal_sm_v4_top/u_vco_cal_sm_v4/u_data_sync_pllclk_lt_ack \
+    #  u_cmn_pll1_ctrl/u_pll_ctrl_sm_v3_top/u_data_sync_pllsmda_pll_en \
+    #  u_cmn_pll1_ctrl/u_pll_ctrl_sm_v3_top/u_data_sync_pllsmda_pll_rst_n \
+    #  u_cmn_pll1_ctrl/u_pll_ctrl_sm_v3_top/u_data_sync_pllsmda_pll_precharge_en \
+    #  u_cmn_pll1_ctrl/u_pll_ctrl_sm_v3_top/u_pll_ctrl_sm_v3/u_data_sync_skip_pll_cal_recal_clear \
+    #  u_cmn_pll1_ctrl/u_pll_ctrl/u_pll_var_trm_wrapper/u_pll_var_trm/u_data_sync_enable_fbdiv_clk_high_cnt \
+    #  u_cmn_pll1_ctrl/u_pll_ctrl/u_pll_var_trm_wrapper/u_pll_var_trm/u_data_sync_enable_fbdiv_clk_low_cnt \
+    #  u_cmn_pll1_ctrl/u_pll_ctrl/u_pll_var_trm_wrapper/u_pll_var_trm/u_vco_cal_sm_v4_var_trm/u_data_sync_enable_pllcnt \
+    #  u_cmn_pll1_ctrl/u_pll_ctrl/u_pll_var_trm_wrapper/u_pll_var_trm/u_vco_cal_sm_v4_var_trm/u_data_sync_init_previous_clk_difference \
+    #  u_cmn_pll1_ctrl/u_pll_ctrl/u_pll_var_trm_wrapper/u_pll_var_trm/u_vco_cal_sm_v4_var_trm/u_data_sync_pllclk_gr_eq_ack \
+    #  u_cmn_pll1_ctrl/u_pll_ctrl/u_pll_var_trm_wrapper/u_pll_var_trm/u_vco_cal_sm_v4_var_trm/u_data_sync_pllclk_init_previous_clk_difference_ack \
+    #  u_cmn_pll1_ctrl/u_pll_ctrl/u_pll_var_trm_wrapper/u_pll_var_trm/u_vco_cal_sm_v4_var_trm/u_data_sync_pllclk_lt_ack \
+    #  u_cmn_pll1_ctrl/u_pll_ctrl/u_pll_var_trm_wrapper/u_pll_var_trm/u_vco_cal_sm_v4_var_trm/u_data_sync_vco_cal_run \
+    #  u_cmn_pll1_ctrl/u_pll_ctrl/u_pll_var_trm_wrapper/u_pll_var_trm/u_vco_cal_sm_v4_var_trm/u_data_sync_step_size_min_pllcnt \
+    #  u_cmn_pll0_ctrl/u_data_sync_cmn_pll_suspend_req \
+    #  u_cmn_pll1_ctrl/u_data_sync_cmn_pll_suspend_req \
+    #  u_cmn_pll0_ctrl/u_data_sync_pause_en_aft_vartrm_cal \
+    #  u_cmn_pll0_ctrl/u_data_sync_pause_en_aft_vco_cal1 \
+    #  u_cmn_pll0_ctrl/u_data_sync_pause_en_aft_vco_cal2 \
+    #  u_cmn_pll0_ctrl/u_data_sync_pause_en_bef_vco_cal1 \
+    #  u_cmn_pll0_ctrl/u_data_sync_cmn_var_trm_done \
+    #  u_cmn_pll1_ctrl/u_data_sync_pause_en_aft_vartrm_cal \
+    #  u_cmn_pll1_ctrl/u_data_sync_pause_en_aft_vco_cal1 \
+    #  u_cmn_pll1_ctrl/u_data_sync_pause_en_aft_vco_cal2 \
+    #  u_cmn_pll1_ctrl/u_data_sync_pause_en_bef_vco_cal1 \
+    #  u_cmn_pll1_ctrl/u_data_sync_cmn_var_trm_done \
+
+
+
+   set PDpllc_data_sync_inst [list \
+      u_cmn_pll0_ctrl/u_data_sync_cmn_pll_clk_prog0_gate_ack \
+      u_cmn_pll0_ctrl/u_data_sync_cmn_pll_clk_prog1_gate_ack \
+      u_cmn_pll0_ctrl/u_data_sync_cmn_pll_en \
+      u_cmn_pll0_ctrl/u_data_sync_cmn_pll_locked \
+      u_cmn_pll0_ctrl/u_data_sync_cmn_vco_cal_done \
+      u_cmn_pll0_ctrl/u_data_sync_pll_lock_det_en_fbdiv_clk_ack \
+      u_cmn_pll0_ctrl/u_data_sync_pll_lock_det_en_ref_clk_ack \
+      u_cmn_pll0_ctrl/u_pll_ctrl/u_data_sync_cmn_pll_locked_override \
+      u_cmn_pll0_ctrl/u_pll_ctrl/u_vco_cal_sm_v4_top/u_vco_cal_sm_v4/u_data_sync_enable_pllcnt \
+      u_cmn_pll0_ctrl/u_pll_ctrl/u_vco_cal_sm_v4_top/u_vco_cal_sm_v4/u_data_sync_step_size_min_pllcnt \
+      u_cmn_pll0_ctrl/u_pll_ctrl/u_vco_cal_sm_v4_top/u_vco_cal_sm_v4/u_data_sync_vco_cal_run \
+      u_cmn_pll0_ctrl/u_pll_ctrl/u_vco_cal_sm_v4_top/u_vco_cal_sm_v4/u_data_sync_init_previous_clk_difference \
+      u_cmn_pll0_ctrl/u_pll_ctrl/u_vco_cal_sm_v4_top/u_vco_cal_sm_v4/u_data_sync_pllclk_gr_eq_ack \
+      u_cmn_pll0_ctrl/u_pll_ctrl/u_vco_cal_sm_v4_top/u_vco_cal_sm_v4/u_data_sync_pllclk_init_previous_clk_difference_ack \
+      u_cmn_pll0_ctrl/u_pll_ctrl/u_vco_cal_sm_v4_top/u_vco_cal_sm_v4/u_data_sync_pllclk_lt_ack \
+      u_cmn_pll0_ctrl/u_pll_ctrl_sm_v3_top/u_data_sync_pllsmda_pll_en \
+      u_cmn_pll0_ctrl/u_pll_ctrl_sm_v3_top/u_data_sync_pllsmda_pll_rst_n \
+      u_cmn_pll0_ctrl/u_pll_ctrl_sm_v3_top/u_data_sync_pllsmda_pll_precharge_en \
+      u_cmn_pll0_ctrl/u_pll_ctrl_sm_v3_top/u_data_sync_pllsmda_pll_precharge_en \
+      u_cmn_pll0_ctrl/u_pll_ctrl_sm_v3_top/u_pll_ctrl_sm_v3/u_data_sync_skip_pll_cal_recal_clear \
+      u_cmn_pll0_ctrl/u_pll_ctrl/u_pll_var_trm_wrapper/u_pll_var_trm/u_data_sync_enable_fbdiv_clk_high_cnt \
+      u_cmn_pll0_ctrl/u_pll_ctrl/u_pll_var_trm_wrapper/u_pll_var_trm/u_data_sync_enable_fbdiv_clk_low_cnt \
+      u_cmn_pll0_ctrl/u_pll_ctrl/u_pll_var_trm_wrapper/u_pll_var_trm/u_vco_cal_sm_v4_var_trm/u_data_sync_enable_pllcnt \
+      u_cmn_pll0_ctrl/u_pll_ctrl/u_pll_var_trm_wrapper/u_pll_var_trm/u_vco_cal_sm_v4_var_trm/u_data_sync_init_previous_clk_difference \
+      u_cmn_pll0_ctrl/u_pll_ctrl/u_pll_var_trm_wrapper/u_pll_var_trm/u_vco_cal_sm_v4_var_trm/u_data_sync_pllclk_gr_eq_ack \
+      u_cmn_pll0_ctrl/u_pll_ctrl/u_pll_var_trm_wrapper/u_pll_var_trm/u_vco_cal_sm_v4_var_trm/u_data_sync_pllclk_init_previous_clk_difference_ack \
+      u_cmn_pll0_ctrl/u_pll_ctrl/u_pll_var_trm_wrapper/u_pll_var_trm/u_vco_cal_sm_v4_var_trm/u_data_sync_pllclk_lt_ack \
+      u_cmn_pll0_ctrl/u_pll_ctrl/u_pll_var_trm_wrapper/u_pll_var_trm/u_vco_cal_sm_v4_var_trm/u_data_sync_vco_cal_run \
+      u_cmn_pll0_ctrl/u_pll_ctrl/u_pll_var_trm_wrapper/u_pll_var_trm/u_vco_cal_sm_v4_var_trm/u_data_sync_step_size_min_pllcnt \
+      u_cmn_pll0_ctrl/u_pll_ctrl/u_pll_var_trm_wrapper/u_pll_var_trm/u_data_sync_reset_fbdiv_clk_counters \
+      u_cmn_pll0_ctrl/u_pll_ctrl/u_pll_var_trm_wrapper/u_pll_var_trm/u_data_sync_reset_var_trm_cal_run \
+      u_cmn_pll0_ctrl/u_data_sync_cmn_pll_suspend_req \
+      u_cmn_pll0_ctrl/u_data_sync_pause_en_aft_vartrm_cal \
+      u_cmn_pll0_ctrl/u_data_sync_pause_en_aft_vco_cal1 \
+      u_cmn_pll0_ctrl/u_data_sync_pause_en_aft_vco_cal2 \
+      u_cmn_pll0_ctrl/u_data_sync_pause_en_bef_vco_cal1 \
+      u_cmn_pll0_ctrl/u_data_sync_cmn_var_trm_done \
+      u_ring_cmn_pll1_ctrl/u_data_sync_cmn_pll_suspend_req \
+      u_ring_cmn_pll1_ctrl/u_data_sync_cmn_pll_en \
+      u_ring_cmn_pll1_ctrl/u_data_sync_cmn_pll_clk_prog0_gate_ack \
+      u_ring_cmn_pll1_ctrl/u_data_sync_cmn_pll_clk_prog1_gate_ack \
+      u_ring_cmn_pll1_ctrl/u_ring_pll_ctrl_sm_v0_top/u_data_sync_pllsmda_cppd_en \
+      u_ring_cmn_pll1_ctrl/u_ring_pll_ctrl_sm_v0_top/u_data_sync_pllsmda_pll_cpen_cp \
+      u_ring_cmn_pll1_ctrl/u_ring_pll_ctrl_sm_v0_top/u_data_sync_pllsmda_pll_cpen_sb \
+      u_ring_cmn_pll1_ctrl/u_ring_pll_ctrl_sm_v0_top/u_data_sync_pllsmda_pll_dn_frc_en \
+      u_ring_cmn_pll1_ctrl/u_ring_pll_ctrl_sm_v0_top/u_data_sync_pllsmda_pll_en \
+      u_ring_cmn_pll1_ctrl/u_ring_pll_ctrl_sm_v0_top/u_data_sync_pllsmda_pll_fbdiv_pwr_en \
+      u_ring_cmn_pll1_ctrl/u_ring_pll_ctrl_sm_v0_top/u_data_sync_pllsmda_pll_fbdiv_pwr_en_dly \
+      u_ring_cmn_pll1_ctrl/u_ring_pll_ctrl_sm_v0_top/u_data_sync_pllsmda_pll_fbdiv_rst_n \
+      u_ring_cmn_pll1_ctrl/u_ring_pll_ctrl_sm_v0_top/u_data_sync_pllsmda_pll_lock_det_en \
+      u_ring_cmn_pll1_ctrl/u_ring_pll_ctrl_sm_v0_top/u_data_sync_pllsmda_pll_locked_ovrd \
+      u_ring_cmn_pll1_ctrl/u_ring_pll_ctrl_sm_v0_top/u_data_sync_pllsmda_pll_locked_sync \
+      u_ring_cmn_pll1_ctrl/u_ring_pll_ctrl_sm_v0_top/u_data_sync_pllsmda_pll_post_div_rst_n \
+      u_ring_cmn_pll1_ctrl/u_ring_pll_ctrl_sm_v0_top/u_data_sync_pllsmda_pll_prog_div_en \
+      u_ring_cmn_pll1_ctrl/u_ring_pll_ctrl_sm_v0_top/u_data_sync_pllsmda_pll_prog_div_en_dly \
+      u_ring_cmn_pll1_ctrl/u_ring_pll_ctrl_sm_v0_top/u_data_sync_pllsmda_pll_prog_div_rst_n \
+      u_ring_cmn_pll1_ctrl/u_ring_pll_ctrl_sm_v0_top/u_data_sync_pllsmda_pll_up_frc_en \
+      u_ring_cmn_pll1_ctrl/u_ring_pll_ctrl_sm_v0_top/u_data_sync_pllsmda_pll_vco_filter_bp \
+      u_ring_cmn_pll1_ctrl/u_ring_pll_ctrl_sm_v0_top/u_data_sync_pllsmda_pll_vco_fixed_curr_mode_ctrl \
+      u_ring_cmn_pll1_ctrl/u_ring_pll_ctrl_sm_v0_top/u_data_sync_pllsmda_pll_vco_vctrl_init \
+      u_ring_cmn_pll1_ctrl/u_ring_pll_ctrl_sm_v0_top/u_data_sync_pllsmda_pll_vcobuf_en \
+      u_ring_cmn_pll1_ctrl/u_ring_pll_ctrl_sm_v0_top/u_data_sync_pllsmda_vref_filt_en \
+      u_ring_cmn_pll1_ctrl/u_ring_pll_ctrl_sm_v0_top/u_data_sync_pllsmda_vreg_en \
+      u_ring_cmn_pll1_ctrl/u_ring_pll_ctrl_sm_v0_top/u_data_sync_pllsmda_vreg_en_dly \
+   ]
+
+   #all data_sync is preserve,no remove conditiong if { $is_post_synth == 0 }
+   # u_cmn_pll1_ctrl/u_pll_ctrl_sm_v3_top/u_data_sync_pllsmda_pll_alt_en
+   # u_cmn_pll1_ctrl/u_pll_ctrl_sm_v3_top/u_data_sync_pllsmda_pll_reg_en
+   #if { $is_post_synth == 0 } {
+      set PDpllc_data_sync_inst [concat $PDpllc_data_sync_inst \
+         u_cmn_pll0_ctrl/u_pll_ctrl_sm_v3_top/u_data_sync_pllsmda_pll_alt_en \
+         u_cmn_pll0_ctrl/u_pll_ctrl_sm_v3_top/u_data_sync_pllsmda_pll_reg_en \
+      ]
+   #}
+
+
+#cmn_ref_clk0_rcv_en
+#cmn_ref_clk0_term_en
+#cmn_ref_clk1_rcv_en
+#cmn_ref_clk1_term_en
+#cmn_ref_clk0_bscan_shiftdr
+#cmn_ref_clk0_bscan_clockdr
+#cmn_ref_clk0_bscan_pc
+#cmn_ref_clk0_bscan_ac
+#cmn_ref_clk0_bscan_tdi
+#cmn_ref_clk1_bscan_shiftdr
+#cmn_ref_clk1_bscan_clockdr
+#cmn_ref_clk1_bscan_pc
+#cmn_ref_clk1_bscan_ac
+#cmn_ref_clk1_bscan_tdi
+#cmn_pll0_ss_start
+#cmn_pll1_ss_start
+
+
+set PDcmn_in [ list \
+cmn_bscan_mode_en \
+cmn_cdb_paddr[8:0] \
+cmn_cdb_pclk \
+cmn_cdb_penable \
+cmn_cdb_preset_n \
+cmn_cdb_psel \
+cmn_cdb_pwdata[31:0] \
+cmn_cdb_pwrite \
+cmn_macro_suspend_req \
+cmn_pll0_en \
+cmn_pll0_mode_sel \
+cmn_pll0_ref_clk_sel[1:0] \
+cmn_pll0_reset_n \
+cmn_pll0_suspend_req \
+cmn_pll1_en \
+cmn_pll1_mode_sel \
+cmn_pll1_ref_clk_sel[1:0] \
+cmn_pll1_reset_n \
+cmn_pll1_suspend_req \
+cmn_psm_clk_in \
+cmn_ref_clk_dig_div[1:0] \
+cmn_ref_clk_dig_sel      \
+cmn_ref_clk_disable \
+cmn_reset_n \
+cmn_scanclk_pll_clk \
+cmn_scanclk_psm_clk \
+cmn_scanclk_ref_clk \
+cmn_scanclk_ser_clk \
+cmn_scanin[22:0] \
+cmn_scanmode \
+cmn_scan_pll_ats \
+]
+
+if { $is_post_synth == 1 } {
+    set PDcmn_in_others [list cmn_scanen_cg cmn_scanen]
+    set PDcmn_in [concat $PDcmn_in $PDcmn_in_others]
+}
+
+#cmn_ref_clk0_rcv
+#cmn_ref_clk1_rcv
+#cmn_ref_clk1_bscan_tdo
+#cmn_ref_clk0_bscan_tdo
+
+set PDcmn_out [ list \
+cmn_cdb_prdata[31:0] \
+cmn_cdb_pready \
+cmn_macro_suspend_ack \
+cmn_pll0_clk_prog0 \
+cmn_pll0_clk_prog1 \
+cmn_pll0_disabled \
+cmn_pll0_locked \
+cmn_pll0_ready \
+cmn_pll0_suspend_ack \
+cmn_pll1_clk_prog0 \
+cmn_pll1_clk_prog1 \
+cmn_pll1_disabled \
+cmn_pll1_locked \
+cmn_pll1_ready \
+cmn_pll1_suspend_ack \
+cmn_psm_clk_out \
+cmn_ready \
+cmn_ref_clk \
+cmn_ref_clk_active \
+cmn_ref_clk_gated \
+cmn_scanout[22:0] \
+cmn_scanclk_pll0_prog0_ats_out \
+cmn_scanclk_pll0_prog1_ats_out \
+cmn_scanclk_pll1_prog0_ats_out \
+cmn_scanclk_pll1_prog1_ats_out \
+]
+
+
+   ######################################
+   # Create power_domain
+   ######################################
+
+   create_power_domain PDcmn_avdd -supply {primary SS_cmn_avdd} -elements .
+
+   create_power_domain PDcmn_avdd -update \
+         -elements [concat \
+            $PDccal_data_sync_inst \
+            $PDpllc_data_sync_inst \
+            $PDcdb_inst \
+         ]
+
+   create_power_domain PDcmn_aonvdd -supply {primary SS_cmn_aonvdd} \
+      -elements {}
+
+   create_power_domain PDcmn_vdd -supply {primary SS_vdd} \
+      -elements {}
+
+   create_power_domain PDpllc     -supply {primary SS_cmn_pso_pllc} \
+      -elements $PDpllc_inst
+
+   create_power_domain PDccal     -supply {primary SS_cmn_pso_ccal} \
+      -elements $PDccal_inst 
+
+   create_power_domain PDdiag     -supply {primary SS_cmn_pso_diag} \
+      -elements $PDdiag_inst
+
+if { $is_vcs_sim == 0 } {
+   create_power_domain PDcmn_avdd   -update -supply {extra_supplies ""}
+   create_power_domain PDcmn_aonvdd -update -supply {extra_supplies ""}
+   create_power_domain PDcmn_vdd    -update -supply {extra_supplies ""}
+   create_power_domain PDpllc       -update -supply {extra_supplies ""}
+   create_power_domain PDccal       -update -supply {extra_supplies ""}
+   create_power_domain PDdiag       -update -supply {extra_supplies ""}
+}
+
+   # virtual power domains, the supply sets are needed for the analog models
+   create_power_domain PDcmn_avdd_clk -supply {primary SS_cmn_avdd_clk} -elements {}
+   create_power_domain PDcmn_avdd_h   -supply {primary SS_cmn_avdd_h}   -elements {}
+
+   ######################################
+   # Create level shifter strategy
+   ######################################
+   set_level_shifter LS1_cmnavdd_vdd -domain PDcmn_avdd -applies_to outputs -location self \
+   -output_supply_set PDcmn_vdd.primary  -elements $PDcmn_out -force_shift
+
+   set_level_shifter LS2_cmnavdd_vdd -domain PDcmn_avdd -applies_to inputs -location self \
+     -input_supply_set PDcmn_vdd.primary -output_supply_set PDcmn_avdd.primary -elements $PDcmn_in -force_shift
+
+
+#TODO may lib_cells need change
+if { $is_vcs_sim == 0 } {
+#   use_interface_cell LS1_CELL -domain PDcmn_avdd -strategy LS1_xcvravdd_vdd -lib_cells {LVLLHBUFFSRCCWBALMZD4BWP210H6P51CNODSVT LVLLHBUFFSRCCWBALMZD4BWP210H6P51CNODLVT LVLLHBUFFSRCCWBALMZD4BWP210H6P51CNODULVT LVLLHBUFFSRCCWBALMZD4BWP210H6P51CNODLVTLL} -force_function
+#   use_interface_cell LS2_CELL -domain PDcmn_avdd -strategy LS2_xcvravdd_vdd -lib_cells {LVLLHBUFFSNKCWBALMZD4BWP210H6P51CNODSVT LVLLHBUFFSNKCWBALMZD4BWP210H6P51CNODLVT LVLLHBUFFSNKCWBALMZD4BWP210H6P51CNODULVT LVLLHBUFFSNKCWBALMZD4BWP210H6P51CNODLVTLL} -force_function
+   use_interface_cell LS1_CELL -domain PDcmn_avdd -strategy LS1_cmnavdd_vdd -lib_cells {LVLLHBUFFSRCCWBALMZD4BWP210H6P51CNODSVT } -force_function
+   use_interface_cell LS2_CELL -domain PDcmn_avdd -strategy LS2_cmnavdd_vdd -lib_cells {LVLLHBUFFSNKCWBALMZD4BWP210H6P51CNODSVT } -force_function
+}
+
+   ######################################
+   # Port Attributes
+   #
+   # The port attributes
+   # are ignored when using hierarchical
+   # UPF. Will only be applied at the
+   # top most level.
+   ######################################
+
+if { $is_vcs_sim == 0 } {
+   set_port_attributes -applies_to inputs -driver_supply PDcmn_vdd.primary -ports $PDcmn_in
+   set_port_attributes -applies_to outputs -receiver_supply PDcmn_vdd.primary -ports $PDcmn_out
+   #set_port_attributes -applies_to outputs -receiver_supply PDcmn_aonvdd.primary -ports [list cmn_avdd_pwrgood cmn_avdd_clk_pwrgood]
+   set_port_attributes -applies_to outputs -receiver_supply PDcmn_aonvdd.primary -ports [list cmn_avdd_pwrgood]
+}
+
+   ######################################
+   # Create isolation rules
+   #
+   # Customer requires set_isolation_control
+   #
+   # If the power domain in -domain and -source are the same and
+   # along with -applies_to outputs
+   # use -location other
+   ######################################
+
+   set_isolation ISOpllc2avdd_lo -domain  PDpllc  \
+      -source PDpllc.primary \
+      -sink   PDcmn_avdd.primary \
+      -applies_to outputs \
+      -isolation_supply_set SS_cmn_avdd \
+      -clamp_value 0
+
+if { $is_vcs_sim == 1 } {
+   set_isolation_control ISOpllc2avdd_lo -domain  PDpllc  \
+      -isolation_signal  {u_pwr_isl_ctrl_sm_icfg_pllc/power_isolation_en} \
+      -isolation_sense   high \
+      -location self
+} else {
+   set_isolation ISOpllc2avdd_lo -domain  PDpllc  \
+      -location other  -update
+
+   set_isolation_control ISOpllc2avdd_lo -domain  PDpllc  \
+      -isolation_signal  {u_pwr_isl_ctrl_sm_icfg_pllc/power_isolation_en} \
+      -isolation_sense   high
+}
+
+
+
+   set_isolation ISOpllc2port_hi -domain  PDpllc  \
+      -source PDpllc.primary \
+      -applies_to outputs \
+      -elements [list \
+                   u_cmn_pll0_ctrl/cmn_pll_disabled \
+                   u_ring_cmn_pll1_ctrl/cmn_pll_disabled \
+                ] \
+      -isolation_supply_set SS_cmn_avdd \
+      -clamp_value 1
+
+   set_isolation_control ISOpllc2port_hi -domain  PDpllc  \
+      -isolation_signal  {u_pwr_isl_ctrl_sm_icfg_pllc/power_isolation_en} \
+      -isolation_sense   high
+
+   set_isolation ISOpllc2scanout -domain  PDpllc  \
+      -source PDpllc.primary \
+      -sink   PDcmn_vdd.primary \
+      -applies_to outputs \
+      -isolation_supply_set SS_cmn_avdd \
+      -clamp_value 0
+
+if { $is_vcs_sim == 1 } {
+   set_isolation_control ISOpllc2scanout -domain  PDpllc  \
+      -isolation_signal  {u_pwr_isl_ctrl_sm_icfg_pllc/power_isolation_en} \
+      -isolation_sense   high \
+      -location parent
+} else {
+   set_isolation ISOpllc2scanout -domain  PDpllc  \
+      -location other  -update
+
+   set_isolation_control ISOpllc2scanout -domain  PDpllc  \
+      -isolation_signal  {u_pwr_isl_ctrl_sm_icfg_pllc/power_isolation_en} \
+      -isolation_sense   high
+}
+
+
+   set_isolation ISOpllc2port_lo -domain  PDpllc  \
+      -source PDpllc.primary \
+      -applies_to outputs \
+      -elements [list \
+                    u_cmn_pll0_ctrl/cmn_pll_locked \
+                    u_cmn_pll0_ctrl/cmn_pll_ready \
+                    u_ring_cmn_pll1_ctrl/cmn_pll_locked \
+                    u_cmn_pll0_ctrl/cmn_pll_suspend_ack \
+		    u_ring_cmn_pll1_ctrl/cmn_pll_ready \
+		    u_ring_cmn_pll1_ctrl/cmn_pll_suspend_ack \
+		] \
+      -isolation_supply_set SS_cmn_avdd \
+      -clamp_value 0
+
+if { $is_vcs_sim == 1 } {
+   set_isolation_control ISOpllc2port_lo -domain  PDpllc  \
+      -isolation_signal  {u_pwr_isl_ctrl_sm_icfg_pllc/power_isolation_en} \
+      -isolation_sense   high \
+      -location parent
+} else {
+   set_isolation ISOpllc2port_lo -domain  PDpllc  \
+      -location other  -update
+
+   set_isolation_control ISOpllc2port_lo -domain  PDpllc  \
+      -isolation_signal  {u_pwr_isl_ctrl_sm_icfg_pllc/power_isolation_en} \
+      -isolation_sense   high
+}
+
+
+   set_isolation ISOccal2avdd_lo -domain  PDccal \
+      -source PDccal.primary \
+      -sink   PDcmn_avdd.primary \
+      -applies_to outputs \
+      -isolation_supply_set SS_cmn_avdd \
+      -clamp_value 0
+
+if { $is_vcs_sim == 1 } {
+
+   set_isolation_control ISOccal2avdd_lo -domain  PDccal  \
+      -isolation_signal  {u_pwr_isl_ctrl_sm_icfg_ccal/power_isolation_en} \
+      -isolation_sense   high \
+      -location self
+} else {
+   set_isolation ISOccal2avdd_lo -domain  PDccal \
+      -location other  -update
+
+   set_isolation_control ISOccal2avdd_lo -domain  PDccal  \
+      -isolation_signal  {u_pwr_isl_ctrl_sm_icfg_ccal/power_isolation_en} \
+      -isolation_sense   high
+}
+
+if { $is_vcs_sim == 0 } {
+   # For this rule there are no effective elements using RTL.
+   # After DFT insertion paths are added across this boundary
+   set_isolation ISOccal2diag_lo -domain  PDccal  \
+      -source PDccal.primary \
+      -sink   PDdiag.primary \
+      -applies_to outputs \
+      -location other \
+      -isolation_supply_set SS_cmn_avdd \
+      -clamp_value 0
+
+   set_isolation_control ISOccal2diag_lo -domain  PDccal  \
+      -isolation_signal  {u_pwr_isl_ctrl_sm_icfg_ccal/power_isolation_en} \
+      -isolation_sense   high
+}
+
+
+   set_isolation ISOdiag_lo -domain  PDdiag  \
+      -source PDdiag.primary \
+      -applies_to outputs \
+      -isolation_supply_set SS_cmn_avdd \
+      -clamp_value 0
+
+if { $is_vcs_sim == 1 } {
+
+   set_isolation_control ISOdiag_lo -domain  PDdiag  \
+      -isolation_signal  {u_pwr_isl_ctrl_sm_icfg_diag/power_isolation_en} \
+      -isolation_sense   high \
+      -location parent
+} else {
+   set_isolation ISOdiag_lo -domain  PDdiag  \
+      -location other  -update
+
+   set_isolation_control ISOdiag_lo -domain  PDdiag  \
+      -isolation_signal  {u_pwr_isl_ctrl_sm_icfg_diag/power_isolation_en} \
+      -isolation_sense   high
+}
+
+
+if { $is_vcs_sim == 0 } {
+   # no effective elements in RTL
+   set_isolation ISOpllc2ccal_lo -domain  PDpllc  \
+      -source PDpllc.primary \
+      -sink   PDccal.primary \
+      -applies_to outputs \
+      -location other \
+      -isolation_supply_set SS_cmn_avdd \
+      -clamp_value 0
+
+   set_isolation_control ISOpllc2ccal_lo -domain  PDpllc  \
+      -isolation_signal  {u_pwr_isl_ctrl_sm_icfg_pllc/power_isolation_en} \
+      -isolation_sense   high
+}
+
+
+   ######################################
+   # Create retention rules
+   ######################################
+
+   # lockup latches do not exist in the RTL. find_objects will warn if no match
+   # is found (which is stupid). To work around get all objects in that instance
+   # then use regexp to find the lockup latches
+   # 
+   # all of this just to prevent CLP errors after DFT insertion
+
+   ###########
+   set SRpllcsm0_inst    [list u_cmn_pll0_ctrl/u_pll_ctrl_sm_v3_top ]
+   set pllcsm0_other     [list u_cmn_pll0_ctrl/u_pll_ctrl_sm_v3_top/u_pll_ctrl_sm_v3/u_pllsm_timer ]
+   set SRpllcsm0_exclude [list ]
+
+   set_retention SRpllcsm0  -domain PDpllc \
+	-elements         $SRpllcsm0_inst \
+	-save_signal       {u_pllc_pwr_isl_ctrl_pll0/state_ret_save    high} \
+	-restore_signal    {u_pllc_pwr_isl_ctrl_pll0/state_ret_restore low} \
+	-save_condition    {u_cmn_pll0_ctrl/u_pll_ctrl_sm_v3_top/pllsm_rst_n} \
+	-restore_condition {u_cmn_pll0_ctrl/u_pll_ctrl_sm_v3_top/pllsm_rst_n} \
+	-retention_supply_set  SS_cmn_avdd
+
+if { $is_vcs_sim == 0 } {
+   foreach pllcsm0_inst [concat $SRpllcsm0_inst $pllcsm0_other] {
+      set SRpllcsm0_objs    [find_objects $pllcsm0_inst -object_type inst -transitive TRUE -pattern {*}]
+      foreach inst $SRpllcsm0_objs {
+         if {[regexp {DFT_lockup} $inst]} {
+            set SRpllcsm0_exclude [concat $SRpllcsm0_exclude $inst]
+         }
+      }
+   }
+
+   set_retention SRpllcsm0  -domain PDpllc \
+	-exclude_elements $SRpllcsm0_exclude \
+        -update
+}
+
+   ###########
+   set SRpllcsm1_inst    [list u_ring_cmn_pll1_ctrl/u_ring_pll_ctrl_sm_v0_top ]
+   set pllcsm1_other     [list u_ring_cmn_pll1_ctrl/u_ring_pll_ctrl_sm_v0_top/u_ring_pll_ctrl_sm_v0/u_pllsm_timer ]
+   set SRpllcsm1_exclude [list ]
+
+   set_retention SRpllcsm1  -domain PDpllc \
+	-elements         $SRpllcsm1_inst \
+	-save_signal       {u_pllc_pwr_isl_ctrl_pll1/state_ret_save    high} \
+	-restore_signal    {u_pllc_pwr_isl_ctrl_pll1/state_ret_restore low} \
+	-save_condition    {u_ring_cmn_pll1_ctrl/u_ring_pll_ctrl_sm_v0_top/pllsm_rst_n} \
+	-restore_condition {u_ring_cmn_pll1_ctrl/u_ring_pll_ctrl_sm_v0_top/pllsm_rst_n} \
+	-retention_supply_set  SS_cmn_avdd
+
+if { $is_vcs_sim == 0 } {
+   foreach pllcsm1_inst [concat $SRpllcsm1_inst $pllcsm1_other] {
+      set SRpllcsm1_objs    [find_objects $pllcsm1_inst -object_type inst -transitive TRUE -pattern {*}]
+      foreach inst $SRpllcsm1_objs {
+         if {[regexp {DFT_lockup} $inst]} {
+            set SRpllcsm1_exclude [concat $SRpllcsm1_exclude $inst]
+         }
+      }
+   }
+
+   set_retention SRpllcsm1  -domain PDpllc \
+	-exclude_elements $SRpllcsm1_exclude \
+        -update
+}
+
+   ###########
+   set SRpllcvco0_inst    [list u_cmn_pll0_ctrl/u_pll_ctrl/u_vco_cal_sm_v4_top ]
+   set pllcvco0_other     [list u_cmn_pll0_ctrl/u_pll_ctrl/u_vco_cal_sm_v4_top/u_vco_cal_sm_v4 ]
+   set SRpllcvco0_exclude [list ]
+
+   set_retention SRpllcvco0  -domain PDpllc \
+	-elements         $SRpllcvco0_inst \
+	-save_signal       {u_pllc_pwr_isl_ctrl_pll0/state_ret_save    high} \
+	-restore_signal    {u_pllc_pwr_isl_ctrl_pll0/state_ret_restore low} \
+	-save_condition    {u_cmn_pll0_ctrl/u_pll_ctrl/u_vco_cal_sm_v4_top/pllclk_reset_n && \
+                            u_cmn_pll0_ctrl/u_pll_ctrl/u_vco_cal_sm_v4_top/refclk_reset_n}   \
+	-restore_condition {u_cmn_pll0_ctrl/u_pll_ctrl/u_vco_cal_sm_v4_top/pllclk_reset_n && \
+                            u_cmn_pll0_ctrl/u_pll_ctrl/u_vco_cal_sm_v4_top/refclk_reset_n}   \
+	-retention_supply_set  SS_cmn_avdd
+
+if { $is_vcs_sim == 0 } {
+   foreach pllcvco0_inst [concat $SRpllcvco0_inst $pllcvco0_other] {
+      set SRpllcvco0_objs    [find_objects $pllcvco0_inst -object_type inst -transitive TRUE -pattern {*}]
+      foreach inst $SRpllcvco0_objs {
+         if {[regexp {DFT_lockup} $inst]} {
+            set SRpllcvco0_exclude [concat $SRpllcvco0_exclude $inst]
+         }
+      }
+   }
+
+   set_retention SRpllcvco0  -domain PDpllc \
+	-exclude_elements $SRpllcvco0_exclude \
+        -update
+}
+
+   ###########
+#   set SRpllcvco1_inst    [list u_cmn_pll1_ctrl/u_pll_ctrl/u_vco_cal_sm_v4_top ]
+#   set pllcvco1_other     [list u_cmn_pll1_ctrl/u_pll_ctrl/u_vco_cal_sm_v4_top/u_vco_cal_sm_v4 \
+#                          ]
+#   set SRpllcvco1_exclude [list ]
+#
+#   set_retention SRpllcvco1  -domain PDpllc \
+#	-elements         $SRpllcvco1_inst \
+#	-save_signal       {u_pllc_pwr_isl_ctrl_pll1/state_ret_save    high} \
+#	-restore_signal    {u_pllc_pwr_isl_ctrl_pll1/state_ret_restore low} \
+#	-save_condition    {u_cmn_pll1_ctrl/u_pll_ctrl/u_vco_cal_sm_v4_top/pllclk_reset_n && \
+#                            u_cmn_pll1_ctrl/u_pll_ctrl/u_vco_cal_sm_v4_top/refclk_reset_n}   \
+#	-restore_condition {u_cmn_pll1_ctrl/u_pll_ctrl/u_vco_cal_sm_v4_top/pllclk_reset_n && \
+#                            u_cmn_pll1_ctrl/u_pll_ctrl/u_vco_cal_sm_v4_top/refclk_reset_n}   \
+#	-retention_supply_set  SS_cmn_avdd
+#
+#if { $is_vcs_sim == 0 } {
+#   foreach pllcvco1_inst [concat $SRpllcvco1_inst $pllcvco1_other] {
+#      set SRpllcvco1_objs    [find_objects $pllcvco1_inst -object_type inst -transitive TRUE -pattern {*}]
+#      foreach inst $SRpllcvco1_objs {
+#         if {[regexp {DFT_lockup} $inst]} {
+#            set SRpllcvco1_exclude [concat $SRpllcvco1_exclude $inst]
+#         }
+#      }
+#   }
+#   set_retention SRpllcvco1  -domain PDpllc \
+#	-exclude_elements $SRpllcvco1_exclude \
+#        -update
+#}
+
+   ###########
+   set SRpllcmulti0_inst    [list u_cmn_pll0_ctrl/u_multical_sm_v3_pll_cal ]
+   set pllcmulti0_other     [list ]
+   set SRpllcmulti0_exclude [list ]
+
+   set_retention SRpllcmulti0  -domain PDpllc \
+	-elements         $SRpllcmulti0_inst \
+	-save_signal       {u_pllc_pwr_isl_ctrl_pll0/state_ret_save    high} \
+	-restore_signal    {u_pllc_pwr_isl_ctrl_pll0/state_ret_restore low} \
+	-save_condition    {u_cmn_pll0_ctrl/u_multical_sm_v3_pll_cal/mcsm_rst_n} \
+	-restore_condition {u_cmn_pll0_ctrl/u_multical_sm_v3_pll_cal/mcsm_rst_n} \
+	-retention_supply_set  SS_cmn_avdd
+
+if { $is_vcs_sim == 0 } {
+   foreach pllcmulti0_inst [concat $SRpllcmulti0_inst $pllcmulti0_other] {
+      set SRpllcmulti0_objs    [find_objects $pllcmulti0_inst -object_type inst -transitive TRUE -pattern {*}]
+      foreach inst $SRpllcmulti0_objs {
+         if {[regexp {DFT_lockup} $inst]} {
+            set SRpllcmulti0_exclude [concat $SRpllcmulti0_exclude $inst]
+         }
+      }
+   }
+
+   set_retention SRpllcmulti0  -domain PDpllc \
+	-exclude_elements $SRpllcmulti0_exclude \
+        -update
+}
+
+   ###########
+#   set SRpllcmulti1_inst    [list u_cmn_pll1_ctrl/u_multical_sm_v3_pll_cal ]
+#   set pllcmulti1_other     [list u_cmn_pll1_ctrl/u_multical_sm_v3_pll_cal/u_cdnsdru_multical_state_flop_lsb ]
+#   set SRpllcmulti1_exclude [list ]
+#
+#   set_retention SRpllcmulti1  -domain PDpllc \
+#	-elements         $SRpllcmulti1_inst \
+#	-save_signal       {u_pllc_pwr_isl_ctrl_pll1/state_ret_save    high} \
+#	-restore_signal    {u_pllc_pwr_isl_ctrl_pll1/state_ret_restore low} \
+#	-save_condition    {u_cmn_pll1_ctrl/u_multical_sm_v3_pll_cal/mcsm_rst_n} \
+#	-restore_condition {u_cmn_pll1_ctrl/u_multical_sm_v3_pll_cal/mcsm_rst_n} \
+#	-retention_supply_set  SS_cmn_avdd
+#
+#if { $is_vcs_sim == 0 } {
+#   foreach pllcmulti1_inst [concat $SRpllcmulti1_inst $pllcmulti1_other] {
+#      set SRpllcmulti1_objs    [find_objects $pllcmulti1_inst -object_type inst -transitive TRUE -pattern {*}]
+#      foreach inst $SRpllcmulti1_objs {
+#         if {[regexp {DFT_lockup} $inst]} {
+#            set SRpllcmulti1_exclude [concat $SRpllcmulti1_exclude $inst]
+#         }
+#      }
+#   }
+#
+#   set_retention SRpllcmulti1  -domain PDpllc \
+#	-exclude_elements $SRpllcmulti1_exclude \
+#        -update
+#}
+
+   ###########
+   set SRpllctrm0_inst    [list u_cmn_pll0_ctrl/u_pll_ctrl/u_pll_var_trm_wrapper ]
+   set pllctrm0_other     [list ]
+   set SRpllctrm0_exclude [list ]
+
+   set_retention SRpllctrm0  -domain PDpllc \
+	-elements         $SRpllctrm0_inst \
+	-save_signal       {u_pllc_pwr_isl_ctrl_pll0/state_ret_save    high} \
+	-restore_signal    {u_pllc_pwr_isl_ctrl_pll0/state_ret_restore low} \
+	-save_condition    {u_cmn_pll0_ctrl/u_pll_ctrl/u_pll_var_trm_wrapper/cmn_vcocal_ref_clk_reset_n} \
+	-restore_condition {u_cmn_pll0_ctrl/u_pll_ctrl/u_pll_var_trm_wrapper/cmn_vcocal_ref_clk_reset_n} \
+	-retention_supply_set  SS_cmn_avdd
+
+if { $is_vcs_sim == 0 } {
+   foreach pllctrm0_inst [concat $SRpllctrm0_inst $pllctrm0_other] {
+      set SRpllctrm0_objs    [find_objects $pllctrm0_inst -object_type inst -transitive TRUE -pattern {*}]
+      foreach inst $SRpllctrm0_objs {
+         if {[regexp {DFT_lockup} $inst]} {
+            set SRpllctrm0_exclude [concat $SRpllctrm0_exclude $inst]
+         }
+      }
+   }
+
+   set_retention SRpllctrm0  -domain PDpllc \
+	-exclude_elements $SRpllctrm0_exclude \
+        -update
+}
+
+   ###########
+#   set SRpllctrm1_inst    [list u_cmn_pll1_ctrl/u_pll_ctrl/u_pll_var_trm_wrapper ]
+#   set pllctrm1_other     [list ]
+#   set SRpllctrm1_exclude [list ]
+#
+#   set_retention SRpllctrm1  -domain PDpllc \
+#	-elements         $SRpllctrm1_inst \
+#	-save_signal       {u_pllc_pwr_isl_ctrl_pll1/state_ret_save    high} \
+#	-restore_signal    {u_pllc_pwr_isl_ctrl_pll1/state_ret_restore low} \
+#	-save_condition    {u_cmn_pll1_ctrl/u_pll_ctrl/u_pll_var_trm_wrapper/cmn_vcocal_ref_clk_reset_n} \
+#	-restore_condition {u_cmn_pll1_ctrl/u_pll_ctrl/u_pll_var_trm_wrapper/cmn_vcocal_ref_clk_reset_n} \
+#	-retention_supply_set  SS_cmn_avdd
+#
+#
+#if { $is_vcs_sim == 0 } {
+#   foreach pllctrm1_inst [concat $SRpllctrm1_inst $pllctrm1_other] {
+#      set SRpllctrm1_objs    [find_objects $pllctrm1_inst -object_type inst -transitive TRUE -pattern {*}]
+#      foreach inst $SRpllctrm1_objs {
+#         if {[regexp {DFT_lockup} $inst] && ![regexp {U\$} $inst]} {
+#            set SRpllctrm1_exclude [concat $SRpllctrm1_exclude $inst]
+#         }
+#      }
+#   }
+#
+#   set_retention SRpllctrm1  -domain PDpllc \
+#	-exclude_elements $SRpllctrm1_exclude \
+#        -update
+#}
+
+   #################################################
+   ##  Define Power Swtiches
+   #################################################
+
+#   create_power_switch PScdb_ph_1 -domain PDcdb \
+#	-input_supply_port  {TVDD PDcmn_avdd.primary.power} \
+#	-output_supply_port {VDD  PDcdb.primary.power} \
+# 	-control_port  {NSLEEPIN u_pwr_isl_ctrl_sm_icfg_cdb/power_en_ph_1} \
+# 	-on_state   {full_on  TVDD NSLEEPIN } \
+# 	-off_state  {full_off !NSLEEPIN }
+	
+#   create_power_switch PScdb_ph_2 -domain PDcdb \
+#	-input_supply_port  {TVDD PDcmn_avdd.primary.power} \
+#	-output_supply_port {VDD  PDcdb.primary.power} \
+# 	-control_port  {NSLEEPIN u_pwr_isl_ctrl_sm_icfg_cdb/power_en_ph_2} \
+# 	-on_state   {full_on  TVDD NSLEEPIN } \
+# 	-off_state  {full_off !NSLEEPIN }
+	
+   create_power_switch PSpllc_ph_1 -domain PDpllc \
+	-input_supply_port  {TVDD PDcmn_avdd.primary.power} \
+	-output_supply_port {VDD  PDpllc.primary.power} \
+ 	-control_port  {NSLEEPIN u_pwr_isl_ctrl_sm_icfg_pllc/power_en_ph_1} \
+ 	-on_state   {full_on  TVDD NSLEEPIN } \
+ 	-off_state  {full_off !NSLEEPIN }
+	
+   create_power_switch PSpllc_ph_2 -domain PDpllc \
+	-input_supply_port  {TVDD PDcmn_avdd.primary.power} \
+	-output_supply_port {VDD  PDpllc.primary.power} \
+ 	-control_port  {NSLEEPIN u_pwr_isl_ctrl_sm_icfg_pllc/power_en_ph_2} \
+ 	-on_state   {full_on  TVDD NSLEEPIN } \
+ 	-off_state  {full_off !NSLEEPIN }
+	
+   create_power_switch PSccal_ph_1 -domain PDccal \
+	-input_supply_port  {TVDD PDcmn_avdd.primary.power} \
+	-output_supply_port {VDD  PDccal.primary.power} \
+ 	-control_port  {NSLEEPIN u_pwr_isl_ctrl_sm_icfg_ccal/power_en_ph_1} \
+ 	-on_state   {full_on  TVDD NSLEEPIN } \
+ 	-off_state  {full_off !NSLEEPIN }
+	
+   create_power_switch PSccal_ph_2 -domain PDccal \
+	-input_supply_port  {TVDD PDcmn_avdd.primary.power} \
+	-output_supply_port {VDD  PDccal.primary.power} \
+ 	-control_port  {NSLEEPIN u_pwr_isl_ctrl_sm_icfg_ccal/power_en_ph_2} \
+ 	-on_state   {full_on  TVDD NSLEEPIN } \
+ 	-off_state  {full_off !NSLEEPIN }
+	
+   create_power_switch PSdiag_ph_1 -domain PDdiag \
+	-input_supply_port  {TVDD PDcmn_avdd.primary.power} \
+	-output_supply_port {VDD  PDdiag.primary.power} \
+ 	-control_port  {NSLEEPIN u_pwr_isl_ctrl_sm_icfg_diag/power_en_ph_1} \
+ 	-on_state   {full_on  TVDD NSLEEPIN } \
+ 	-off_state  {full_off !NSLEEPIN }
+	
+   create_power_switch PSdiag_ph_2 -domain PDdiag \
+	-input_supply_port  {TVDD PDcmn_avdd.primary.power} \
+	-output_supply_port {VDD  PDdiag.primary.power} \
+ 	-control_port  {NSLEEPIN u_pwr_isl_ctrl_sm_icfg_diag/power_en_ph_2} \
+ 	-on_state   {full_on  TVDD NSLEEPIN } \
+ 	-off_state  {full_off !NSLEEPIN }
+
+   #################################################
+   ##  Define Power States and Modes
+   #################################################
+
+#   add_power_state SS_cmn_pso_cdb   -state  ON {-supply_expr {power == `{FULL_ON, 0.75}}} -state OFF {-supply_expr {power == `{OFF}}}
+
+   add_power_state SS_cmn_avdd      -state  ONg {-supply_expr {ground== `{FULL_ON, 0.0 }}}
+   add_power_state SS_cmn_avdd      -state  ON {-supply_expr {power == `{FULL_ON, 0.75}}} -state OFF {-supply_expr {power == `{OFF}}}
+# add_power_state SS_cmn_avdd_h    -state  ON {-supply_expr {power == `{FULL_ON, 0.75}}} -state OFF {-supply_expr {power == `{OFF}}}
+   add_power_state SS_cmn_avdd_h    -state  ON {-supply_expr {power == `{FULL_ON, 1.2}}} -state OFF {-supply_expr {power == `{OFF}}}
+   add_power_state SS_cmn_avdd_clk  -state  ON {-supply_expr {power == `{FULL_ON, 0.75}}} -state OFF {-supply_expr {power == `{OFF}}}
+   add_power_state SS_cmn_pso_pllc  -state  ON {-supply_expr {power == `{FULL_ON, 0.75}}} -state OFF {-supply_expr {power == `{OFF}}}
+   add_power_state SS_cmn_pso_ccal  -state  ON {-supply_expr {power == `{FULL_ON, 0.75}}} -state OFF {-supply_expr {power == `{OFF}}}
+   add_power_state SS_cmn_pso_diag  -state  ON {-supply_expr {power == `{FULL_ON, 0.75}}} -state OFF {-supply_expr {power == `{OFF}}}
+   add_power_state SS_vdd           -state  ONg {-supply_expr {ground== `{FULL_ON, 0.0 }}}
+   add_power_state SS_cmn_aonvdd    -state  ONg {-supply_expr {ground== `{FULL_ON, 0.0 }}}
+
+# valid values for lib are 0.675 to 0.825
+   add_power_state SS_vdd           -state  ON {-supply_expr {power == `{FULL_ON, 0.675}}} -state OFF {-supply_expr {power == `{OFF}}}
+   #add_power_state SS_cmn_aonvdd    -state  ON {-supply_expr {power == `{FULL_ON, 0.675}}} -state OFF {-supply_expr {power == `{OFF}}}
+   add_power_state SS_cmn_aonvdd    -state  ON {-supply_expr {power == `{FULL_ON, 0.75}}} -state OFF {-supply_expr {power == `{OFF}}}
+
+   #                        item   0    1           2    3          4            5           7            8            9
+  #create_pst cmn_pst -supplies { gnd   cmn_aonvdd  vdd  cmn_avdd  cmn_avdd_clk  cmn_avdd_h  cmn_pso_pllc cmn_pso_ccal cmn_pso_diag }
+
+   create_pst cmn_pst -supplies { agnd  cmn_aonvdd  vdd      avdd      avdd_clk      avdd_h  cmn_pso_pllc cmn_pso_ccal cmn_pso_diag }
+
+   # Not valid to have PDcdb OFF and PDdiag ON, no way to access regs in diag if PDcdb is OFF
+   # 
+   # CDB must be ON if one of pllc or ccal is ON
+   # 
+   #                                     item          0   1   2   3   4   5   6   7   8   9
+   add_pst_state PM_func_all_on -pst cmn_pst -state { ONg  ON  ON  ON  ON  ON  ON  ON  ON}
+   add_pst_state PM_all_off     -pst cmn_pst -state { ONg  OFF OFF OFF OFF OFF OFF OFF OFF}
+   
+   # to support this state need an isolation enable input to the PMA 
+   #add_pst_state PM_io_on       -pst cmn_pst -state { ONg  ON  ON OFF OFF OFF OFF OFF OFF}
+
+   # the base power modes from the Macro Power Modes table in the PMA spec
+#   add_pst_state PM_cdb         -pst cmn_pst -state { ONg  ON  ON  ON  ON  ON  OFF OFF OFF }
+   add_pst_state PM_ccaloff     -pst cmn_pst -state { ONg  ON  ON  ON  ON  ON  ON OFF OFF }
+   add_pst_state PM_sspnd       -pst cmn_pst -state { ONg  ON  ON  ON  ON  ON  OFF OFF OFF }
+
+   # remaining possible combinations for pllc, ccal, and diag (CDB is ON)  
+   add_pst_state PM_cmn_ovrd_1  -pst cmn_pst -state { ONg  ON  ON  ON  ON  ON  OFF OFF  ON }
+   add_pst_state PM_cmn_ovrd_2  -pst cmn_pst -state { ONg  ON  ON  ON  ON  ON  OFF  ON OFF }
+   add_pst_state PM_cmn_ovrd_3  -pst cmn_pst -state { ONg  ON  ON  ON  ON  ON  OFF  ON  ON }
+
+   # duplicate of PM_ccaloff
+#   add_pst_state PM_cmn_ovrd_4  -pst cmn_pst -state { ONg  ON  ON  ON  ON  ON  ON OFF OFF }
+   add_pst_state PM_cmn_ovrd_5  -pst cmn_pst -state { ONg  ON  ON  ON  ON  ON  ON OFF  ON }
+   add_pst_state PM_cmn_ovrd_6  -pst cmn_pst -state { ONg  ON  ON  ON  ON  ON  ON  ON OFF }
+
+   # Spec says that CDB should not be OFF with other switched domains on
+   # add this mode so that CLP can check for all crossings.
+#   add_pst_state PM_cmn_ovrd_7  -pst cmn_pst -state { ONg  ON  ON  ON  ON  ON  ON  ON  ON }
