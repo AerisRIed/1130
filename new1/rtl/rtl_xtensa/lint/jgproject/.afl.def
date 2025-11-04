@@ -1,0 +1,258 @@
+// ---------------------------------//
+//  Automatically Generated         //
+// ---------------------------------//
+domain LINT
+{
+ NAMING
+ FILEFORMAT
+ CODINGSTYLE
+ SIM_SYNTH
+ SYNTHESIS
+ STRUCTURAL
+ RACES
+ BLACKBOX
+ DFT_FUNCTIONAL
+}
+
+category DFT_FUNCTIONAL
+{
+  MOD_IS_CMBL  {severity=Error} {msg="Combinational loop detected passing through: '%h'"} {disable_enumerated_loops=no} {include_latch_data=yes} {loop_count_limit=20} {loop_unroll_limit=10}
+  NUM_LP_CMBL  {severity=Info} {msg="'%d' combinational loops found. These loops are limited by the value set for the parameter '%s'. To report more '%s' violations, increase the value of this parameter"}
+  OTP_NO_RGTM  {severity=Info} {msg="Output '%h' of top-level module/design-unit is not registered"} {levels_of_combinational_logic=0}
+  RST_IS_DDAF  {severity=Warning} {msg="Reset signal '%s' driving reset of flip-flop '%s' also drives the data pin of one or more flip-flops/latches. One such %s is '%s'."}
+  RST_MX_EDGE  {severity=Warning} {msg="Signal '%s' is used as active-high set/reset for flip-flop '%s' as well as active-low set/reset for flip-flop '%s'"} {convention_for_set_reset_style=mixed}
+  TRI_NO_EPTB  {severity=Error} {msg="Signal '%h' driving enable pin of the tristate buffer '%h' is not directly controllable by primary input(s)"} {controllable_thru_comb_logic=no}
+  CLK_IS_ACRF  {severity=Info} {msg="Clock signal '%h' drives set/reset and clock pin '%h' of one or more flip-flops. One such flip-flop is '%h'"}
+  CLK_IS_ACRL  {severity=Info} {msg="Clock signal '%s' drives set/reset and enable pin '%s' of one or more latches. One such latch is '%h'"}
+  CLK_IS_CDLA  {severity=Info} {msg="Clock signal '%h' drives the data pin of one or more latches. One such latch is '%h'"}
+  CLK_IS_CDTF  {severity=Error} {msg="Clock signal '%h' drives the data pin of one or more flip-flops. One such flip-flop is '%h'"}
+  CLK_IS_DDCF  {severity=Info} {msg="Clock signal '%h' drives the data pin and clock pin '%h' of one or more flip-flops. One such flip-flop is '%h'"}
+  CLK_IS_DDCL  {severity=Info} {msg="Clock signal '%s' drives the data pin and enable pin '%s' of one or more latches. One such latch is '%h'"}
+  CLK_IS_DRFF  {severity=Info} {msg="Clock signal '%h' drives a set or reset pin of one or more flip-flops. One such flip-flop is '%h'"}
+  CLK_IS_DRLA  {severity=Info} {msg="Clock signal '%h' drives a set or reset pin of one or more latches. One such latch is '%h'"}
+  CLK_IS_NDPI  {severity=Warning} {msg="Signal '%h' driving clock of one or more flip-flops, is undriven. One such flip-flop is '%h'"}
+  FLP_IS_TNEF  {severity=Error} {msg="Flip-flop '%l' is triggered at the negative edge of clock '%l'"}
+  FLP_NO_SRST  {severity=Error} {msg="Flip-flop '%s' does not have any set or reset"} {check_on_instance=no}
+  LAT_IS_INFR  {severity=Error} {msg="Process/always block models a latch, or signal '%s' is not assigned a value in all branches"} {print_full_name=no}
+}
+
+category BLACKBOX
+{
+  MOD_IS_EBXE  {severity=Info} {msg="Module/design-unit %s was explicitly blackboxed by user"}
+  MOD_IS_IBXE  {severity=Error} {msg="Design-unit %s was implicitly blackboxed by the tool. Check for more details BBOX category in design build view"}
+  MOD_IS_RBXE  {severity=Error} {msg="Design-unit %s was blackboxed as a result of resilient compilation. Check for more details BBOX category in design build view"}
+  ELB_IS_ERRO  {severity=Error} {msg="Failed to elaborate design-unit '%s'. For more details check errors in Design Build view"}
+  INS_IS_EBXE  {severity=Info} {msg="Instance %s was explicitly blackboxed by user"}
+}
+
+category RACES
+{
+  REG_NR_WWRC  {severity=Error} {msg="'%s' is written in more than one process/always block"}
+}
+
+category STRUCTURAL
+{
+  CMB_NR_TLIO  {severity=Warning} {msg="Combinational path detected between top-level input '%s' and top-level output '%s'"} {report_with_latch_in_path=no}
+  FLP_NR_ASRT  {severity=Warning} {msg="Flip-flop '%s' has both asynchronous set and reset"}
+  FLP_NR_ENCT  {severity=Info} {msg="Net '%h' driving enable pin of one or more flip-flops, is constant. One such flip-flop is '%h'"}
+  LAT_IS_FLSE  {severity=Info} {msg="Latch '%h' is feeding latch '%h' having same enable %h"}
+  MOD_NO_IPRG  {severity=Info} {msg="Input port '%h' of top-level design-unit is not registered"} {levels_of_combinational_logic=0}
+  NET_IS_INTB  {severity=Warning} {msg="Net '%l' defined in design-unit '%m', is inferred as a tri-state buffer"}
+  NET_NO_DRIV  {severity=Error} {msg="Net '%s' declared in design-unit '%s' has no driver but has at least one load"}
+  NET_NO_LDDR  {severity=Info} {msg="Net '%s' declared in design-unit '%s' neither has driver nor any load"}
+  NET_NO_LOAD  {severity=Info} {msg="Net '%s' declared in design-unit '%s' has a driver but has no load"}
+  RST_IS_DCMB  {severity=Error} {msg="Net '%h' generated from combinational logic is driving set/reset of one or more flip-flops. One such flip-flop is '%h'"} {treat_multi_driven_as_combinational_logic=yes}
+  RST_IS_DFLP  {severity=Warning} {msg="Net '%h' generated from flip-flop is driving reset of one or more flip-flops. One such flip-flop is '%h'"}
+  RST_IS_DLAT  {severity=Warning} {msg="Net '%h' generated from latch is driving reset of one or more flip-flops. One such flip-flop is '%h'"}
+  RST_NR_PENA  {severity=Warning} {msg="Net '%h' driving reset of one or more flip-flops, is permanently enabled. One such flip-flop is '%h'"}
+  SIG_IS_MDRV  {severity=Error} {msg="Net '%s' has multiple drivers"} {ignore_z_drivers=no} {report_same_drivers=no}
+  CLK_NO_INPT  {severity=Error} {msg="In design-unit '%m', clock '%l' driving one or more flip-flops, is not an input. One such flip-flop is '%l'"}
+  CLK_NS_EDMX  {severity=Error} {msg="Both edges of clock '%s' used, positive edge at '%s' and negative edge at '%s'"} {primary_edge=posedge}
+}
+
+category SYNTHESIS
+{
+  MOD_NR_DSBC  {severity=Error} {msg="Design-unit %s contains non-synthesizable disable construct"}
+  MOD_NR_EVRP  {severity=Error} {msg="%s %s contains event specification which cannot be synthesized"}
+  MOD_NR_FINB  {severity=Warning} {msg="Design-unit '%s' has a final block"}
+  MOD_NR_FKJN  {severity=Error} {msg="%s %s contains non-synthesizable fork-join constructs"}
+  MOD_NR_FORE  {severity=Error} {msg="Design-unit %s contains forever construct"}
+  MOD_NR_FREL  {severity=Error} {msg="%s %s contains non-synthesizable force/release constructs"}
+  MOD_NR_INIB  {severity=Warning} {msg="Design-unit '%s' has an initial block"}
+  MOD_NR_NSLP  {severity=Error} {msg="%s %s contains non-static loop"}
+  MOD_NR_USWC  {severity=Error} {msg="%s %s contains non-synthesizable wait construct"}
+  MOD_NS_ADAS  {severity=Error} {msg="Design-unit %s has assign/deassign statements"}
+  OPR_NR_WCCO  {severity=Warning} {msg="RHS Inside or wildcard equality operator (==? or !=?) is not constant in '%s'"}
+  SIG_NO_HIER  {severity=Error} {msg="Design-unit '%s' has unsynthesizable hierarchical reference '%s'"}
+  SIG_NR_TIME  {severity=Error} {msg="Signal '%s' of data type 'time' used in %s %s"}
+  TSK_NR_CLKE  {severity=Error} {msg="%s of variable '%s' used in task '%s'"}
+  VAR_NR_MNBA  {severity=Warning} {msg="In design-unit '%s', variable '%s' has multiple non-blocking assignments%s"} {mulnba_reset_mode=no}
+  VAR_NR_OUTR  {severity=Warning} {msg="Bit/part select '%s' is outside the defined range %s for '%s'"}
+  VAR_NR_REAL  {severity=Error} {msg="Variable '%s' of data type 'real' used in %s %s"}
+  ALW_IC_SENL  {severity=Error} {msg="Sensitivity list of always block is incomplete in design-unit %s, missing variable(s): %s"}
+  ALW_NO_COMB  {severity=Warning} {msg="The variable '%s' models a %s in an 'always_comb' block"}
+  ALW_NO_ETRG  {severity=Error} {msg="Always block with no event trigger at the start in design-unit '%s'"}
+  ALW_NO_EVTS  {severity=Error} {msg="%s block with no event trigger at the start in %s %s"}
+  ALW_NO_FFLP  {severity=Warning} {msg="The variable '%s' models a %s in an 'always_ff' block"}
+  ALW_NR_MCLK  {severity=Error} {msg="Multiple clocks specified in variable %s of design-unit %s"}
+  ALW_NR_MXCK  {severity=Error} {msg="Always block has both level and edge sensitive variables in its sensitivity list: %s"}
+  ALW_NR_TCST  {severity=Error} {msg="The event expression '%s' cannot be synthesized"} {hide_verific_messages=no}
+  ASG_NR_NBCB  {severity=Error} {msg="Non-blocking assignment at '%s' encountered in a combinational block"} {allow_independent_NBA=yes}
+  ASG_NR_SUPN  {severity=Warning} {msg="Assignment to a supply0/supply1 net %s in design-unit %s is ignored"}
+  CAS_NR_DEFX  {severity=Info} {msg="Signal '%s' assigned in case statement is not assigned to X in default case"} {skip_loop_declaration=yes}
+  CAS_NR_EVLX  {severity=Error} {msg="In %s '%s', case item expressions evaluating to 'x/z/?' are ignored"}
+  CLK_NR_DDBE  {severity=Error} {msg="Clock %s for flip-flop %s is driving data on both edges"}
+  CND_NR_CMXZ  {severity=Error} {msg="In design-unit '%s', conditional expression containing 'x'/'z' is statically evaluated to false"}
+  DLY_NR_ASGN  {severity=Warning} {msg="Delay '%s' in assignment to '%s' is being ignored"}
+  FLP_NR_ASMX  {severity=Warning} {msg="In the specified always/process block, descriptions of flip-flops with and without asynchronous set/reset are mixed. Flip-flops without asynchronous set/reset are: %s"}
+  FLP_NR_INDL  {severity=Error} {msg="The flip-flop output '%s' is initialized in its declaration or in initial block"}
+  FLP_NR_MBCK  {severity=Warning} {msg="In %s '%s', multi-bit '%s' used as clock for flip-flop '%s'"} {clock_using_bus_signal=no}
+  FNC_NR_CREC  {severity=Warning} {msg="Function '%s' is called recursively in %s '%s'"}
+  IDX_NR_LBOU  {severity=Error} {msg="Variable index/range selection in LHS of assignment of '%s' is potentially outside the defined range"}
+  IDX_NR_ORNG  {severity=Error} {msg="Variable index/range selection of '%s' is potentially outside the defined range"}
+  LAT_NR_BLAS  {severity=Warning} {msg="In design-unit %s, latch is assigned by blocking assignments"}
+  LAT_NR_MXCB  {severity=Warning} {msg="The latches '%s' in the always block are mixed with combinational logic"}
+  LOP_NR_FCND  {severity=Error} {msg="Loop condition '%s' is false"}
+  LOP_NR_INFL  {severity=Warning} {msg="%s '%s' contains a potential infinite loop"}
+  MOD_IS_RCMP  {severity=Warning} {msg="Overwriting previous definition of %s '%s'"}
+  MOD_NR_ALAS  {severity=Error} {msg="Design-unit %s has duplicate input/inout ports"}
+  MOD_NR_ASLD  {severity=Warning} {msg="In design-unit %s, the reset value of flip-flop %s is not constant. This infers an asynchronous load"}
+  MOD_NR_CNDO  {severity=Error} {msg="In design-unit %s, %s comparison is treated as %s"} {ignore_non_const=yes}
+}
+
+category SIM_SYNTH
+{
+  DLY_NR_XZVL  {severity=Error} {msg="Delay value '%s' contains an x/z"}
+  MOD_NR_SYXZ  {severity=Warning} {msg="Synthesizing 'x'/'z' value '%s' in %s '%s'"} {report_value_type=both} {skip_case_default_statement=yes} {skip_param_value=yes}
+  VAR_NR_NDCL  {severity=Error} {msg="Variable '%s' is declared as '%s'"}
+  ALW_NR_MSLV  {severity=Warning} {msg="Signal '%s' appearing in the sensitivity list is modified inside the block"}
+  ALW_NR_UNUV  {severity=Warning} {msg="Signal '%s' appearing in the sensitivity list is not used in the '%s' block"}
+}
+
+category CODINGSTYLE
+{
+  ALW_IS_TASK  {severity=Info} {msg="Task '%s' used in always block"}
+  ALW_NR_OPSL  {severity=Error} {msg="Operator other than 'or' or ',' used in sensitivity list '%s'"}
+  ARY_MS_DRNG  {severity=Warning} {msg="Inconsistent ordering of bits in range declarations in design-unit %s -- should be all %s ranges"} {direction=descending} {report_unpacked=yes}
+  ARY_NR_LOPR  {severity=Error} {msg="%s operator applied to multi-bit operand %s in design-unit %s"} {allow_truncation_by_zero=no} {skip_declarations=yes}
+  ARY_NR_SLRG  {severity=Warning} {msg="The signal '%s', defined in %s '%s', is a one pin bus in its instance '%s'"} {top_only=no}
+  ASG_MS_RPAD  {severity=Error} {msg="Unequal length operands in assignment in design-unit/block '%s'. Length of RHS is less than LHS. LHS '%s' (%s) - %s bit(s), RHS '%s' (%s) - %s bit(s). RHS will be padded by %s bit(s)."} {report_rhs_arithmetic_expression_size_same_as_lhs=yes} {skip_loop_declaration=yes}
+  ASG_MS_RTRU  {severity=Error} {msg="Unequal length operands in assignment in design-unit/block '%s'. Length of RHS is greater than LHS. LHS '%s' (%s) - %s bit(s), RHS '%s' (%s) - %s bit(s). %s most significant bit(s) will be lost."} {skip_loop_declaration=yes}
+  ASG_NR_LMSB  {severity=Warning} {msg="Truncation of bits in a constant '%s' in design-unit/block %s. The most significant bits are lost"} {skip_loop_declaration=yes}
+  ASG_NR_MINP  {severity=Warning} {msg="Assignment to a %s input port '%s' is not supported"}
+  ASG_NR_NBFC  {severity=Warning} {msg="Non-blocking assignment encountered in function '%s'"}
+  CAS_NO_CNST  {severity=Warning} {msg="Case item expression '%s' is not a constant"}
+  CAS_NR_CMUL  {severity=Error} {msg="Case item expression '%s' is covered more than once in design-unit %s."}
+  CAS_NR_DEFN  {severity=Error} {msg="Case statement incomplete, %s"} {case_default_specification=relax} {combinational_block_only=yes} {consider_all_enum_covered_as_full=no} {consider_default_item_as_full=yes} {full_case_with_no_default_allowed=yes}
+  CAS_NR_OVCI  {severity=Error} {msg="Casex/Casez item expression '%s' overlapping with casex/casez item expression '%s' in design-unit %s"} {ignore_overlap_except_unique=no} {ignore_within_list_overlap=no} {ignore_z_overlap=no}
+  CAS_NR_UCIT  {severity=Warning} {msg="Unequal length in case item comparison (selector is %d bits, case tag expression is %d bits) in design-unit %s"} {allow_padding_by_zero=no} {allow_truncation_by_zero=yes} {casesel_lessthan_casetag_allow=no}
+  CAS_NR_XCAZ  {severity=Error} {msg="Case item expression contains 'x' for a casez statement (useful only in casex statements) in design-unit %s"}
+  CND_IR_CCAS  {severity=Warning} {msg="Constant conditional expression '%s' encountered"} {ignore_reverse_modeling=no} {optimize_condition=yes} {report_parameter=no} {report_params_in_condition=yes}
+  CND_NS_MBEX  {severity=Warning} {msg="The expression '%s' in condition does not result in a single bit value in design-unit %s"}
+  CST_MS_SIZE  {severity=Error} {msg="Constant '%s' has a value greater than its size"}
+  CST_NO_DELY  {severity=Warning} {msg="Delay %s in assignment is not a constant expression"}
+  DLY_NO_CSAG  {severity=Error} {msg="Delay used in VHDL conditional signal assignment to '%s'"}
+  DLY_NR_NEGT  {severity=Error} {msg="Negative delay '%s' used in the statement"}
+  EXP_NR_OVFB  {severity=Info} {msg="Shift overflow in design-unit/block %s, some bits will be lost"} {skip_declarations=yes}
+  FNC_MS_AFPR  {severity=Error} {msg="Width mismatch between formal '%s' of %s bit(s) and actual '%s' of %s bit(s) arguments of function/task '%s'"} {allow_padding_by_zero=no} {allow_truncation_by_zero=yes} {skip_component_declaration=yes}
+  FNC_MS_MTYP  {severity=Warning} {msg="Task/function call argument '%s' is of incorrect type (formal %s versus actual %s)"}
+  FNC_NO_AVAC  {severity=Warning} {msg="Function %s"}
+  FNC_NR_AVGV  {severity=Warning} {msg="Function '%s' in design-unit '%s' assigns a value to global variable '%s'"}
+  FNC_NR_NARG  {severity=Warning} {msg="Task/function/procedure '%s' call has wrong number of arguments"}
+  FNC_NR_RETV  {severity=Warning} {msg="In function '%s', the %s of return type and return value are not same"}
+  FNC_NR_UGLV  {severity=Warning} {msg="Variable '%s' used in function '%s' of design-unit '%s' is outside of the function scope"}
+  IDN_NR_CKYW  {severity=Warning} {msg="C/C++ reserved word '%s' used as an identifier or label"}
+  IDN_NR_SVKW  {severity=Warning} {msg="SystemVerilog reserved word '%s' used as an identifier or label"}
+  IDN_NR_AMKW  {severity=Warning} {msg="AMS reserved word '%s' used as an identifier or label"}
+  IDN_NR_VKYW  {severity=Warning} {msg="Verilog reserved word '%s' used as an identifier or label"}
+  IDX_MS_INDL  {severity=Warning} {msg="VHDL port '%s' has index bounds mismatch between component declaration (%s) and entity declaration (%s)"}
+  IDX_NR_DTTY  {severity=Warning} {msg="Variable '%s' used as index in expression '%s' should be 2-state data type"} {allowed_datatypes=""}
+  IFC_NO_FALW  {severity=Error} {msg="The 'if' statement specifying an asynchronous set/reset is not the first statement of the always block : '%s'"}
+  IFC_NR_DGEL  {severity=Warning} {msg="else/else-if statement of '%s' in %s '%s' is ambiguous"}
+  INP_NO_USED  {severity=Warning} {msg="The input port '%s' declared in the %s '%s' is unused"}
+  INP_UC_INST  {severity=Error} {msg="Input port '%s' of design-unit '%s' is being used inside design-unit, but not connected in its instance '%s'"} {ignore_explicitly_unconnected_port=no} {ignore_port_with_no_load=no} {report_partially_unused=yes}
+  INS_MS_PSIZ  {severity=Error} {msg="Port '%s' has size mismatch between design-unit instantiation and port declaration, '%s' bits at instantiation and '%s' bits at declaration"} {allow_padding_by_zero=no} {allow_truncation_by_zero=no}
+  INS_NR_PODL  {severity=Warning} {msg="Port connections for instance '%s' of %s '%s' should be made by name rather than by positional ordered list"} {check_tech_cells=yes}
+  INS_NR_PTEX  {severity=Error} {msg="%s is used in a port expression"} {ignore_sized_literal=no}
+  INT_NR_PSBT  {severity=Error} {msg="Bit/part select of %s variable '%s' encountered"}
+  IOP_NO_USED  {severity=Warning} {msg="The inout port '%s' declared in the %s '%s' is unused (neither read nor assigned)"}
+  IOP_NR_UASG  {severity=Warning} {msg="The inout port '%s' declared in the %s '%s' is unassigned, but read"}
+  IOP_NR_UNRD  {severity=Warning} {msg="The inout port '%s' declared in the %s '%s' is unread, but assigned"}
+  LOP_NR_CTCE  {severity=Error} {msg="Design-unit '%s' contains a loop with a constant conditional expression '%s'"} {optimize_condition=yes}
+  LOP_NR_IDTY  {severity=Warning} {msg="Loop variable '%s' of the 'for' loop is not of recommended data type(s) (%s)"} {allow_loopvar=integer:int:shortint:longint}
+  LOP_NR_MLPV  {severity=Error} {msg="Value of loop variable '%s' modified within the loop"} {skip_loop_declaration=yes}
+  LOP_NR_MSTP  {severity=Error} {msg="Loop step variable '%s' is different from the loop condition or initialization statement"}
+  MAC_NR_DMUL  {severity=Error} {msg="Macro '%s' is defined with same definition"}
+  MOD_NO_PRTD  {severity=Warning} {msg="%s '%s' has %s ports."} {report_port_type=no_port}
+  MOD_NO_TMSL  {severity=Warning} {msg="Timescale is missing for %s '%s' having delays"}
+  MOD_NR_CASX  {severity=Warning} {msg="'casex' statement used in design-unit '%s'"}
+  MOD_NR_PGAT  {severity=Warning} {msg="Gate instance '%s' is not expected in an RTL design"}
+  MOD_NR_PRIM  {severity=Error} {msg="Primitive instance '%s' is not expected in an RTL design"}
+  OPR_NR_LOSD  {severity=Error} {msg="The result of the "%s" operation between constants in expression "%s" leads to truncation of bits and loss of data in design-unit/block %s. The bits getting lost are '%s'."} {disable_on_port_declaration=no} {skip_loop_declaration=yes}
+  OPR_NR_REAL  {severity=Warning} {msg="Real operand ('%s') is used in logical comparison"}
+  OPR_NR_UCMP  {severity=Error} {msg="Unequal length operands in equality operator encountered in design-unit/block %s. LHS operand is %d bits, RHS operand is %d bits"} {allow_padding_by_zero=no} {allow_truncation_by_zero=no} {skip_declarations=yes} {skip_event_expression=yes} {skip_loop_declaration=yes} {skip_loop_index_comparison=yes} {warn_unequal_length=yes}
+  OPR_NR_UEOP  {severity=Info} {msg="Unequal length operand in bit operator %s in design-unit/block %s. LHS operand '%s' is %s bits, RHS operand '%s' is %s bits"} {allow_padding_by_zero=no} {allow_truncation_by_zero=no} {ignore_addition=no} {ignore_subtraction=no} {skip_declarations=yes} {skip_event_expression=yes} {skip_loop_declaration=yes} {skip_loop_index_comparison=yes}
+  OTP_NO_FDRV  {severity=Error} {msg="Output/inout '%s' is not fully driven in the design-unit '%s'"} {top_only=no}
+  OTP_NO_USED  {severity=Warning} {msg="The output port '%s' declared in the %s '%s' is unused"}
+  OTP_NR_TSUP  {severity=Error} {msg="The output/inout '%s' is tied to supply0/supply1"}
+  OTP_NR_UDRV  {severity=Error} {msg="Output/inout '%s' is not driven in the design-unit '%s'"} {top_only=no}
+  OTP_UC_INST  {severity=Warning} {msg="Port '%s' (which is being used as an output) of design-unit '%s' is being driven inside the design, but not connected in its instance '%s'"} {check_on_std_cells=yes} {ignore_explicitly_unconnected_port=no} {ignore_port_with_no_load=no} {report_partially_unused=yes} {show_unconnected_bus_range=no}
+  PRG_NO_EXPT  {severity=Error} {msg="Nested '%s' found inside '%s' block"}
+  PRG_NR_PROF  {severity=Error} {msg="'%s' found without corresponding off pragma"}
+  PAR_MS_SDAS  {severity=Info} {msg="Parameter '%s' has a size mismatch between its declaration and its value assigned, '%s' bits at declaration and '%s' bits at assigned value"} {allow_padding_by_zero=no} {allow_truncation_by_zero=no}
+  PRT_NR_DFRG  {severity=Error} {msg="Port '%s' with range (%d to %d) is re-declared with a different range (%d to %d)"}
+  PRT_NR_IOPT  {severity=Warning} {msg="Port '%s' is of type inout"} {applicable_hierarchy=sub_only}
+  REG_NO_READ  {severity=Info} {msg="Local register variable '%s' is not read, but is assigned at least once in %s '%s'"} {pattern=""}
+  REG_NR_MBNT  {severity=Error} {msg="The notifier in timing check '%s' can not be greater than 1 bit"} {allow_truncation_by_zero=no}
+  REG_NR_UASR  {severity=Error} {msg="Local register variable '%s' is unassigned, but is read at least once in %s %s"} {pattern=""}
+  RST_IS_CPLX  {severity=Error} {msg="In design-unit '%s', for flip-flop '%s', reset is an expression"}
+  RST_IS_NFST  {severity=Error} {msg="Reset '%s' of one or more flip-flops is not derived from first signal from reset order. One such flip-flop is '%h'"}
+  SEQ_NR_BLKA  {severity=Error} {msg="Blocking assignment to variable '%s' encountered in a sequential block"} {allow_single_blocking_assignment=no} {skip_loop_declaration=yes}
+  SIG_NO_ASIG  {severity=Error} {msg="VHDL signal '%s' is unassigned, but is read at least once in %s '%s'"}
+  SIG_NO_READ  {severity=Info} {msg="VHDL signal '%s' is not read, but assigned at least once in %s '%s'"}
+  SIG_NO_USED  {severity=Info} {msg="VHDL signal '%s' declared in %s '%s' is unused (neither read nor assigned)"}
+  SIG_NR_INDL  {severity=Warning} {msg="A signal '%s' in an RTL description is initialized in its declaration"} {skip_loop_declaration=yes}
+  TSK_NR_ASGV  {severity=Warning} {msg="Task '%s' in design-unit '%s' assigns a value to global variable '%s'"}
+  VAR_NO_ASIG  {severity=Error} {msg="VHDL variable '%s' is unassigned, but is read at least once in %s '%s'"}
+  VAR_NO_EVTR  {severity=Error} {msg="Event variable '%s' is unused"}
+  VAR_NO_INTL  {severity=Warning} {msg="Variable '%s' is not initialized before being incremented/decremented in the for loop"}
+  VAR_NO_READ  {severity=Info} {msg="VHDL variable '%s' is not read, but assigned at least once in %s '%s'"}
+  VAR_NO_USED  {severity=Info} {msg="VHDL variable '%s' declared in %s '%s' is unused (neither read nor assigned)"}
+  VAR_NR_RDBA  {severity=Warning} {msg="Variable '%s', assigned using blocking assignment, is being read before getting assigned"} {skip_loop_declaration=yes}
+  WIR_NO_READ  {severity=Warning} {msg="Wire '%s' declared in %s '%s' does not drive any object, but is assigned at least once"} {pattern=""}
+  WIR_NO_USED  {severity=Error} {msg="Wire '%s' declared in %s '%s' is unused (neither read nor assigned)"} {pattern=""}
+  WIR_NR_UASR  {severity=Warning} {msg="Wire '%s' declared in %s '%s' is unassigned, but drives at least an object"} {pattern=""}
+}
+
+category FILEFORMAT
+{
+  FIL_MS_DUNM  {severity=Warning} {msg="%s name '%s' differs from file name '%s'"}
+  FIL_NR_MMOD  {severity=Warning} {msg="More than one design-unit definition in file '%s'"}
+  FIL_NS_SUFX  {severity=Warning} {msg="The file name '%s' is missing a valid HDL file name extension"} {local_pattern_style=regex} {local_regex_style=full} {pattern=(^vhd$|^vhdl$|^v$|^sv$)}
+}
+
+category NAMING
+{
+  IDN_NF_ALCA  {severity=Error} {msg="Identifier '%s' contains characters or user specified keywords that are not allowed"} {pattern=""} {reserved_keyword_list=""} {reserved_keyword_list_case_sensitive=yes}
+  IDN_NR_ESCA  {severity=Warning} {msg="Identifier '%s' contains escaped names, which should not be used"} {checks_on_netlist=no}
+  INS_NF_NMCV  {severity=Warning} {msg="Instance name '%s' does not follow the naming convention"} {pattern=""}
+  MOD_NF_NMCV  {severity=Warning} {msg="Module name '%s' does not follow the naming convention"} {pattern=""}
+  PAR_NF_NMCV  {severity=Warning} {msg="Parameter name '%s' does not follow the naming convention"} {pattern_localparam=""} {pattern_parameter=""}
+}
+
+params LINT {allow_padding_by_zero=no}
+params LINT {allow_truncation_by_zero=no}
+params LINT {assume_bbox_connected=all_bbox}
+params LINT {disable_partial_reporting=no}
+params LINT {global_pattern_style=wildcard}
+params LINT {hide_verific_messages=yes}
+params LINT {max_supported_bit_size=16384}
+params LINT {pattern_style=""}
+params LINT {regex_style=""}
+params LINT {report_complex_indexed_expr=no}
+params LINT {report_partially_unused_vector=yes}
+params LINT {tags_waiving_gate_no_load=CLK_IS_NDPI}
+params LINT {traverse_inactive_blocks=no}
+params LINT {unbased_literal=size_as_per_type}
+params LINT {unsized_literal=size_as_per_type}
+// ----------------END-------------//

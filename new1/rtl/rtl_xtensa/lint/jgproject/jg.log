@@ -1,0 +1,179 @@
+# ----------------------------------------
+# JasperGold Version Info
+# tool      : JasperGold 2020.06
+# platform  : Linux 3.10.0-1160.2.2.el7.x86_64
+# version   : 2020.06p002 64 bits
+# build date: 2020.08.25 18:12:38 PDT
+# ----------------------------------------
+# started   : 2025-10-13 07:14:42 CST
+# hostname  : kdt-utility04.cadence.com
+# pid       : 245299
+# arguments : '-label' 'session_0' '-console' '//127.0.0.1:38406' '-style' 'windows' '-data' 'AQAAADx/////AAAAAAAAA3oAAAAQAEwATQBSAEUATQBPAFYARQAAAAAAAAHgAAAAAAAAADwB' '-proj' '/projects/sd3101_t4gp_fe/users/canchen/Timberwolf_USB4_T4GP/trunk/design/rtl/rtl_xtensa/lint/jgproject/sessionLogs/session_0' '-init' '-hidden' '/projects/sd3101_t4gp_fe/users/canchen/Timberwolf_USB4_T4GP/trunk/design/rtl/rtl_xtensa/lint/jgproject/.tmp/.initCmds.tcl' 'superlint.tcl'
+
+Any disclosure about the Cadence Design Systems software or its use
+model to any third party violates the written Non-Disclosure Agreement
+between Cadence Design Systems, Inc. and the customer.
+
+THIS SOFTWARE CONTAINS CONFIDENTIAL INFORMATION AND TRADE SECRETS OF
+CADENCE DESIGN SYSTEMS, INC. USE, DISCLOSURE, OR REPRODUCTION IS
+PROHIBITED WITHOUT THE PRIOR EXPRESS WRITTEN PERMISSION OF CADENCE
+DESIGN SYSTEMS, INC.
+
+Copyright (C) 2000-2020 Cadence Design Systems, Inc. All Rights
+Reserved.  Unpublished -- rights reserved under the copyright laws of
+the United States.
+
+This product includes software developed by others and redistributed
+according to license agreement. See doc/third_party_readme.txt for
+further details.
+
+RESTRICTED RIGHTS LEGEND
+
+Use, duplication, or disclosure by the Government is subject to
+restrictions as set forth in subparagraph (c) (1) (ii) of the Rights in
+Technical Data and Computer Software clause at DFARS 252.227-7013 or
+subparagraphs (c) (1) and (2) of Commercial Computer Software -- Restricted
+Rights at 48 CFR 52.227-19, as applicable.
+
+
+                          Cadence Design Systems, Inc. 
+                          2655 Seely Avenue
+                          San Jose, CA 95134
+                          Phone: 408.943.1234
+
+For technical assistance visit http://support.cadence.com.
+
+JasperGold Apps Analysis Session - /projects/sd3101_t4gp_fe/users/canchen/Timberwolf_USB4_T4GP/trunk/design/rtl/rtl_xtensa/lint/jgproject/sessionLogs/session_0
+
+INFO: successfully checked out licenses "jasper_interactive" and "jasper_afl".
+INFO: reading configuration file "/home/chencan/.config/jasper/jaspergold.conf".
+% check_superlint -init
+INFO (INL205): Disabling late connection of hierarchical references due to "Superlint".
+% #CMD: jg -superlint superlint.tcl &
+% #Step1: Prepare filelist
+% #Step2: Change Top name
+% 
+% #set top = Need to change;
+% 
+% analyze -clear
+% 
+% config_rtlds -rule -load ./Superlint_Rulefile_IPG_2019_06.def
+WARNING (WSL056): Change in Message, Arguments for tag: INS_NF_NMCV have changed.
+    For message help, type "help -message WSL056".
+WARNING (WSL056): Change in Message, Arguments for tag: MOD_NF_NMCV have changed.
+    For message help, type "help -message WSL056".
+WARNING (WSL056): Change in Message, Arguments for tag: PAR_NF_NMCV have changed.
+    For message help, type "help -message WSL056".
+WARNING (WSL056): Change in Message, Arguments for tag: CAS_NR_DEFN have changed.
+    For message help, type "help -message WSL056".
+WARNING (WSL056): Change in Message, Arguments for tag: EXP_NR_OVFB have changed.
+    For message help, type "help -message WSL056".
+WARNING (WSL056): Change in Message, Arguments for tag: NUM_LP_CMBL have changed.
+    For message help, type "help -message WSL056".
+% 
+% config_rtlds -rule -disable -domain all
+% config_rtlds -rule -enable -domain {LINT}
+% 
+% ###!!!Change Filelist
+% analyze -sv09 -F filelist.f
+INFO (INL011): Processing "-f" file "/projects/sd3101_t4gp_fe/users/canchen/Timberwolf_USB4_T4GP/trunk/design/rtl/rtl_xtensa/lint/filelist.f".
+[ERROR] Environment variable ${PHY_WORK_AREA} is not defined.
+[ERROR] Environment variable ${PHY_WORK_AREA} is not defined.
+[ERROR] Environment variable ${PHY_WORK_AREA} is not defined.
+[ERROR] Environment variable ${PHY_WORK_AREA} is not defined.
+[ERROR] Environment variable ${PHY_WORK_AREA} is not defined.
+[ERROR] Environment variable ${PHY_WORK_AREA} is not defined.
+[ERROR] Environment variable ${PHY_WORK_AREA} is not defined.
+[ERROR] Environment variable ${PHY_WORK_AREA} is not defined.
+[ERROR] Environment variable ${PHY_WORK_AREA} is not defined.
+[ERROR] Environment variable ${PHY_WORK_AREA} is not defined.
+[ERROR] Environment variable ${PHY_WORK_AREA} is not defined.
+[ERROR] Environment variable ${PHY_WORK_AREA} is not defined.
+[ERROR] Environment variable ${PHY_WORK_AREA} is not defined.
+[ERROR] Environment variable ${PHY_WORK_AREA} is not defined.
+[ERROR] Environment variable ${PHY_WORK_AREA} is not defined.
+[ERROR] Environment variable ${PHY_WORK_AREA} is not defined.
+[ERROR] Environment variable ${PHY_WORK_AREA} is not defined.
+[ERROR] Environment variable ${PHY_WORK_AREA} is not defined.
+[ERROR] Environment variable ${PHY_WORK_AREA} is not defined.
+[INFO (VMSG-1000)] Too many errors. Further error messages will be suppressed.
+WARNING (WNL074): Ignoring file "${PHY_WORK_AREA}/trunk/design/rtl/rtl_xtensa/xtensa/wrappers/Xttop.v" in "-f" file "filelist.f" as it was not found.
+INFO (INL010): Use "set_message -error WNL066" and "set_message -error WNL074" commands to force the tool to show the ignored errors.
+WARNING (WNL074): Ignoring file "${PHY_WORK_AREA}/trunk/design/rtl/rtl_xtensa/xtensa/wrappers/Xtensa.v" in "-f" file "filelist.f" as it was not found.
+INFO (INL010): Use "set_message -error WNL066" and "set_message -error WNL074" commands to force the tool to show the ignored errors.
+WARNING (WNL074): Ignoring file "${PHY_WORK_AREA}/trunk/design/rtl/rtl_xtensa/xtensa/core/ClkGate.v" in "-f" file "filelist.f" as it was not found.
+INFO (INL010): Use "set_message -error WNL066" and "set_message -error WNL074" commands to force the tool to show the ignored errors.
+WARNING (WNL074): Ignoring file "${PHY_WORK_AREA}/trunk/design/rtl/rtl_xtensa/xtensa/core/Control.v" in "-f" file "filelist.f" as it was not found.
+INFO (INL010): Use "set_message -error WNL066" and "set_message -error WNL074" commands to force the tool to show the ignored errors.
+WARNING (WNL074): Ignoring file "${PHY_WORK_AREA}/trunk/design/rtl/rtl_xtensa/xtensa/core/Decoder.v" in "-f" file "filelist.f" as it was not found.
+INFO (INL010): Use "set_message -error WNL066" and "set_message -error WNL074" commands to force the tool to show the ignored errors.
+WARNING (WNL074): Ignoring file "${PHY_WORK_AREA}/trunk/design/rtl/rtl_xtensa/xtensa/core/DAlign.v" in "-f" file "filelist.f" as it was not found.
+INFO (INL010): Use "set_message -error WNL066" and "set_message -error WNL074" commands to force the tool to show the ignored errors.
+WARNING (WNL074): Ignoring file "${PHY_WORK_AREA}/trunk/design/rtl/rtl_xtensa/xtensa/core/DStLdByp.v" in "-f" file "filelist.f" as it was not found.
+INFO (INL010): Use "set_message -error WNL066" and "set_message -error WNL074" commands to force the tool to show the ignored errors.
+WARNING (WNL074): Ignoring file "${PHY_WORK_AREA}/trunk/design/rtl/rtl_xtensa/xtensa/core/DataTlb.v" in "-f" file "filelist.f" as it was not found.
+INFO (INL010): Use "set_message -error WNL066" and "set_message -error WNL074" commands to force the tool to show the ignored errors.
+WARNING (WNL074): Ignoring file "${PHY_WORK_AREA}/trunk/design/rtl/rtl_xtensa/xtensa/core/ExternInt.v" in "-f" file "filelist.f" as it was not found.
+INFO (INL010): Use "set_message -error WNL066" and "set_message -error WNL074" commands to force the tool to show the ignored errors.
+WARNING (WNL074): Ignoring file "${PHY_WORK_AREA}/trunk/design/rtl/rtl_xtensa/xtensa/core/MemBankCtrl.v" in "-f" file "filelist.f" as it was not found.
+INFO (INL010): Use "set_message -error WNL066" and "set_message -error WNL074" commands to force the tool to show the ignored errors.
+WARNING (WNL074): Ignoring file "${PHY_WORK_AREA}/trunk/design/rtl/rtl_xtensa/xtensa/core/LSElement.v" in "-f" file "filelist.f" as it was not found.
+INFO (INL010): Use "set_message -error WNL066" and "set_message -error WNL074" commands to force the tool to show the ignored errors.
+WARNING (WNL074): Ignoring file "${PHY_WORK_AREA}/trunk/design/rtl/rtl_xtensa/xtensa/core/LoadStore.v" in "-f" file "filelist.f" as it was not found.
+INFO (INL010): Use "set_message -error WNL066" and "set_message -error WNL074" commands to force the tool to show the ignored errors.
+WARNING (WNL074): Ignoring file "${PHY_WORK_AREA}/trunk/design/rtl/rtl_xtensa/xtensa/core/ClkGate.v" in "-f" file "filelist.f" as it was not found.
+INFO (INL010): Use "set_message -error WNL066" and "set_message -error WNL074" commands to force the tool to show the ignored errors.
+WARNING (WNL074): Ignoring file "${PHY_WORK_AREA}/trunk/design/rtl/rtl_xtensa/xtensa/core/TIE.v" in "-f" file "filelist.f" as it was not found.
+INFO (INL010): Use "set_message -error WNL066" and "set_message -error WNL074" commands to force the tool to show the ignored errors.
+WARNING (WNL074): Ignoring file "${PHY_WORK_AREA}/trunk/design/rtl/rtl_xtensa/xtensa/core/IAlign.v" in "-f" file "filelist.f" as it was not found.
+INFO (INL010): Use "set_message -error WNL066" and "set_message -error WNL074" commands to force the tool to show the ignored errors.
+WARNING (WNL074): Ignoring file "${PHY_WORK_AREA}/trunk/design/rtl/rtl_xtensa/xtensa/core/InstFetch.v" in "-f" file "filelist.f" as it was not found.
+INFO (INL010): Use "set_message -error WNL066" and "set_message -error WNL074" commands to force the tool to show the ignored errors.
+WARNING (WNL074): Ignoring file "${PHY_WORK_AREA}/trunk/design/rtl/rtl_xtensa/xtensa/core/DataTlb.v" in "-f" file "filelist.f" as it was not found.
+INFO (INL010): Use "set_message -error WNL066" and "set_message -error WNL074" commands to force the tool to show the ignored errors.
+WARNING (WNL074): Ignoring file "${PHY_WORK_AREA}/trunk/design/rtl/rtl_xtensa/xtensa/core/InstTlb.v" in "-f" file "filelist.f" as it was not found.
+INFO (INL010): Use "set_message -error WNL066" and "set_message -error WNL074" commands to force the tool to show the ignored errors.
+WARNING (WNL074): Ignoring file "${PHY_WORK_AREA}/trunk/design/rtl/rtl_xtensa/xtensa/core/PCUnit.v" in "-f" file "filelist.f" as it was not found.
+INFO (INL010): Use "set_message -error WNL066" and "set_message -error WNL074" commands to force the tool to show the ignored errors.
+WARNING (WNL074): Ignoring file "${PHY_WORK_AREA}/trunk/design/rtl/rtl_xtensa/xtensa/core/OCD.v" in "-f" file "filelist.f" as it was not found.
+INFO (INL010): Use "set_message -error WNL066" and "set_message -error WNL074" commands to force the tool to show the ignored errors.
+WARNING (WNL074): Ignoring file "${PHY_WORK_AREA}/trunk/design/rtl/rtl_xtensa/xtensa/core/PCandIFetch.v" in "-f" file "filelist.f" as it was not found.
+INFO (INL010): Use "set_message -error WNL066" and "set_message -error WNL074" commands to force the tool to show the ignored errors.
+WARNING (WNL074): Ignoring file "${PHY_WORK_AREA}/trunk/design/rtl/rtl_xtensa/xtensa/core/ResetStaging.v" in "-f" file "filelist.f" as it was not found.
+INFO (INL010): Use "set_message -error WNL066" and "set_message -error WNL074" commands to force the tool to show the ignored errors.
+WARNING (WNL074): Ignoring file "${PHY_WORK_AREA}/trunk/design/rtl/rtl_xtensa/xtensa/core/Datapath.v" in "-f" file "filelist.f" as it was not found.
+INFO (INL010): Use "set_message -error WNL066" and "set_message -error WNL074" commands to force the tool to show the ignored errors.
+WARNING (WNL074): Ignoring file "${PHY_WORK_AREA}/trunk/design/rtl/rtl_xtensa/xtensa/primitives/primitives.v" in "-f" file "filelist.f" as it was not found.
+INFO (INL010): Use "set_message -error WNL066" and "set_message -error WNL074" commands to force the tool to show the ignored errors.
+WARNING (WNL074): Ignoring file "${PHY_WORK_AREA}/trunk/design/rtl/rtl_xtensa/xtensa/debug/Debug.v" in "-f" file "filelist.f" as it was not found.
+INFO (INL010): Use "set_message -error WNL066" and "set_message -error WNL074" commands to force the tool to show the ignored errors.
+WARNING (WNL074): Ignoring file "${PHY_WORK_AREA}/trunk/design/rtl/rtl_xtensa/xtensa/debug/AccessPort.v" in "-f" file "filelist.f" as it was not found.
+INFO (INL010): Use "set_message -error WNL066" and "set_message -error WNL074" commands to force the tool to show the ignored errors.
+WARNING (WNL074): Ignoring file "${PHY_WORK_AREA}/trunk/design/rtl/rtl_xtensa/xtensa/debug/FaultReporter.v" in "-f" file "filelist.f" as it was not found.
+INFO (INL010): Use "set_message -error WNL066" and "set_message -error WNL074" commands to force the tool to show the ignored errors.
+WARNING (WNL074): Ignoring file "${PHY_WORK_AREA}/trunk/design/rtl/rtl_xtensa/ecc.v" in "-f" file "filelist.f" as it was not found.
+INFO (INL010): Use "set_message -error WNL066" and "set_message -error WNL074" commands to force the tool to show the ignored errors.
+WARNING (WNL074): Ignoring file "${PHY_WORK_AREA}/trunk/design/rtl/rtl_xtensa/apb2sram.v" in "-f" file "filelist.f" as it was not found.
+INFO (INL010): Use "set_message -error WNL066" and "set_message -error WNL074" commands to force the tool to show the ignored errors.
+WARNING (WNL074): Ignoring file "${PHY_WORK_AREA}/trunk/design/rtl/rtl_xtensa/dram2apb.v" in "-f" file "filelist.f" as it was not found.
+INFO (INL010): Use "set_message -error WNL066" and "set_message -error WNL074" commands to force the tool to show the ignored errors.
+WARNING (WNL074): Ignoring file "${PHY_WORK_AREA}/trunk/design/rtl/rtl_xtensa/idram_arb.v" in "-f" file "filelist.f" as it was not found.
+INFO (INL010): Use "set_message -error WNL066" and "set_message -error WNL074" commands to force the tool to show the ignored errors.
+WARNING (WNL074): Ignoring file "${PHY_WORK_AREA}/trunk/design/rtl/rtl_xtensa/sram_initialize.v" in "-f" file "filelist.f" as it was not found.
+INFO (INL010): Use "set_message -error WNL066" and "set_message -error WNL074" commands to force the tool to show the ignored errors.
+WARNING (WNL074): Ignoring file "${PHY_WORK_AREA}/trunk/design/rtl/rtl_xtensa/uc.v" in "-f" file "filelist.f" as it was not found.
+INFO (INL010): Use "set_message -error WNL066" and "set_message -error WNL074" commands to force the tool to show the ignored errors.
+WARNING (WNL074): Ignoring file "${PHY_WORK_AREA}/trunk/design/reuse/rtl_phy_misc_components/phy_clk_gate.v" in "-f" file "filelist.f" as it was not found.
+INFO (INL010): Use "set_message -error WNL066" and "set_message -error WNL074" commands to force the tool to show the ignored errors.
+WARNING (WNL074): Ignoring file "${PHY_WORK_AREA}/trunk/design/reuse/rtl_phy_misc_components/phy_reset_sync.v" in "-f" file "filelist.f" as it was not found.
+INFO (INL010): Use "set_message -error WNL066" and "set_message -error WNL074" commands to force the tool to show the ignored errors.
+WARNING (WNL074): Ignoring file "${PHY_WORK_AREA}/trunk/design/reuse/rtl_phy_misc_components/phy_scan_mux.v" in "-f" file "filelist.f" as it was not found.
+INFO (INL010): Use "set_message -error WNL066" and "set_message -error WNL074" commands to force the tool to show the ignored errors.
+ERROR (ESW029): The file name argument is missing.
+
+ERROR: problem encountered at line 15 in file superlint.tcl
+
+INFO (IPL005): Received request to exit from the console.
+INFO (IPL014): Waiting for the Tcl-thread to exit.
+INFO (IPL015): The Tcl-thread exited with status 0.
+INFO (IPL016): Exiting the analysis session with status 0.

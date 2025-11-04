@@ -1,0 +1,13 @@
+./cdnsdru_usb4_message_bus_pipe_defines_v4.v
+./cdnsdru_usb4_message_bus_allfslf_wr_v4.v
+./cdnsdru_usb4_message_bus_gen_reg_ctrl_v4.v
+./cdnsdru_usb4_message_bus_link_eval_stat_regs_v4.v
+./cdnsdru_usb4_message_bus_lm_regs_v4.v
+./cdnsdru_usb4_message_bus_pcs_rx_ctrl_v4.v
+./cdnsdru_usb4_message_bus_pipe_rx_ctrl_v4.v
+./cdnsdru_usb4_message_bus_pipe_tx_ctrl_v4.v
+./cdnsdru_usb4_message_bus_pma_txrx_ctrl_v4.v
+./cdnsdru_usb4_message_bus_preset_coef_regs_v4.v
+./cdnsdru_usb4_message_bus_top_v4.v
+./cdnsdru_usb4_message_bus_io_recal_v4.v
+./cdnsdru_usb4_message_bus_eq_train_v4.v
